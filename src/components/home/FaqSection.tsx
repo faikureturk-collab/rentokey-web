@@ -1,25 +1,20 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import FaqAccordion from "../FaqAccordion";
 import { faqItems } from "@/lib/faq";
 
 export default function FaqSection() {
   return (
-    <section className="container-page py-16 sm:py-20">
-      <h2 className="text-2xl font-extrabold text-brand-navy sm:text-3xl">Sıkça sorulan sorular</h2>
-
-      <div className="mt-8">
-        <FaqAccordion items={faqItems.slice(0, 4)} />
+    <section id="sss" className="container-page scroll-mt-24 py-16 sm:py-20">
+      <div className="text-center">
+        <span className="inline-flex rounded-full bg-brand-green/10 px-4 py-1.5 text-sm font-semibold text-brand-green">
+          SSS
+        </span>
+        <h2 className="mt-4 text-2xl font-extrabold text-brand-navy sm:text-3xl">
+          Sıkça sorulan sorular
+        </h2>
       </div>
 
-      <div className="mt-6 text-center">
-        <Link
-          href="/sss"
-          className="inline-flex items-center gap-2 text-[15px] font-semibold text-brand-navy hover:text-brand-green"
-        >
-          Tüm soruları görüntüle
-          <ArrowRight className="h-4 w-4" />
-        </Link>
+      <div className="mt-10">
+        <FaqAccordion items={faqItems} />
       </div>
     </section>
   );

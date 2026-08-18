@@ -25,7 +25,7 @@ const resources = [
     icon: HelpCircle,
     title: "Sık Sorulan Sorular",
     description: "Kurulum, güvenlik ve faturalandırma hakkında en çok sorulan sorular.",
-    href: "/sss",
+    href: "/#sss",
   },
 ];
 

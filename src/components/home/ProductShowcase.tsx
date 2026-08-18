@@ -28,7 +28,7 @@ export default function ProductShowcase() {
             ))}
           </ul>
           <Link
-            href="/ozellikler"
+            href="#ozellikler"
             className="mt-7 inline-flex items-center gap-2 text-[15px] font-semibold text-brand-navy hover:text-brand-green"
           >
             Tüm özellikleri incele

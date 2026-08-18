@@ -8,14 +8,16 @@ import { plans, YEARLY_DISCOUNT } from "@/lib/pricing";
 export default function PricingSection({
   title = "İhtiyacınıza uygun paketi seçin",
   showHeading = true,
+  id,
 }: {
   title?: string;
   showHeading?: boolean;
+  id?: string;
 }) {
   const [yearly, setYearly] = useState(false);
 
   return (
-    <section className="container-page py-6 sm:py-10">
+    <section id={id} className="container-page scroll-mt-24 py-6 sm:py-10">
       {showHeading && (
         <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
           <h2 className="text-2xl font-extrabold text-brand-navy sm:text-3xl">{title}</h2>
