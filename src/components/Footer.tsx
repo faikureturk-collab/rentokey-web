@@ -1,0 +1,95 @@
+import Link from "next/link";
+import { Mail, MapPin, Phone } from "lucide-react";
+import Logo from "./Logo";
+import { footerNav } from "@/lib/nav";
+import { FacebookIcon, InstagramIcon, LinkedInIcon, YoutubeIcon } from "./SocialIcons";
+
+export default function Footer() {
+  return (
+    <footer className="bg-brand-navy-deep text-white">
+      <div className="container-page py-14">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-6">
+          <div className="col-span-2">
+            <Logo variant="white" />
+            <p className="mt-4 max-w-[220px] text-sm leading-relaxed text-white/60">
+              Araç kiralama operasyonları için akıllı yazılım çözümü.
+            </p>
+            <div className="mt-5 flex items-center gap-3">
+              {[LinkedInIcon, InstagramIcon, FacebookIcon, YoutubeIcon].map((Icon, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  aria-label="Sosyal medya"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/80 transition-colors hover:border-brand-green hover:text-brand-green"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <FooterColumn title="Ürün" links={footerNav.urun} />
+          <FooterColumn title="Kaynaklar" links={footerNav.kaynaklar} />
+          <FooterColumn title="Şirket" links={footerNav.sirket} />
+
+          <div>
+            <h4 className="text-sm font-semibold text-white">İletişim</h4>
+            <ul className="mt-4 space-y-3 text-sm text-white/60">
+              <li className="flex items-start gap-2">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" />
+                <a href="mailto:info@rentokey.com" className="hover:text-white">
+                  info@rentokey.com
+                </a>
+              </li>
+              <li className="flex items-start gap-2">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" />
+                <a href="tel:+908508851053" className="hover:text-white">
+                  +90 850 885 10 53
+                </a>
+              </li>
+              <li className="flex items-start gap-2">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" />
+                <span>Maslak Mah. Eski Büyükdere Cad. No:27 Sarıyer / İstanbul</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-sm text-white/50 sm:flex-row">
+          <p>© {new Date().getFullYear()} Rent Okey. Tüm hakları saklıdır.</p>
+          <div className="flex items-center gap-6">
+            <Link href="/gizlilik-politikasi" className="hover:text-white">
+              Gizlilik Politikası
+            </Link>
+            <Link href="/kullanim-sartlari" className="hover:text-white">
+              Kullanım Şartları
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function FooterColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: { label: string; href: string }[];
+}) {
+  return (
+    <div>
+      <h4 className="text-sm font-semibold text-white">{title}</h4>
+      <ul className="mt-4 space-y-3 text-sm text-white/60">
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link href={link.href} className="hover:text-white">
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}

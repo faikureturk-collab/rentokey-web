@@ -2,25 +2,52 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0b1f33;
+
+  /* Brand palette (from RentOkey logo + design mockup) */
+  --color-brand-green: #18b878;
+  --color-brand-green-dark: #129c65;
+  --color-brand-blue: #1769e0;
+  --color-brand-navy: #0b1f33;
+  --color-brand-navy-deep: #06152c;
+  --color-brand-navy-soft: #12294a;
+  --color-surface-soft: #f6f8fb;
+  --color-surface-border: #e7eaf1;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, Arial, Helvetica, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-brand-green: var(--color-brand-green);
+  --color-brand-green-dark: var(--color-brand-green-dark);
+  --color-brand-blue: var(--color-brand-blue);
+  --color-brand-navy: var(--color-brand-navy);
+  --color-brand-navy-deep: var(--color-brand-navy-deep);
+  --color-brand-navy-soft: var(--color-brand-navy-soft);
+  --color-surface-soft: var(--color-surface-soft);
+  --color-surface-border: var(--color-surface-border);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+.brand-gradient-text {
+  background: linear-gradient(90deg, var(--color-brand-blue), var(--color-brand-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.container-page {
+  width: 100%;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="360" viewBox="0 0 1400 360">
+      <g transform="translate(34 74)">
+        <path d="
+          M 146 190
+          H 73
+          C 36 190, 13 165, 13 132
+          C 13 100, 35 76, 68 74
+          C 75 37, 104 13, 140 13
+          C 181 13, 213 43, 216 83
+          C 235 85, 252 95, 264 108"
+          fill="none" stroke="#FFFFFF" stroke-width="16"
+          stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 175 163 L 203 190 L 265 136"
+          fill="none" stroke="#FFFFFF" stroke-width="20"
+          stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      <g transform="translate(360 56)">
+        <text x="0" y="126" font-family="Inter, Arial, Helvetica, sans-serif"
+          font-size="118" font-weight="700" letter-spacing="-5">
+          <tspan fill="#FFFFFF">Rent </tspan><tspan fill="#FFFFFF">Okey</tspan>
+        </text>
+        <text x="8" y="194" font-family="Inter, Arial, Helvetica, sans-serif"
+          font-size="29" font-weight="600" letter-spacing="10" fill="#FFFFFF">
+          RENT SMART. GO EASY.
+        </text>
+      </g>
+    </svg>

@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rent Okey — Web Sitesi
 
-## Getting Started
+Rent Okey için Next.js (App Router) + Tailwind CSS ile geliştirilmiş, çok sayfalı kurumsal web sitesi. Anasayfa, `RentOkey_Web_Tasarım.png` tasarım görseline birebir sadık kalınarak kodlanmıştır.
 
-First, run the development server:
+## Başlarken
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Tarayıcıda [http://localhost:3000](http://localhost:3000) adresini açın.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Production build almak için:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Proje yapısı
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app/` — Sayfalar (App Router). Her klasör bir rotayı temsil eder (`/urun`, `/ozellikler`, `/fiyatlandirma`, `/hakkimizda`, `/iletisim`, `/kaynaklar`, `/blog`, `/kilavuzlar`, `/sss`, `/guncellemeler`, `/kariyer`, `/giris`, `/ucretsiz-dene`, `/gizlilik-politikasi`, `/kullanim-sartlari`).
+- `src/components/` — Header, Footer, Button, PricingSection, FaqAccordion, DashboardMock (anasayfadaki ürün görseli) gibi ortak bileşenler.
+- `src/components/home/` — Sadece anasayfaya özel bölümler (Hero, StatsBar, FeatureGrid, ProductShowcase, HowItWorks, FaqSection).
+- `src/lib/` — Navigasyon linkleri, fiyatlandırma planları, SSS ve özellik listeleri gibi içerik verileri (bu dosyalardan metinleri güncelleyebilirsiniz).
+- `public/logo/` — Marka logosu ve ikonu (renkli ve beyaz versiyonlar).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Marka renkleri
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Logo dosyasından türetilen marka paleti `src/app/globals.css` içinde tanımlıdır:
 
-## Deploy on Vercel
+- Yeşil: `#18B878`
+- Mavi (gradient): `#1769E0`
+- Lacivert (metin/footer): `#0B1F33` / `#06152C`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Notlar
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- İletişim formu, giriş ve ücretsiz deneme formları şu an sadece arayüz olarak hazırlanmıştır; gerçek bir backend'e (API, e-posta servisi, CRM vb.) bağlanmamıştır. Formları çalışır hale getirmek için bir form işleme servisi veya kendi API route'unuzu eklemeniz gerekir.
+- Blog, Kılavuzlar ve Güncellemeler sayfalarındaki içerikler örnek/yer tutucu metinlerdir; gerçek içeriklerinizle değiştirebilirsiniz.
+- Gizlilik Politikası ve Kullanım Şartları sayfaları taslak niteliğindedir; yayına almadan önce bir hukuk danışmanına gözden geçirtmeniz önerilir.
+- Yazı tipi olarak Google Fonts yerine `@fontsource-variable/inter` paketiyle self-hosted (yerel) Inter fontu kullanılmıştır; bu sayede site internet bağlantısı olmayan ortamlarda da sorunsuz build alınabilir.

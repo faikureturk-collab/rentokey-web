@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="360" viewBox="0 0 1400 360">
+      <g transform="translate(34 74)">
+<defs>
+  <linearGradient id="g" x1="0%" y1="10%" x2="100%" y2="85%">
+    <stop offset="0%" stop-color="#1769E0"/>
+    <stop offset="100%" stop-color="#18B878"/>
+  </linearGradient>
+</defs>
+<path d="
+  M 146 190
+  H 73
+  C 36 190, 13 165, 13 132
+  C 13 100, 35 76, 68 74
+  C 75 37, 104 13, 140 13
+  C 181 13, 213 43, 216 83
+  C 235 85, 252 95, 264 108"
+  fill="none"
+  stroke="url(#g)"
+  stroke-width="16"
+  stroke-linecap="round"
+  stroke-linejoin="round"/>
+
+<path d="M 175 163 L 203 190 L 265 136"
+  fill="none"
+  stroke="#18B878"
+  stroke-width="20"
+  stroke-linecap="round"
+  stroke-linejoin="round"/>
+</g>
+      <g transform="translate(360 56)">
+        <text x="0" y="126" font-family="Inter, Arial, Helvetica, sans-serif"
+          font-size="118" font-weight="700" letter-spacing="-5">
+          <tspan fill="#0B1F33">Rent </tspan><tspan fill="#18B878">Okey</tspan>
+        </text>
+        <text x="8" y="194" font-family="Inter, Arial, Helvetica, sans-serif"
+          font-size="29" font-weight="600" letter-spacing="10" fill="#0B1F33">
+          RENT SMART. GO EASY.
+        </text>
+      </g>
+    </svg>
