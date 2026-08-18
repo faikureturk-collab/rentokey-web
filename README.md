@@ -40,3 +40,5 @@ Logo dosyasından türetilen marka paleti `src/app/globals.css` içinde tanıml�
 - Blog, Kılavuzlar ve Güncellemeler sayfalarındaki içerikler örnek/yer tutucu metinlerdir; gerçek içeriklerinizle değiştirebilirsiniz.
 - Gizlilik Politikası ve Kullanım Şartları sayfaları taslak niteliğindedir; yayına almadan önce bir hukuk danışmanına gözden geçirtmeniz önerilir.
 - Yazı tipi olarak Google Fonts yerine `@fontsource-variable/inter` paketiyle self-hosted (yerel) Inter fontu kullanılmıştır; bu sayede site internet bağlantısı olmayan ortamlarda da sorunsuz build alınabilir.
+
+<!-- Test commit: 2026-08-18 16:53 tarihinde Claude tarafindan eklendi -->
