@@ -55,9 +55,9 @@ export default function DashboardMock() {
           <aside className="hidden w-[170px] shrink-0 bg-brand-navy-deep px-3 py-4 sm:block">
             <div className="mb-4 flex items-center gap-1.5 px-1.5">
               <Image
-                src="/logo/rentokey-icon-white.svg"
+                src="/logo/rentokey-icon-white.png"
                 alt=""
-                width={18}
+                width={19}
                 height={14}
                 aria-hidden
               />

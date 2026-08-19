@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="container-page py-14">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-6">
           <div className="col-span-2">
-            <Logo variant="white" />
+            <Logo variant="white" withSlogan size="h-11" />
             <p className="mt-4 max-w-[220px] text-sm leading-relaxed text-white/60">
               Araç kiralama operasyonları için akıllı yazılım çözümü.
             </p>
