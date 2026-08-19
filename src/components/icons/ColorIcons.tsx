@@ -197,3 +197,80 @@ export function UsersRoleFeatureIcon({ size = 48 }: { size?: number }) {
     </IconWrap>
   );
 }
+
+/* ---------- Çok yakında ikonları ---------- */
+
+export function AiDamageCompareIcon({ size = 48 }: { size?: number }) {
+  return (
+    <IconWrap size={size}>
+      <rect x="2" y="4" width="44" height="40" rx="8" fill="#F0F3F8" />
+      <rect x="8" y="10" width="19" height="23" rx="4" fill="#fff" stroke="#0B1F33" strokeWidth="2" />
+      <rect x="14" y="15" width="19" height="23" rx="4" fill="#fff" stroke="#1769E0" strokeWidth="2" />
+      <path
+        d="M18.5 25.5 L22 29 L29 20"
+        stroke="#18B878"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      <circle cx="36" cy="34" r="7" fill="#7C6CF0" />
+      <path
+        d="M36 30.3 L37.2 32.9 L40 33.3 L38 35.2 L38.5 38 L36 36.6 L33.5 38 L34 35.2 L32 33.3 L34.8 32.9 Z"
+        fill="#fff"
+      />
+    </IconWrap>
+  );
+}
+
+export function SmartPricingIcon({ size = 48 }: { size?: number }) {
+  return (
+    <IconWrap size={size}>
+      <rect x="2" y="4" width="44" height="40" rx="8" fill="#F0F3F8" />
+      <path
+        d="M9 24 L23 10 H33 A4 4 0 0 1 37 14 V24 L23 38 A4 4 0 0 1 17 38 L9 30 A4 4 0 0 1 9 24 Z"
+        fill="#1769E0"
+      />
+      <circle cx="29" cy="18" r="3" fill="#fff" />
+      <path
+        d="M13.5 29 L19.5 23 L24.5 28 L33.5 19"
+        stroke="#18B878"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      <path
+        d="M28.5 19 L33.5 19 L33.5 24"
+        stroke="#18B878"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+    </IconWrap>
+  );
+}
+
+export function ChatBookingIcon({ size = 48 }: { size?: number }) {
+  return (
+    <IconWrap size={size}>
+      <rect x="2" y="4" width="44" height="40" rx="8" fill="#F0F3F8" />
+      <path
+        d="M23 10C14.2 10 7 16.5 7 24.5C7 28.3 8.6 31.7 11.3 34.2L10 41L17.8 38.2C19.4 38.7 21.1 39 23 39C31.8 39 39 32.5 39 24.5C39 16.5 31.8 10 23 10Z"
+        fill="#18B878"
+      />
+      <rect x="15" y="19.5" width="16" height="12" rx="2.5" fill="#fff" />
+      <path d="M18 23.5H28M18 27.5H24" stroke="#18B878" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="35" cy="13" r="4.5" fill="#7C6CF0" />
+      <path
+        d="M33 13 L34.5 14.5 L37.2 11.4"
+        stroke="#fff"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+    </IconWrap>
+  );
+}

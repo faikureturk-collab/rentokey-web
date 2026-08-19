@@ -1,4 +1,4 @@
-import { CheckCircle2, Play } from "lucide-react";
+import { CheckCircle2, Play, Sparkles } from "lucide-react";
 import Button from "../Button";
 import DashboardMock from "../DashboardMock";
 
@@ -12,7 +12,15 @@ export default function Hero() {
     <section className="overflow-hidden pt-14 pb-20 sm:pt-20 sm:pb-28">
       <div className="container-page grid items-center gap-14 lg:grid-cols-[minmax(0,480px)_1fr]">
         <div>
-          <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-brand-navy sm:text-5xl">
+          <a
+            href="#cok-yakinda"
+            className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5 text-sm font-semibold text-amber-700 transition-colors hover:bg-amber-100"
+          >
+            <Sparkles className="h-4 w-4" />
+            Yapay zekâ özellikleri geliyor
+          </a>
+
+          <h1 className="mt-5 text-4xl font-extrabold leading-[1.1] tracking-tight text-brand-navy sm:text-5xl">
             Kiralama operasyonunu kolaylaştırır
           </h1>
 
