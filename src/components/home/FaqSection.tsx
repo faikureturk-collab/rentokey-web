@@ -4,7 +4,7 @@ import { faqItems } from "@/lib/faq";
 export default function FaqSection() {
   return (
     <section id="sss" className="container-page scroll-mt-24 py-16 sm:py-20">
-      <div className="text-center">
+      <div>
         <span className="inline-flex rounded-full bg-brand-green/10 px-4 py-1.5 text-sm font-semibold text-brand-green">
           SSS
         </span>

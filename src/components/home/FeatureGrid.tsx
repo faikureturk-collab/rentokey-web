@@ -38,7 +38,7 @@ const features = [
 export default function FeatureGrid() {
   return (
     <section id="ozellikler" className="container-page scroll-mt-24 py-20 sm:py-28">
-      <h2 className="text-center text-2xl font-extrabold text-brand-navy sm:text-3xl">
+      <h2 className="text-2xl font-extrabold text-brand-navy sm:text-3xl">
         Tüm operasyonunuzu tek platformda yönetin
       </h2>
 

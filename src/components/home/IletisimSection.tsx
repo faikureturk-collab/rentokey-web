@@ -15,14 +15,14 @@ export default function IletisimSection() {
   return (
     <section id="iletisim" className="scroll-mt-24 border-t border-surface-border">
       <div className="container-page py-16 sm:py-24">
-        <div className="text-center">
+        <div>
           <span className="inline-flex rounded-full bg-brand-green/10 px-4 py-1.5 text-sm font-semibold text-brand-green">
             İletişim
           </span>
-          <h2 className="mx-auto mt-4 max-w-2xl text-2xl font-extrabold leading-tight text-brand-navy sm:text-3xl">
+          <h2 className="mt-4 max-w-2xl text-2xl font-extrabold leading-tight text-brand-navy sm:text-3xl">
             Size nasıl yardımcı olabiliriz?
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-brand-navy/55">
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-brand-navy/55">
             Sorularınızı iletin, Rent Okey ekibi en kısa sürede size dönüş yapsın.
           </p>
         </div>

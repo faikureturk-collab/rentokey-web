@@ -27,14 +27,14 @@ export default function HakkimizdaSection() {
   return (
     <section id="hakkimizda" className="scroll-mt-24 bg-surface-soft/60 py-16 sm:py-24">
       <div className="container-page">
-        <div className="text-center">
+        <div>
           <span className="inline-flex rounded-full bg-brand-green/10 px-4 py-1.5 text-sm font-semibold text-brand-green">
             Hakkımızda
           </span>
-          <h2 className="mx-auto mt-4 max-w-2xl text-2xl font-extrabold leading-tight text-brand-navy sm:text-3xl">
+          <h2 className="mt-4 max-w-2xl text-2xl font-extrabold leading-tight text-brand-navy sm:text-3xl">
             Araç kiralama operasyonlarını kolaylaştırıyoruz
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-brand-navy/55">
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-brand-navy/55">
             Rent Okey, Türkiye genelinde araç kiralama firmalarının filo, rezervasyon ve saha
             operasyonlarını tek platformdan yönetmesine yardımcı oluyor. Amacımız, filo
             sahiplerinin araçlarını değil operasyonlarını büyütmesine yardımcı olmak.
