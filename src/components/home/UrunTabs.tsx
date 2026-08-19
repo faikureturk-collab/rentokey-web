@@ -209,6 +209,41 @@ function ReportingPanel() {
   );
 }
 
+const userRows = [
+  { name: "Azra Yılmaz", role: "Yönetici", color: "bg-brand-green" },
+  { name: "Mehmet Kaya", role: "Operasyon", color: "bg-brand-blue" },
+  { name: "Selin Demir", role: "Saha ekibi", color: "bg-violet-500" },
+  { name: "Ozan Türk", role: "Muhasebe", color: "bg-amber-500" },
+];
+
+function UsersPanel() {
+  return (
+    <div>
+      <PanelHeaderRow title="Kullanıcılar" meta="12 kullanıcı · 4 rol" />
+      <div className="mt-4 space-y-2">
+        {userRows.map((user) => (
+          <div
+            key={user.name}
+            className="flex items-center justify-between rounded-xl border border-surface-border px-3 py-2.5"
+          >
+            <div className="flex items-center gap-2.5">
+              <span
+                className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white ${user.color}`}
+              >
+                {user.name.charAt(0)}
+              </span>
+              <span className="text-xs font-medium text-brand-navy/75">{user.name}</span>
+            </div>
+            <span className="rounded-full bg-surface-soft px-2.5 py-1 text-[11px] font-medium text-brand-navy/55">
+              {user.role}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 type Tab = {
   pill: string;
   title: string;
@@ -266,6 +301,18 @@ const tabs: Tab[] = [
     ],
     panel: <ReportingPanel />,
   },
+  {
+    pill: "Kullanıcılar",
+    title: "Kullanıcı ve rol yönetimi",
+    description:
+      "Ekibinizi rol bazlı yetkilerle sisteme davet edin. Kim neyi görebilir, neyi değiştirebilir — siz belirleyin, güvenle paylaşın.",
+    bullets: [
+      "Rol bazlı erişim (yönetici, operasyon, saha, muhasebe)",
+      "Aktivite ve değişiklik geçmişi",
+      "Sınırsız kullanıcı daveti",
+    ],
+    panel: <UsersPanel />,
+  },
 ];
 
 export default function UrunTabs() {
@@ -281,7 +328,7 @@ export default function UrunTabs() {
             Özellikler
           </span>
           <h2 className="mt-4 text-2xl font-extrabold leading-tight text-brand-navy sm:text-3xl">
-            Dört modül, tek platform.
+            Beş modül, tek platform.
           </h2>
         </div>
 
