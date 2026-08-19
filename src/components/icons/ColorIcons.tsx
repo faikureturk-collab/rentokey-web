@@ -58,6 +58,54 @@ export function ShieldBoltIcon({ size = 48 }: { size?: number }) {
   );
 }
 
+export function TimerIcon({ size = 48 }: { size?: number }) {
+  return (
+    <IconWrap size={size}>
+      <defs>
+        <linearGradient id="tmrG" x1="8" y1="6" x2="40" y2="42" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#4ADE93" />
+          <stop offset="1" stopColor="#0F9C61" />
+        </linearGradient>
+      </defs>
+      <rect x="18" y="3" width="12" height="5" rx="2.5" fill="url(#tmrG)" />
+      <path
+        d="M36.3 9.9 L39.7 13.3"
+        stroke="url(#tmrG)"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <circle cx="24" cy="27" r="17" fill="url(#tmrG)" />
+      <circle cx="24" cy="27" r="12" fill="#fff" fillOpacity="0.15" />
+      <path d="M24 27 V18" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" />
+      <path d="M24 27 L30.5 30.5" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" />
+      <circle cx="24" cy="27" r="2.3" fill="#fff" />
+    </IconWrap>
+  );
+}
+
+export function QuickLearnIcon({ size = 48 }: { size?: number }) {
+  return (
+    <IconWrap size={size}>
+      <defs>
+        <linearGradient id="qlG" x1="8" y1="4" x2="40" y2="44" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#3DD68C" />
+          <stop offset="1" stopColor="#0EA25E" />
+        </linearGradient>
+      </defs>
+      <circle cx="24" cy="19" r="15" fill="url(#qlG)" />
+      <rect x="18" y="32.5" width="12" height="4" rx="2" fill="url(#qlG)" />
+      <rect x="19.2" y="38.5" width="9.6" height="3" rx="1.5" fill="url(#qlG)" />
+      <path
+        d="M24 11 V19 L29.5 23.5"
+        stroke="#fff"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </IconWrap>
+  );
+}
+
 /* ---------- Özellik kartı ikonları ---------- */
 
 export function GanttFeatureIcon({ size = 48 }: { size?: number }) {
