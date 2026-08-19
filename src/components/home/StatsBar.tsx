@@ -9,9 +9,9 @@ const stats = [
   },
   {
     icon: ShieldBoltIcon,
-    value: "1 günde",
-    label: "Kurulum",
-    hint: "Hızlı kurulum, hızlı değer",
+    value: "Aynı gün",
+    label: "Canlıya geçiş",
+    hint: "Kurulum gerekmez, hemen başlayın",
   },
   {
     icon: GroupGlossyIcon,

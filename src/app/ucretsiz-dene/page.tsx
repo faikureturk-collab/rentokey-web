@@ -57,9 +57,9 @@ export default function UcretsizDenePage() {
                   Seçiniz
                 </option>
                 <option>1 - 10 araç</option>
-                <option>11 - 50 araç</option>
-                <option>51 - 200 araç</option>
-                <option>200+ araç</option>
+                <option>11 - 30 araç</option>
+                <option>31 - 70 araç</option>
+                <option>70+ araç</option>
               </select>
             </div>
             <button
