@@ -1,53 +1,62 @@
-import { FileInput, UserPlus, Settings2, ArrowRight } from "lucide-react";
-
 const steps = [
   {
-    number: "1",
-    title: "Hesabınızı oluşturun",
-    description: "1 dakikada kaydolun, hemen başlayın.",
+    number: "01",
+    duration: "10 sn",
+    title: "Talep düşer",
+    description: "Müşteri talebi sisteme anında düşer, bekleme olmaz.",
   },
   {
-    icon: FileInput,
-    title: "Verilerinizi içe aktarın",
-    description: "Araçlarınızı, kullanıcılarınızı ve fiyatlarınızı ekleyin.",
+    number: "02",
+    duration: "30 sn",
+    title: "Araç atanır",
+    description: "Uygun araç otomatik önerilir, tek dokunuşla atanır.",
   },
   {
-    icon: UserPlus,
-    title: "Ekibinizi davet edin",
-    description: "Rol bazlı yetkiler vererek ekibinizle paylaşın.",
+    number: "03",
+    duration: "3 dk",
+    title: "Teslim edilir",
+    description: "Saha ekibi mobil üzerinden teslimatı tamamlar.",
   },
   {
-    icon: Settings2,
-    title: "Operasyonunuzu yönetin",
-    description: "Rezervasyon, teslimat ve raporları tek yerden yönetin.",
+    number: "04",
+    duration: "iade",
+    title: "Kayıt kapanır",
+    description: "İade alınır, kayıt ve faturalama otomatik kapanır.",
   },
 ];
 
 export default function HowItWorks() {
   return (
     <section id="nasil-calisir" className="container-page scroll-mt-24 py-6 sm:py-10">
-      <div className="rounded-3xl border border-surface-border bg-white p-8 sm:p-10">
-        <h2 className="text-2xl font-extrabold text-brand-navy sm:text-3xl">Nasıl çalışır?</h2>
+      <div className="overflow-hidden rounded-3xl bg-brand-navy-deep p-8 sm:p-12">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <span className="inline-flex rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-green">
+              Bir teslimatın hikâyesi
+            </span>
+            <h2 className="mt-4 max-w-xl text-2xl font-extrabold leading-tight text-white sm:text-3xl">
+              Talep geldi, araç çıktı, kayıt kapandı.
+            </h2>
+          </div>
+          <p className="max-w-sm text-sm leading-relaxed text-white/50">
+            Yeni çalışanın öğrenme süresi ortalama 20 dakika. Eğitim için gün ayırmıyorsun.
+          </p>
+        </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
-          {steps.map((step, i) => (
-            <div key={step.title} className="relative flex items-start gap-4 lg:flex-col lg:items-start">
-              <div className="flex items-center gap-3 lg:w-full lg:justify-between">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-brand-green text-brand-green">
-                  {step.icon ? <step.icon className="h-5 w-5" /> : (
-                    <span className="text-base font-bold">{step.number}</span>
-                  )}
-                </span>
-                {i < steps.length - 1 && (
-                  <ArrowRight className="hidden h-5 w-5 text-brand-green/40 lg:block" />
-                )}
-              </div>
-              <div>
-                <h3 className="text-[15px] font-bold text-brand-navy">{step.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-brand-navy/50">
-                  {step.description}
-                </p>
-              </div>
+        <div className="mt-10 grid grid-cols-4 gap-1.5 sm:mt-12">
+          {steps.map((step) => (
+            <span key={step.number} className="h-1.5 rounded-full bg-brand-green" />
+          ))}
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          {steps.map((step) => (
+            <div key={step.number} className="border-t border-white/10 pt-4">
+              <span className="text-xs font-bold tracking-wider text-brand-green">
+                {step.number} · {step.duration}
+              </span>
+              <h3 className="mt-2 text-[15px] font-bold text-white">{step.title}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-white/45">{step.description}</p>
             </div>
           ))}
         </div>
