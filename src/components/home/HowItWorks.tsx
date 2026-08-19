@@ -44,8 +44,11 @@ export default function HowItWorks() {
         </div>
 
         <div className="mt-10 grid grid-cols-4 gap-1.5 sm:mt-12">
-          {steps.map((step) => (
-            <span key={step.number} className="h-1.5 rounded-full bg-brand-green" />
+          {steps.map((step, i) => (
+            <span
+              key={step.number}
+              className={`h-1.5 rounded-full ${i === 0 ? "bg-brand-green" : "bg-white/15"}`}
+            />
           ))}
         </div>
 
