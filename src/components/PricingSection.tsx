@@ -37,8 +37,8 @@ export default function PricingSection({
               }`}
             >
               <span
-                className={`absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-transform ${
-                  yearly ? "translate-x-6" : "translate-x-1"
+                className={`absolute left-1 top-1 h-5 w-5 rounded-full bg-white shadow transition-transform ${
+                  yearly ? "translate-x-5" : "translate-x-0"
                 }`}
               />
             </button>
