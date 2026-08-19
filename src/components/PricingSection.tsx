@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import Button from "./Button";
-import { plans, YEARLY_DISCOUNT } from "@/lib/pricing";
+import { plans } from "@/lib/pricing";
 
 export default function PricingSection({
   title = "İhtiyacınıza uygun paketi seçin",
@@ -51,16 +51,14 @@ export default function PricingSection({
         </div>
       )}
 
-      <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+      <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {plans.map((plan) => {
-          const price = yearly
-            ? Math.round(plan.monthlyPrice * (1 - YEARLY_DISCOUNT))
-            : plan.monthlyPrice;
+          const price = yearly ? plan.yearlyPrice : plan.monthlyPrice;
 
           return (
             <div
               key={plan.name}
-              className={`relative rounded-2xl border p-7 ${
+              className={`relative flex flex-col rounded-2xl border p-7 ${
                 plan.popular
                   ? "border-brand-green shadow-lg shadow-brand-green/10"
                   : "border-surface-border"
@@ -74,15 +72,20 @@ export default function PricingSection({
               <h3 className="text-lg font-bold text-brand-navy">{plan.name}</h3>
               <p className="mt-1 text-sm text-brand-navy/50">{plan.description}</p>
 
-              <p className="mt-5 flex items-baseline gap-1">
-                <span className="text-lg font-bold text-brand-navy">₺</span>
-                <span className="text-3xl font-extrabold text-brand-navy">
-                  {price.toLocaleString("tr-TR")}
-                </span>
-                <span className="text-sm text-brand-navy/45">/ay</span>
-              </p>
+              {price !== null ? (
+                <p className="mt-5 flex items-baseline gap-1">
+                  <span className="text-lg font-bold text-brand-navy">₺</span>
+                  <span className="text-3xl font-extrabold text-brand-navy">
+                    {price.toLocaleString("tr-TR")}
+                  </span>
+                  <span className="text-sm text-brand-navy/45">/ay</span>
+                </p>
+              ) : (
+                <p className="mt-5 text-3xl font-extrabold text-brand-navy">Özel Teklif</p>
+              )}
+              <p className="mt-1 text-xs text-brand-navy/40">{plan.perVehicle}</p>
 
-              <ul className="mt-6 space-y-3">
+              <ul className="mt-6 flex-1 space-y-3">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-2.5">
                     <CheckCircle2 className="h-4.5 w-4.5 shrink-0 text-brand-green" />
@@ -92,11 +95,11 @@ export default function PricingSection({
               </ul>
 
               <Button
-                href="/ucretsiz-dene"
+                href={plan.ctaHref ?? "/ucretsiz-dene"}
                 variant={plan.popular ? "primary" : "secondary"}
                 className="mt-7 w-full"
               >
-                Ücretsiz dene
+                {plan.ctaLabel ?? "Ücretsiz dene"}
               </Button>
             </div>
           );
