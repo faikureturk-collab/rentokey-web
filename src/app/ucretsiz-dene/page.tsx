@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 };
 
 const perks = [
-  "1 gün içinde kurulum",
+  "14 gün ücretsiz",
   "Kredi kartı gerekmez",
-  "İstediğiniz zaman iptal edin",
+  "Aynı gün hesap açılışı",
 ];
 
 export default function UcretsizDenePage() {
@@ -23,8 +23,8 @@ export default function UcretsizDenePage() {
             Rent Okey&apos;i 14 gün ücretsiz deneyin
           </h1>
           <p className="mt-4 text-[15px] leading-relaxed text-brand-navy/55">
-            Formu doldurun, ekibimiz hesabınızı hazırlasın ve operasyonunuzu tek platformdan
-            yönetmeye hemen başlayın.
+            Formu doldurun; ekibimiz hesabınızı hazırlayıp aynı gün içinde giriş bilgilerinizi
+            iletsin.
           </p>
           <ul className="mt-6 space-y-3">
             {perks.map((perk) => (
@@ -66,7 +66,7 @@ export default function UcretsizDenePage() {
               type="submit"
               className="w-full rounded-full bg-brand-green py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-green-dark"
             >
-              Ücretsiz denemeyi başlat
+              Ücretsiz deneme hesabı talep et
             </button>
             <p className="text-center text-xs text-brand-navy/40">
               Kredi kartı bilgisi istenmez. İstediğiniz zaman iptal edebilirsiniz.
