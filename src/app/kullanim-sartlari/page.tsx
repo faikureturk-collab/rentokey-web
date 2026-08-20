@@ -11,11 +11,6 @@ export default function KullanimSartlariPage() {
       <PageHero eyebrow="Yasal" title="Kullanım Şartları" />
       <section className="container-page py-16 sm:py-20">
         <div className="mx-auto max-w-3xl space-y-6 text-sm leading-relaxed text-brand-navy/70">
-          <p className="rounded-xl border border-brand-green/30 bg-brand-green/5 p-4 text-brand-navy/70">
-            Bu sayfa taslak amaçlı hazırlanmış örnek bir metindir. Yayınlamadan önce bir hukuk
-            danışmanına gözden geçirtmenizi öneririz.
-          </p>
-
           <h2 className="text-lg font-bold text-brand-navy">1. Hizmetin Kapsamı</h2>
           <p>
             Rent Okey, araç kiralama firmalarının filo, rezervasyon ve saha operasyonlarını

@@ -11,11 +11,6 @@ export default function GizlilikPage() {
       <PageHero eyebrow="Yasal" title="Gizlilik Politikası" />
       <section className="container-page py-16 sm:py-20">
         <div className="mx-auto max-w-3xl space-y-6 text-sm leading-relaxed text-brand-navy/70">
-          <p className="rounded-xl border border-brand-green/30 bg-brand-green/5 p-4 text-brand-navy/70">
-            Bu sayfa taslak amaçlı hazırlanmış örnek bir metindir. Yayınlamadan önce KVKK ve
-            ilgili mevzuata uygunluk açısından bir hukuk danışmanına gözden geçirtmenizi öneririz.
-          </p>
-
           <h2 className="text-lg font-bold text-brand-navy">1. Toplanan Veriler</h2>
           <p>
             Rent Okey olarak, hizmetlerimizi sunabilmek için ad, soyad, e-posta, telefon numarası
