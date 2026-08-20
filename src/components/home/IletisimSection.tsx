@@ -3,7 +3,7 @@ import ContactForm from "@/components/ContactForm";
 
 const contactCards = [
   { icon: Mail, title: "E-posta", value: "info@rentokey.com", href: "mailto:info@rentokey.com" },
-  { icon: Phone, title: "Telefon", value: "+90 850 885 10 53", href: "tel:+908508851053" },
+  { icon: Phone, title: "Telefon", value: "+90 541 390 10 20", href: "tel:+905413901020" },
   {
     icon: MapPin,
     title: "Adres",
