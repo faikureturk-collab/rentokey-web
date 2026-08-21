@@ -49,12 +49,12 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <Link
-            href="/giris"
+          <a
+            href="https://app.rentokey.com"
             className="px-3 text-[15px] font-medium text-brand-navy/80 hover:text-brand-navy"
           >
             Giriş yap
-          </Link>
+          </a>
           <Button href="/ucretsiz-dene">Ücretsiz dene</Button>
         </div>
 
@@ -110,13 +110,13 @@ export default function Header() {
             )}
           </nav>
           <div className="mt-4 flex flex-col gap-3">
-            <Link
-              href="/giris"
+            <a
+              href="https://app.rentokey.com"
               className="rounded-full border border-surface-border py-2.5 text-center text-[15px] font-medium text-brand-navy"
               onClick={() => setMobileOpen(false)}
             >
               Giriş yap
-            </Link>
+            </a>
             <Button href="/ucretsiz-dene" className="w-full">
               Ücretsiz dene
             </Button>
