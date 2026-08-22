@@ -2,7 +2,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 
 const contactCards = [
-  { icon: Mail, title: "E-posta", value: "info@rentokey.com", href: "mailto:info@rentokey.com" },
+  { icon: Mail, title: "E-posta", value: "hello@rentokey.com", href: "mailto:hello@rentokey.com" },
   { icon: Phone, title: "Telefon", value: "+90 541 390 10 20", href: "tel:+905413901020" },
   {
     icon: MapPin,

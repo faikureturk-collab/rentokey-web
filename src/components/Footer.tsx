@@ -37,8 +37,8 @@ export default function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-white/60">
               <li className="flex items-start gap-2">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" />
-                <a href="mailto:info@rentokey.com" className="hover:text-white">
-                  info@rentokey.com
+                <a href="mailto:hello@rentokey.com" className="hover:text-white">
+                  hello@rentokey.com
                 </a>
               </li>
               <li className="flex items-start gap-2">

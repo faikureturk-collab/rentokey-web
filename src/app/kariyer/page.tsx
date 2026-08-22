@@ -16,7 +16,7 @@ export default function KariyerPage() {
       description="Şu anda açık pozisyonumuz bulunmuyor, ancak özgeçmişinizi bize ulaştırabilirsiniz — uygun bir pozisyon açıldığında sizinle iletişime geçelim."
     >
       <div className="mt-8 flex justify-center">
-        <Button href="mailto:info@rentokey.com" size="lg">
+        <Button href="mailto:hello@rentokey.com" size="lg">
           <Mail className="h-4 w-4" /> Özgeçmiş gönder
         </Button>
       </div>

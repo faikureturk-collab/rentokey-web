@@ -33,12 +33,12 @@ export default function GizlilikPage() {
           <h2 className="text-lg font-bold text-brand-navy">4. Haklarınız</h2>
           <p>
             KVKK kapsamında verilerinize erişme, düzeltme, silme ve işlenmesine itiraz etme
-            haklarına sahipsiniz. Taleplerinizi info@rentokey.com adresine iletebilirsiniz.
+            haklarına sahipsiniz. Taleplerinizi hello@rentokey.com adresine iletebilirsiniz.
           </p>
 
           <h2 className="text-lg font-bold text-brand-navy">5. İletişim</h2>
           <p>
-            Gizlilik politikamızla ilgili sorularınız için info@rentokey.com adresinden bizimle
+            Gizlilik politikamızla ilgili sorularınız için hello@rentokey.com adresinden bizimle
             iletişime geçebilirsiniz.
           </p>
         </div>
