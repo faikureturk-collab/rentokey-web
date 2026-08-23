@@ -1,44 +1,49 @@
-# Rent Okey — Web Sitesi
+# Rent Okey — web sitesi
 
-Rent Okey için Next.js (App Router) + Tailwind CSS ile geliştirilmiş, çok sayfalı kurumsal web sitesi. Anasayfa, `RentOkey_Web_Tasarım.png` tasarım görseline birebir sadık kalınarak kodlanmıştır.
+Türkiye ve KKTC’deki araç kiralama firmalarına yönelik Rent Okey SaaS ürününün pazarlama, fiyatlandırma ve ücretsiz deneme web sitesidir.
 
-## Başlarken
+> Yeni bir geliştirmeye başlamadan önce ürün doğruları, site hikâyesi, paket mantığı, bilinen teknik borçlar ve çalışma protokolü için [PROJE_EL_KITABI.md](./PROJE_EL_KITABI.md) dosyasını okuyun. Son yapılan işlerin kısa özeti [DEVAM_NOTLARI.md](./DEVAM_NOTLARI.md) içindedir.
+
+## Teknoloji
+
+- Next.js 16.3.1 — App Router
+- React 19.2.8
+- TypeScript 5
+- Tailwind CSS 4
+- Self-hosted Inter Variable
+
+## Başlangıç
 
 ```bash
 npm install
 npm run dev
 ```
 
-Tarayıcıda [http://localhost:3000](http://localhost:3000) adresini açın.
+Site varsayılan olarak [http://localhost:3000](http://localhost:3000) adresinde açılır.
 
-Production build almak için:
+## Kontrol
 
 ```bash
-npm run build
-npm run start
+npm run lint
+./node_modules/.bin/next build --webpack
 ```
 
-## Proje yapısı
+## Temel kaynaklar
 
-- `src/app/` — Sayfalar (App Router). Her klasör bir rotayı temsil eder (`/urun`, `/ozellikler`, `/fiyatlandirma`, `/hakkimizda`, `/iletisim`, `/kaynaklar`, `/blog`, `/kilavuzlar`, `/sss`, `/guncellemeler`, `/kariyer`, `/giris`, `/ucretsiz-dene`, `/gizlilik-politikasi`, `/kullanim-sartlari`).
-- `src/components/` — Header, Footer, Button, PricingSection, FaqAccordion, DashboardMock (anasayfadaki ürün görseli) gibi ortak bileşenler.
-- `src/components/home/` — Sadece anasayfaya özel bölümler (Hero, StatsBar, FeatureGrid, ProductShowcase, HowItWorks, FaqSection).
-- `src/lib/` — Navigasyon linkleri, fiyatlandırma planları, SSS ve özellik listeleri gibi içerik verileri (bu dosyalardan metinleri güncelleyebilirsiniz).
-- `public/logo/` — Marka logosu ve ikonu (renkli ve beyaz versiyonlar).
+- `src/app/page.tsx` — ana sayfa bölüm sırası
+- `src/components/DashboardMock.tsx` — kod tabanlı etkileşimli ürün demosu
+- `src/lib/pricing.ts` — paketlerin ana veri kaynağı
+- `src/lib/faq.ts` — SSS içerikleri
+- `src/lib/nav.ts` — header ve footer navigasyonu
+- `src/components/TrialOnboarding.tsx` — iki adımlı deneme arayüzü
+- `public/logo/` — aktif marka varlıkları
+- `scripts/build-og-card.mjs` — sosyal paylaşım görseli üretimi
 
-## Marka renkleri
+## Önemli durum
 
-Logo dosyasından türetilen marka paleti `src/app/globals.css` içinde tanımlıdır:
-
-- Yeşil: `#18B878`
-- Mavi (gradient): `#1769E0`
-- Lacivert (metin/footer): `#0B1F33` / `#06152C`
-
-## Notlar
-
-- İletişim formu, giriş ve ücretsiz deneme formları şu an sadece arayüz olarak hazırlanmıştır; gerçek bir backend'e (API, e-posta servisi, CRM vb.) bağlanmamıştır. Formları çalışır hale getirmek için bir form işleme servisi veya kendi API route'unuzu eklemeniz gerekir.
-- Blog, Kılavuzlar ve Güncellemeler sayfalarındaki içerikler örnek/yer tutucu metinlerdir; gerçek içeriklerinizle değiştirebilirsiniz.
-- Gizlilik Politikası ve Kullanım Şartları sayfaları taslak niteliğindedir; yayına almadan önce bir hukuk danışmanına gözden geçirtmeniz önerilir.
-- Yazı tipi olarak Google Fonts yerine `@fontsource-variable/inter` paketiyle self-hosted (yerel) Inter fontu kullanılmıştır; bu sayede site internet bağlantısı olmayan ortamlarda da sorunsuz build alınabilir.
-
-<!-- Test commit: 2026-08-18 16:53 tarihinde Claude tarafindan eklendi -->
+- Bu repo çalışan Rent Okey uygulaması değildir; ürün uygulaması `https://app.rentokey.com` adresindedir.
+- `/ucretsiz-dene` şu anda frontend prototipidir ve gerçek kullanıcı/firma oluşturmaz.
+- İletişim formu bir backend’e gönderim yapmak yerine e-posta taslağı açar.
+- Blog ve kılavuz sayfaları yer tutucu içerik taşır.
+- Yasal metinler taslaktır ve yayın öncesi uzman incelemesi gerektirir.
+- Commit, push ve deploy işlemleri yalnız açık kullanıcı onayıyla yapılmalıdır.

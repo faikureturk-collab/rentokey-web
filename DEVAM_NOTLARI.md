@@ -2,6 +2,8 @@
 
 Tarih: 23 Ağustos 2026
 
+Projenin ürün doğruları, karar geçmişi, ana sayfa dönüşüm hikâyesi, paket sistemi, teknik mimarisi ve sonraki geliştirme sırası tek bir kalıcı kaynakta toplandı: `PROJE_EL_KITABI.md`. Yeni bir geliştirmeye başlamadan önce önce bu belge, ardından aşağıdaki son çalışma notları okunmalıdır.
+
 ## Son tamamlanan çalışma
 
 Ekran görüntüsüne ihtiyaç duymayan ürün anlatımı yeniden tasarlandı. **“Beş ayrı araç değil. Tek operasyon akışı.”** alanı; Planlama, Operasyon, Filo, Finans ve Yönetim adımlarını seçilebilir, kod tabanlı ürün sahneleriyle anlatıyor. Hemen altındaki tekrar eden özellik kartları ise ürünün dört temel operasyon sonucunu anlatacak şekilde yenilendi.
