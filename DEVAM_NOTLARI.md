@@ -28,6 +28,8 @@ Hero alanındaki bulanık masaüstü ve mobil ekran görüntüleri kaldırıldı
 
 Marka varlıkları `RentOkey_Tick_Konumu_Duzeltilmis` klasöründeki resmî setle yenilendi. Header ve açık zeminler için slogansız renkli outlined SVG; footer için sloganlı beyaz outlined SVG; ürün demosu için düzeltilmiş renkli ikon kullanılıyor. Eski PNG logo kopyaları kaldırıldı. Tarayıcı ve Apple ikonları düzeltilmiş resmî ikondan yeniden üretildi. `og.png` paylaşım kapağı da resmî beyaz logo, Türkçe ürün tanımı ve kod tabanlı Rent Okey operasyon sahnesiyle yenilendi. Tekrar üretim kaynağı `scripts/build-og-card.mjs` içinde tutuluyor.
 
+Slogansız yatay logo ayrıca optik olarak yeniden hizalandı. İkon 36 iç SVG birimi yukarı alınarak RentOkey kelime işaretiyle aynı görsel merkeze getirildi; yazı, bulut ve tik çizimleri değiştirilmedi. Renkli, siyah ve beyaz sürümler SVG, outlined SVG, yüksek çözünürlüklü PNG, PDF ve EPS olarak `RentOkey_Slogansiz_Optik_Hizali` klasörüne eklendi. Header ve `og.png` bu yeni slogansız kilidi kullanıyor; sloganlı footer kilidi ve yalnız ikon dosyaları özgün geometrilerini koruyor. Tekrar üretim kaynağı `scripts/export-logo-assets.mjs` içinde tutuluyor.
+
 ## Ürün görseli notu
 
 - Hero artık ekran görüntüsü kullanmıyor; ürün anlatımı çözünürlükten bağımsız kod tabanlı demo ile yapılıyor.
