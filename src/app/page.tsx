@@ -2,6 +2,7 @@ import Hero from "@/components/home/Hero";
 import StatsBar from "@/components/home/StatsBar";
 import UrunSection from "@/components/home/UrunSection";
 import FeatureGrid from "@/components/home/FeatureGrid";
+import FocusSection from "@/components/home/FocusSection";
 import ComingSoonSection from "@/components/home/ComingSoonSection";
 import HowItWorks from "@/components/home/HowItWorks";
 import PricingSection from "@/components/PricingSection";
@@ -17,10 +18,11 @@ export default function Home() {
       <StatsBar />
       <UrunSection />
       <FeatureGrid />
-      <ComingSoonSection />
+      <FocusSection />
       <HowItWorks />
       <PricingSection id="fiyatlandirma" />
       <HakkimizdaSection />
+      <ComingSoonSection />
       <FaqSection />
       <IletisimSection />
       <CtaBanner />

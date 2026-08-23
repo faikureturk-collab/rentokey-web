@@ -9,7 +9,7 @@ import { primaryNav } from "@/lib/nav";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
+  const [mobileSection, setMobileSection] = useState<string | null>(null);
 
   return (
     <header className="sticky top-0 z-50 border-b border-surface-border/70 bg-white/90 backdrop-blur">
@@ -20,15 +20,23 @@ export default function Header() {
           {primaryNav.map((item) =>
             item.children ? (
               <div key={item.label} className="group relative">
-                <button className="flex items-center gap-1 text-[15px] font-medium text-brand-navy/80 transition-colors hover:text-brand-navy">
+                <button
+                  type="button"
+                  aria-haspopup="menu"
+                  className="flex items-center gap-1 text-[15px] font-medium text-brand-navy/80 transition-colors hover:text-brand-navy"
+                >
                   {item.label}
-                  <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+                  <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
                 </button>
-                <div className="invisible absolute left-1/2 top-full z-20 w-56 -translate-x-1/2 translate-y-1 rounded-2xl border border-surface-border bg-white p-2 opacity-0 shadow-xl shadow-brand-navy/5 transition-all duration-150 group-hover:visible group-hover:translate-y-2 group-hover:opacity-100">
+                <div
+                  role="menu"
+                  className="invisible absolute left-1/2 top-full z-20 w-60 -translate-x-1/2 translate-y-1 rounded-2xl border border-surface-border bg-white p-2 opacity-0 shadow-xl shadow-brand-navy/5 transition-all duration-150 group-hover:visible group-hover:translate-y-2 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-2 group-focus-within:opacity-100"
+                >
                   {item.children.map((child) => (
                     <Link
                       key={child.href}
                       href={child.href}
+                      role="menuitem"
                       className="block rounded-xl px-3 py-2.5 text-sm font-medium text-brand-navy/80 hover:bg-surface-soft hover:text-brand-navy"
                     >
                       {child.label}
@@ -74,22 +82,29 @@ export default function Header() {
               item.children ? (
                 <div key={item.label} className="py-1">
                   <button
+                    type="button"
+                    aria-expanded={mobileSection === item.label}
                     className="flex w-full items-center justify-between py-3 text-[15px] font-medium text-brand-navy"
-                    onClick={() => setMobileResourcesOpen((v) => !v)}
+                    onClick={() =>
+                      setMobileSection((current) => (current === item.label ? null : item.label))
+                    }
                   >
                     {item.label}
                     <ChevronDown
-                      className={`h-4 w-4 transition-transform ${mobileResourcesOpen ? "rotate-180" : ""}`}
+                      className={`h-4 w-4 transition-transform ${mobileSection === item.label ? "rotate-180" : ""}`}
                     />
                   </button>
-                  {mobileResourcesOpen && (
+                  {mobileSection === item.label && (
                     <div className="flex flex-col gap-1 pb-2 pl-3">
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
                           className="py-2 text-sm text-brand-navy/70"
-                          onClick={() => setMobileOpen(false)}
+                          onClick={() => {
+                            setMobileOpen(false);
+                            setMobileSection(null);
+                          }}
                         >
                           {child.label}
                         </Link>

@@ -1,9 +1,13 @@
 export type Plan = {
   name: string;
   description: string;
+  audience: string;
+  maxVehicles: number | null;
+  includedUsers: string;
+  includedBranches: string;
+  supportLevel: string;
   monthlyPrice: number | null;
   yearlyPrice: number | null;
-  perVehicle: string;
   popular?: boolean;
   features: string[];
   ctaLabel?: string;
@@ -14,55 +18,74 @@ export const plans: Plan[] = [
   {
     name: "Başlangıç",
     description: "1 – 10 araç",
+    audience: "Küçük filosunu düzenli bir sistemle yönetmek isteyen firmalar",
+    maxVehicles: 10,
+    includedUsers: "1 kullanıcı",
+    includedBranches: "1 şube",
+    supportLevel: "Standart destek",
     monthlyPrice: 1490,
     yearlyPrice: 1190,
-    perVehicle: "~119 TL / araç",
     features: [
-      "10 araca kadar tam yönetim",
-      "Gantt zaman çizelgesi ve mobil saha ajandası",
-      "Sınırsız kullanıcı / saha personeli",
-      "WhatsApp üzerinden kiralama özeti paylaşımı",
+      "Rezervasyon, Gantt ve uygun araç önerisi",
+      "Önerilen odak ve bağlamsal risk uyarıları",
+      "Filo, teslim ve iade yönetimi",
+      "Bakım ve belge süresi uyarıları",
+      "Gider, ödeme ve temel raporlar",
+      "CSV ile rezervasyon, gider, filo ve bakım aktarımı",
     ],
   },
   {
     name: "Büyüme",
     description: "11 – 30 araç",
+    audience: "Ofis ve saha ekibini aynı operasyon akışında buluşturan firmalar",
+    maxVehicles: 30,
+    includedUsers: "5 kullanıcı",
+    includedBranches: "1 şube",
+    supportLevel: "Öncelikli destek",
     monthlyPrice: 2890,
     yearlyPrice: 2290,
-    perVehicle: "~76 TL / araç",
     popular: true,
     features: [
-      "30 araca kadar tam kontrol",
       "Başlangıç paketindeki tüm özellikler",
+      "5 pozisyonlu rol ve sayfa yetkilendirmesi",
       "Lokasyon takibi (havalimanı / otel / adrese teslim)",
-      "Bakım, muayene, kasko ve sigorta hatırlatmaları",
-      "Gelir / gider ve doluluk analizi raporları",
+      "Gelir, gider ve doluluk analizi",
+      "Excel'e veri aktarımı",
     ],
   },
   {
     name: "Profesyonel",
     description: "31 – 70 araç",
+    audience: "Yoğun, çok şubeli veya raporlama ihtiyacı yüksek operasyonlar",
+    maxVehicles: 70,
+    includedUsers: "15 kullanıcı",
+    includedBranches: "3 şube",
+    supportLevel: "Öncelikli destek",
     monthlyPrice: 4990,
     yearlyPrice: 3990,
-    perVehicle: "~57 TL / araç",
     features: [
-      "70 araca kadar destek",
       "Büyüme paketindeki tüm özellikler",
-      "Dijital hasar tespiti ve fotoğraflı ekspertiz",
-      "Çoklu şube / lokasyon yönetimi",
-      "Öncelikli VIP destek hattı",
+      "Çoklu şube ve lokasyon yönetimi",
+      "Fotoğraflı teslim, iade ve hasar kaydı",
+      "Detaylı yetki ve aktivite geçmişi",
+      "Şube ve araç bazlı gelişmiş raporlar",
     ],
   },
   {
     name: "Kurumsal",
-    description: "70+ araç",
+    description: "71+ araç",
+    audience: "Özel entegrasyon ve destek ihtiyacı olan büyük filolar",
+    maxVehicles: null,
+    includedUsers: "Sınırsız kullanıcı",
+    includedBranches: "Sınırsız şube",
+    supportLevel: "Özel destek yöneticisi",
     monthlyPrice: null,
     yearlyPrice: null,
-    perVehicle: "Filoya özel fiyatlandırma",
     features: [
-      "Sınırsız araç",
       "Profesyonel paketindeki tüm özellikler",
       "Özel entegrasyon ve API erişimi",
+      "Veri aktarımı ve kurulum desteği",
+      "Kuruma özel rapor ve yetki yapısı",
       "Özel destek yöneticisi",
     ],
     ctaLabel: "Bize ulaşın",

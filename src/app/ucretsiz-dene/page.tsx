@@ -1,106 +1,84 @@
 import type { Metadata } from "next";
-import { CheckCircle2 } from "lucide-react";
-import Logo from "@/components/Logo";
+import {
+  CalendarDays,
+  Check,
+  CreditCard,
+  Gauge,
+  ShieldCheck,
+} from "lucide-react";
+import TrialOnboarding from "@/components/TrialOnboarding";
 
 export const metadata: Metadata = {
-  title: "Ücretsiz dene",
-  description: "Kredi kartı gerekmeden Rent Okey'i ücretsiz deneyin.",
+  title: "14 gün ücretsiz deneyin",
+  description:
+    "Kredi kartı gerekmeden Rent Okey çalışma alanınızı oluşturun ve kendi filonuzla 14 gün ücretsiz deneyin.",
+  openGraph: {
+    title: "Rent Okey'i 14 gün ücretsiz deneyin",
+    description:
+      "Kredi kartı gerekmeden çalışma alanınızı oluşturun ve gerçek araç kiralama operasyonunuzu deneyin.",
+    url: "/ucretsiz-dene",
+  },
 };
 
-const perks = [
-  "14 gün ücretsiz",
-  "Kredi kartı gerekmez",
-  "Aynı gün hesap açılışı",
+const benefits = [
+  "Rezervasyon ve zaman çizelgesini kendi araçlarınızla deneyin",
+  "Teslim, iade ve yaklaşan riskleri tek akışta görün",
+  "Masaüstü, tablet ve mobil kullanım düzenini test edin",
+];
+
+const metrics = [
+  { icon: CalendarDays, value: "14 gün", label: "Ücretsiz kullanım" },
+  { icon: CreditCard, value: "0 ₺", label: "Başlangıç ücreti" },
+  { icon: Gauge, value: "2 adım", label: "Hesap kurulumu" },
 ];
 
 export default function UcretsizDenePage() {
   return (
-    <section className="bg-surface-soft/50 px-4 py-16">
-      <div className="container-page grid items-center gap-12 lg:grid-cols-2">
-        <div>
-          <Logo />
-          <h1 className="mt-6 text-3xl font-extrabold leading-tight text-brand-navy sm:text-4xl">
-            Rent Okey&apos;i 14 gün ücretsiz deneyin
+    <section className="relative overflow-hidden bg-[#f4f7fa]">
+      <div className="pointer-events-none absolute -left-40 top-24 h-96 w-96 rounded-full bg-brand-blue/[0.06] blur-3xl" />
+      <div className="pointer-events-none absolute -right-40 bottom-10 h-96 w-96 rounded-full bg-brand-green/[0.08] blur-3xl" />
+
+      <div className="container-page relative grid min-h-[calc(100vh-72px)] items-center gap-10 py-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-16 lg:py-16">
+        <div className="lg:py-8">
+          <span className="inline-flex items-center gap-2 rounded-full border border-brand-green/20 bg-white px-4 py-1.5 text-sm font-semibold text-brand-green-dark shadow-sm">
+            <span className="h-2 w-2 rounded-full bg-brand-green" /> Anında deneme çalışma alanı
+          </span>
+          <h1 className="mt-6 max-w-xl text-4xl font-extrabold leading-[1.04] tracking-[-0.045em] text-brand-navy sm:text-5xl lg:text-[56px]">
+            Satın almadan önce <span className="text-brand-green">gerçek işinizi deneyin.</span>
           </h1>
-          <p className="mt-4 text-[15px] leading-relaxed text-brand-navy/55">
-            Formu doldurun; ekibimiz hesabınızı hazırlayıp aynı gün içinde giriş bilgilerinizi
-            iletsin.
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-brand-navy/55">
+            Örnek verilerle hazırlanmış bir demo yerine kendi filonuz, rezervasyonlarınız ve ekibinizle Rent Okey&apos;i değerlendirin.
           </p>
-          <ul className="mt-6 space-y-3">
-            {perks.map((perk) => (
-              <li key={perk} className="flex items-center gap-2.5">
-                <CheckCircle2 className="h-5 w-5 shrink-0 text-brand-green" />
-                <span className="text-sm text-brand-navy/70">{perk}</span>
+
+          <ul className="mt-7 space-y-3.5">
+            {benefits.map((benefit) => (
+              <li key={benefit} className="flex items-start gap-3">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-green/10 text-brand-green-dark"><Check className="h-3 w-3" strokeWidth={3} /></span>
+                <span className="text-sm leading-relaxed text-brand-navy/70">{benefit}</span>
               </li>
             ))}
           </ul>
+
+          <div className="mt-9 grid max-w-xl grid-cols-3 overflow-hidden rounded-2xl border border-surface-border bg-white">
+            {metrics.map((metric, index) => {
+              const Icon = metric.icon;
+              return (
+                <div key={metric.label} className={`p-3.5 sm:p-4 ${index > 0 ? "border-l border-surface-border" : ""}`}>
+                  <Icon className="h-4 w-4 text-brand-blue" />
+                  <p className="mt-2 text-sm font-extrabold text-brand-navy sm:text-base">{metric.value}</p>
+                  <p className="mt-0.5 text-[9px] leading-tight text-brand-navy/40 sm:text-[10px]">{metric.label}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-6 flex items-center gap-2 text-xs font-medium text-brand-navy/45">
+            <ShieldCheck className="h-4 w-4 text-brand-green" /> Ödeme bilgisi istemeden güvenli başlangıç
+          </div>
         </div>
 
-        <div className="rounded-2xl border border-surface-border bg-white p-8 shadow-sm">
-          <form className="space-y-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <Field id="name" label="Ad Soyad" placeholder="Adınız Soyadınız" />
-              <Field id="company" label="Firma" placeholder="Firma adı" />
-            </div>
-            <Field id="email" label="İş e-postası" type="email" placeholder="ornek@sirket.com" />
-            <Field id="phone" label="Telefon" placeholder="+90 5xx xxx xx xx" />
-            <div>
-              <label htmlFor="fleet" className="mb-1.5 block text-sm font-medium text-brand-navy">
-                Filo büyüklüğü
-              </label>
-              <select
-                id="fleet"
-                className="w-full rounded-xl border border-surface-border px-4 py-2.5 text-sm text-brand-navy outline-none focus:border-brand-green"
-                defaultValue=""
-              >
-                <option value="" disabled>
-                  Seçiniz
-                </option>
-                <option>1 - 10 araç</option>
-                <option>11 - 30 araç</option>
-                <option>31 - 70 araç</option>
-                <option>70+ araç</option>
-              </select>
-            </div>
-            <button
-              type="submit"
-              className="w-full rounded-full bg-brand-green py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-green-dark"
-            >
-              Ücretsiz deneme hesabı talep et
-            </button>
-            <p className="text-center text-xs text-brand-navy/40">
-              Kredi kartı bilgisi istenmez. İstediğiniz zaman iptal edebilirsiniz.
-            </p>
-          </form>
-        </div>
+        <TrialOnboarding />
       </div>
     </section>
-  );
-}
-
-function Field({
-  id,
-  label,
-  type = "text",
-  placeholder,
-}: {
-  id: string;
-  label: string;
-  type?: string;
-  placeholder?: string;
-}) {
-  return (
-    <div>
-      <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-brand-navy">
-        {label}
-      </label>
-      <input
-        id={id}
-        type={type}
-        required
-        placeholder={placeholder}
-        className="w-full rounded-xl border border-surface-border px-4 py-2.5 text-sm text-brand-navy outline-none focus:border-brand-green"
-      />
-    </div>
   );
 }

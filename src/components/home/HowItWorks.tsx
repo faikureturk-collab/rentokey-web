@@ -1,67 +1,120 @@
-const steps = [
+import {
+  ArrowRight,
+  CalendarCheck2,
+  CarFront,
+  Check,
+  KeyRound,
+  ListChecks,
+  UsersRound,
+  type LucideIcon,
+} from "lucide-react";
+import Button from "../Button";
+
+type Step = {
+  number: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  icon: LucideIcon;
+};
+
+const steps: Step[] = [
   {
     number: "01",
-    duration: "10 sn",
-    title: "Talep düşer",
-    description: "Müşteri talebi sisteme anında düşer, bekleme olmaz.",
+    eyebrow: "2 dakika",
+    title: "Hesabınızı açın",
+    description:
+      "Firma ve şube bilgilerinizi girerek çalışma alanınızı hemen oluşturun.",
+    icon: KeyRound,
   },
   {
     number: "02",
-    duration: "30 sn",
-    title: "Araç atanır",
-    description: "Uygun araç otomatik önerilir, tek dokunuşla atanır.",
+    eyebrow: "Kendi veriniz",
+    title: "Filonuzu ekleyin",
+    description:
+      "Rezervasyon, gider, filo ve bakım kayıtlarınızı CSV ile içeri aktarın.",
+    icon: CarFront,
   },
   {
     number: "03",
-    duration: "3 dk",
-    title: "Teslim edilir",
-    description: "Saha ekibi mobil üzerinden teslimatı tamamlar.",
+    eyebrow: "Birlikte çalışma",
+    title: "Ekibinizi davet edin",
+    description:
+      "Ofis ve saha ekibine görevlerine uygun erişim verin.",
+    icon: UsersRound,
   },
   {
     number: "04",
-    duration: "iade",
-    title: "Kayıt kapanır",
-    description: "İade alınır, kayıt ve faturalama otomatik kapanır.",
+    eyebrow: "Canlı operasyon",
+    title: "Gerçek işinizi yürütün",
+    description:
+      "Teslim, iade, filo ve risk süreçlerini 14 gün boyunca birlikte deneyin.",
+    icon: ListChecks,
   },
+];
+
+const assurances = [
+  "Kredi kartı gerekmez",
+  "Kurulum ücreti yok",
+  "Deneme boyunca temel destek",
 ];
 
 export default function HowItWorks() {
   return (
-    <section id="nasil-calisir" className="container-page scroll-mt-24 py-6 sm:py-10">
-      <div className="overflow-hidden rounded-3xl bg-brand-navy-deep p-8 sm:p-12">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <span className="inline-flex rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-green">
-              Bir teslimatın hikâyesi
-            </span>
-            <h2 className="mt-4 max-w-xl text-2xl font-extrabold leading-tight text-white sm:text-3xl">
-              Talep geldi, araç çıktı, kayıt kapandı.
-            </h2>
-          </div>
-          <p className="max-w-sm text-sm leading-relaxed text-white/50">
-            Yeni çalışanın öğrenme süresi ortalama 20 dakika. Eğitim için gün ayırmıyorsun.
-          </p>
+    <section id="nasil-calisir" className="container-page scroll-mt-24 py-16 sm:py-24">
+      <div className="grid gap-6 lg:grid-cols-[1fr_.78fr] lg:items-end">
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-full bg-brand-blue/10 px-4 py-1.5 text-sm font-semibold text-brand-blue">
+            <CalendarCheck2 className="h-4 w-4" /> 14 günlük ücretsiz deneme
+          </span>
+          <h2 className="mt-5 max-w-2xl text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-navy sm:text-4xl">
+            Demo izlemeyin. <span className="text-brand-green">Kendi filonuzla deneyin.</span>
+          </h2>
         </div>
+        <p className="max-w-xl text-[15px] leading-relaxed text-brand-navy/55 lg:justify-self-end">
+          Hazır bir örnek ekran yerine kendi araçlarınız, rezervasyonlarınız ve ekibinizle gerçek çalışma düzenini kurun.
+        </p>
+      </div>
 
-        <div className="mt-10 grid grid-cols-4 gap-1.5 sm:mt-12">
-          {steps.map((step, i) => (
-            <span
-              key={step.number}
-              className={`h-1.5 rounded-full ${i === 0 ? "bg-brand-green" : "bg-white/15"}`}
-            />
-          ))}
-        </div>
+      <div className="relative mt-10 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+        <div className="pointer-events-none absolute left-[10%] right-[10%] top-8 hidden h-px bg-surface-border lg:block" />
+        {steps.map((step, index) => {
+          const Icon = step.icon;
+          return (
+            <article key={step.number} className="relative rounded-2xl border border-surface-border bg-white p-5 sm:p-6">
+              <div className="flex items-center justify-between gap-4">
+                <span className={`relative z-10 flex h-12 w-12 items-center justify-center rounded-xl ${index === 3 ? "bg-brand-green text-white" : "bg-surface-soft text-brand-navy"}`}>
+                  <Icon className="h-5 w-5" />
+                </span>
+                <span className="text-xs font-extrabold tracking-[0.16em] text-brand-navy/20">{step.number}</span>
+              </div>
+              <p className="mt-6 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-green-dark">{step.eyebrow}</p>
+              <h3 className="mt-2 text-base font-extrabold text-brand-navy">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-brand-navy/50">{step.description}</p>
+              {index < steps.length - 1 && (
+                <ArrowRight className="absolute -right-3 top-[27px] z-20 hidden h-5 w-5 rounded-full bg-white p-1 text-brand-navy/25 lg:block" />
+              )}
+            </article>
+          );
+        })}
+      </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-          {steps.map((step) => (
-            <div key={step.number} className="border-t border-white/10 pt-4">
-              <span className="text-xs font-bold tracking-wider text-brand-green">
-                {step.number} · {step.duration}
+      <div className="mt-6 overflow-hidden rounded-[24px] bg-brand-navy lg:grid lg:grid-cols-[1fr_auto] lg:items-center">
+        <div className="p-6 sm:p-8">
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-brand-green">Başlamak için beklemeyin</p>
+          <h3 className="mt-2 text-xl font-extrabold text-white sm:text-2xl">Bugün hesabınızı açın, ilk operasyonunuzu kurun.</h3>
+          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
+            {assurances.map((item) => (
+              <span key={item} className="flex items-center gap-1.5 text-xs font-medium text-white/60">
+                <Check className="h-3.5 w-3.5 text-brand-green" /> {item}
               </span>
-              <h3 className="mt-2 text-[15px] font-bold text-white">{step.title}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-white/45">{step.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+        <div className="border-t border-white/10 p-6 sm:p-8 lg:border-l lg:border-t-0">
+          <Button href="/ucretsiz-dene" size="lg" icon className="w-full sm:w-auto">
+            Ücretsiz başlayın
+          </Button>
         </div>
       </div>
     </section>

@@ -1,42 +1,62 @@
 export const faqItems = [
   {
-    question: "Rent Okey'i kullanmak için teknik bilgi gerekli mi?",
+    question: "14 günlük ücretsiz deneme nasıl başlar?",
     answer:
-      "Hayır. Rent Okey, teknik bilgi gerektirmeyecek şekilde tasarlandı. Sezgisel arayüzü sayesinde ekibiniz kısa sürede platforma alışır; kurulum sırasında da destek ekibimiz size eşlik eder.",
+      "Hesap bilgilerinizi, ardından firma ve filo bilgilerinizi girerek çalışma alanınızı oluşturursunuz. Kredi kartı gerekmez; deneme süresince kendi araç ve rezervasyonlarınızla ürünü değerlendirebilirsiniz.",
   },
   {
-    question: "Verilerim güvende mi?",
+    question: "Deneme sonunda otomatik ödeme alınır mı?",
     answer:
-      "Evet. Tüm verileriniz şifreli bağlantılar üzerinden iletilir, düzenli olarak yedeklenir ve yetkilendirilmiş kullanıcılar dışında erişime kapalıdır.",
+      "Hayır. Başlangıçta ödeme bilgisi alınmadığı için 14 gün sonunda otomatik ücretlendirme yapılmaz. Devam etmek isterseniz filonuza uygun paketi seçersiniz.",
   },
   {
-    question: "Kurulum ve eğitim süreci nasıl işliyor?",
+    question: "Paketlerde kaç kullanıcı ve şube bulunuyor?",
     answer:
-      "Hesabınızı oluşturduktan sonra verilerinizi içe aktarıyor, ekibinizi davet ediyor ve genellikle 1 gün içinde operasyonunuzu Rent Okey üzerinden yönetmeye başlıyorsunuz. Talep halinde ekibinize canlı eğitim de sağlıyoruz.",
+      "Başlangıç paketinde 1 kullanıcı ve 1 şube, Büyüme paketinde 5 kullanıcı ve 1 şube, Profesyonel pakette 15 kullanıcı ve 3 şube bulunur. Kurumsal paket sınırsız kullanıcı ve şubeye göre özel fiyatlandırılır.",
   },
   {
-    question: "Mobil uygulama çevrimdışı çalışıyor mu?",
+    question: "Bütün paketlerde hangi özellikler var?",
     answer:
-      "Saha ekibiniz internet bağlantısı olmayan bölgelerde de teslimat ve iade işlemlerini kaydedebilir; bağlantı geri geldiğinde veriler otomatik olarak senkronize edilir.",
+      "Rezervasyon ve zaman çizelgesi, uygun araç önerisi, filo, teslim/iade, mobil operasyon, bakım ve belge süresi uyarıları, gider ve ödeme takibi ile CSV içe aktarma bütün paketlerde yer alır.",
   },
   {
-    question: "Mevcut araç ve müşteri verilerimi nasıl aktarabilirim?",
+    question: "Sistem rezervasyona uygun aracı önerebilir mi?",
     answer:
-      "Excel/CSV şablonlarımızı kullanarak araç, müşteri ve fiyat verilerinizi tek seferde içe aktarabilirsiniz. Büyük filolar için destek ekibimiz aktarım sürecine eşlik eder.",
+      "Evet. Rent Okey rezervasyon tarihleri ve araç uygunluğuna göre atanabilecek aracı önerir. Yetkili kullanıcı öneriyi kontrol ederek araç atamasını tamamlayabilir veya farklı bir araç seçebilir.",
   },
   {
-    question: "Paketimi istediğim zaman değiştirebilir miyim?",
+    question: "Önerilen odak özelliği neyi takip eder?",
     answer:
-      "Evet, paketinizi filonuzun büyüklüğüne göre istediğiniz zaman yükseltebilir veya düşürebilirsiniz. Değişiklik bir sonraki fatura döneminde yansır.",
+      "Önerilen odak, sabit teslim/iade veya belge uyarılarının yanında farklı verileri birlikte değerlendirir. Kiralama devam ederken kalan ödeme bakiyesi ya da arka arkaya iki rezervasyon arasında temizlik ve lokasyon transferi için yeterli süre bulunmaması gibi durumları önceden göstererek ekibin aksiyon hazırlamasına yardımcı olur.",
   },
   {
-    question: "Ücretsiz deneme için kredi kartı gerekiyor mu?",
+    question: "Paketimi daha sonra değiştirebilir miyim?",
     answer:
-      "Hayır. Ücretsiz deneme sürecini başlatmak için kredi kartı bilgisi istemiyoruz.",
+      "Evet. Araç, kullanıcı veya şube sayınız değiştiğinde paketinizi yükseltebilir ya da uygun alt pakete geçebilirsiniz. Yeni limitler seçilen fatura döneminde uygulanır.",
   },
   {
-    question: "Kaç kullanıcı ekleyebilirim?",
+    question: "Rent Okey Türkiye ve KKTC'de kullanılabilir mi?",
     answer:
-      "Kullanıcı sayısı seçtiğiniz pakete göre değişir. Kurumsal pakette sınırsız kullanıcı ve rol bazlı yetkilendirme imkânı sunuyoruz.",
+      "Evet. Ürün Türkiye ve KKTC'deki araç kiralama operasyonları için tasarlanmıştır. Firma ve şubelerinizi bulunduğunuz bölgeye göre tanımlayabilirsiniz.",
+  },
+  {
+    question: "Masaüstü, tablet ve telefonda çalışır mı?",
+    answer:
+      "Evet. Masaüstü görünümü planlama ve yoğun zaman çizelgesi için; tablet ve mobil görünüm ise sıradaki teslim, iade ve diğer hızlı operasyon aksiyonları için düzenlenmiştir.",
+  },
+  {
+    question: "Mevcut verilerimi CSV ile içeri aktarabilir miyim?",
+    answer:
+      "Evet. Rezervasyonlarınızı, giderlerinizi, filo bilgilerinizi ve bakım kayıtlarınızı CSV dosyalarıyla içeri aktarabilirsiniz. Kurumsal pakette veri hazırlama ve ilk kurulum için ayrıca destek sunulur.",
+  },
+  {
+    question: "Kullanıcı yetkileri nasıl çalışır?",
+    answer:
+      "Sistem Yöneticisi ana rolüne ek olarak Şube Müdürü, Saha / Müşteri Temsilcisi, Teknik & Operasyon ve B2B / Kurumsal Ortak pozisyonları bulunur. Kullanıcıların görebileceği sayfalar pozisyonuna göre sınırlandırılır. Bu yapı Büyüme paketinden itibaren sunulur; Profesyonel pakette ayrıntılı yetki ve aktivite geçmişi de bulunur.",
+  },
+  {
+    question: "Destek seviyeleri paketlere göre değişiyor mu?",
+    answer:
+      "Evet. Başlangıç paketinde standart destek, Büyüme ve Profesyonel paketlerinde öncelikli destek sunulur. Kurumsal müşteriler özel destek yöneticisiyle çalışır.",
   },
 ];

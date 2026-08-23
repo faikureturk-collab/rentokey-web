@@ -1,69 +1,59 @@
-import { CheckCircle2, Play, Sparkles } from "lucide-react";
+import { CheckCircle2, MousePointer2 } from "lucide-react";
 import Button from "../Button";
 import DashboardMock from "../DashboardMock";
 
 const bullets = [
-  "Filo yönetimini akıllı hale getirir",
-  "Rezervasyon, teslimat ve takvimi tek yerde toplar",
+  "Bugünün teslim, iade ve risklerini önceliklendirir",
+  "Ödenmemiş bakiye ve yetersiz hazırlık süresi gibi saklı riskleri öne çıkarır",
+  "Rezervasyon, araç planı ve saha ekibini aynı akışta buluşturur",
 ];
 
 export default function Hero() {
   return (
-    <section className="overflow-hidden pt-14 pb-20 sm:pt-20 sm:pb-28">
-      <div className="container-page grid items-center gap-14 lg:grid-cols-[minmax(0,480px)_1fr]">
-        <div>
-          <a
-            href="#cok-yakinda"
-            className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5 text-sm font-semibold text-amber-700 transition-colors hover:bg-amber-100"
-          >
-            <Sparkles className="h-4 w-4" />
-            Yapay zekâ özellikleri geliyor
-          </a>
+    <section className="overflow-hidden bg-[radial-gradient(circle_at_78%_28%,rgba(24,184,120,0.11),transparent_36%)] py-12 sm:py-20">
+      <div className="mx-auto grid w-full max-w-[1320px] items-center gap-12 px-5 lg:grid-cols-[0.76fr_1.24fr] lg:gap-10 xl:gap-14">
+        <div className="max-w-[590px]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-brand-green/25 bg-brand-green/5 px-4 py-1.5 text-sm font-semibold text-brand-green-dark">
+            <i className="h-2 w-2 rounded-full bg-brand-green" />
+            Türkiye ve KKTC için operasyon merkezi
+          </span>
 
-          <h1 className="mt-5 text-4xl font-extrabold leading-[1.1] tracking-tight text-brand-navy sm:text-5xl">
-            Kiralama operasyonunu kolaylaştırır
+          <h1 className="mt-6 text-4xl font-extrabold leading-[1.04] tracking-[-0.045em] text-brand-navy sm:text-5xl xl:text-[56px]">
+            <span className="sm:block">Operasyonu yönetin. </span>
+            <span className="text-brand-green sm:block">Yoğunluğu değil.</span>
           </h1>
 
-          <ul className="mt-7 space-y-4">
+          <p className="mt-5 text-base leading-relaxed text-brand-navy/55 sm:text-[17px]">
+            Rent Okey, ekibinizin bugün ne yapacağını ve hangi aracın ne zaman uygun olduğunu tek ekranda gösterir.
+          </p>
+
+          <ul className="mt-7 space-y-3">
             {bullets.map((bullet) => (
               <li key={bullet} className="flex items-start gap-3">
-                <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-brand-green" strokeWidth={2} />
-                <span className="text-lg text-brand-navy/80">{bullet}</span>
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-green" strokeWidth={2} />
+                <span className="text-sm leading-relaxed text-brand-navy/75 sm:text-[15px]">{bullet}</span>
               </li>
             ))}
           </ul>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button href="/ucretsiz-dene" size="lg" icon>
-              Ücretsiz dene
+              14 gün ücretsiz deneyin
             </Button>
-            <Button href="#nasil-calisir" variant="secondary" size="lg">
-              Nasıl çalışır?
-              <Play className="h-4 w-4 fill-current" />
+            <Button href="#hero-demo" variant="secondary" size="lg">
+              Canlı demoyu incele
+              <MousePointer2 className="h-4 w-4" />
             </Button>
           </div>
 
-          <div className="mt-10 flex items-center gap-4">
-            <div className="flex -space-x-3">
-              {["A", "M", "S", "E"].map((letter, i) => (
-                <span
-                  key={i}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-brand-navy/10 text-sm font-semibold text-brand-navy"
-                >
-                  {letter}
-                </span>
-              ))}
-            </div>
-            <div>
-              <p className="font-bold text-brand-navy">500+ kullanıcı</p>
-              <p className="text-sm text-brand-navy/50">
-                Türkiye genelinde araç kiralama firmaları tarafından güvenle kullanılıyor.
-              </p>
-            </div>
+          <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs font-medium text-brand-navy/50">
+            <span>✓ Kredi kartı gerekmez</span>
+            <span>✓ Kurulum ücreti yok</span>
+            <span>✓ Kendi filonuzla deneyin</span>
           </div>
         </div>
 
-        <div className="lg:pr-4">
+        <div className="min-w-0">
           <DashboardMock />
         </div>
       </div>

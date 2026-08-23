@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const ASSETS = {
-  color: { plain: "/logo/rentokey-logo.png", full: "/logo/rentokey-logo-full.png" },
-  white: { plain: "/logo/rentokey-logo-white.png", full: "/logo/rentokey-logo-full-white.png" },
+  color: { plain: "/logo/rentokey-logo.svg", full: "/logo/rentokey-logo-full.svg" },
+  white: { plain: "/logo/rentokey-logo-white.svg", full: "/logo/rentokey-logo-full-white.svg" },
 } as const;
 
 export default function Logo({
@@ -18,11 +18,10 @@ export default function Logo({
   className?: string;
 }) {
   const src = withSlogan ? ASSETS[variant].full : ASSETS[variant].plain;
-  const width = withSlogan ? 440 : 432;
 
   return (
     <Link href="/" className={`inline-flex items-center ${className}`} aria-label="Rent Okey anasayfa">
-      <Image src={src} alt="Rent Okey" width={width} height={100} priority className={`${size} w-auto`} />
+      <Image src={src} alt="Rent Okey" width={890} height={220} priority className={`${size} w-auto`} />
     </Link>
   );
 }

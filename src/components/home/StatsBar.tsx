@@ -3,27 +3,27 @@ import { GroupGlossyIcon, ShieldBoltIcon, TimerIcon, QuickLearnIcon } from "@/co
 const stats = [
   {
     icon: GroupGlossyIcon,
-    value: "%38",
-    label: "daha az boş araç günü",
-    hint: "Ortalama müşterilerimizde",
+    value: "Bugün",
+    label: "Öncelikli operasyon kuyruğu",
+    hint: "Teslim, iade, risk ve belgeler",
   },
   {
     icon: TimerIcon,
-    value: "%45",
-    label: "daha az operasyon süresi",
-    hint: "Ortalama çalışana göre",
+    value: "Canlı",
+    label: "Rezervasyon zaman çizelgesi",
+    hint: "Boşluklar ve araç atamaları",
   },
   {
     icon: ShieldBoltIcon,
-    value: "Aynı gün",
-    label: "Canlıya geçiş",
-    hint: "Kurulum gerekmez, hemen başlayın",
+    value: "3 ekran",
+    label: "Masaüstü, tablet ve mobil",
+    hint: "Ofiste planla, sahada tamamla",
   },
   {
     icon: QuickLearnIcon,
-    value: "20 dk",
-    label: "Öğrenme süresi",
-    hint: "Ortalama yeni kullanıcıda",
+    value: "14 gün",
+    label: "Ücretsiz gerçek deneme",
+    hint: "Kredi kartı gerekmez",
   },
 ];
 

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Logo from "./Logo";
 import { footerNav } from "@/lib/nav";
-import { FacebookIcon, InstagramIcon, LinkedInIcon, YoutubeIcon } from "./SocialIcons";
 
 export default function Footer() {
   return (
@@ -11,20 +10,12 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-10 md:grid-cols-6">
           <div className="col-span-2">
             <Logo variant="white" withSlogan size="h-11" />
-            <p className="mt-4 max-w-[220px] text-sm leading-relaxed text-white/60">
-              Araç kiralama operasyonları için akıllı yazılım çözümü.
+            <p className="mt-4 max-w-[270px] text-sm leading-relaxed text-white/60">
+              Türkiye ve KKTC’de araç kiralama operasyonları için rezervasyon, filo, teslim/iade ve önerilen odak platformu.
             </p>
-            <div className="mt-5 flex items-center gap-3">
-              {[LinkedInIcon, InstagramIcon, FacebookIcon, YoutubeIcon].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  aria-label="Sosyal medya"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/80 transition-colors hover:border-brand-green hover:text-brand-green"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
+            <div className="mt-5 flex flex-wrap gap-2 text-xs font-semibold text-white/65">
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5">Türkiye + KKTC</span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5">14 gün ücretsiz</span>
             </div>
           </div>
 

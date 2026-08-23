@@ -55,3 +55,29 @@ body {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
+
+.form-control {
+  width: 100%;
+  border: 1px solid var(--color-surface-border);
+  border-radius: 0.75rem;
+  background: #fff;
+  padding: 0.75rem 0.875rem;
+  color: var(--color-brand-navy);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.form-control::placeholder {
+  color: color-mix(in srgb, var(--color-brand-navy) 30%, transparent);
+}
+
+.form-control:focus {
+  border-color: var(--color-brand-green);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brand-green) 12%, transparent);
+}
+
+.form-control-action {
+  padding-right: 3rem;
+}

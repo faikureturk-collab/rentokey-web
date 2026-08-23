@@ -8,8 +8,16 @@ export const primaryNav: {
   href: string;
   children?: NavLink[];
 }[] = [
-  { label: "Ürün", href: "/#urun" },
-  { label: "Özellikler", href: "/#ozellikler" },
+  {
+    label: "Ürün",
+    href: "/#urun",
+    children: [
+      { label: "Operasyon platformu", href: "/#urun" },
+      { label: "Özellikler", href: "/#ozellikler" },
+      { label: "Önerilen odak", href: "/#onerilen-odak" },
+      { label: "Nasıl çalışır?", href: "/#nasil-calisir" },
+    ],
+  },
   { label: "Fiyatlandırma", href: "/#fiyatlandirma" },
   {
     label: "Kaynaklar",
@@ -25,9 +33,11 @@ export const primaryNav: {
 
 export const footerNav = {
   urun: [
+    { label: "Operasyon platformu", href: "/#urun" },
     { label: "Özellikler", href: "/#ozellikler" },
+    { label: "Önerilen odak", href: "/#onerilen-odak" },
     { label: "Fiyatlandırma", href: "/#fiyatlandirma" },
-    { label: "Güncellemeler", href: "/guncellemeler" },
+    { label: "14 gün ücretsiz dene", href: "/ucretsiz-dene" },
   ],
   kaynaklar: [
     { label: "Blog", href: "/blog" },
