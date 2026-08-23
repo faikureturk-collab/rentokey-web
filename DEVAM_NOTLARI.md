@@ -32,6 +32,8 @@ Marka varlıkları `RentOkey_Tick_Konumu_Duzeltilmis` klasöründeki resmî setl
 
 Slogansız yatay logo ayrıca optik olarak yeniden hizalandı. İkon 36 iç SVG birimi yukarı alınarak RentOkey kelime işaretiyle aynı görsel merkeze getirildi; yazı, bulut ve tik çizimleri değiştirilmedi. Renkli, siyah ve beyaz sürümler SVG, outlined SVG, yüksek çözünürlüklü PNG, PDF ve EPS olarak `RentOkey_Slogansiz_Optik_Hizali` klasörüne eklendi. Header ve `og.png` bu yeni slogansız kilidi kullanıyor; sloganlı footer kilidi ve yalnız ikon dosyaları özgün geometrilerini koruyor. Tekrar üretim kaynağı `scripts/export-logo-assets.mjs` içinde tutuluyor.
 
+Teknik SEO altyapısı tamamlandı. Tüm güçlü sayfalara benzersiz başlık, açıklama, canonical, Open Graph ve Twitter metadata eklendi; ana sayfada Organization, WebSite ve SoftwareApplication JSON-LD verisi kullanılıyor. `robots.txt` ve yalnız indekslenmesi istenen `/`, `/ucretsiz-dene` ve `/kaynaklar` adreslerini içeren `sitemap.xml` üretildi. Yer tutucu blog/kılavuz/güncelleme sayfaları ile henüz uzman onayı almamış yasal metinler `noindex, follow` durumunda tutuluyor. Bu sayfalar gerçek içerik ve gerekli onaylar tamamlandığında hem indekslemeye hem sitemap'e ayrıca açılmalıdır.
+
 ## Ürün görseli notu
 
 - Hero artık ekran görüntüsü kullanmıyor; ürün anlatımı çözünürlükten bağımsız kod tabanlı demo ile yapılıyor.
@@ -45,6 +47,7 @@ Slogansız yatay logo ayrıca optik olarak yeniden hizalandı. İkon 36 iç SVG 
 3. Yeni modül akışındaki metin ve örnek değerleri gerçek paket kapsamıyla son kez doğrula.
 4. İletişim formunu üretime almadan önce tercih edilen form servisine veya backend mesaj endpoint'ine bağla; e-posta taslağı geçici ama dürüst bir ara çözümdür.
 5. Yayına geçmeden önce Git diff'ini kullanıcıyla gözden geçir, ardından yalnız açık onayla commit/push/deploy yap.
+6. Yayın sonrası Google Search Console'a `https://rentokey.com/sitemap.xml` gönder ve ana URL'lerde canlı URL denetimi yap.
 
 ## Git durumu
 

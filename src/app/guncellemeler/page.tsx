@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Güncellemeler",
+export const metadata = createPageMetadata({
+  title: "Ürün Güncellemeleri",
   description: "Rent Okey'e eklenen yeni özellikler ve iyileştirmeler.",
-};
+  path: "/guncellemeler",
+  index: false,
+});
 
 const updates = [
   {

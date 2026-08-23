@@ -35,6 +35,9 @@ npm run lint
 - `src/lib/pricing.ts` — paketlerin ana veri kaynağı
 - `src/lib/faq.ts` — SSS içerikleri
 - `src/lib/nav.ts` — header ve footer navigasyonu
+- `src/lib/seo.ts` — ortak metadata, canonical ve sosyal paylaşım ayarları
+- `src/lib/structured-data.ts` — ana sayfanın Organization, WebSite ve SoftwareApplication verisi
+- `src/app/robots.ts` / `src/app/sitemap.ts` — tarama ve indeksleme kaynakları
 - `src/components/TrialOnboarding.tsx` — iki adımlı deneme arayüzü
 - `public/logo/` — aktif marka varlıkları
 - `scripts/build-og-card.mjs` — sosyal paylaşım görseli üretimi

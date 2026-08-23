@@ -1,0 +1,80 @@
+import { plans } from "@/lib/pricing";
+import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
+
+const organizationId = `${SITE_URL}/#organization`;
+const websiteId = `${SITE_URL}/#website`;
+const softwareId = `${SITE_URL}/#software`;
+
+const offers = plans
+  .filter((plan) => plan.monthlyPrice !== null)
+  .map((plan) => ({
+    "@type": "Offer",
+    name: `${plan.name} paketi`,
+    price: String(plan.monthlyPrice),
+    priceCurrency: "TRY",
+    url: `${SITE_URL}/#fiyatlandirma`,
+    description: `${plan.description} için ${plan.includedUsers} ve ${plan.includedBranches}`,
+  }));
+
+export const homeStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": organizationId,
+      name: SITE_NAME,
+      alternateName: "RentOkey",
+      url: SITE_URL,
+      logo: `${SITE_URL}/icon.png`,
+      image: `${SITE_URL}/og.png`,
+      email: "hello@rentokey.com",
+      telephone: "+90 541 390 10 20",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Maslak Mah. Eski Büyükdere Cad. No:27",
+        addressLocality: "Sarıyer",
+        addressRegion: "İstanbul",
+        addressCountry: "TR",
+      },
+      areaServed: [
+        { "@type": "Country", name: "Türkiye" },
+        { "@type": "Place", name: "Kuzey Kıbrıs Türk Cumhuriyeti" },
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": websiteId,
+      url: SITE_URL,
+      name: SITE_NAME,
+      alternateName: "RentOkey",
+      description: DEFAULT_DESCRIPTION,
+      inLanguage: "tr-TR",
+      publisher: { "@id": organizationId },
+    },
+    {
+      "@type": ["SoftwareApplication", "WebApplication"],
+      "@id": softwareId,
+      name: SITE_NAME,
+      url: SITE_URL,
+      description: DEFAULT_DESCRIPTION,
+      applicationCategory: "BusinessApplication",
+      applicationSubCategory: "Araç kiralama operasyon ve filo yönetimi",
+      operatingSystem: "Web",
+      browserRequirements: "Güncel bir web tarayıcısı",
+      inLanguage: "tr-TR",
+      image: `${SITE_URL}/og.png`,
+      provider: { "@id": organizationId },
+      offers,
+      featureList: [
+        "Rezervasyon ve canlı zaman çizelgesi",
+        "Otomatik uygun araç önerisi",
+        "Araç teslim ve iade yönetimi",
+        "Filo, bakım ve belge süresi takibi",
+        "Gider, ödeme ve temel raporlar",
+        "CSV ile veri aktarımı",
+        "Pozisyon bazlı sayfa yetkilendirmesi",
+        "Önerilen odak ve bağlamsal risk uyarıları",
+      ],
+    },
+  ],
+};

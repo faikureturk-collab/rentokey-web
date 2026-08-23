@@ -15,7 +15,7 @@ export default function Hero() {
         <div className="max-w-[590px]">
           <span className="inline-flex items-center gap-2 rounded-full border border-brand-green/25 bg-brand-green/5 px-4 py-1.5 text-sm font-semibold text-brand-green-dark">
             <i className="h-2 w-2 rounded-full bg-brand-green" />
-            Türkiye ve KKTC için operasyon merkezi
+            Türkiye ve KKTC için araç kiralama programı
           </span>
 
           <h1 className="mt-6 text-4xl font-extrabold leading-[1.04] tracking-[-0.045em] text-brand-navy sm:text-5xl xl:text-[56px]">
@@ -24,7 +24,7 @@ export default function Hero() {
           </h1>
 
           <p className="mt-5 text-base leading-relaxed text-brand-navy/55 sm:text-[17px]">
-            Rent Okey, ekibinizin bugün ne yapacağını ve hangi aracın ne zaman uygun olduğunu tek ekranda gösterir.
+            Rent Okey, Türkiye ve KKTC için geliştirilen araç kiralama operasyon yazılımıdır. Ekibinizin bugün ne yapacağını ve hangi aracın ne zaman uygun olduğunu tek ekranda gösterir.
           </p>
 
           <ul className="mt-7 space-y-3">

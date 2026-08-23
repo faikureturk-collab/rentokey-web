@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   CalendarDays,
   Check,
@@ -7,18 +6,14 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import TrialOnboarding from "@/components/TrialOnboarding";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "14 gün ücretsiz deneyin",
+export const metadata = createPageMetadata({
+  title: "Araç Kiralama Programını 14 Gün Ücretsiz Deneyin",
   description:
-    "Kredi kartı gerekmeden Rent Okey çalışma alanınızı oluşturun ve kendi filonuzla 14 gün ücretsiz deneyin.",
-  openGraph: {
-    title: "Rent Okey'i 14 gün ücretsiz deneyin",
-    description:
-      "Kredi kartı gerekmeden çalışma alanınızı oluşturun ve gerçek araç kiralama operasyonunuzu deneyin.",
-    url: "/ucretsiz-dene",
-  },
-};
+    "Kredi kartı ve kurulum ücreti olmadan Rent Okey çalışma alanınızı oluşturun; kendi filonuz ve rezervasyonlarınızla 14 gün ücretsiz deneyin.",
+  path: "/ucretsiz-dene",
+});
 
 const benefits = [
   "Rezervasyon ve zaman çizelgesini kendi araçlarınızla deneyin",

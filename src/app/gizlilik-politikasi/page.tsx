@@ -1,9 +1,13 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Gizlilik Politikası",
-};
+  description:
+    "Rent Okey kişisel verilerin işlenmesi ve korunmasına ilişkin gizlilik politikası.",
+  path: "/gizlilik-politikasi",
+  index: false,
+});
 
 export default function GizlilikPage() {
   return (

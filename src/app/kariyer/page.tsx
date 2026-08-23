@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import { Mail } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import Button from "@/components/Button";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Kariyer",
   description: "Rent Okey ekibine katılın.",
-};
+  path: "/kariyer",
+  index: false,
+});
 
 export default function KariyerPage() {
   return (

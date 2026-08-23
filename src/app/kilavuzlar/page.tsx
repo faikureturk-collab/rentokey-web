@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
 import { PlayCircle } from "lucide-react";
 import PageHero from "@/components/PageHero";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Kılavuzlar",
+export const metadata = createPageMetadata({
+  title: "Kullanım Kılavuzları",
   description: "Rent Okey'i kurma ve verimli kullanma konusunda adım adım kılavuzlar.",
-};
+  path: "/kilavuzlar",
+  index: false,
+});
 
 const guides = [
   { title: "Hızlı başlangıç: Hesabınızı 5 dakikada kurun", duration: "5 dk" },

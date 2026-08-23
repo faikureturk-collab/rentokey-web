@@ -72,7 +72,8 @@ export default function PricingSection({
             </span>
             <h2 className="mt-5 text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-navy sm:text-4xl">{title}</h2>
             <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-brand-navy/55">
-              Yalnız araç sayınıza göre başlayın. Ekibinizi sınırlamadan gerçek operasyonunuzu 14 gün boyunca deneyin.
+              Filo büyüklüğünüze göre başlayın; kullanıcı ve şube kapsamını paket kartlarında
+              açıkça görün. Gerçek operasyonunuzu 14 gün boyunca deneyin.
             </p>
 
             <div className="mt-7 inline-flex rounded-full border border-surface-border bg-white p-1 shadow-sm" aria-label="Ödeme dönemi">

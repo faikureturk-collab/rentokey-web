@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Blog",
+export const metadata = createPageMetadata({
+  title: "Araç Kiralama ve Filo Yönetimi Blogu",
   description: "Araç kiralama operasyonları, filo yönetimi ve sektör haberleri hakkında yazılar.",
-};
+  path: "/blog",
+  index: false,
+});
 
 const posts = [
   {

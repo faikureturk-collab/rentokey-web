@@ -1,9 +1,12 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Kullanım Şartları",
-};
+  description: "Rent Okey araç kiralama yazılımının kullanım ve hizmet şartları.",
+  path: "/kullanim-sartlari",
+  index: false,
+});
 
 export default function KullanimSartlariPage() {
   return (

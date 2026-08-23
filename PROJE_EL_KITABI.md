@@ -214,6 +214,15 @@ Paketler yalnız araç sayısına göre değil; ekip, şube ve operasyon karmaş
 - Slogansız yatay logoda ikon 36 iç SVG birimi yukarı alınarak kelime işaretiyle optik olarak hizalandı.
 - `og.png`, tarayıcı ikonu ve Apple ikonu resmî varlıklardan yeniden üretildi.
 
+### Aşama 8 — Teknik SEO ve indeks kalitesi
+
+- Sayfa başlıkları, açıklamalar, canonical adresler, Open Graph ve Twitter kartları merkezi bir metadata yardımcısında toplandı.
+- Ana sayfaya Organization, WebSite ve SoftwareApplication türlerinde JSON-LD yapılandırılmış veri eklendi.
+- `robots.txt` ve `sitemap.xml` Next.js metadata route'larıyla üretiliyor.
+- Sitemap yalnız aramada sunulmaya hazır `/`, `/ucretsiz-dene` ve `/kaynaklar` sayfalarını içeriyor.
+- Yer tutucu içerikler ve uzman onayı bekleyen yasal metinler `noindex, follow` durumunda. Gerçek içerik tamamlandığında metadata ve sitemap birlikte güncellenmeli.
+- Hero'nun görünen metninde Türkiye, KKTC ve araç kiralama programı bağlamı doğal biçimde açıklandı.
+
 ## 7. Ana sayfanın baştan sona hikâyesi
 
 Ana sayfa sırası `src/app/page.tsx` içindedir. Sıra bilinçlidir; yalnız görsel çeşitlilik için değiştirilmemelidir.
@@ -412,6 +421,10 @@ Aşağıdaki vaatler canlı üründe yeniden doğrulanmadan aktif satış metnin
 - İletişim formu: `src/components/ContactForm.tsx`
 - Logo bileşeni: `src/components/Logo.tsx`
 - OG üretimi: `scripts/build-og-card.mjs`
+- Ortak SEO metadata'sı: `src/lib/seo.ts`
+- Yapılandırılmış veri: `src/lib/structured-data.ts`
+- Yapılandırılmış veri çıktısı: `src/components/StructuredData.tsx`
+- Tarama ve sitemap: `src/app/robots.ts`, `src/app/sitemap.ts`
 - Logo dışa aktarımı: `scripts/export-logo-assets.mjs`
 - Son çalışma notları: `DEVAM_NOTLARI.md`
 
@@ -430,18 +443,16 @@ Next.js sürümü eğitim verilerinden farklı olabileceği için kod değişikl
 
 Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 
-1. `PricingSection` girişinde “Ekibinizi sınırlamadan” ifadesi bulunuyor; paketlerde 1/5/15 kullanıcı sınırı olduğu için metin güncellenmelidir.
-2. `src/lib/features.ts` aktif ana sayfada kullanılmıyor ve dijital imza/şifreli-yedekli altyapı gibi yeniden doğrulanması gereken eski ifadeler içeriyor.
-3. `ProductShowcase`, `ShowcaseCarousel` ve `ModuleRow` aktif ana sayfa akışında kullanılmıyor; eski ekran görüntüsü yaklaşımından kalan kod olabilir.
-4. `_to_delete/old-logo-svgs/` aktif logo kaynağı değildir. Referans olmadığı doğrulandıktan sonra temizlenebilir.
-5. `/guncellemeler` sayfasındaki çevrimdışı mod ve diğer kayıtlar canlı ürünle yeniden doğrulanmalıdır.
-6. Blog ve kılavuz içerikleri yer tutucudur.
-7. Gizlilik ve kullanım şartları hukuk danışmanı tarafından doğrulanmamıştır.
-8. Deneme formu backend’e bağlı değildir.
-9. İletişim formu gerçek gönderim servisine bağlı değildir.
-10. Checkout, ödeme, abonelik ve faturalandırma akışı henüz yoktur.
-11. `YEARLY_DISCOUNT` dışa aktarılıyor; arayüz hesaplaması bunun yerine açıkça tanımlanmış yıllık fiyatları kullanıyor. Fiyat mantığı tek modele indirgenmelidir.
-12. `npm run lint` hata vermiyor; `TrialOnboarding.tsx` içindeki kullanılmayan `Check` importu için bir uyarı bulunuyor.
+1. `src/lib/features.ts` aktif ana sayfada kullanılmıyor ve dijital imza/şifreli-yedekli altyapı gibi yeniden doğrulanması gereken eski ifadeler içeriyor.
+2. `ProductShowcase`, `ShowcaseCarousel` ve `ModuleRow` aktif ana sayfa akışında kullanılmıyor; eski ekran görüntüsü yaklaşımından kalan kod olabilir.
+3. `_to_delete/old-logo-svgs/` aktif logo kaynağı değildir. Referans olmadığı doğrulandıktan sonra temizlenebilir.
+4. `/guncellemeler` sayfasındaki çevrimdışı mod ve diğer kayıtlar canlı ürünle yeniden doğrulanmalıdır.
+5. Blog ve kılavuz içerikleri yer tutucudur ve bu nedenle şu an `noindex` durumundadır.
+6. Gizlilik ve kullanım şartları hukuk danışmanı tarafından doğrulanmamıştır ve bu nedenle şu an `noindex` durumundadır.
+7. Deneme formu backend’e bağlı değildir.
+8. İletişim formu gerçek gönderim servisine bağlı değildir.
+9. Checkout, ödeme, abonelik ve faturalandırma akışı henüz yoktur.
+10. `YEARLY_DISCOUNT` dışa aktarılıyor; arayüz hesaplaması bunun yerine açıkça tanımlanmış yıllık fiyatları kullanıyor. Fiyat mantığı tek modele indirgenmelidir.
 
 ## 16. Önerilen sonraki geliştirme sırası
 
@@ -467,8 +478,8 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 ### P2 — Temizlik ve kalite
 
 1. Kullanılmayan bileşen ve eski logo klasörlerini referans kontrolünden sonra temizle.
-2. Fiyatlandırma metni ve kullanıcı limitlerindeki tutarsızlığı düzelt.
-3. Erişilebilirlik, klavye gezinmesi, performans ve SEO taraması yap.
+2. Erişilebilirlik, klavye gezinmesi ve performans taraması yap.
+3. Gerçek içerikli sektör/özellik sayfaları oluşturulduğunda indeks ve sitemap politikasını genişlet.
 4. Gerçek ürün galerisi gerekiyorsa yüksek çözünürlüklü ve anonim yeni sahneler üret.
 
 ## 17. Bir sonraki geliştirici/AI için çalışma protokolü

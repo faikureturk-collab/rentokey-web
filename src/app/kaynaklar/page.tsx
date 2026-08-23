@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BookOpen, HelpCircle, Newspaper } from "lucide-react";
 import PageHero from "@/components/PageHero";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Kaynaklar",
-  description: "Rent Okey blog yazıları, kılavuzları ve sık sorulan sorular.",
-};
+export const metadata = createPageMetadata({
+  title: "Araç Kiralama Kaynakları ve Kılavuzları",
+  description:
+    "Araç kiralama operasyonu, filo yönetimi, Rent Okey kullanımı ve sık sorulan sorular için kaynak merkezini inceleyin.",
+  path: "/kaynaklar",
+});
 
 const resources = [
   {
