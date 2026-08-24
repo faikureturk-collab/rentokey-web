@@ -38,16 +38,17 @@ npm run lint
 - `src/lib/seo.ts` — ortak metadata, canonical ve sosyal paylaşım ayarları
 - `src/lib/structured-data.ts` — ana sayfanın Organization, WebSite ve SoftwareApplication verisi
 - `src/app/robots.ts` / `src/app/sitemap.ts` — tarama ve indeksleme kaynakları
-- `src/components/TrialOnboarding.tsx` — tek adımlı Supabase deneme hesabı formu
-- `src/lib/supabase-browser.ts` — Supabase tarayıcı istemcisi ve kayıt hata mesajları
+- `src/components/TrialOnboarding.tsx` — tek adımlı deneme hesabı formu
+- `src/lib/trial-signup.ts` — formun aynı origin kayıt istemcisi ve kullanıcı hata mesajları
+- `src/app/api/kayit-ol/route.ts` — kayıt isteğini uygulama API'sine sunucu tarafında ileten route
 - `public/logo/` — aktif marka varlıkları
 - `scripts/build-og-card.mjs` — sosyal paylaşım görseli üretimi
 
 ## Önemli durum
 
 - Bu repo çalışan Rent Okey uygulaması değildir; ürün uygulaması `https://app.rentokey.com` adresindedir.
-- `/ucretsiz-dene` Supabase Auth ile kullanıcı oluşturur; firma ve filo bilgileri e-posta onayından sonra uygulamada alınır.
-- `NEXT_PUBLIC_SUPABASE_URL` ve `NEXT_PUBLIC_SUPABASE_ANON_KEY` Vercel proje ayarlarına tanımlandı. Değerlerin kendisi repoda tutulmaz; yalnız public anon anahtarı kullanılmalı, service role anahtarı kesinlikle web sitesine eklenmemelidir.
+- `/ucretsiz-dene`, isteği aynı origin `/api/kayit-ol` route'una gönderir. Bu route hesabı `https://app.rentokey.com/api/kayit-ol` üzerinden sunucu tarafında oluşturur; doğrulama e-postası `mail.rentokey.com` üzerinden gönderilir. Firma ve filo bilgileri e-posta onayından sonra uygulamada alınır.
+- Web sitesi artık Supabase istemcisi veya Supabase ortam değişkeni kullanmaz. Daha önce Vercel'e eklenen `NEXT_PUBLIC_SUPABASE_URL` ve `NEXT_PUBLIC_SUPABASE_ANON_KEY` değerleri kullanılmadığı için kaldırılabilir.
 - İletişim formu bir backend’e gönderim yapmak yerine e-posta taslağı açar.
 - Blog ve kılavuz sayfaları yer tutucu içerik taşır.
 - Yasal metinler taslaktır ve yayın öncesi uzman incelemesi gerektirir.

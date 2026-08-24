@@ -12,7 +12,7 @@ import {
   LockKeyhole,
   Mail,
 } from "lucide-react";
-import { getSupabaseBrowserClient, getTrialSignupErrorMessage } from "@/lib/supabase-browser";
+import { createTrialAccount, getTrialSignupErrorMessage } from "@/lib/trial-signup";
 
 type FormState = {
   fullName: string;
@@ -61,27 +61,16 @@ export default function TrialOnboarding() {
     const fullName = form.fullName.trim();
 
     try {
-      const supabase = getSupabaseBrowserClient();
-      const { error } = await supabase.auth.signUp({
+      await createTrialAccount({
         email,
         password: form.password,
-        options: {
-          data: { full_name: fullName },
-          emailRedirectTo: APP_URL,
-        },
+        fullName,
       });
-
-      if (error) {
-        setErrorMessage(getTrialSignupErrorMessage(error));
-        return;
-      }
 
       setForm((current) => ({ ...current, password: "" }));
       setSubmittedEmail(email);
-    } catch {
-      setErrorMessage(
-        "Hesap oluşturma servisine şu anda ulaşılamıyor. Lütfen kısa bir süre sonra yeniden deneyin.",
-      );
+    } catch (error) {
+      setErrorMessage(getTrialSignupErrorMessage(error));
     } finally {
       setIsSubmitting(false);
     }
@@ -97,14 +86,15 @@ export default function TrialOnboarding() {
           <CheckCircle2 className="h-7 w-7" />
         </span>
         <p className="mt-7 text-xs font-bold uppercase tracking-[0.14em] text-brand-green-dark">
-          Başvurunuz alındı
+          Hesabınız oluşturuldu
         </p>
         <h2 className="mt-2 text-2xl font-extrabold tracking-[-0.025em] text-brand-navy sm:text-3xl">
           E-posta adresinizi doğrulayın.
         </h2>
         <p className="mt-4 text-sm leading-relaxed text-brand-navy/55">
-          Size gönderdiğimiz doğrulama bağlantısına tıklayın. Ardından Rent Okey&apos;e giriş
-          yaparken firma adınızı ve filo büyüklüğünüzü tanımlayabilirsiniz.
+          <span className="font-semibold text-brand-navy/70">mail.rentokey.com</span> üzerinden
+          gönderdiğimiz doğrulama bağlantısına tıklayın. Ardından Rent Okey&apos;e giriş yaparken
+          firma adınızı ve filo büyüklüğünüzü tanımlayabilirsiniz.
         </p>
         <div className="mt-6 rounded-2xl bg-surface-soft p-4">
           <div className="flex items-center gap-2 text-xs font-semibold text-brand-navy">
