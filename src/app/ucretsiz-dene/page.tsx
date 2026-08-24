@@ -24,7 +24,7 @@ const benefits = [
 const metrics = [
   { icon: CalendarDays, value: "14 gün", label: "Ücretsiz kullanım" },
   { icon: CreditCard, value: "0 ₺", label: "Başlangıç ücreti" },
-  { icon: Gauge, value: "2 adım", label: "Hesap kurulumu" },
+  { icon: Gauge, value: "Tek adım", label: "Hesap başvurusu" },
 ];
 
 export default function UcretsizDenePage() {
@@ -36,13 +36,14 @@ export default function UcretsizDenePage() {
       <div className="container-page relative grid min-h-[calc(100vh-72px)] items-center gap-10 py-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-16 lg:py-16">
         <div className="lg:py-8">
           <span className="inline-flex items-center gap-2 rounded-full border border-brand-green/20 bg-white px-4 py-1.5 text-sm font-semibold text-brand-green-dark shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-brand-green" /> Anında deneme çalışma alanı
+            <span className="h-2 w-2 rounded-full bg-brand-green" /> Tek adımda ücretsiz hesap
           </span>
           <h1 className="mt-6 max-w-xl text-4xl font-extrabold leading-[1.04] tracking-[-0.045em] text-brand-navy sm:text-5xl lg:text-[56px]">
             Satın almadan önce <span className="text-brand-green">gerçek işinizi deneyin.</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-brand-navy/55">
-            Örnek verilerle hazırlanmış bir demo yerine kendi filonuz, rezervasyonlarınız ve ekibinizle Rent Okey&apos;i değerlendirin.
+            Hesabınızı oluşturun, e-posta adresinizi doğrulayın ve kendi filonuz,
+            rezervasyonlarınız ve ekibinizle Rent Okey&apos;i değerlendirin.
           </p>
 
           <ul className="mt-7 space-y-3.5">

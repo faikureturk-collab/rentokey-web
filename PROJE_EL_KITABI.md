@@ -200,7 +200,7 @@ Deneme süreci Netflix/Vercel benzeri hızlı başlangıç fikrinden esinlendi; 
 - Deneme bitince otomatik ödeme alınmaz
 - Devam edecek kullanıcı paketini sonradan seçer
 
-`/ucretsiz-dene` arayüzü iki adımlı onboarding olarak tasarlandı. Şu anda yalnız frontend prototipidir; gerçek kullanıcı, firma veya tenant oluşturmaz.
+`/ucretsiz-dene` başlangıçta iki adımlı onboarding olarak tasarlandı; daha sonra sürtünmeyi azaltmak için tek adımlı gerçek hesap başvurusuna dönüştürüldü. Web sitesi yalnız ad-soyad, e-posta ve şifreyi Supabase Auth'a gönderir. Firma adı ve filo büyüklüğü e-posta doğrulamasından sonra uygulamada alınır.
 
 ### Aşama 6 — Paketlerin yeniden dağıtılması
 
@@ -248,7 +248,7 @@ Ana sayfa sırası `src/app/page.tsx` içindedir. Sıra bilinçlidir; yalnız g�
 
 Ana dönüşüm yolu:
 
-`Hero / Header / Fiyatlandırma / Final CTA` → `/ucretsiz-dene` → iki adımlı onboarding → ileride gerçek hesap oluşturma servisi → `app.rentokey.com`
+`Hero / Header / Fiyatlandırma / Final CTA` → `/ucretsiz-dene` → Supabase hesap başvurusu → e-posta doğrulaması → `app.rentokey.com` onboarding
 
 İkincil dönüşüm yolu:
 
@@ -299,13 +299,14 @@ Fiyatlar veya limitler yalnız bir kartta değiştirilmemelidir. Şunları birli
 Mevcut durum:
 
 - ad/soyad, e-posta ve şifre alır,
-- firma, ülke, filo büyüklüğü ve isteğe bağlı telefon alır,
-- Türkiye ve KKTC seçeneklerini sunar,
 - sözleşme ve gizlilik onayı ister,
-- başarı ekranı gösterir,
-- fakat backend’e veri göndermez ve hesap açmaz.
+- Supabase Auth üzerinden gerçek kullanıcı kaydı oluşturur,
+- `full_name` bilgisini kullanıcı metadata'sına ekler,
+- doğrulama e-postasını `https://app.rentokey.com/` adresine yönlendirir,
+- gerçek servis cevabı gelmeden başarı ekranı göstermez,
+- gönderim, hata ve tekrar deneme durumlarını yönetir.
 
-Bir sonraki gerçek geliştirmede bu formun Rent Okey kimlik doğrulama ve tenant/firma oluşturma servisine bağlanması gerekir. Şifre frontend state’inde işlem tamamlanınca temizlenmektedir; yine de gerçek entegrasyonda güvenlik mimarisi backend ile birlikte tasarlanmalıdır.
+Firma adı ve filo büyüklüğü e-posta doğrulamasından sonra `app.rentokey.com` içindeki onboarding akışında alınır. Web sitesinde yalnız `NEXT_PUBLIC_SUPABASE_URL` ve public anon anahtarı kullanılmalıdır; service role anahtarı hiçbir koşulda tarayıcı koduna eklenmemelidir. Şifre başarılı istekten sonra frontend state'inden temizlenir.
 
 ### Abonelik
 
@@ -320,7 +321,7 @@ Henüz gerçek checkout, kart saklama, abonelik başlatma, faturalandırma veya 
 | Rota | Durum |
 |---|---|
 | `/` | Ana satış sayfası, aktif ana kurgu |
-| `/ucretsiz-dene` | İki adımlı frontend onboarding prototipi |
+| `/ucretsiz-dene` | Tek adımlı Supabase Auth hesap başvurusu ve e-posta doğrulama yönlendirmesi |
 | `/giris` | `https://app.rentokey.com` adresine yönlendirir |
 | `/kaynaklar` | Kaynak merkezine giriş sayfası |
 | `/blog` | Yer tutucu yazı başlıkları; gerçek makale yok |
@@ -418,6 +419,7 @@ Aşağıdaki vaatler canlı üründe yeniden doğrulanmadan aktif satış metnin
 - Önerilen odak anlatımı: `src/components/home/FocusSection.tsx`
 - Fiyatlandırma ve karşılaştırma: `src/components/PricingSection.tsx`
 - Deneme formu: `src/components/TrialOnboarding.tsx`
+- Supabase istemcisi: `src/lib/supabase-browser.ts`
 - İletişim formu: `src/components/ContactForm.tsx`
 - Logo bileşeni: `src/components/Logo.tsx`
 - OG üretimi: `scripts/build-og-card.mjs`
@@ -449,7 +451,7 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 4. `/guncellemeler` sayfasındaki çevrimdışı mod ve diğer kayıtlar canlı ürünle yeniden doğrulanmalıdır.
 5. Blog ve kılavuz içerikleri yer tutucudur ve bu nedenle şu an `noindex` durumundadır.
 6. Gizlilik ve kullanım şartları hukuk danışmanı tarafından doğrulanmamıştır ve bu nedenle şu an `noindex` durumundadır.
-7. Deneme formu backend’e bağlı değildir.
+7. Deneme formunun kötüye kullanımına karşı Supabase rate limit ayarları izlenmeli; ihtiyaç oluşursa CAPTCHA eklenmelidir.
 8. İletişim formu gerçek gönderim servisine bağlı değildir.
 9. Checkout, ödeme, abonelik ve faturalandırma akışı henüz yoktur.
 10. `YEARLY_DISCOUNT` dışa aktarılıyor; arayüz hesaplaması bunun yerine açıkça tanımlanmış yıllık fiyatları kullanıyor. Fiyat mantığı tek modele indirgenmelidir.
@@ -458,9 +460,9 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 
 ### P0 — Satışın gerçekten tamamlanması
 
-1. `/ucretsiz-dene` formunu gerçek kullanıcı/tenant oluşturma servisine bağla.
-2. E-posta doğrulama, hata durumları, tekrar kayıt ve güvenli şifre akışını tamamla.
-3. 14 gün başlangıç/bitiş durumunu uygulama ve backend tarafında tanımla.
+1. Supabase URL ve public anon anahtarı Vercel proje ayarlarına tanımlandı; yeni deployment sonrasında doğrulama e-postasını gerçek alan adında uçtan uca test et.
+2. Supabase Auth URL Configuration içinde `https://app.rentokey.com/` yönlendirmesine izin verildiğini doğrula.
+3. Rate limit değerlerini izle ve gerçek trafik gerektirirse CAPTCHA ekle.
 4. Deneme sonrası paket seçimi, checkout, abonelik ve faturalandırma mimarisini kur.
 
 ### P1 — Lead ve ölçümleme

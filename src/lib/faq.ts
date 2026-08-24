@@ -2,7 +2,7 @@ export const faqItems = [
   {
     question: "14 günlük ücretsiz deneme nasıl başlar?",
     answer:
-      "Hesap bilgilerinizi, ardından firma ve filo bilgilerinizi girerek çalışma alanınızı oluşturursunuz. Kredi kartı gerekmez; deneme süresince kendi araç ve rezervasyonlarınızla ürünü değerlendirebilirsiniz.",
+      "Ad, e-posta ve şifre bilgilerinizi girip e-posta adresinizi doğrulayarak hesabınızı oluşturursunuz. İlk girişte firma adı ve filo büyüklüğünü tanımlarsınız. Kredi kartı gerekmez; deneme süresince kendi araç ve rezervasyonlarınızla ürünü değerlendirebilirsiniz.",
   },
   {
     question: "Deneme sonunda otomatik ödeme alınır mı?",
