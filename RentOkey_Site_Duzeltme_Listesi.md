@@ -1,258 +1,300 @@
-# RentOkey Web Sitesi — Düzeltme Listesi
+# RentOkey Web Sitesi — Birleşik Değerlendirme ve Düzeltme Listesi
 
 **Tarih:** 26 Ağustos 2026
-**Kaynak:** www.rentokey.com incelemesi
-**Bakış açısı:** 40 araçlık filo sahibi, operasyondan bunalmış, hızlı çözüm arıyor
-**Hedef kitle notu:** Bu listedeki her madde "Büyüme–Profesyonel" segmentindeki (11–70 araç) karar vericiyi dönüştürmeye odaklıdır.
+
+**Kaynak:** Canlı site incelemesi + önceki düzeltme listesi
+
+**Bakış açısı:** 40 araçlık filosunu yoğunluk içinde yöneten, satış temsilcisi beklemeden hemen deneyebileceği pratik bir sistem arayan işletme sahibi
+
+**Ana hedef:** Ziyaretçiyi “ürün derdimi anlıyor” noktasından “verimi ve operasyonumu güvenle taşıyabilirim” kararına götürmek
+
+---
+
+## Genel Hüküm
+
+RentOkey'in ana mesajı doğru probleme dokunuyor. “Operasyonu yönetin. Yoğunluğu değil.” başlığı; teslim, iade, araç atama, tahsilat ve hazırlık süresi riskleriyle desteklendiği için sahada karşılık buluyor. Kayıt akışı da satış görüşmesi zorunluluğu ve kredi kartı olmadan başlayabildiği için güçlü.
+
+Asıl kayıp ürün anlatımında değil, kararın son metresinde yaşanıyor:
+
+1. İlk ekranda deneme butonu normal dizüstü yüksekliğinde görünmüyor.
+2. Gerçek müşteri, ekip ve ölçülebilir sonuç kanıtı yok.
+3. Veri güvenliği, yedekleme, hizmet sürekliliği ve veri çıkışı yeterince açıklanmıyor.
+4. 40 araçlık müşteri 31–70 araç paketine giriyor; gösterilen araç başı fiyat kendi gerçek maliyetini yansıtmıyor.
+5. API ve özel entegrasyon yalnızca 71+ araç paketinde görünüyor.
+6. CSV aktarımı vaat ediliyor ama şablon, çalışan kılavuz ve açık kurulum desteği bulunmuyor.
+
+**Karar:** 40 araçlık işletmeci ücretsiz denemeyi açabilir; ancak entegrasyon, güvenlik, veri taşıma ve destek soruları cevaplanmadan yıllık ödeme yapmaz ve tüm operasyonunu sisteme bağlamaz.
+
+---
+
+## Önceki Listeyle Karşılaştırma — Düzeltilen Noktalar
+
+| Önceki tespit | Yeni değerlendirme |
+|---|---|
+| “Sitede tek bir gerçek ürün ekranı/demo yok.” | Fazla sert ve eksik. Ana sayfada örnek verilerle çalışan üç sekmeli etkileşimli ürün demosu var. Sorun demonun çalışmaması değil; bunun gerçek uygulama mı, temsili prototip mi olduğunun belirsiz olması ve gerçek kullanıcı akışının video/ekran kanıtıyla desteklenmemesi. |
+| “Canlı demo aynı sayfadaki kutuya gider, kullanıcı kandırılmış hisseder.” | “Canlı demoyu incele” bağlantısı gerçekten etkileşimli örnek alana götürüyor. Yine de “canlı demo” ifadesi kayıtsız kullanılabilen gerçek uygulama beklentisi yaratabilir. Metin “Etkileşimli ürün örneğini incele” olarak netleştirilmeli veya gerçek sandbox sunulmalı. |
+| “Veri güvenliği hakkında hiçbir kelime yok.” | Doğru değil. Gizlilik politikasında şifreli bağlantı ve teknik/idari tedbirlerden söz ediliyor. Fakat bu tek genel cümle; barındırma, depoda şifreleme, yedekleme, 2FA, olay bildirimi ve veri silme/çıkarma ayrıntıları yok. |
+| “40 araç için yıllık maliyet yaklaşık ₺71.000.” | Planlar karıştırılmış. Aylık plan 12 ay sürdürülürse ₺59.880 + KDV; yıllık plan ₺47.880 + KDV. KDV dahil rakam verilecekse güncel oran ve hangi ödeme planının hesaplandığı açıkça yazılmalı. |
+| Ürün ekranı/video P0'ın ilk maddesi | Etkileşimli demo zaten güçlü bir başlangıç. İlk ekran CTA'sı, güven, veri taşıma ve fiyat şeffaflığı daha acil. Gerçek ekran/video P1'e alınmalı. |
+| WhatsApp tek başına P0 | Faydalı ama çalışan iletişim formu ve açık yanıt süresi daha temel. WhatsApp bu maddenin hızlı iletişim kanalı olarak ele alınmalı. |
+| “Önerilen odak” dili ana sorunlardan biri | Dil sadeleştirilmeli; fakat dönüşümü en çok kesen konu güven, paket uyumu ve başlangıç yüküdür. P1 olarak kalmalı. |
 
 ---
 
 ## Öncelik Özeti
 
-| # | Madde | Öncelik | Efor | Beklenen Etki |
-|---|-------|---------|------|----------------|
-| 1 | Gerçek ürün ekran görüntüleri + demo videosu | P0 | Orta | Çok yüksek |
-| 2 | "Verinizi biz taşıyalım" + CSV şablonu | P0 | Düşük | Çok yüksek |
-| 3 | İletişim formunu gerçekten çalışır hale getir | P0 | Düşük | Yüksek |
-| 4 | WhatsApp iletişim butonu | P0 | Çok düşük | Yüksek |
-| 5 | Güven bloğu (KVKK, ekip, referans) | P0 | Orta | Çok yüksek |
-| 6 | Fiyatlandırmada ara basamak + hesaplayıcı | P1 | Orta | Yüksek |
-| 7 | "Önerilen odak" dilini sadeleştir | P1 | Düşük | Yüksek |
-| 8 | Hero'ya somut senaryo ve sayı ekle | P1 | Düşük | Orta-Yüksek |
-| 9 | Deneme süresi / başlangıç anını değiştir | P1 | Düşük | Orta |
-| 10 | Boş Blog ve Kılavuzlar sayfaları | P1 | Orta | Orta |
-| 11 | Entegrasyon sayfası (ceza/HGS, e-fatura, POS) | P1 | Yüksek | Çok yüksek |
-| 12 | Fotoğraflı hasar kaydını Büyüme paketine indir | P2 | Ürün kararı | Yüksek |
-| 13 | Mobil uygulama görünürlüğü | P2 | Düşük | Orta |
-| 14 | Küçük güven sinyalleri (telefon, adres, SSS) | P2 | Çok düşük | Düşük-Orta |
+| # | İş | Öncelik | Efor | Beklenen etki |
+|---|---|---|---|---|
+| 1 | Hero CTA'sını ilk ekrana taşı ve mesajı sıkılaştır | P0 | Düşük | Çok yüksek |
+| 2 | Güvenlik, şirket ve müşteri kanıtı oluştur | P0 | Orta | Çok yüksek |
+| 3 | Veri taşıma ve ilk kurulum yükünü RentOkey üstlensin | P0 | Orta | Çok yüksek |
+| 4 | 40 araç için fiyatı ve paket geçişini dürüst göster | P0 | Orta | Çok yüksek |
+| 5 | Entegrasyon/API durumunu açıkça göster | P0 | Orta | Çok yüksek |
+| 6 | İletişim formunu çalıştır; hızlı destek kanalı ekle | P0 | Düşük | Yüksek |
+| 7 | Etkileşimli demoyu doğru adlandır ve gerçek ürün kanıtıyla güçlendir | P1 | Orta | Yüksek |
+| 8 | Deneme süresini veri kurulumu ve destekle ilişkilendir | P1 | Düşük-Orta | Yüksek |
+| 9 | Boş Blog/Kılavuzlar görünümünü kaldır | P1 | Orta | Orta-Yüksek |
+| 10 | “Önerilen odak” ve soyut ürün dilini sadeleştir | P1 | Düşük | Orta |
+| 11 | Mobil kullanımın biçimini ve saha sınırlarını netleştir | P1 | Düşük | Yüksek |
+| 12 | SSS, yasal metin ve destek taahhütlerini tamamla | P1 | Orta | Yüksek |
+| 13 | Fotoğraflı teslim/iadeyi daha alt pakete indir | P2 | Ürün kararı | Yüksek |
+| 14 | Yol haritasını günlük para ve zaman kaybına göre sırala | P2 | Ürün kararı | Yüksek |
+| 15 | Ölçülebilir sonuç ve vaka çalışmaları üret | P2 | Orta-Yüksek | Çok yüksek |
 
 ---
 
-# P0 — Bu Hafta Yapılacaklar
+# P0 — Yayına En Yakın Sprintte
 
-## 1. Gerçek ürün ekran görüntüleri ve demo videosu
+## 1. Hero CTA'sını ilk ekrana taşı ve mesajı sıkılaştır
 
-**Sorun:** Sitede tek bir gerçek ürün ekranı yok. Gantt/zaman çizelgesi, teslim-iade ekranı, mobil saha ekranı hep temsili kutucuklarla anlatılmış. "Canlı demoyu incele" butonu `#hero-demo` çapasına gidiyor — yani kullanıcıyı aynı sayfadaki bir kutuya kaydırıyor. Bu bir demo değil, kullanıcıda "kandırıldım" hissi yaratıyor.
-
-**Yapılacak:**
-- Hero'nun hemen altına **gerçek ürün ekran görüntüsü** koy: 40 araçlık dolu bir Gantt, gerçek plakalar (anonimleştirilmiş), gerçek tarihler.
-- **60–90 saniyelik ekran kaydı videosu**: kayıt gerektirmeden, sayfada oynasın. Senaryo: "Sabah 08:00 — bugün 6 teslim, 4 iade, 2 risk. Şu araç 35 dakikada dönmüyor." Konuşma değil, ekran + altyazı.
-- "Canlı demoyu incele" butonunu ya **gerçek bir demo ortamına** (örnek veriyle dolu, kayıtsız girilebilen sandbox) bağla, ya da metnini değiştir: "Ürünü 90 saniyede izleyin".
-- Her modül bölümüne (Planlama / Operasyon / Filo / Finans / Yönetim) o modülün **gerçek ekran görüntüsü**.
-
-**Kabul kriteri:** Ziyaretçi kayıt olmadan, sayfadan ayrılmadan ürünün 5 ana ekranını görebiliyor.
-
----
-
-## 2. Veri aktarımını sizin işiniz haline getirin
-
-**Sorun:** Denemenin 2. adımı "CSV ile içeri aktarın". 40 araçlık bir firmanın verisi Excel + defter + ortağın kafası karışımıdır. Sezon ortasında bunu CSV'ye çevirecek zamanı yok. Üstelik **veri aktarım desteği yalnızca Kurumsal (71+ araç) pakette** yazıyor. Bu, sitenin en büyük dönüşüm kaybının olduğu nokta: kayıt kolay, kayıttan sonrası yorucu.
-
-**Yapılacak:**
-- **Her pakete** "ilk kurulum ve veri aktarım desteği" ekle ve bunu sitede öne çıkar. Metin önerisi: *"Excel'inizi bize gönderin, filonuzu biz sisteme kuralım. 1 iş günü."*
-- **CSV şablonlarını indirilebilir yap:** araç listesi, rezervasyon, müşteri, gider, bakım. Deneme sayfasında ve SSS'te link olsun.
-- Deneme akışındaki 4 adımı yeniden yaz. Şu anki 2. adım "Filonuzu ekleyin" → olması gereken: **"Filonuzu biz yükleyelim"**.
-- Excel dosyası yükleyip "bunu bizim için hazırlayın" diyebileceği bir alan ekle.
-
-**Kabul kriteri:** Kullanıcı deneme sayfasında "verimi kim, nasıl, ne kadar sürede taşıyacak" sorusunun cevabını görüyor.
-
----
-
-## 3. İletişim formu gerçekten mesaj göndersin
-
-**Sorun:** Form dolduruluyor ama "E-posta taslağını aç" diyor ve "Mesaj, siz onaylamadan gönderilmez" notu var. Yani form `mailto:` ile kullanıcının mail programını açıyor. Gmail'i tarayıcıdan kullanan kullanıcıda bu genellikle boş pencere açar veya hiçbir şey olmaz. Ayrıca arkada müşteri takip sistemi olmadığı izlenimi veriyor — operasyon yazılımı satan firma için kötü sinyal.
-
-**Yapılacak:**
-- Formu gerçek bir backend'e bağla (kendi API'niz, ya da hızlı çözüm olarak Formspree/Resend/HubSpot).
-- Gönderdikten sonra **teşekkür ekranı** ve "en geç X saat içinde dönüş" taahhüdü.
-- Gelen talep otomatik olarak bir yere düşsün (mail + basit CRM/Sheet).
-- "Mesaj, siz onaylamadan gönderilmez" notunu kaldır — güven vermiyor, tereddüt yaratıyor.
-
-**Kabul kriteri:** Formu doldurup gönderen kullanıcı, mail programı açılmadan, sayfada onay görüyor.
-
----
-
-## 4. WhatsApp butonu
-
-**Sorun:** Sitenin ana argümanı "WhatsApp kaosundan kurtulun" ama sizinle konuşmanın yolu e-posta ve cep telefonu. Türkiye ve KKTC'de işletme sahibi mail yazmaz, WhatsApp'tan yazar.
-
-**Yapılacak:**
-- Sağ altta sabit WhatsApp butonu (`wa.me` linki), ön-doldurulmuş mesaj: *"Merhaba, X araçlık filom var, Rent Okey hakkında bilgi almak istiyorum."*
-- İletişim bölümüne ve fiyatlandırma bölümüne de WhatsApp seçeneği ekle.
-- Çalışma saatleri ve ortalama yanıt süresi yaz.
-
-**Kabul kriteri:** Ziyaretçi 1 tıkla WhatsApp'tan yazabiliyor.
-
----
-
-## 5. Güven bloğu — sitenin en büyük eksiği
-
-**Sorun:** Sitede tek bir referans, müşteri ismi, logo, yorum veya kullanım rakamı yok. Şirketin kim olduğu belli değil ("Hakkımızda" linkinin arkasında ekip/kurucu/hikâye yok). Veri güvenliği hakkında **hiçbir kelime geçmiyor**: KVKK, veri nerede saklanıyor, yedekleme, çıkışta veri iadesi, sistem çökerse ne olur. Kullanıcı bu sisteme müşterisinin kimlik ve ehliyet bilgisini girecek.
+**Kanıt:** 1280×720 görünümde ana “14 gün ücretsiz deneyin” butonunun üst kenarı yaklaşık 722 px'de kalıyor; yani buton ilk ekranda görünmüyor. Başlık ve ürün görseli güçlü olsa da kullanıcıya yapılacak iş görünmeden kaydırma gerekiyor.
 
 **Yapılacak:**
 
-**5a. Güvenlik ve KVKK sayfası** (yazması en kolay, etkisi en yüksek eksik)
-- Veri nerede barındırılıyor (ülke, sağlayıcı)
-- Yedekleme sıklığı ve saklama süresi
-- Şifreleme (aktarımda ve depoda)
-- Erişim yetkileri ve aktivite kaydı
-- KVKK uyumu, veri sorumlusu/işleyen ilişkisi, aydınlatma metni
-- **Veri taşınabilirliği:** "İstediğiniz an tüm verinizi Excel/CSV olarak indirirsiniz, ayrılırsanız veriniz sizindir."
-- Çalışma süresi (uptime) hedefi ve destek yanıt süreleri
+- Birincil CTA'yı başlık/alt başlık hizasında ve ilk ekranda görünür tut.
+- Hero yüksekliğini, dikey boşlukları ve madde metinlerini kısalt.
+- “14 gün ücretsiz deneyin” ana CTA olsun; “Etkileşimli ürün örneğini incele” ikincil kalsın.
+- CTA yanında şu üç itirazı tek satırda koru: “Kredi kartı yok · Kurulum ücreti yok · Satış görüşmesi beklemeden başla”.
+- ₺8.400 açık bakiye ve 35 dakikalık hazırlık süresi örneklerinden birini hero içinde görünür yap.
 
-**5b. Gerçek "Hakkımızda"**
-- Kurucu(lar), ekip, isim ve fotoğraf
-- Neden bu ürünü yaptığınız — sektör hikâyesi
-- Şirket unvanı, vergi dairesi/no, gerçek ofis bilgisi
+**Kabul kriteri:** 1280×720 masaüstünde başlık, kısa değer önerisi, ana CTA ve en az bir somut operasyon riski kaydırmadan görünür.
 
-**5c. En az bir gerçek referans**
-- İdeali: 40–50 araçlık bir firmanın vaka çalışması. "X firması, 45 araç, Girne. Önce/sonra: şu kadar boş gün, şu kadar tahsilat kaçağı."
-- Yoksa: pilot kullanıcıdan alınmış kısa bir alıntı + firma adı + kişi adı + fotoğraf.
-- Kullanım rakamı: "X firma, Y araç, Z rezervasyon Rent Okey ile yönetiliyor."
+## 2. Güvenlik, şirket ve müşteri kanıtı oluştur
 
-**Kabul kriteri:** Ziyaretçi "bunlar kim, verim güvende mi, benden önce kim kullanmış" sorularının üçüne de sitede cevap buluyor.
-
----
-
-# P1 — Önümüzdeki 2–4 Hafta
-
-## 6. Fiyatlandırma: ara basamak ve hesaplayıcı
-
-**Sorun:**
-- Büyüme paketi 30 araçta bitiyor (₺2.890), Profesyonel 31 araçta başlıyor (₺4.990). **Tek araç eklemek faturayı %73 artırıyor.** 31–45 araç aralığındaki firma kendini cezalandırılmış hissediyor.
-- Sitede "70 araçta araç başına ₺71" yazıyor. 40 araçlık firmanın gerçek maliyeti **araç başına ₺125**. Paketin en iyi göründüğü sayıyı yazmak güven kırıyor.
-- Büyüme paketindeki 5 kullanıcı sınırı 40 araçlık operasyona dar (ofiste 2, sahada 3–4).
-- KDV hariç fiyat veriliyor; 40 araç için gerçek maliyet **₺4.990 + KDV ≈ ₺5.988/ay, yıllık ≈ ₺71.000**.
+**Sorun:** Adres ve telefon var; fakat ekip, şirket unvanı, gerçek müşteri, kullanım rakamı ve vaka çalışması yok. Gizlilik politikası yalnızca şifreli bağlantı ve genel tedbirlerden söz ediyor. Kullanım şartları kesintisiz/hatasız hizmet garantisi vermediğini söylüyor; buna karşılık çalışma süresi hedefi açıklanmıyor.
 
 **Yapılacak:**
-- **Ara basamak ekle:** 31–50 araç için yeni bir kademe, ya da "30 araç üstü her araç için +₺X" modeli.
-- **Araç sayısı hesaplayıcısı:** kullanıcı araç sayısını girsin, kendi aylık tutarını ve araç başı maliyetini görsün (KDV dahil/hariç seçenekli).
-- **Geri dönüş (ROI) cümlesi** fiyatın yanına: *"Ayda ₺X, bir aracın 2 günlük kirası. Tek bir boş günü veya tek bir tahsilat kaçağını önlerse kendini öder."*
-- Kullanıcı sayısını paketten ayır: "ek kullanıcı +₺X/ay" seçeneği koy.
-- Paket geçişlerinde ne olduğunu netleştir (yıl ortası yükseltme, fark ödeme).
 
----
+### Güvenlik ve veri yönetimi sayfası
 
-## 7. "Önerilen odak" dilini sadeleştir
+- Verinin tutulduğu ülke ve altyapı sağlayıcısı
+- Aktarımda ve depoda şifreleme
+- Yedekleme sıklığı, saklama süresi ve geri yükleme süreci
+- 2FA durumu, rol/yetki yapısı ve aktivite geçmişi
+- Olay/ihlal bildirim yöntemi
+- Alt veri işleyenler ve KVKK rolleri
+- Hesap kapanınca veri saklama/silme süresi
+- Tüm veriyi CSV/Excel olarak dışarı alma yöntemi
+- Çalışma süresi hedefi ve destek yanıt süreleri
 
-**Sorun:** "Önerilen odak" terimi menüde, hero'da, footer'da ve bölüm başlığında geçiyor ama ne olduğu ilk okumada anlaşılmıyor. "Bağlamsal risk", "aynı çalışma düzeniyle ilerler", "operasyon ürünüdür" gibi ifadeler yazılım dili; hedef kitle bu dili konuşmuyor.
+### Şirket ve sosyal kanıt
 
-**Yapılacak:**
-- Terimi ilk geçtiği yerde **tek cümlelik somut karşılığıyla** açıkla: *"Önerilen odak = bugün ilk bakman gereken 3 iş."*
-- Soyut ifadeleri operasyon diline çevir:
-  - "bağlamsal riskler" → "takvimde görünmeyen sorunlar"
-  - "aynı veriyle ve aynı çalışma düzeniyle ilerler" → "herkes aynı ekrana bakar"
-  - "operasyon ürünüdür" → "günlük işinizi yürüten program"
-- Alternatif olarak terimi tamamen değiştirmeyi düşün: **"Bugünün İşleri"**, **"Günün Riskleri"** gibi.
+- Kurucu/ekip isimleri, fotoğrafları ve sektör hikâyesi
+- Şirketin tam ticari unvanı ve kurumsal iletişim bilgisi
+- En az bir doğrulanabilir müşteri yorumu veya pilot vaka çalışması
+- Varsa firma, araç ve işlenen rezervasyon sayıları
 
----
+**Kabul kriteri:** Kullanıcı “Bunlar kim?”, “Verim nerede ve nasıl korunuyor?”, “Sistem kesilirse ne olacak?” ve “Benden önce kim kullanmış?” sorularının cevabını satış görüşmesi yapmadan bulabiliyor.
 
-## 8. Hero'ya somut senaryo ve sayı taşı
+## 3. Veri taşıma ve ilk kurulum yükünü RentOkey üstlensin
 
-**Sorun:** Sitenin en güçlü, en ikna edici cümlesi sayfanın çok aşağısında: *"İade ile sonraki teslim arasında 35 dakika var — temizlik ve Girne → Ercan transferi için yeterli süre görünmüyor."* Bu cümle sahayı bilen birinin yazdığını kanıtlıyor. Ayrıca sitede hiçbir sonuç sayısı yok.
-
-**Yapılacak:**
-- Bu iki gerçek risk örneğini (₺8.400 açık bakiye / 35 dakikalık dar geçiş) **hero'nun hemen altına** taşı.
-- En az bir ölçülebilir vaat ekle: "günde ~X saat", "boş gün oranında %X", "kaçan tahsilatta %X azalma". Elinizde pilot verisi yoksa dürüst bir hesap gösterin.
-- Hero alt başlığını kısalt — şu an iki cümle ve ikinci cümle teknik.
-
----
-
-## 9. Deneme süresi ve başlangıç anı
-
-**Sorun:** 14 gün, aylık kiralamaları ve sezonu olan bir firmanın karar döngüsüne kısa. Üstelik ilk günler veri girişiyle geçiyor, gerçek deneme süresi fiilen 7–8 güne düşüyor.
+**Sorun:** Kayıt formu kısa; asıl sürtünme kayıt sonrasında başlıyor. Site CSV aktarımı vaat ediyor ama indirilebilir şablon, kolon örneği ve çalışan kılavuz yok. Kılavuzlar sayfasındaki veri aktarma içeriği “Çok yakında”. Kurulum/veri aktarım desteği ise paket anlatımında yalnızca Kurumsal için açıkça yazılmış.
 
 **Yapılacak:**
-- Ya süreyi **30 güne** çıkar, ya da **"veri kurulumu tamamlandıktan sonra 14 gün"** olarak tanımla ve bunu sitede net yaz.
-- Denemeyi bir insan desteğiyle sar: 15 dakikalık kurulum görüşmesi teklifi (opsiyonel, zorunlu değil — kullanıcı satış görüşmesi istemiyor).
-- Deneme bitimine yakın ne olacağını yaz: "Otomatik ödeme alınmaz, veriniz X gün saklanır."
 
----
+- En az Büyüme ve Profesyonel pakete “ilk filo kurulumu ve veri aktarım desteği” ekle.
+- Araç, rezervasyon, müşteri, gider ve bakım için indirilebilir CSV/Excel şablonları yayınla.
+- “Excel'inizi gönderin, uygun hale getirip ilk filonuzu birlikte kuralım” seçeneği sun.
+- Güvenli dosya yükleme süreci ile hangi verinin kim tarafından görüleceğini açıkla.
+- Deneme süresini veri aktarımı tamamlandığında başlat veya kurulum günlerini deneme dışında tut.
+- İlk girişte örnek veriyle gezme ve kendi verisini yükleme seçeneklerini ayır.
 
-## 10. Boş Blog ve Kılavuzlar sayfaları
+**Kabul kriteri:** 40 araçlık müşteri, kayıt olmadan önce verisini kimin, nasıl ve kaç iş gününde taşıyacağını bilir.
 
-**Sorun:** Blog'da 4, Kılavuzlar'da 6 başlık var — hepsi "Çok yakında". Boş sayfa göstermek, sayfayı hiç göstermemekten kötü: ürünün yeni olduğunu ve kimsenin kullanmadığını ima ediyor.
+## 4. 40 araç için fiyatı ve paket geçişini dürüst göster
+
+**Sorun:** 40 araçlık firma Profesyonel pakete giriyor:
+
+- Aylık: **₺4.990 + KDV**
+- Aylık plan 12 ay kullanılırsa: **₺59.880 + KDV**
+- Yıllık plan: ay karşılığı **₺3.990 + KDV**
+- Yıllık plan toplamı: **₺47.880 + KDV**
+- 40 araçta gerçek araç başı maliyet: aylık planda **₺124,75**, yıllık planda **₺99,75** + KDV
+
+Kartta gösterilen “70 araçta araç başı yaklaşık ₺71/₺57” rakamı paketin üst sınırına göre hesaplanıyor ve 40 araçlık müşterinin maliyetini olduğundan düşük hissettiriyor. Ayrıca 30'dan 31 araca geçiş aylık fiyatı ₺2.890'dan ₺4.990'a çıkarıyor.
 
 **Yapılacak:**
-- Ya menüden ve footer'dan **geçici olarak kaldır**,
-- Ya da her birine **en az 2–3 gerçek içerik** yayınla. Öncelik sırası:
-  1. "Hızlı başlangıç: hesabınızı kurun" (zaten ürün dokümantasyonu, yazması kolay)
-  2. "Verilerinizi Excel'den Rent Okey'e taşıma" (satışı doğrudan destekler)
-  3. "40 araçlık bir filoda boş gün maliyeti nasıl hesaplanır" (SEO + ikna)
-- Kılavuzlar için "8 dk" gibi okuma süresi etiketlerini içerik yayınlanana kadar gösterme.
 
----
+- Araç sayısı girilen fiyat hesaplayıcısı ekle.
+- Kullanıcının kendi araç sayısına göre aylık toplamı ve araç başı maliyeti göster.
+- 31–50 araç için ara kademe veya araç başına artan fiyat modeli değerlendir.
+- Kullanıcı ve şube ek paketlerini ayrı fiyatlandırmayı değerlendir.
+- KDV dahil/hariç görünümü ve aylık/yıllık toplamı açık etiketle.
+- Paket yükseltme, yıl ortası fark ödeme, iptal ve iade kurallarını açıkla.
+- ROI cümlesini abartısız ve hesaplanabilir yaz: “Tek bir boş gün veya tahsilat kaçağı önlendiğinde aylık bedelin ne kadarı karşılanır?”
 
-## 11. Entegrasyon sayfası
+**Kabul kriteri:** 40 yazan kullanıcı kendi gerçek tutarını görür; 70 araç üzerinden hesaplanmış birim fiyatı zihninden düzeltmek zorunda kalmaz.
 
-**Sorun:** Tüm sitede entegrasyon yalnızca Kurumsal pakette "özel entegrasyon ve API erişimi" olarak geçiyor. Hedef kitlenin günlük hayatında olmazsa olmaz entegrasyonlar hiç anılmıyor. Bunlar yoksa sistem "güzel bir takvim" olarak kalır ve kullanıcı yine 4 ayrı yerde çalışır — yani sitenin vaat ettiğinin tersi.
+## 5. Entegrasyon ve API durumunu açıkça göster
 
-**Yapılacak — bir "Entegrasyonlar" sayfası aç ve her biri için "var / yol haritasında / yok" durumunu net yaz:**
+**Sorun:** Özel entegrasyon ve API erişimi yalnızca 71+ Kurumsal pakette listeleniyor. Oysa 40 araçlık işletmenin entegrasyon ihtiyacı araç sayısından bağımsızdır. Entegrasyonlar açıklanmadığında ürün, “tek operasyon merkezi” vaadine rağmen yeni bir veri adasına dönüşebilir.
 
-| Entegrasyon | Neden kritik |
+**Yapılacak:**
+
+- Ayrı bir “Entegrasyonlar” sayfası aç.
+- Her başlık için **Mevcut / Geliştiriliyor / Planlanıyor / Yok** durumunu dürüstçe göster.
+- API erişimini 31–70 araç paketinde ücretli eklenti veya sınırlı erişim olarak sunmayı değerlendir.
+- Şu alanları açıkça cevapla:
+
+| Alan | Sorulacak net soru |
 |---|---|
-| **Trafik cezası + HGS/OGS takibi** | Sektördeki en büyük para kaçağı. Sitede hiç geçmiyor. |
-| **e-Fatura / muhasebe** (Paraşüt, Logo, Mikro, Nebim) | Faturayı ikinci kez elle kesmek istemiyorlar. |
-| **Sanal POS / ön provizyon (depozito bloke)** | Depozito yönetimi olmadan finans modülü eksik kalır. |
-| **Araç takip / GPS** | Aracın nerede olduğu operasyonun merkezi. |
-| **Online rezervasyon kanalları** (kendi sitesi, acenteler, pazaryerleri) | Rezervasyonun elle girilmesi en büyük tekrar eden iş. |
-| **Sözleşme / e-imza + kimlik-ehliyet okuma** | Teslim süresini dakikalarca kısaltır. |
-| **SMS / WhatsApp bildirimi** | Müşteriye hatırlatma, iade bildirimi. |
+| e-Fatura/muhasebe | Paraşüt, Logo, Mikro vb. ile veri tekrar giriliyor mu? |
+| Ödeme/POS | Tahsilat, depozito ve ön provizyon nasıl işleniyor? |
+| GPS/araç takip | Aracın konumu veya kilometresi alınabiliyor mu? |
+| Ceza ve HGS | Ceza/geçiş gideri kiralamayla eşleştirilebiliyor mu? |
+| Rezervasyon kanalları | Web sitesi, acente veya pazaryerinden kayıt alınabiliyor mu? |
+| Sözleşme/e-imza | Kimlik, ehliyet ve sözleşme süreci nasıl ilerliyor? |
+| SMS/WhatsApp | Teslim/iade hatırlatmaları gönderilebiliyor mu? |
 
-**Not:** Yol haritasında "fotoğraflı hasar karşılaştırması" ve "akıllı fiyat önerisi" var. Bunlar değerli ama hedef kitle için **ceza takibi ve e-fatura entegrasyonu daha önce gelir.** Yol haritası sıralamasını gözden geçir.
+**Kabul kriteri:** 40 araçlık müşteri, satın almadan önce hangi sistemlerle elle veri taşıyacağını ve API alıp alamayacağını bilir.
 
----
+## 6. İletişim formunu çalıştır ve hızlı destek kanalı ekle
 
-# P2 — Ürün ve Yapı Kararları
-
-## 12. Fotoğraflı teslim/iade ve hasar kaydını Büyüme paketine indir
-
-**Sorun:** "Fotoğraflı teslim, iade ve hasar kaydı" yalnızca Profesyonel (₺4.990) pakette. Halbuki hasar tutanağı 10 araçlık firmanın da her gün yaşadığı, en çok ihtiyaç duyulan işlev. En kritik özelliği en pahalı pakete koymak, küçük paketleri "eksik ürün" gibi gösteriyor ve deneme sırasında en çarpıcı anı yaşatmıyor.
-
-**Yapılacak:** En azından temel fotoğraflı teslim/iade kaydını Başlangıç veya Büyüme paketine indir; **karşılaştırmalı hasar analizi** üst pakette kalsın.
-
----
-
-## 13. Mobil uygulama görünürlüğü
-
-**Sorun:** Site "masaüstü, tablet ve mobil" diyor ve Kılavuzlar'da "Mobil saha uygulamasını sahada kullanmak" başlığı var — ama uygulamanın olup olmadığı, mağaza linkleri, ekran görüntüleri yok. Saha ekibi için bu belirleyici bir soru.
+**Sorun:** İletişim formu mesajı göndermek yerine kullanıcının e-posta uygulamasında taslak açıyor. Tarayıcı tabanlı e-posta kullananlarda bu akış bozulabilir. Ayrıca geri dönüş süresi belirtilmiyor.
 
 **Yapılacak:**
-- Uygulama varsa App Store / Google Play rozetleri ve mobil ekran görüntüleri.
-- Web uygulaması olarak çalışıyorsa bunu açıkça yaz ("telefon tarayıcısında çalışır, uygulama indirmeye gerek yok") — belirsizlik bırakma.
-- Sahada internet yoksa ne oluyor? Çevrimdışı çalışma durumunu yaz.
+
+- Formu gerçek bir sunucu uç noktasına bağla.
+- Sayfa içinde başarı/hata durumu göster.
+- Talebi e-posta ve basit CRM kaydına düşür.
+- “En geç X iş saati içinde dönüş” taahhüdü ekle.
+- WhatsApp butonu veya canlı yazışma seçeneği ekle; çalışma saatlerini göster.
+- İletişim kanalını satış görüşmesi zorunluluğuna dönüştürme; ücretsiz kayıt bağımsız kalsın.
+
+**Kabul kriteri:** Kullanıcı e-posta uygulaması açmadan talep gönderir ve ne zaman cevap alacağını görür.
 
 ---
 
-## 14. Küçük ama biriken güven sinyalleri
+# P1 — Sonraki 2–4 Hafta
 
-- **Telefon numarası:** Maslak adresiyle 0541 ile başlayan cep numarası yan yana durunca tutarsız görünüyor. Sabit numara veya kurumsal santral ekle.
-- **SSS cevapları:** 12 soru var, cevapları açılır panellerin arkasında. En kritik 3–4 sorunun (deneme sonunda ödeme alınır mı, verilerimi geri alabilir miyim, paket değiştirebilir miyim) cevabını **açık halde** göster.
-- **Sık sorulanlara ekle:** "Sistemden çıkarsam verilerim ne olur?", "Kaç kişi destek veriyor, ne kadar sürede dönüyorsunuz?", "İnternet kesilirse ne olur?"
-- **Fiyatta KDV:** "Fiyatlara KDV dahil değildir" notu çok küçük; KDV dahil tutarı da göster.
-- **Sözleşme süresi:** Yıllık ödemede taahhüt var mı? İstediğim ay iptal edebilir miyim? Sitede yazmıyor.
-- **Yol haritası uyarı notu:** "Kapsam ve yayın sırası değişebilir" ifadesi dürüst ama tarih vermemek belirsizlik bırakıyor. En azından çeyrek bazında hedef ver.
+## 7. Etkileşimli demoyu doğru adlandır ve gerçek ürün kanıtıyla güçlendir
+
+**Doğru olan:** Ana sayfadaki “Bugünkü operasyon / Planlama / Önerilen odak” sekmeleri çalışıyor ve örnek veriler değişiyor. Bu korunmalı.
+
+**Eksik olan:** Kullanıcı bunun gerçek uygulamadan alınmış bir akış mı yoksa site için hazırlanmış temsili bir arayüz mü olduğunu anlayamıyor.
+
+**Yapılacak:**
+
+- Mevcut alan temsiliyse “Etkileşimli ürün örneği” olarak adlandır.
+- Gerçek ürünse “Gerçek ürün ekranı · örnek veriler” ibaresi ekle.
+- 60–90 saniyelik gerçek ekran kaydı yayınla: sabah kuyruğu, araç atama, teslim/iade, tahsilat riski.
+- Beş ana modül için gerçek ekran görüntüleri ekle.
+- Mümkünse kayıt gerektirmeyen, salt okunur sandbox sun.
+
+## 8. Deneme süresini kurulum ve destekle ilişkilendir
+
+- 14 günü veri kurulumu tamamlandığında başlat veya 30 günlük deneme seçeneğini test et.
+- İlk girişte yapılacakları üç net iş olarak göster: araçları yükle, ilk rezervasyonu ekle, ekibi davet et.
+- İsteğe bağlı 15 dakikalık kurulum görüşmesi sun; zorunlu satış görüşmesi yapma.
+- Deneme sonunda otomatik ödeme alınmadığını, verinin kaç gün tutulduğunu ve nasıl dışarı alınacağını kayıt sayfasında göster.
+- “Temel/öncelikli destek” ifadelerini kanal ve yanıt süresiyle tanımla.
+
+## 9. Boş Blog ve Kılavuzlar görünümünü kaldır
+
+**Sorun:** Blog'daki dört ve Kılavuzlar'daki altı başlığın tamamı “Çok yakında”. Bu, ürünün henüz hazır olmadığı izlenimini veriyor.
+
+**Yapılacak:**
+
+- İçerik hazır olana kadar bağlantıları navigasyondan kaldır; veya
+- Önce şu üç içeriği gerçekten yayınla:
+  1. 5 dakikada ilk kurulum
+  2. Excel/CSV ile veri taşıma
+  3. Mobil teslim ve iade akışı
+- Yayınlanmamış içeriğe sahte okuma süresi gösterme.
+
+## 10. “Önerilen odak” ve soyut ürün dilini sadeleştir
+
+- İlk kullanımda açıkla: **“Önerilen odak: bugün önce çözmeniz gereken işler.”**
+- “Bağlamsal risk” yerine “takvimde görünmeyen sorun” de.
+- “Aynı veriyle ve aynı çalışma düzeniyle ilerler” yerine “herkes aynı ekrana bakar” de.
+- “Operasyon ürünüdür” yerine “günlük işinizi yürüttüğünüz program” de.
+- Aynı vaadi tekrarlayan uzun bölümleri kısalt.
+
+## 11. Mobil kullanımın biçimini ve saha sınırlarını netleştir
+
+- Native uygulama varsa mağaza linklerini ve gerçek mobil ekranları göster.
+- Mobil web/PWA ise “telefon tarayıcısında çalışır, kurulum gerekmez” diye açıkça yaz.
+- Çevrimdışı kullanım, fotoğraf yükleme, konum, imza ve zayıf bağlantı davranışını açıkla.
+- “Mobil saha uygulaması” ifadesini ürünün gerçek biçimiyle tutarlı kullan.
+
+## 12. SSS, yasal metin ve destek taahhütlerini tamamla
+
+Şu sorulara açık cevap ekle:
+
+- Sistemden ayrılırsam verilerimi hangi formatta alırım?
+- Veriler hesap kapanınca kaç gün tutulur?
+- İnternet veya sistem kesilirse saha ekibi ne yapar?
+- Yedekten geri dönüş süresi nedir?
+- Aylık ve yıllık plan nasıl iptal edilir?
+- Yıllık ödemede iade veya paket yükseltme nasıl hesaplanır?
+- Destek hangi saatlerde, hangi kanalda ve kaç saatte cevap verir?
+- 2FA var mı?
+
+Kritik üç cevabı açılır panel arkasında saklamadan fiyatlandırma/kayıt yanında da göster.
 
 ---
 
-# Doğru Yapılmış Olanlar (bozmayın)
+# P2 — Ürün ve Paket Kararları
 
-Bu maddeler rakiplere göre gerçek üstünlük sağlıyor:
+## 13. Fotoğraflı teslim/iadeyi daha alt pakete indir
 
-- **"Operasyonu yönetin. Yoğunluğu değil."** — Hedef kitlenin derdini bilen bir başlık.
-- **Kayıt akışı:** Tek adım, ad-soyad + e-posta + şifre, kredi kartı yok, satış görüşmesi beklemek yok. Tam olarak istenen şey.
-- **"Demo izlemeyin. Kendi filonuzla deneyin."** — Güçlü ve farklılaştırıcı bir vaat.
-- **"WhatsApp mesajları, tablolar, notlar ve ayrı takvimler" karşılaştırması** — Hedef kitlenin masasının birebir fotoğrafı.
-- **Türkiye + KKTC odağı, ₺ fiyatlandırma, belge süreleri (kasko, muayene, egzoz)** — Yerel bilgiyi kanıtlıyor, global rakiplerde yok.
-- **Havalimanı / otel / adrese teslim** ayrımı — sahayı bilen bir detay.
+Temel fotoğraflı teslim, iade ve hasar kaydı küçük filolar için de günlük ihtiyaçtır. Temel kayıt Büyüme paketine indirilebilir; otomatik/karşılaştırmalı hasar analizi Profesyonel veya Kurumsal eklentisi olarak kalabilir.
+
+## 14. Yol haritasını günlük para ve zaman kaybına göre sırala
+
+Fotoğraflı hasar karşılaştırması ve akıllı fiyat önerisi değerlidir; ancak e-fatura, tahsilat/depozito, ceza-HGS, sözleşme/e-imza ve rezervasyon kanalı bağlantıları 40 araçlık işletmenin günlük tekrarını daha doğrudan azaltabilir. Yol haritası müşteri görüşmeleriyle bu sıraya göre yeniden doğrulanmalı; mümkünse çeyrek bazında hedef verilmelidir.
+
+## 15. Ölçülebilir sonuç ve vaka çalışmaları üret
+
+- 30–50 araçlık en az bir pilot müşteri seç.
+- Önce/sonra şu göstergeleri ölç: boşta kalma günü, geciken teslim, eksik tahsilat, araç atama süresi, bakım gecikmesi.
+- Sonucu müşteri adı, filo büyüklüğü ve gerçek ekranlarla vaka çalışmasına dönüştür.
+- Kanıtlanmamış yüzde vaatleri kullanma; ölçüm yoksa örnek maliyet hesabı göster.
 
 ---
 
-# Sonuç
+## Doğru Yapılmış Olanlar — Korunmalı
 
-Ürünün fikri doğru; sahayı bilen biri kurmuş, bu metinlerden belli. Sorun ürünün kendisi değil, **siteden bunun anlaşılamaması** ve **güven için tutunacak hiçbir dal olmaması.**
+- **“Operasyonu yönetin. Yoğunluğu değil.”** hedef kitlenin derdini doğru yakalıyor.
+- Etkileşimli üç sekmeli ürün örneği, yalnız metin anlatımından daha güçlü.
+- Açık bakiye, araçsız rezervasyon ve 35 dakikalık hazırlık süresi örnekleri sahayı bildiğinizi gösteriyor.
+- Kayıt akışı kısa: ad, e-posta, şifre; kredi kartı ve satış görüşmesi zorunluluğu yok.
+- “Demo izlemeyin. Kendi filonuzla deneyin.” güçlü bir vaat.
+- Türkiye + KKTC odağı, TRY fiyatlandırma, belge süreleri ve teslim noktaları yerel ihtiyaca uyuyor.
+- Paketlerde kullanıcı/şube limitleri ve özellik karşılaştırma tablosu görünür.
+- Aylık/yıllık fiyat seçimi ve yıllık toplamın gösterilmesi doğru yönde.
 
-En yüksek getirili üç hamle:
-1. Gerçek ekran görüntüleri ve demo videosu (ürünü göster)
-2. Veri aktarımını satıcının işi yap (denemeyi gerçekten başlat)
-3. Güvenlik/KVKK sayfası + gerçek bir referans (güveni kur)
+---
+
+## Uygulama Sırası
+
+İlk sprintte sıralama şöyle olmalı:
+
+1. CTA'yı ilk ekrana al.
+2. Fiyat hesaplamasını 40 araç için dürüstleştir.
+3. Güvenlik/veri yönetimi sayfasını tamamla.
+4. CSV şablonları ve kurulum desteğini yayınla.
+5. Entegrasyon/API durum tablosunu yayınla.
+6. İletişim formunu gerçekten çalıştır.
+
+Bu altı iş tamamlanmadan daha fazla pazarlama metni veya yeni “çok yakında” içerik eklemek dönüşüm sorununu çözmez.
