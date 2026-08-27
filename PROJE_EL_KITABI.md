@@ -254,7 +254,7 @@ Ana dönüşüm yolu:
 
 İkincil dönüşüm yolu:
 
-`Fiyatlandırma / SSS / İletişim` → konu ve firma bilgileriyle e-posta taslağı → `hello@rentokey.com`
+`Fiyatlandırma / SSS / İletişim` → iletişim formu → `app.rentokey.com/api/iletisim-formu-gonder` → Rent Okey ekibine gerçek talep
 
 ### SSS bilgi mimarisi
 
@@ -327,7 +327,17 @@ Henüz gerçek checkout, kart saklama, abonelik başlatma, faturalandırma veya 
 
 ### İletişim formu
 
-`ContactForm` bir başarı mesajı göstermez ve sahte gönderim yapmaz. Girilen bilgilerle kullanıcının e-posta uygulamasında `hello@rentokey.com` adresine hazır bir taslak açar. Gerçek form gönderimi istenirse API route, e-posta servisi veya CRM bağlantısı kurulmalıdır.
+`ContactForm`, `POST https://app.rentokey.com/api/iletisim-formu-gonder` endpoint'ine JSON gönderir. Konu, ad/soyad, e-posta, firma, telefon, filo büyüklüğü, mesaj ve boş kalması gereken `website` honeypot alanı API sözleşmesiyle birebir eşleşir.
+
+- Buton normal durumda “Mesajı gönder”, istek sürerken “Gönderiliyor…” gösterir.
+- Başarılı yanıttan sonra form temizlenir ve “Mesajınızı aldık. En kısa sürede sizinle iletişime geçeceğiz.” mesajı gösterilir.
+- `400` yanıtında API'nin döndürdüğü `field` alanı varsa ilgili forma odaklanılır.
+- `429` için kullanıcıya özel hız sınırı mesajı gösterilir.
+- Diğer hatalarda girilen bilgiler korunur ve yeniden deneme mümkündür.
+- Form altında Gizlilik/KVKK metnine bağlantı bulunur.
+- Eski `mailto:` ve “E-posta taslağını aç” davranışı kaldırılmıştır.
+
+Canlı API yalnız `https://rentokey.com` ve `https://www.rentokey.com` origin'lerini kabul eder. Bu nedenle gerçek gönderim testi üretim alan adında yapılmalıdır; localhost veya Vercel önizleme alan adından başarılı gönderim beklenmez.
 
 ## 10. Aktif rotalar ve içerik durumu
 
