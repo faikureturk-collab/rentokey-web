@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, HelpCircle, Mail } from "lucide-react";
-import FaqAccordion from "../FaqAccordion";
-import { faqItems } from "@/lib/faq";
+import FaqGroupTabs from "./FaqGroupTabs";
 
 export default function FaqSection() {
   return (
@@ -10,7 +9,7 @@ export default function FaqSection() {
         <div className="lg:sticky lg:top-28 lg:h-fit">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand-blue/10 px-4 py-1.5 text-sm font-semibold text-brand-blue"><HelpCircle className="h-4 w-4" /> Sıkça sorulan sorular</span>
           <h2 className="mt-5 text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-navy sm:text-4xl">Karar vermeden önce bilmek isteyecekleriniz.</h2>
-          <p className="mt-5 text-[15px] leading-relaxed text-brand-navy/55">Deneme süreci, paket limitleri ve günlük kullanım hakkında en sık karşılaştığımız sorular.</p>
+          <p className="mt-5 text-[15px] leading-relaxed text-brand-navy/55">Deneme süreci, günlük kullanım, veri güvenliği ve destek hakkında en sık karşılaştığımız sorular.</p>
 
           <div className="mt-7 rounded-2xl bg-surface-soft p-5">
             <Mail className="h-5 w-5 text-brand-green" />
@@ -20,7 +19,7 @@ export default function FaqSection() {
           </div>
         </div>
 
-        <FaqAccordion items={faqItems} columns={false} />
+        <FaqGroupTabs />
       </div>
     </section>
   );

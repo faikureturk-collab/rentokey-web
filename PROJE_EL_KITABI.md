@@ -256,6 +256,16 @@ Ana dönüşüm yolu:
 
 `Fiyatlandırma / SSS / İletişim` → konu ve firma bilgileriyle e-posta taslağı → `hello@rentokey.com`
 
+### SSS bilgi mimarisi
+
+SSS tek uzun liste değildir; `src/lib/faq.ts` içinde üç kategori altında tutulur:
+
+1. Deneme ve paketler
+2. Ürün ve günlük kullanım
+3. Veri güvenliği ve destek
+
+`FaqGroupTabs` masaüstünde üçlü, mobilde yana kaydırılabilir kategori seçimi sunar ve yalnızca seçilen grubun sorularını gösterir. Veri güvenliği cevapları; AWS İrlanda (`eu-west-1`) veri konumu, HTTPS/TLS ve depolama seviyesi şifreleme, günlük ve 7 gün saklanan veritabanı yedekleri, firma hesabı ayrımı, aktivite geçmişi, Excel dışa aktarma ve doğrulanmış destek saatlerini içerir. Sistem belge dosyası saklamadığı için dosya yedekleme vaadi bulunmaz.
+
 ## 8. Paketler için tek doğru kaynak
 
 Paket verilerinin ana kaynağı `src/lib/pricing.ts` dosyasıdır. Metin veya fiyat güncellenirken kartlar, karşılaştırma tablosu ve SSS birlikte kontrol edilmelidir.
@@ -395,7 +405,7 @@ Aşağıdaki vaatler canlı üründe yeniden doğrulanmadan aktif satış metnin
 
 - Çevrimdışı çalışma ve otomatik senkronizasyon
 - Dijital imza
-- Düzenli yedekleme veya belirli şifreleme mimarisi
+- SSS'de doğrulanan HTTPS/TLS, depolama şifrelemesi, günlük veritabanı yedekleme ve 7 günlük saklama kapsamının ötesindeki ek güvenlik veya yedekleme vaatleri
 - Tam otomatik karar veren yapay zekâ
 - Kesin zaman kazancı, gelir artışı veya gecikme azaltma yüzdesi
 
@@ -417,6 +427,7 @@ Aşağıdaki vaatler canlı üründe yeniden doğrulanmadan aktif satış metnin
 - Header/footer navigasyonu: `src/lib/nav.ts`
 - Paketlerin ana kaynağı: `src/lib/pricing.ts`
 - SSS ana kaynağı: `src/lib/faq.ts`
+- SSS kategori seçimi: `src/components/home/FaqGroupTabs.tsx`
 - Hero ürün demosu: `src/components/DashboardMock.tsx`
 - Beş modüllü ürün anlatımı: `src/components/home/UrunTabs.tsx`
 - Önerilen odak anlatımı: `src/components/home/FocusSection.tsx`
