@@ -222,17 +222,17 @@ function DesktopToday() {
 
         <div className="rounded-xl bg-brand-navy p-3.5 text-white">
           <div className="flex items-center justify-between">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-green/15 text-brand-green"><Sparkles className="h-4 w-4" /></span>
-            <span className="rounded-full bg-white/10 px-2 py-1 text-[8px] font-bold text-white/55">ÖNERİLEN ODAK</span>
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-400/15 text-amber-300"><Clock3 className="h-4 w-4" /></span>
+            <span className="rounded-full bg-amber-400/15 px-2 py-1 text-[8px] font-bold text-amber-300">ÖNERİLEN ODAK</span>
           </div>
-          <p className="mt-4 text-xs font-extrabold">Aracı şimdiden atayın</p>
-          <p className="mt-1.5 text-[9px] leading-relaxed text-white/50">Teslim yaklaşıyor; rezervasyonda henüz araç bulunmuyor.</p>
-          <div className="mt-4 rounded-lg border border-white/10 bg-white/5 p-2.5">
-            <p className="text-[8px] text-white/40">Uygun araç önerisi</p>
-            <p className="mt-1 text-[10px] font-bold">34 ROK 311 · Corolla</p>
+          <p className="mt-4 text-[9px] font-bold uppercase tracking-[0.11em] text-amber-300">Hazırlık süresi yetersiz</p>
+          <p className="mt-1.5 text-xs font-extrabold leading-snug">İki rezervasyon arasında yalnızca 35 dakika var</p>
+          <div className="mt-3 rounded-lg border border-white/10 bg-white/5 p-2.5">
+            <p className="text-[8px] text-white/40">Temizlik + lokasyon transferi</p>
+            <p className="mt-1 text-[10px] font-bold">Girne → Lefkoşa</p>
           </div>
           <button type="button" className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-lg bg-brand-green py-2.5 text-[9px] font-bold text-white">
-            <CarFront className="h-3.5 w-3.5" /> Öneriyi ata
+            <Clock3 className="h-3.5 w-3.5" /> Planı düzenle
           </button>
         </div>
       </div>

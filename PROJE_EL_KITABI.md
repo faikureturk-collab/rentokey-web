@@ -179,6 +179,8 @@ Demo sekmeleri:
 
 Masaüstü ve mobil sahneler aynı iş mantığını farklı yerleşimlerle anlatır. Mobilde zaman çizelgesi küçültülmez; tarih ve hızlı aksiyon akışına dönüşür.
 
+Hero dönüşüm hiyerarşisi 1280×720 görünümünde ana aksiyonu kaydırmadan gösterecek biçimde kuruludur. Birincil CTA kısa açıklamanın hemen altında **14 gün ücretsiz deneyin**, ikincil CTA **Etkileşimli ürün örneğini incele** metnini taşır. CTA grubunun altında “Kredi kartı yok · Kurulum ücreti yok · Satış görüşmesi beklemeden başla” güven satırı bulunur. Varsayılan Bugünkü operasyon sahnesi, önerilen odak özelliğini ayrıca sekme değiştirmeyi gerektirmeden 35 dakikalık hazırlık ve transfer riskiyle görünür kılar.
+
 ### Aşama 4 — Ürün vaadinin sadeleştirilmesi
 
 Site “çok özellik” anlatımından “daha az operasyon yükü” anlatımına taşındı. Ana mesajlar:
@@ -504,6 +506,7 @@ Yeni çalışmaya şu sırayla başla:
 ## 18. Karar özeti — korunması gerekenler
 
 - Hero’da ekran görüntüsü değil kod tabanlı interaktif demo kullan.
+- Hero’nun birincil CTA’sını 1280×720 masaüstü görünümünde kaydırmadan erişilebilir tut.
 - Siteyi özellik deposuna çevirmeden operasyon sonucu anlat.
 - Önerilen odağı ürünün ana farklılaştırıcısı olarak koru.
 - 14 günlük denemeyi hızlı, kredi kartsız ve otomatik ödemesiz anlat.

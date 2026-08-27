@@ -1,55 +1,50 @@
-import { CheckCircle2, MousePointer2 } from "lucide-react";
+import { MousePointer2 } from "lucide-react";
 import Button from "../Button";
 import DashboardMock from "../DashboardMock";
 
-const bullets = [
-  "Bugünün teslim, iade ve risklerini önceliklendirir",
-  "Ödenmemiş bakiye ve yetersiz hazırlık süresi gibi saklı riskleri öne çıkarır",
-  "Rezervasyon, araç planı ve saha ekibini aynı akışta buluşturur",
+const trustItems = [
+  "Kredi kartı yok",
+  "Kurulum ücreti yok",
+  "Satış görüşmesi beklemeden başla",
 ];
 
 export default function Hero() {
   return (
-    <section className="overflow-hidden bg-[radial-gradient(circle_at_78%_28%,rgba(24,184,120,0.11),transparent_36%)] py-12 sm:py-20">
-      <div className="mx-auto grid w-full max-w-[1320px] items-center gap-12 px-5 lg:grid-cols-[0.76fr_1.24fr] lg:gap-10 xl:gap-14">
+    <section className="overflow-hidden bg-[radial-gradient(circle_at_78%_28%,rgba(24,184,120,0.11),transparent_36%)] py-8 sm:py-10 lg:py-8">
+      <div className="mx-auto grid w-full max-w-[1320px] items-center gap-9 px-5 lg:grid-cols-[0.84fr_1.16fr] lg:gap-9 xl:gap-12">
         <div className="max-w-[590px]">
           <span className="inline-flex items-center gap-2 rounded-full border border-brand-green/25 bg-brand-green/5 px-4 py-1.5 text-sm font-semibold text-brand-green-dark">
             <i className="h-2 w-2 rounded-full bg-brand-green" />
             Türkiye ve KKTC için araç kiralama programı
           </span>
 
-          <h1 className="mt-6 text-4xl font-extrabold leading-[1.04] tracking-[-0.045em] text-brand-navy sm:text-5xl xl:text-[56px]">
+          <h1 className="mt-5 text-4xl font-extrabold leading-[1.04] tracking-[-0.045em] text-brand-navy sm:text-5xl xl:text-[54px]">
             <span className="sm:block">Operasyonu yönetin. </span>
             <span className="text-brand-green sm:block">Yoğunluğu değil.</span>
           </h1>
 
-          <p className="mt-5 text-base leading-relaxed text-brand-navy/55 sm:text-[17px]">
-            Rent Okey, Türkiye ve KKTC için geliştirilen araç kiralama operasyon yazılımıdır. Ekibinizin bugün ne yapacağını ve hangi aracın ne zaman uygun olduğunu tek ekranda gösterir.
+          <p className="mt-4 text-base leading-relaxed text-brand-navy/55 sm:text-[16px]">
+            Türkiye ve KKTC&apos;de teslim, iade ve araç planını tek ekranda yönetin; ödenmemiş
+            bakiye ve yetersiz hazırlık süresi gibi riskleri gecikmeden görün.
           </p>
 
-          <ul className="mt-7 space-y-3">
-            {bullets.map((bullet) => (
-              <li key={bullet} className="flex items-start gap-3">
-                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-green" strokeWidth={2} />
-                <span className="text-sm leading-relaxed text-brand-navy/75 sm:text-[15px]">{bullet}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button href="/ucretsiz-dene" size="lg" icon>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-stretch">
+            <Button href="/ucretsiz-dene" size="lg" icon className="w-full sm:w-auto lg:w-full">
               14 gün ücretsiz deneyin
             </Button>
-            <Button href="#hero-demo" variant="secondary" size="lg">
-              Canlı demoyu incele
+            <Button href="#hero-demo" variant="secondary" size="lg" className="w-full sm:w-auto lg:w-full">
+              Etkileşimli ürün örneğini incele
               <MousePointer2 className="h-4 w-4" />
             </Button>
           </div>
 
-          <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs font-medium text-brand-navy/50">
-            <span>✓ Kredi kartı gerekmez</span>
-            <span>✓ Kurulum ücreti yok</span>
-            <span>✓ Kendi filonuzla deneyin</span>
+          <div className="mt-4 flex flex-wrap gap-x-3 gap-y-1 text-[11px] font-semibold text-brand-navy/48 sm:text-xs">
+            {trustItems.map((item, index) => (
+              <span key={item} className="inline-flex items-center gap-3">
+                {index > 0 && <i aria-hidden="true">·</i>}
+                {item}
+              </span>
+            ))}
           </div>
         </div>
 
