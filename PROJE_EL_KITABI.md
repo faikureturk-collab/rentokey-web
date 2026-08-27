@@ -327,7 +327,7 @@ Henüz gerçek checkout, kart saklama, abonelik başlatma, faturalandırma veya 
 
 ### İletişim formu
 
-`ContactForm`, `POST https://app.rentokey.com/api/iletisim-formu-gonder` endpoint'ine JSON gönderir. Konu, ad/soyad, e-posta, firma, telefon, filo büyüklüğü, mesaj ve boş kalması gereken `website` honeypot alanı API sözleşmesiyle birebir eşleşir.
+`ContactForm`, `POST https://app.rentokey.com/api/iletisim-formu-gonder` endpoint'ine JSON gönderir. Konu, ad/soyad, e-posta, firma, telefon, filo büyüklüğü, mesaj, boş kalması gereken `website` honeypot alanı ve `turnstileToken` API sözleşmesiyle birebir eşleşir.
 
 - Buton normal durumda “Mesajı gönder”, istek sürerken “Gönderiliyor…” gösterir.
 - Başarılı yanıttan sonra form temizlenir ve “Mesajınızı aldık. En kısa sürede sizinle iletişime geçeceğiz.” mesajı gösterilir.
@@ -336,6 +336,10 @@ Henüz gerçek checkout, kart saklama, abonelik başlatma, faturalandırma veya 
 - Diğer hatalarda girilen bilgiler korunur ve yeniden deneme mümkündür.
 - Form altında Gizlilik/KVKK metnine bağlantı bulunur.
 - Eski `mailto:` ve “E-posta taslağını aç” davranışı kaldırılmıştır.
+- `TurnstileWidget`, Cloudflare Turnstile'ı açık render yöntemiyle ve `contact-form` action'ıyla çalıştırır.
+- Turnstile tokenları beş dakika geçerli ve tek kullanımlık olduğu için her gönderim denemesinden sonra widget sıfırlanır.
+
+Pazarlama sitesinin Vercel ortamında yalnız public `NEXT_PUBLIC_TURNSTILE_SITE_KEY` bulunur. `TURNSTILE_SECRET_KEY` hiçbir koşulda bu repoya, tarayıcı koduna veya pazarlama sitesi ortam değişkenlerine eklenmez; yalnız `app.rentokey.com` iletişim API'sinin çalıştığı projede tutulur. API, Siteverify sonucunda `success`, beklenen `contact-form` action'ı ve izin verilen üretim hostname'lerini doğrulamalıdır.
 
 Canlı API yalnız `https://rentokey.com` ve `https://www.rentokey.com` origin'lerini kabul eder. Bu nedenle gerçek gönderim testi üretim alan adında yapılmalıdır; localhost veya Vercel önizleme alan adından başarılı gönderim beklenmez.
 
@@ -446,6 +450,7 @@ Aşağıdaki vaatler canlı üründe yeniden doğrulanmadan aktif satış metnin
 - Kayıt API istemcisi: `src/lib/trial-signup.ts`
 - Sunucu tarafı kayıt aktarımı: `src/app/api/kayit-ol/route.ts`
 - İletişim formu: `src/components/ContactForm.tsx`
+- Turnstile widget'ı: `src/components/TurnstileWidget.tsx`
 - Logo bileşeni: `src/components/Logo.tsx`
 - OG üretimi: `scripts/build-og-card.mjs`
 - Ortak SEO metadata'sı: `src/lib/seo.ts`
@@ -477,7 +482,7 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 5. Blog ve kılavuz içerikleri yer tutucudur ve bu nedenle şu an `noindex` durumundadır.
 6. Gizlilik ve kullanım şartları hukuk danışmanı tarafından doğrulanmamıştır ve bu nedenle şu an `noindex` durumundadır.
 7. Deneme formunun kötüye kullanımına karşı kayıt API'sinin rate limit ayarları izlenmeli; ihtiyaç oluşursa CAPTCHA eklenmelidir.
-8. İletişim formu gerçek gönderim servisine bağlı değildir.
+8. Turnstile public site key pazarlama sitesi Vercel ortamına, secret key ise yalnız API projesine eklenmeli ve gerçek iletişim gönderimi üretim alan adında uçtan uca doğrulanmalıdır.
 9. Checkout, ödeme, abonelik ve faturalandırma akışı henüz yoktur.
 10. `YEARLY_DISCOUNT` dışa aktarılıyor; arayüz hesaplaması bunun yerine açıkça tanımlanmış yıllık fiyatları kullanıyor. Fiyat mantığı tek modele indirgenmelidir.
 
@@ -492,7 +497,7 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 
 ### P1 — Lead ve ölçümleme
 
-1. İletişim formunu e-posta/CRM servisine bağla.
+1. İletişim formunun Turnstile doğrulaması ve e-posta teslimini üretim alan adında uçtan uca test et.
 2. CTA tıklaması, deneme başlangıcı, form terk oranı ve paket ilgisi için analitik ekle.
 3. KVKK/çerez tercihi ve ölçümleme izinlerini hukuki metinlerle birlikte ele al.
 

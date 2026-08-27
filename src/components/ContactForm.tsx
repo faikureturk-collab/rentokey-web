@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type FormEvent } from "react";
+import { useCallback, useState, type FormEvent } from "react";
 import { AlertCircle, CheckCircle2, LoaderCircle, Send, ShieldCheck } from "lucide-react";
+import TurnstileWidget from "./TurnstileWidget";
 
 const CONTACT_ENDPOINT = "https://app.rentokey.com/api/iletisim-formu-gonder";
+const TURNSTILE_ACTION = "contact-form";
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
 const topics = [
   { value: "paket-ve-fiyatlandirma", label: "Paket ve fiyatlandırma" },
@@ -34,11 +37,31 @@ type ApiResponse = {
 export default function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [feedback, setFeedback] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
+
+  const handleTurnstileError = useCallback((message: string) => {
+    setStatus("error");
+    setFeedback(message);
+  }, []);
+
+  function resetTurnstile() {
+    setTurnstileToken("");
+    setTurnstileResetSignal((current) => current + 1);
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const form = event.currentTarget;
+
+    if (!turnstileToken) {
+      setStatus("error");
+      setFeedback("Lütfen güvenlik doğrulamasını tamamlayın.");
+      document.getElementById("contact-form-turnstile")?.focus();
+      return;
+    }
+
     const data = new FormData(form);
     const value = (key: string) => String(data.get(key) ?? "").trim();
 
@@ -60,6 +83,7 @@ export default function ContactForm() {
           fleetSize: value("fleetSize"),
           message: value("message"),
           website: value("website"),
+          turnstileToken,
         }),
       });
 
@@ -73,11 +97,16 @@ export default function ContactForm() {
 
         setStatus("error");
         setFeedback(message);
+        resetTurnstile();
 
         if (response.status === 400 && result.field) {
           requestAnimationFrame(() => {
-            const field = form.elements.namedItem(result.field ?? "");
-            if (field instanceof HTMLElement) field.focus();
+            if (result.field === "turnstileToken") {
+              document.getElementById("contact-form-turnstile")?.focus();
+            } else {
+              const field = form.elements.namedItem(result.field ?? "");
+              if (field instanceof HTMLElement) field.focus();
+            }
           });
         }
 
@@ -85,9 +114,11 @@ export default function ContactForm() {
       }
 
       form.reset();
+      resetTurnstile();
       setStatus("success");
       setFeedback("Mesajınızı aldık. En kısa sürede sizinle iletişime geçeceğiz.");
     } catch {
+      resetTurnstile();
       setStatus("error");
       setFeedback("Mesaj gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin.");
     }
@@ -169,6 +200,16 @@ export default function ContactForm() {
       <div className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
         <label htmlFor="website">Website</label>
         <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
+      <div className="mt-5">
+        <TurnstileWidget
+          siteKey={TURNSTILE_SITE_KEY}
+          action={TURNSTILE_ACTION}
+          resetSignal={turnstileResetSignal}
+          onTokenChange={setTurnstileToken}
+          onError={handleTurnstileError}
+        />
       </div>
 
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">

@@ -21,6 +21,14 @@ npm run dev
 
 Site varsayılan olarak [http://localhost:3000](http://localhost:3000) adresinde açılır.
 
+İletişim formundaki Cloudflare Turnstile için `.env.example` dosyasını `.env.local` olarak kopyalayıp pazarlama sitesinin public site key değerini tanımlayın:
+
+```bash
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=...
+```
+
+`TURNSTILE_SECRET_KEY` bu projeye eklenmez. Secret yalnız iletişim API'sinin çalıştığı projede bulunmalıdır.
+
 ## Kontrol
 
 ```bash
@@ -41,6 +49,7 @@ npm run lint
 - `src/components/TrialOnboarding.tsx` — tek adımlı deneme hesabı formu
 - `src/lib/trial-signup.ts` — formun aynı origin kayıt istemcisi ve kullanıcı hata mesajları
 - `src/app/api/kayit-ol/route.ts` — kayıt isteğini uygulama API'sine sunucu tarafında ileten route
+- `src/components/TurnstileWidget.tsx` — iletişim formunun Cloudflare Turnstile widget'ı
 - `public/logo/` — aktif marka varlıkları
 - `scripts/build-og-card.mjs` — sosyal paylaşım görseli üretimi
 
@@ -49,7 +58,7 @@ npm run lint
 - Bu repo çalışan Rent Okey uygulaması değildir; ürün uygulaması `https://app.rentokey.com` adresindedir.
 - `/ucretsiz-dene`, isteği aynı origin `/api/kayit-ol` route'una gönderir. Bu route hesabı `https://app.rentokey.com/api/kayit-ol` üzerinden sunucu tarafında oluşturur; doğrulama e-postası `mail.rentokey.com` üzerinden gönderilir. Firma ve filo bilgileri e-posta onayından sonra uygulamada alınır.
 - Web sitesi artık Supabase istemcisi veya Supabase ortam değişkeni kullanmaz. Daha önce Vercel'e eklenen `NEXT_PUBLIC_SUPABASE_URL` ve `NEXT_PUBLIC_SUPABASE_ANON_KEY` değerleri kullanılmadığı için kaldırılabilir.
-- İletişim formu `https://app.rentokey.com/api/iletisim-formu-gonder` endpoint'ine gerçek gönderim yapar. API üretimde yalnız `rentokey.com` ve `www.rentokey.com` origin'lerini kabul eder; yerel ortamdan canlı gönderim beklenmemelidir.
+- İletişim formu `https://app.rentokey.com/api/iletisim-formu-gonder` endpoint'ine gerçek gönderim yapar. Cloudflare Turnstile `contact-form` action'ıyla üretilen token `turnstileToken` alanında gönderilir. Pazarlama sitesi yalnız `NEXT_PUBLIC_TURNSTILE_SITE_KEY` kullanır; `TURNSTILE_SECRET_KEY` yalnız API projesinde tutulur. API üretimde yalnız `rentokey.com` ve `www.rentokey.com` origin'lerini kabul eder; yerel ortamdan canlı gönderim beklenmemelidir.
 - Blog ve kılavuz sayfaları yer tutucu içerik taşır.
 - Yasal metinler taslaktır ve yayın öncesi uzman incelemesi gerektirir.
 - Commit, push ve deploy işlemleri yalnız açık kullanıcı onayıyla yapılmalıdır.
