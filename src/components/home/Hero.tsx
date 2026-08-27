@@ -1,4 +1,3 @@
-import { MousePointer2 } from "lucide-react";
 import Button from "../Button";
 import DashboardMock from "../DashboardMock";
 
@@ -28,13 +27,9 @@ export default function Hero() {
             bakiye ve yetersiz hazırlık süresi gibi riskleri gecikmeden görün.
           </p>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-stretch">
-            <Button href="/ucretsiz-dene" size="lg" icon className="w-full sm:w-auto lg:w-full">
+          <div className="mt-6">
+            <Button href="/ucretsiz-dene" size="lg" icon className="w-full sm:w-auto">
               14 gün ücretsiz deneyin
-            </Button>
-            <Button href="#hero-demo" variant="secondary" size="lg" className="w-full sm:w-auto lg:w-full">
-              Etkileşimli ürün örneğini incele
-              <MousePointer2 className="h-4 w-4" />
             </Button>
           </div>
 
