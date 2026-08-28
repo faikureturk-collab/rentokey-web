@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, CalendarDays, Clock } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import { formatDate, posts, upcomingPosts } from "@/lib/blog";
+import { formatDate, getSortedPosts, upcomingPosts } from "@/lib/blog";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
@@ -22,7 +22,7 @@ export default function BlogPage() {
 
       <section className="container-page py-16 sm:py-20">
         <div className="grid grid-cols-1 gap-6">
-          {posts.map((post) => (
+          {getSortedPosts().map((post) => (
             <article
               key={post.slug}
               className="group rounded-2xl border border-surface-border p-7 transition-shadow hover:shadow-lg hover:shadow-brand-navy/5 sm:p-9"

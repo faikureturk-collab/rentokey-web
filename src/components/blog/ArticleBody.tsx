@@ -1,14 +1,35 @@
+import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 import type { Block } from "@/lib/blog";
+
+function renderLinks(text: string, keyPrefix: string): ReactNode {
+  return text.split(/\[([^\]]+)\]\(([^)]+)\)/g).map((part, index, parts) => {
+    const position = index % 3;
+    if (position === 2) return null;
+    if (position === 1) {
+      const href = parts[index + 1];
+      return href.startsWith("/") ? (
+        <Link key={`${keyPrefix}-${index}`} href={href}>
+          {part}
+        </Link>
+      ) : (
+        <a key={`${keyPrefix}-${index}`} href={href} rel="noopener">
+          {part}
+        </a>
+      );
+    }
+    return <Fragment key={`${keyPrefix}-${index}`}>{part}</Fragment>;
+  });
+}
 
 function renderText(text: string): ReactNode {
   return text.split(/\*\*(.+?)\*\*/g).map((part, index) =>
     index % 2 === 1 ? (
       <strong key={index} className="font-bold text-brand-navy">
-        {part}
+        {renderLinks(part, `b${index}`)}
       </strong>
     ) : (
-      <Fragment key={index}>{part}</Fragment>
+      <Fragment key={index}>{renderLinks(part, `t${index}`)}</Fragment>
     ),
   );
 }
