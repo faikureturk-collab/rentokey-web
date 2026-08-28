@@ -81,3 +81,114 @@ body {
 .form-control-action {
   padding-right: 3rem;
 }
+
+/* ---------- Blog yazısı tipografisi ---------- */
+.article-body {
+  color: color-mix(in srgb, var(--color-brand-navy) 72%, transparent);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+
+.article-body > * + * {
+  margin-top: 1.35rem;
+}
+
+.article-body h2 {
+  margin-top: 3.25rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--color-brand-navy);
+}
+
+.article-body h3 {
+  margin-top: 2.25rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-brand-navy);
+}
+
+.article-body ul,
+.article-body ol {
+  padding-left: 1.35rem;
+}
+
+.article-body ul {
+  list-style: disc;
+}
+
+.article-body ol {
+  list-style: decimal;
+}
+
+.article-body li + li {
+  margin-top: 0.7rem;
+}
+
+.article-body li::marker {
+  color: var(--color-brand-green);
+  font-weight: 700;
+}
+
+.article-body blockquote {
+  border-left: 3px solid var(--color-brand-green);
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  font-size: 1.1875rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+  color: var(--color-brand-navy);
+}
+
+.article-callout {
+  border: 1px solid var(--color-surface-border);
+  background: var(--color-surface-soft);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  font-size: 1rem;
+}
+
+.article-callout-title {
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  color: var(--color-brand-navy);
+}
+
+.article-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-surface-border);
+  border-radius: 1rem;
+}
+
+.article-body table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.article-body th {
+  background: var(--color-surface-soft);
+  text-align: left;
+  font-weight: 700;
+  color: var(--color-brand-navy);
+}
+
+.article-body th,
+.article-body td {
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--color-surface-border);
+  vertical-align: top;
+}
+
+.article-body tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.article-body a {
+  color: var(--color-brand-green-dark);
+  font-weight: 600;
+  text-decoration: underline;
+}
