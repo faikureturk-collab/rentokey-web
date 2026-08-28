@@ -28,6 +28,216 @@ export type UpcomingPost = {
 
 export const posts: BlogPost[] = [
   {
+    slug: "arac-kiralama-sektorunde-2026-dijitallesme-trendleri",
+    category: "Sektör",
+    title: "Araç kiralama sektöründe 2026 dijitalleşme trendleri",
+    excerpt:
+      "Kiralama firmalarının teknolojiyle nasıl büyüdüğüne dair güncel gözlemler.",
+    description:
+      "2026’nın gerçek dijitalleşme gündemi: Motorlu Kara Taşıtlarının Kiralanması Hakkında Yönetmelik, teslim/iade belgesi, depozito ve kilometre kuralları, beş yıllık arşiv ve filo şartlarının operasyona etkisi.",
+    publishedAt: "2026-08-20",
+    readingMinutes: 12,
+    intro: [
+      "Her yıl aynı başlıklarla dijitalleşme yazıları çıkar: yapay zekâ, temassız teslim, dijital anahtar, dinamik fiyatlama. Bu başlıkların çoğu doğrudur ama 20-70 araçlık bir firmanın önümüzdeki on iki ayını belirlemez.",
+      "2026’da Türkiye’deki araç kiralama sektörü için asıl dijitalleşme gündemini teknoloji değil **mevzuat** belirledi. 15 Ağustos 2026 tarihli Resmî Gazete’de yayımlanan Motorlu Kara Taşıtlarının Kiralanması Hakkında Yönetmelik, bugüne kadar “iyi olurdu” diye konuşulan kayıt düzenini fiilen zorunlu hâle getiriyor.",
+      "Bu yazı, yönetmeliğin operasyonda ne anlama geldiğini ve gerçek teknoloji trendlerinden hangisinin sizin ölçeğinizde şimdi, hangisinin sonra önemli olduğunu ayırıyor.",
+    ],
+    body: [
+      {
+        type: "callout",
+        title: "Not",
+        text: "Aşağıdaki özet bilgilendirme amaçlıdır, hukuki görüş değildir. Karar almadan önce yönetmeliğin Resmî Gazete’de yayımlanan resmî metnini ve kendi mali müşaviriniz ile hukuk danışmanınızın değerlendirmesini esas alın. Ayrıca yönetmelik Türkiye’deki faaliyetleri kapsar; KKTC operasyonları bu düzenlemenin dışındadır — ancak aşağıdaki operasyonel mantık orada da geçerlidir.",
+      },
+
+      { type: "h2", id: "asil-trend", text: "1. 2026’nın gerçek trendi: kayıt zorunluluğu" },
+      {
+        type: "p",
+        text: "Yönetmelik 1 Ocak 2027’de yürürlüğe giriyor. Kapsamı, tüketicilere yönelik ve **aynı kiracıya en fazla 29 gün** süreli kiralamalar. Otuz gün ve üzeri kiralamalar ile ticari kiracılara yapılan kiralamalar kapsam dışında.",
+      },
+      {
+        type: "p",
+        text: "Geçiş takvimi üç aşamalı:",
+      },
+      {
+        type: "table",
+        head: ["Tarih", "Ne oluyor"],
+        rows: [
+          ["1 Ocak 2027", "Yönetmelik yürürlüğe giriyor"],
+          ["1 Temmuz 2027", "Mevcut işletmelerin yetki belgesi başvurusu için son tarih"],
+          ["1 Ocak 2028", "Asgari filo, araç yaşı ve kilometre şartları ile platform doğrulama yükümlülüğü başlıyor"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Yetki belgesi, faaliyet yerindeki ticaret il müdürlüğü tarafından **Motorlu Kara Taşıtı Kiralama Bilgi Sistemi** üzerinden veriliyor; işletme ve şube başına ayrı düzenleniyor ve devredilemiyor. Kiralanacak taşıtların bu sisteme kaydedilmesi de belge şartlarından biri.",
+      },
+      {
+        type: "p",
+        text: "Buradaki asıl mesaj şu: **kayıt artık iç işleyişinizin bir tercihi değil, faaliyet izninizin parçası.** Bir sistemin içinde olmak zorunlu hâle geldiğinde, o sistemin dışında tuttuğunuz her veri sizin için risk üretmeye başlar.",
+      },
+
+      { type: "h2", id: "teslim-iade", text: "2. Teslim ve iade belgesi olmadan hasar bedeli isteyemiyorsunuz" },
+      {
+        type: "p",
+        text: "Operasyon açısından yönetmeliğin en sert maddesi budur. Yönetmelik teslim belgesi ve iade belgesi düzenlenmesini öngörüyor; **bu belgeler yoksa kiracıdan hasar veya arıza bedeli talep edilemiyor.**",
+      },
+      {
+        type: "p",
+        text: "İkinci sert kural: hasarın ve maliyetinin **yetkili ve bağımsız bir ekspertiz raporuyla** belgelenmesi gerekiyor. İşletme personelinin veya işletmeyle bağlantılı kişi ve kuruluşların hazırladığı raporlar geçerli sayılmıyor. Yıllardır kendi ustasının fiyat verdiği hasar süreçlerini yürüten firmalar için bu, sürecin baştan kurulması demek.",
+      },
+      {
+        type: "p",
+        text: "Üçüncüsü: arızanın kiracıdan kaynaklandığını **ispat yükü işletmede.** İspatlanamazsa arızanın kiracıdan kaynaklanmadığı kabul ediliyor. Ayrıca olağan kullanımdan doğan aşınma ile teslim sırasında belirlenememiş çizik ve göçükler için depozitodan kesinti yapılamıyor.",
+      },
+      {
+        type: "quote",
+        text: "Belgesiz hasar, artık sadece tahsil edilemeyen hasar değil; talep edilemeyen hasar.",
+      },
+      {
+        type: "p",
+        text: "Bu üç kural bir araya geldiğinde, teslim ve iade anında tutulan kaydın kalitesi doğrudan gelir kalemine dönüşüyor. Kaydın nasıl tutulması gerektiğini ayrıca ele almıştık: [Araç teslim/iade sürecini dijitalleştirmenin faydaları](/blog/arac-teslim-iade-surecini-dijitallestirmek).",
+      },
+
+      { type: "h2", id: "fiyat-kurgusu", text: "3. Depozito, iptal ve kilometre: fiyat kurgunuzu yeniden hesaplayın" },
+      {
+        type: "p",
+        text: "Yönetmelik yalnızca kayıt düzenini değil, ticari kurgunun birkaç parametresini de sınırlıyor. Bunlar tabloya dökülünce ne kadarının yeniden hesap gerektirdiği daha net görünüyor:",
+      },
+      {
+        type: "table",
+        head: ["Konu", "Kural"],
+        rows: [
+          ["Depozito — 6 gün ve altı", "En fazla 3 günlük kira bedeli"],
+          ["Depozito — 7 ila 29 gün", "En fazla 7 günlük kira bedeli"],
+          ["Depozito aracı", "Çek, senet, teminat mektubu ve kefaletname alınamaz"],
+          ["Depozito iadesi", "Kural olarak 7 gün içinde"],
+          ["Kilometre — saatlik kiralama", "En az 20 km"],
+          ["Kilometre — 1 ila 6 gün", "Günlük en az 150 km"],
+          ["Kilometre — 7 ila 29 gün", "Günlük en az 100 km"],
+          ["İptal — son 24 saat dışında", "Bedel alınamaz"],
+          ["İptal — son 24 saat içinde", "En fazla 1 günlük kira bedeli"],
+          ["Geç iade", "1 saate kadar gecikmede ücret talep edilemez"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Bu tablonun operasyonel karşılığı üç başlıkta toplanıyor. Birincisi, **düşük günlük fiyatla yüksek depozito** dengesine oturmuş firmalar için depozito artık kira bedeline endeksli; fiyat düşürdüğünüzde alabileceğiniz depozito da düşüyor. İkincisi, dar kilometre paketleri üzerine kurulu fiyatlandırmalar taban değerlerin üzerine çıkmak zorunda. Üçüncüsü, iptal ve geç iade kalemleri artık serbest bir gelir kalemi değil.",
+      },
+      {
+        type: "p",
+        text: "Bunların hepsi elle takip edilebilecek şeyler değil. Depozitonun kira bedeline göre hesaplanması, yedi gün içinde iadesi ve kesinti yapılabilecek kalemlerin sözleşmeye bağlı olması — bu üçü birlikte, tahsilat ve iade takibini bir sisteme bağlamayı fiilen zorunlu kılıyor.",
+      },
+
+      { type: "h2", id: "sozlesme-arsiv", text: "4. Sözleşme teslimden önce, arşiv beş yıl" },
+      {
+        type: "p",
+        text: "Yönetmelik, kira sözleşmesinin **yazılı veya elektronik ortamda** yapılmasını ve bir nüshasının **taşıt tesliminden önce** kiracıya verilmesini öngörüyor. Sözleşmede bulunması gereken bilgiler oldukça ayrıntılı: taraflar ve ek sürücü, taşıtın marka, model, kilometre, enerji türü ve vites bilgisi, depozito tutarı, sigorta ve güvence kapsamı, kilometre aşımı, geç teslim, otoyol ve köprü geçişleri, enerji gideri, hasar sorumluluğu ve her hizmetin ayrı bedeli.",
+      },
+      {
+        type: "p",
+        text: "Bunu havalimanı otoparkında, müşteri arabaya binmeden önce kâğıtla yapmayı deneyin. Pratikte tek uygulanabilir yol elektronik sözleşme.",
+      },
+      {
+        type: "p",
+        text: "Buna bir de **beş yıllık saklama yükümlülüğü** ekleniyor: sözleşmeler, belgeler ve formlar fiziki veya elektronik ortamda beş yıl saklanacak. Yılda birkaç bin kiralama yapan bir firma için bu, fiziki klasörle sürdürülebilir bir düzen değil. Beş yıl sonra istenen tek bir sözleşmeyi bulabilmek, arşivin aranabilir olmasını gerektirir.",
+      },
+
+      { type: "h2", id: "filo-kompozisyonu", text: "5. Filo kompozisyonu artık bir uyum konusu" },
+      {
+        type: "p",
+        text: "Şimdiye kadar filoyu talep ve bütçe belirliyordu. 1 Ocak 2028’den itibaren buna uyum şartları ekleniyor:",
+      },
+      {
+        type: "table",
+        head: ["Şart", "Değer"],
+        rows: [
+          ["Asgari filo — büyükşehir ilçesi (30.000+ nüfus)", "10 taşıt, en az 5’i işletme adına tescilli"],
+          ["Asgari filo — diğer yerler", "5 taşıt, en az 2’si işletme adına tescilli"],
+          ["Hibrit/elektrikli şartı (büyükşehir ilçesi)", "En az 2 taşıt, en az biri Türkiye üretimi"],
+          ["Azami araç yaşı", "Model yılına göre 6 yaş"],
+          ["Azami kilometre — elektrikli", "300.000 km"],
+          ["Azami kilometre — diğer", "180.000 km"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Buradan iki pratik sonuç çıkıyor. Birincisi, **araç çıkış planlaması artık isteğe bağlı değil.** Altı yaşını dolduracak ya da kilometre sınırına yaklaşacak araçları önceden görmek gerekiyor; bunu fark ettiğiniz gün satmak, zamanında satmaktan her zaman daha pahalıdır. İkincisi, hibrit veya elektrikli araç kararı artık bir “deneyelim” konusu olmaktan çıkıp takvime bağlanmış bir gereklilik hâline geliyor.",
+      },
+      {
+        type: "p",
+        text: "Bir ayrıntı daha: yönetmelik 30 gün ve üzeri kiralamalar ile ticari kiracıları kapsamıyor. Bu, uzun dönem ve kurumsal işin stratejik değerini artırıyor — hem sezon dışı doluluk hem de uyum yükü açısından.",
+      },
+
+      { type: "h2", id: "kanallar", text: "6. Kanal tarafı: platformlar yetki belgesi soracak" },
+      {
+        type: "p",
+        text: "İlan ve aracı platformlar, üyelik veya kayıt öncesinde işletmenin yetki belgesini Bilgi Sistemi üzerinden kontrol etmekle yükümlü olacak; belge yoksa üyelik ve ilan reddedilecek. İlanlarda yetki belgesi numarası, işletme kimliği ve taşıtın marka, model yılı, enerji türü, segment ve kilometre bilgisi gösterilecek. Havalimanı veya terminalde merkezi ya da şubesi bulunmayan işletmelerin bu durumu açıkça belirtmesi gerekecek.",
+      },
+      {
+        type: "p",
+        text: "Platform üzerinden yapılan kiralamalarda, kiracının itirazı yoksa ödemenin teslimden itibaren en geç beş iş günü içinde işletmeye aktarılması da düzenlenmiş durumda.",
+      },
+      {
+        type: "p",
+        text: "Bunun anlamı şu: pazaryeri ve ilan kanallarından gelen iş artık belge durumunuza bağlı. Bu kanalları kullanan bir firma için yetki belgesi süreci bir evrak işi değil, doğrudan bir satış kanalı meselesi.",
+      },
+
+      { type: "h2", id: "gercek-trendler", text: "7. Peki teknoloji trendleri? Hangisi şimdi, hangisi sonra" },
+      {
+        type: "p",
+        text: "Mevzuat gündemi bu kadar yer kaplarken, teknoloji başlıklarını bir öncelik filtresinden geçirmek gerekiyor. 20-70 araçlık bir firma için makul sıralama şudur:",
+      },
+      { type: "h3", text: "Şimdi: getirisi bu yıl görünenler" },
+      {
+        type: "ul",
+        items: [
+          "**Elektronik sözleşme ve dijital teslim/iade kaydı.** Hem uyum hem tahsilat tarafında doğrudan karşılığı var. Listenin başında olmasının sebebi moda olması değil, hasar talebinin buna bağlanmış olması.",
+          "**Aranabilir arşiv.** Beş yıllık saklama yükümlülüğü, kaydı tutmakla bulmayı ayrı sorunlar hâline getiriyor.",
+          "**Ödeme ve depozito otomasyonu.** Kart üzerinden ön provizyon, kesinti kalemlerinin sözleşmeye bağlanması ve yedi günlük iade takibi.",
+          "**Araç bazlı raporlama.** Yaş ve kilometre sınırları geldiğinde, hangi aracın ne zaman çıkacağını önceden görmek gerekiyor.",
+        ],
+      },
+      { type: "h3", text: "Sonra: doğru ama acele değil" },
+      {
+        type: "ul",
+        items: [
+          "**Dijital anahtar ve tam temassız teslim.** Filo genelinde donanım yatırımı ve marka/model uyumu gerektirir; ölçek büyümeden geri dönüşü zayıftır.",
+          "**Dinamik fiyatlama ve yapay zekâ destekli öneriler.** Anlamlı olması için önce temiz ve tutarlı bir geçmiş rezervasyon verisi gerekir. Verisi dağınık bir firmada bu araçlar yanlış öneri üretir.",
+          "**Telematik ve sürüş davranışı analizi.** Değerli ama önceliği, temel kaydın oturmasından sonradır.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Sıralamanın mantığı basit: **önce kaydı düzelt, sonra kayıttan akıl üret.** Tersini deneyen firmalar pahalı araçlar alıp bunları eksik veriyle besliyor ve sonuçlara güvenemiyor.",
+      },
+
+      { type: "h2", id: "hazirlik", text: "8. 2027’ye hazırlık: yapılacaklar listesi" },
+      {
+        type: "ol",
+        items: [
+          "Yetki belgesi başvuru sürecini şimdiden planlayın; son tarih 1 Temmuz 2027 ama başvuru öncesinde iş yeri, vergi kaydı ve meslek odası şartlarının tamamlanması gerekiyor.",
+          "Kiralama sorumlusu için aranan **Motorlu Kara Taşıtı Kiralama Danışmanı Seviye 4 mesleki yeterlilik belgesi** sürecini başlatın; belge alma süresi kısa değil.",
+          "Sözleşme metninizi yönetmelikte sayılan zorunlu içeriklere göre yeniden yazdırın ve elektronik olarak, teslimden önce iletilebilir hâle getirin.",
+          "Teslim ve iade belgesi akışınızı kurun; hasar talebinin dayanağı bu iki belge.",
+          "Bağımsız ekspertiz için önceden bir çalışma düzeni oluşturun; hasar çıktığında kime gideceğinizi o gün aramayın.",
+          "Depozito, kilometre ve iptal politikalarınızı tablo üzerinden yeniden hesaplayın.",
+          "Filo yaş ve kilometre projeksiyonunu çıkarın: 1 Ocak 2028’de hangi araçlar sınırın dışında kalacak?",
+          "Arşiv düzenini beş yıllık saklama ve aranabilirlik ölçütüne göre kurun.",
+        ],
+      },
+
+      { type: "h2", id: "sonuc", text: "Toparlarsak" },
+      {
+        type: "p",
+        text: "2026’nın dijitalleşme başlığı, sektöre dışarıdan gelen bir teknoloji dalgası değil; içeriden gelen bir kayıt zorunluluğu. Yapay zekâ ve temassız teslim gündemde kalmaya devam edecek, ama önümüzdeki on iki ayda bir firmanın işini değiştirecek olan şey sözleşmesinin, teslim belgesinin, depozito hesabının ve arşivinin nerede durduğu.",
+      },
+      {
+        type: "p",
+        text: "İyi haber şu: bu düzeni kurmak zaten operasyonel olarak kârlı. Yönetmelik yalnızca, ertelenen bir işi takvime bağladı.",
+      },
+    ],
+  },
+  {
     slug: "arac-teslim-iade-surecini-dijitallestirmek",
     category: "Operasyon",
     title: "Araç teslim/iade sürecini dijitalleştirmenin faydaları",
@@ -458,11 +668,6 @@ export const posts: BlogPost[] = [
 ];
 
 export const upcomingPosts: UpcomingPost[] = [
-  {
-    category: "Sektör",
-    title: "Araç kiralama sektöründe 2026 dijitalleşme trendleri",
-    excerpt: "Kiralama firmalarının teknolojiyle nasıl büyüdüğüne dair güncel gözlemler.",
-  },
   {
     category: "Raporlama",
     title: "Doğru metriklerle filo kârlılığınızı nasıl artırırsınız?",
