@@ -4,7 +4,7 @@ import DashboardMock from "../DashboardMock";
 const trustItems = [
   "Kredi kartı yok",
   "Kurulum ücreti yok",
-  "Satış görüşmesi beklemeden başla",
+  "İlk 48 saatte ücretsiz CSV aktarım desteği",
 ];
 
 export default function Hero() {
@@ -29,7 +29,7 @@ export default function Hero() {
 
           <div className="mt-6">
             <Button href="/ucretsiz-dene" size="lg" icon className="w-full sm:w-auto">
-              14 gün ücretsiz deneyin
+              21 gün ücretsiz deneyin
             </Button>
           </div>
 

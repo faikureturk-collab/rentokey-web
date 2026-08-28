@@ -15,14 +15,19 @@ export const faqGroups: FaqGroup[] = [
     label: "Deneme ve paketler",
     items: [
       {
-        question: "14 günlük ücretsiz deneme nasıl başlar?",
+        question: "21 günlük ücretsiz deneme nasıl başlar?",
         answer:
           "Ad, e-posta ve şifre bilgilerinizi girip e-posta adresinizi doğrulayarak hesabınızı oluşturursunuz. İlk girişte firma adı ve filo büyüklüğünü tanımlarsınız. Kredi kartı gerekmez; deneme süresince kendi araç ve rezervasyonlarınızla ürünü değerlendirebilirsiniz.",
       },
       {
+        question: "İlk 48 saatte CSV aktarım desteği nasıl çalışır?",
+        answer:
+          "Deneme hesabınızı oluşturduktan sonraki ilk 48 saat içinde rezervasyon, gider, filo veya bakım CSV dosyanızı iletebilirsiniz. Ekibimiz destek saatleri içinde dosyanın yapısını kontrol eder, gerekli düzeltmeleri bildirir ve ilk aktarımı tamamlamanıza yardımcı olur. 48 saatlik süre destek talebinin oluşturulması için geçerlidir. Aktarımın tamamlanma süresi dosyanın kapsamına ve veri kalitesine göre değişebilir.",
+      },
+      {
         question: "Deneme sonunda otomatik ödeme alınır mı?",
         answer:
-          "Hayır. Başlangıçta ödeme bilgisi alınmadığı için 14 gün sonunda otomatik ücretlendirme yapılmaz. Devam etmek isterseniz filonuza uygun paketi seçersiniz.",
+          "Hayır. Başlangıçta ödeme bilgisi alınmadığı için 21 gün sonunda otomatik ücretlendirme yapılmaz. Devam etmek isterseniz filonuza uygun paketi seçersiniz.",
       },
       {
         question: "Paketlerde kaç kullanıcı ve şube bulunuyor?",
@@ -68,7 +73,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "Mevcut verilerimi CSV ile içeri aktarabilir miyim?",
         answer:
-          "Evet. Rezervasyonlarınızı, giderlerinizi, filo bilgilerinizi ve bakım kayıtlarınızı CSV dosyalarıyla içeri aktarabilirsiniz. Kurumsal pakette veri hazırlama ve ilk kurulum için ayrıca destek sunulur.",
+          "Evet. Rezervasyonlarınızı, giderlerinizi, filo bilgilerinizi ve bakım kayıtlarınızı CSV dosyalarıyla içeri aktarabilirsiniz. Deneme hesabınızı oluşturduktan sonraki ilk 48 saat içinde ilk aktarımınız için ücretsiz destek talep edebilirsiniz. Kurumsal pakette veri hazırlama ve kurulum kapsamı ayrıca genişletilebilir.",
       },
       {
         question: "Verilerimi Excel olarak dışarı aktarabilir miyim?",

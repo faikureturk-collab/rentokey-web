@@ -1,6 +1,6 @@
 # Rent Okey web sitesi — proje el kitabı
 
-Son güncelleme: 23 Ağustos 2026  
+Son güncelleme: 28 Ağustos 2026
 Doğrulanan Git başlangıç noktası: `35c65c5` — `logo tasarımı güncellendi.`
 
 Bu belge, Rent Okey web sitesinde yapılacak bir sonraki geliştirmeden önce okunması gereken ana bağlam dosyasıdır. Yalnız mevcut ekranları anlatmaz; ürünün ne olduğu, sitenin ziyaretçiyi hangi sırayla ikna ettiği, hangi kararların neden alındığı, hangi vaatlerin doğrulandığı ve hangi alanların henüz prototip olduğu burada ayrıştırılır.
@@ -11,7 +11,7 @@ Bu belge, Rent Okey web sitesinde yapılacak bir sonraki geliştirmeden önce ok
 - Hedef müşteri Türkiye ve KKTC’de faaliyet gösteren araç kiralama firmalarıdır.
 - Ana değer önerisi: **“Operasyonu yönetin. Yoğunluğu değil.”**
 - Ürünün farkı yalnız kayıt tutması değil; teslim, iade, araç planı, ödeme, belge, bakım ve bağlamsal riskleri aksiyona dönüştürmesidir.
-- Ana dönüşüm hedefi `/ucretsiz-dene` sayfasındaki **14 günlük, kredi kartsız deneme** akışıdır.
+- Ana dönüşüm hedefi `/ucretsiz-dene` sayfasındaki **21 günlük, kredi kartsız deneme** akışıdır.
 - Web sitesi, bulanık ürün ekran görüntüleri yerine HTML/CSS ile çizilmiş etkileşimli bir ürün demosu kullanır.
 - Ana sayfa “ürün nedir?” sorusundan başlayıp “neden farklı?”, “nasıl denenir?”, “ne kadar?”, “güvenebilir miyim?” ve “şimdi ne yapmalıyım?” sorularını sırayla cevaplar.
 
@@ -179,7 +179,7 @@ Demo sekmeleri:
 
 Masaüstü ve mobil sahneler aynı iş mantığını farklı yerleşimlerle anlatır. Mobilde zaman çizelgesi küçültülmez; tarih ve hızlı aksiyon akışına dönüşür.
 
-Hero dönüşüm hiyerarşisi 1280×720 görünümünde ana aksiyonu kaydırmadan gösterecek biçimde kuruludur. Kısa açıklamanın hemen altında yalnızca **14 gün ücretsiz deneyin** CTA'sı bulunur. Aynı görünümdeki ürün demosuna tekrar bağlantı veren ikincil CTA kullanılmaz. CTA'nın altında “Kredi kartı yok · Kurulum ücreti yok · Satış görüşmesi beklemeden başla” güven satırı bulunur. Varsayılan Bugünkü operasyon sahnesi, önerilen odak özelliğini ayrıca sekme değiştirmeyi gerektirmeden 35 dakikalık hazırlık ve transfer riskiyle görünür kılar.
+Hero dönüşüm hiyerarşisi 1280×720 görünümünde ana aksiyonu kaydırmadan gösterecek biçimde kuruludur. Kısa açıklamanın hemen altında yalnızca **21 gün ücretsiz deneyin** CTA'sı bulunur. Aynı görünümdeki ürün demosuna tekrar bağlantı veren ikincil CTA kullanılmaz. CTA'nın altında “Kredi kartı yok · Kurulum ücreti yok · İlk 48 saatte ücretsiz CSV aktarım desteği” güven satırı bulunur. Varsayılan Bugünkü operasyon sahnesi, önerilen odak özelliğini ayrıca sekme değiştirmeyi gerektirmeden 35 dakikalık hazırlık ve transfer riskiyle görünür kılar.
 
 ### Aşama 4 — Ürün vaadinin sadeleştirilmesi
 
@@ -195,9 +195,10 @@ Site “çok özellik” anlatımından “daha az operasyon yükü” anlatım�
 
 Deneme süreci Netflix/Vercel benzeri hızlı başlangıç fikrinden esinlendi; fakat kredi kartı alınmadığı için otomatik ödeme mantığı yoktur.
 
-- 14 gün ücretsiz
+- 21 gün ücretsiz
 - Kredi kartı gerekmez
 - Kurulum ücreti yok
+- Deneme hesabı açıldıktan sonraki ilk 48 saat içinde ilk CSV aktarımı için ücretsiz destek talep edilebilir
 - Kullanıcı kendi filosu ve rezervasyonlarıyla dener
 - Deneme bitince otomatik ödeme alınmaz
 - Devam edecek kullanıcı paketini sonradan seçer
@@ -321,9 +322,11 @@ Mevcut durum:
 
 Firma adı ve filo büyüklüğü e-posta doğrulamasından sonra `app.rentokey.com` içindeki onboarding akışında alınır. Web sitesi doğrudan Supabase istemcisi veya Supabase anahtarı kullanmaz. Şifre başarılı istekten sonra frontend state'inden temizlenir.
 
+Deneme hesabını oluşturduktan sonraki ilk 48 saat içinde kullanıcı rezervasyon, gider, filo veya bakım CSV dosyası için ücretsiz ilk aktarım desteği talep edebilir. Destek ekibi dosyanın yapısını kontrol eder, gerekli düzeltmeleri bildirir ve ilk aktarımın tamamlanmasına yardımcı olur. 48 saatlik süre aktarımın bitiş garantisi değil, destek talebinin oluşturulma penceresidir; tamamlanma süresi dosyanın kapsamına ve veri kalitesine göre değişebilir.
+
 ### Abonelik
 
-Henüz gerçek checkout, kart saklama, abonelik başlatma, faturalandırma veya deneme bitiş otomasyonu bulunmaz. Kullanıcı kredi kartı vermediği için “14 gün sonunda otomatik ücretlendirme” sözü kullanılmamalıdır.
+Henüz gerçek checkout, kart saklama, abonelik başlatma, faturalandırma veya deneme bitiş otomasyonu bulunmaz. Kullanıcı kredi kartı vermediği için “21 gün sonunda otomatik ücretlendirme” sözü kullanılmamalıdır. Pazarlama sitesinde 21 gün vaadi kullanıldığı için canlı uygulamadaki gerçek deneme süresi de yayından önce 21 gün olarak doğrulanmalıdır.
 
 ### İletişim formu
 
@@ -535,7 +538,8 @@ Yeni çalışmaya şu sırayla başla:
 - Hero’nun birincil CTA’sını 1280×720 masaüstü görünümünde kaydırmadan erişilebilir tut.
 - Siteyi özellik deposuna çevirmeden operasyon sonucu anlat.
 - Önerilen odağı ürünün ana farklılaştırıcısı olarak koru.
-- 14 günlük denemeyi hızlı, kredi kartsız ve otomatik ödemesiz anlat.
+- 21 günlük denemeyi hızlı, kredi kartsız ve otomatik ödemesiz anlat.
+- İlk 48 saatlik CSV aktarım desteğini talep penceresi olarak anlat; tamamlanma süresi garantisi verme.
 - Türkiye ve KKTC yerel bağlamını görünür tut.
 - Kullanıcı/şube limitlerini paketler arasında tutarlı göster.
 - Yol haritasını mevcut özellik gibi sunma.

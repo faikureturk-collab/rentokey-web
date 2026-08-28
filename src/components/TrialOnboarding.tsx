@@ -126,7 +126,7 @@ export default function TrialOnboarding() {
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-green-dark">
-            14 günlük ücretsiz deneme
+            21 günlük ücretsiz deneme
           </p>
           <h2 className="mt-2 text-xl font-extrabold tracking-[-0.02em] text-brand-navy sm:text-2xl">
             Hesabınızı oluşturun

@@ -12,7 +12,7 @@ export default function CtaBanner() {
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-brand-green">
               <Sparkles className="h-3.5 w-3.5" />
-              14 günlük gerçek operasyon denemesi
+              21 günlük gerçek operasyon denemesi
             </span>
             <h2 className="mt-5 max-w-2xl text-2xl font-extrabold leading-tight text-white sm:text-3xl lg:text-[34px]">
               Rent Okey’i kendi filonuz ve ekibinizle deneyin.
@@ -21,7 +21,7 @@ export default function CtaBanner() {
               Rezervasyonlarınızı planlayın, uygun araç önerisini görün ve operasyon kuyruğunu tek ekrandan yönetin. Paketinize deneme sonunda karar verin.
             </p>
             <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs font-medium text-white/70 sm:text-sm">
-              {["Kredi kartı gerekmez", "Kurulum ücreti yok", "CSV ile veri aktarımı"].map((item) => (
+              {["Kredi kartı gerekmez", "Kurulum ücreti yok", "İlk 48 saatte ücretsiz CSV desteği"].map((item) => (
                 <span key={item} className="inline-flex items-center gap-1.5">
                   <Check className="h-4 w-4 text-brand-green" strokeWidth={2.5} />
                   {item}

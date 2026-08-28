@@ -29,10 +29,10 @@ const steps: Step[] = [
   },
   {
     number: "02",
-    eyebrow: "Kendi veriniz",
-    title: "Filonuzu ekleyin",
+    eyebrow: "İlk 48 saat",
+    title: "Verilerinizi birlikte aktarın",
     description:
-      "Rezervasyon, gider, filo ve bakım kayıtlarınızı CSV ile içeri aktarın.",
+      "Rezervasyon, gider, filo ve bakım CSV dosyalarınızı iletin; ilk aktarımınız için ücretsiz destek alın.",
     icon: CarFront,
   },
   {
@@ -48,7 +48,7 @@ const steps: Step[] = [
     eyebrow: "Canlı operasyon",
     title: "Gerçek işinizi yürütün",
     description:
-      "Teslim, iade, filo ve risk süreçlerini 14 gün boyunca birlikte deneyin.",
+      "Teslim, iade, filo ve risk süreçlerini 21 gün boyunca birlikte deneyin.",
     icon: ListChecks,
   },
 ];
@@ -56,7 +56,7 @@ const steps: Step[] = [
 const assurances = [
   "Kredi kartı gerekmez",
   "Kurulum ücreti yok",
-  "Deneme boyunca temel destek",
+  "İlk 48 saatte CSV desteği",
 ];
 
 export default function HowItWorks() {
@@ -65,7 +65,7 @@ export default function HowItWorks() {
       <div className="grid gap-6 lg:grid-cols-[1fr_.78fr] lg:items-end">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full bg-brand-blue/10 px-4 py-1.5 text-sm font-semibold text-brand-blue">
-            <CalendarCheck2 className="h-4 w-4" /> 14 günlük ücretsiz deneme
+            <CalendarCheck2 className="h-4 w-4" /> 21 günlük ücretsiz deneme
           </span>
           <h2 className="mt-5 max-w-2xl text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-navy sm:text-4xl">
             Demo izlemeyin. <span className="text-brand-green">Kendi filonuzla deneyin.</span>

@@ -40,10 +40,10 @@ const comparisonRows: { label: string; values: ComparisonValue[] }[] = [
 ];
 
 const assurances = [
-  "14 gün ücretsiz deneyin",
+  "21 gün ücretsiz deneyin",
   "Kredi kartı gerekmez",
   "Kurulum ücreti yok",
-  "Paketinizi sonra seçin",
+  "İlk 48 saatte CSV desteği",
 ];
 
 function formatPrice(value: number) {
@@ -73,7 +73,7 @@ export default function PricingSection({
             <h2 className="mt-5 text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-navy sm:text-4xl">{title}</h2>
             <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-brand-navy/55">
               Filo büyüklüğünüze göre başlayın; kullanıcı ve şube kapsamını paket kartlarında
-              açıkça görün. Gerçek operasyonunuzu 14 gün boyunca deneyin.
+              açıkça görün. Gerçek operasyonunuzu 21 gün boyunca deneyin.
             </p>
 
             <div className="mt-7 inline-flex rounded-full border border-surface-border bg-white p-1 shadow-sm" aria-label="Ödeme dönemi">
@@ -155,7 +155,7 @@ export default function PricingSection({
                 </ul>
 
                 <Button href={plan.ctaHref ?? "/ucretsiz-dene"} variant={highlighted ? "primary" : "secondary"} className="mt-7 w-full">
-                  {plan.ctaLabel ?? "14 gün ücretsiz dene"}
+                  {plan.ctaLabel ?? "21 gün ücretsiz dene"}
                 </Button>
               </article>
             );

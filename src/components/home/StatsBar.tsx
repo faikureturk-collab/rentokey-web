@@ -21,7 +21,7 @@ const stats = [
   },
   {
     icon: QuickLearnIcon,
-    value: "14 gün",
+    value: "21 gün",
     label: "Ücretsiz gerçek deneme",
     hint: "Kredi kartı gerekmez",
   },

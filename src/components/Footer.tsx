@@ -15,7 +15,7 @@ export default function Footer() {
             </p>
             <div className="mt-5 flex flex-wrap gap-2 text-xs font-semibold text-white/65">
               <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5">Türkiye + KKTC</span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5">14 gün ücretsiz</span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5">21 gün ücretsiz</span>
             </div>
           </div>
 

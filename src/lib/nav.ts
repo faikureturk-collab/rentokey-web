@@ -37,7 +37,7 @@ export const footerNav = {
     { label: "Özellikler", href: "/#ozellikler" },
     { label: "Önerilen odak", href: "/#onerilen-odak" },
     { label: "Fiyatlandırma", href: "/#fiyatlandirma" },
-    { label: "14 gün ücretsiz dene", href: "/ucretsiz-dene" },
+    { label: "21 gün ücretsiz dene", href: "/ucretsiz-dene" },
   ],
   kaynaklar: [
     { label: "Blog", href: "/blog" },

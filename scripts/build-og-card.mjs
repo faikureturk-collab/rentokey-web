@@ -48,7 +48,7 @@ const card = `
     <g transform="translate(50 502)">
       <rect width="188" height="38" rx="19" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.12"/>
       <circle cx="21" cy="19" r="5" fill="#18b878"/>
-      <text x="36" y="25" fill="#d6e0ea" font-size="14" font-weight="700">14 gün ücretsiz</text>
+      <text x="36" y="25" fill="#d6e0ea" font-size="14" font-weight="700">21 gün ücretsiz</text>
     </g>
     <g transform="translate(248 502)">
       <rect width="198" height="38" rx="19" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.12"/>

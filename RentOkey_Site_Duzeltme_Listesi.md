@@ -67,14 +67,14 @@ Asıl kayıp ürün anlatımında değil, kararın son metresinde yaşanıyor:
 
 ## 1. Hero CTA'sını ilk ekrana taşı ve mesajı sıkılaştır
 
-**Kanıt:** 1280×720 görünümde ana “14 gün ücretsiz deneyin” butonunun üst kenarı yaklaşık 722 px'de kalıyor; yani buton ilk ekranda görünmüyor. Başlık ve ürün görseli güçlü olsa da kullanıcıya yapılacak iş görünmeden kaydırma gerekiyor.
+**Kanıt:** 1280×720 görünümde ana “21 gün ücretsiz deneyin” butonunun üst kenarı yaklaşık 722 px'de kalıyor; yani buton ilk ekranda görünmüyor. Başlık ve ürün görseli güçlü olsa da kullanıcıya yapılacak iş görünmeden kaydırma gerekiyor.
 
 **Yapılacak:**
 
 - Birincil CTA'yı başlık/alt başlık hizasında ve ilk ekranda görünür tut.
 - Hero yüksekliğini, dikey boşlukları ve madde metinlerini kısalt.
-- “14 gün ücretsiz deneyin” ana CTA olsun; “Etkileşimli ürün örneğini incele” ikincil kalsın.
-- CTA yanında şu üç itirazı tek satırda koru: “Kredi kartı yok · Kurulum ücreti yok · Satış görüşmesi beklemeden başla”.
+- “21 gün ücretsiz deneyin” ana CTA olsun; “Etkileşimli ürün örneğini incele” ikincil kalsın.
+- CTA yanında şu üç itirazı tek satırda koru: “Kredi kartı yok · Kurulum ücreti yok · İlk 48 saatte ücretsiz CSV aktarım desteği”.
 - ₺8.400 açık bakiye ve 35 dakikalık hazırlık süresi örneklerinden birini hero içinde görünür yap.
 
 **Kabul kriteri:** 1280×720 masaüstünde başlık, kısa değer önerisi, ana CTA ve en az bir somut operasyon riski kaydırmadan görünür.
@@ -203,7 +203,7 @@ Kartta gösterilen “70 araçta araç başı yaklaşık ₺71/₺57” rakamı 
 
 ## 8. Deneme süresini kurulum ve destekle ilişkilendir
 
-- 14 günü veri kurulumu tamamlandığında başlat veya 30 günlük deneme seçeneğini test et.
+- 21 günlük denemeyi veri kurulumu ve ilk 48 saatlik CSV aktarım desteğiyle birlikte ölç; gerekirse başlangıç zamanını ayrıca test et.
 - İlk girişte yapılacakları üç net iş olarak göster: araçları yükle, ilk rezervasyonu ekle, ekibi davet et.
 - İsteğe bağlı 15 dakikalık kurulum görüşmesi sun; zorunlu satış görüşmesi yapma.
 - Deneme sonunda otomatik ödeme alınmadığını, verinin kaç gün tutulduğunu ve nasıl dışarı alınacağını kayıt sayfasında göster.
