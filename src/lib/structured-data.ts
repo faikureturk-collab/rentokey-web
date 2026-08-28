@@ -1,9 +1,11 @@
+import { faqGroups } from "@/lib/faq";
 import { plans } from "@/lib/pricing";
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const organizationId = `${SITE_URL}/#organization`;
 const websiteId = `${SITE_URL}/#website`;
 const softwareId = `${SITE_URL}/#software`;
+const faqId = `${SITE_URL}/#faq`;
 
 const offers = plans
   .filter((plan) => plan.monthlyPrice !== null)
@@ -12,9 +14,21 @@ const offers = plans
     name: `${plan.name} paketi`,
     price: String(plan.monthlyPrice),
     priceCurrency: "TRY",
+    availability: "https://schema.org/InStock",
     url: `${SITE_URL}/#fiyatlandirma`,
     description: `${plan.description} için ${plan.includedUsers} ve ${plan.includedBranches}`,
   }));
+
+const faqMainEntity = faqGroups.flatMap((group) =>
+  group.items.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+);
 
 export const homeStructuredData = {
   "@context": "https://schema.org",
@@ -75,6 +89,16 @@ export const homeStructuredData = {
         "Pozisyon bazlı sayfa yetkilendirmesi",
         "Önerilen odak ve bağlamsal risk uyarıları",
       ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": faqId,
+      url: `${SITE_URL}/#sss`,
+      name: "Rent Okey — Sıkça sorulan sorular",
+      inLanguage: "tr-TR",
+      isPartOf: { "@id": websiteId },
+      about: { "@id": softwareId },
+      mainEntity: faqMainEntity,
     },
   ],
 };
