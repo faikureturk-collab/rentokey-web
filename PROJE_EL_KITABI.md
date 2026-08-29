@@ -221,6 +221,7 @@ Paketler yalnız araç sayısına göre değil; ekip, şube ve operasyon karmaş
 
 - Sayfa başlıkları, açıklamalar, canonical adresler, Open Graph ve Twitter kartları merkezi bir metadata yardımcısında toplandı.
 - Ana sayfaya Organization, WebSite ve SoftwareApplication türlerinde JSON-LD yapılandırılmış veri eklendi.
+- Resmî LinkedIn şirket profili footer’da görünür bağlantı olarak sunuluyor ve Organization JSON-LD içindeki `sameAs` alanıyla marka varlığına bağlanıyor.
 - `robots.txt` ve `sitemap.xml` Next.js metadata route'larıyla üretiliyor.
 - ChatGPT arama özelliklerinde görünürlük için `OAI-SearchBot` tarayıcısına `robots.txt` içinde açıkça izin veriliyor. Bu arama tarayıcısı kuralı, model eğitimiyle ilgili `GPTBot` tercihinden bağımsız ele alınıyor.
 - Claude arama görünürlüğü ve kullanıcı tarafından başlatılan sayfa erişimi için `Claude-SearchBot` ile `Claude-User` açıkça izinli. Pazarlama sitesinin herkese açık içeriğinin Anthropic model geliştirme süreçlerinde kullanılabilmesi için `ClaudeBot` da izinli; bu tercih arama erişiminden ayrı değerlendiriliyor.

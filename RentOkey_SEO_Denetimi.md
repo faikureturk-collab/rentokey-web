@@ -125,13 +125,12 @@ Sitede ürün ekran görüntüsü bulunmuyor; arayüz kod ile çizilmiş temsili
 **Yapılacak:** Gerçek ekran görüntüleri ekle; dosya adları ve `alt` metinleri anahtar kelime içersin — örn. `arac-kiralama-rezervasyon-takvimi.png`, alt: "Rent Okey rezervasyon zaman çizelgesinde 40 araçlık filo görünümü".
 
 ### B6. Yapılandırılmış veri eksikleri
-Mevcut şema iyi kurulmuş; eksikler:
+Mevcut şema iyi kurulmuş. `Organization.sameAs`, resmî LinkedIn şirket profilinin eklenmesiyle tamamlandı. Kalan eksikler:
 
 | Eksik | Etki |
 |---|---|
 | `FAQPage` | Yüksek — zengin sonuç fırsatı |
 | `BreadcrumbList` | Orta — alt sayfalar açılınca gerekli |
-| `Organization.sameAs` (sosyal profiller) | Orta — varlık doğrulaması |
 | `Organization.contactPoint` | Düşük-orta |
 | `Offer.priceValidUntil` / `availability` | Düşük — uyarı üretiyor |
 | `AggregateRating` | Yüksek ama **gerçek değerlendirme toplanmadan eklenmemeli** (uydurma puan manuel ceza sebebidir) |

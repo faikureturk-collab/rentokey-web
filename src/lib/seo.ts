@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 export const SITE_NAME = "Rent Okey";
 export const SITE_URL = "https://www.rentokey.com";
+export const LINKEDIN_URL = "https://www.linkedin.com/company/rentokey";
 export const DEFAULT_DESCRIPTION =
   "Rent Okey; Türkiye ve KKTC’de rezervasyon, filo, teslim/iade, bakım, belge ve ödeme süreçlerini tek ekranda yöneten araç kiralama programıdır.";
 

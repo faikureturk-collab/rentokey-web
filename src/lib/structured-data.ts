@@ -1,6 +1,6 @@
 import { faqGroups } from "@/lib/faq";
 import { plans } from "@/lib/pricing";
-import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { DEFAULT_DESCRIPTION, LINKEDIN_URL, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const organizationId = `${SITE_URL}/#organization`;
 const websiteId = `${SITE_URL}/#website`;
@@ -41,6 +41,7 @@ export const homeStructuredData = {
       url: SITE_URL,
       logo: `${SITE_URL}/icon.png`,
       image: `${SITE_URL}/og.png`,
+      sameAs: [LINKEDIN_URL],
       email: "hello@rentokey.com",
       telephone: "+90 541 390 10 20",
       address: {
