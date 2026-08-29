@@ -15,6 +15,7 @@ export type BlogPost = {
   excerpt: string;
   description: string;
   publishedAt: string;
+  updatedAt: string;
   readingMinutes: number;
   intro: string[];
   body: Block[];
@@ -36,6 +37,7 @@ export const posts: BlogPost[] = [
     description:
       "2026’nın gerçek dijitalleşme gündemi: Motorlu Kara Taşıtlarının Kiralanması Hakkında Yönetmelik, teslim/iade belgesi, depozito ve kilometre kuralları, beş yıllık arşiv ve filo şartlarının operasyona etkisi.",
     publishedAt: "2026-08-20",
+    updatedAt: "2026-08-29",
     readingMinutes: 12,
     intro: [
       "Her yıl aynı başlıklarla dijitalleşme yazıları çıkar: yapay zekâ, temassız teslim, dijital anahtar, dinamik fiyatlama. Bu başlıkların çoğu doğrudur ama 20-70 araçlık bir firmanın önümüzdeki on iki ayını belirlemez.",
@@ -246,6 +248,7 @@ export const posts: BlogPost[] = [
     description:
       "Kağıt teslim tutanağından fotoğraflı dijital teslim/iade kaydına geçmenin operasyona etkisi: atfedilemeyen hasar, devir süresi, personel bağımlılığı ve uyuşmazlık yönetimi.",
     publishedAt: "2026-08-28",
+    updatedAt: "2026-08-29",
     readingMinutes: 12,
     intro: [
       "Teslim tutanağı, araç kiralamada en çok doldurulan ve en az işe yarayan evraktır. Her araç için doldurulur, imzalatılır, klasöre kaldırılır — ve ihtiyaç duyulduğu gün ya bulunamaz ya da bir işe yaramaz.",
@@ -475,6 +478,7 @@ export const posts: BlogPost[] = [
     description:
       "Boş araç günlerini azaltmanın ve filo kullanım oranını artırmanın beş yolu: kırık gün yönetimi, devir süresi, taban yük kurgusu, kural bazlı doluluk ve araç başına günlük gelir.",
     publishedAt: "2026-07-01",
+    updatedAt: "2026-08-29",
     readingMinutes: 9,
     intro: [
       "Boş araç günü konuşulduğunda ilk akla gelen şey talep olur. Sezon kısa, rekabet yoğun, fiyatlar baskı altında. Bu tespitlerin hepsi doğru olabilir. Ama 40 araçlık bir filoda kaybedilen günlerin büyük kısmı talep yokluğundan doğmaz; atama, devir ve planlama hatalarından doğar. Kısacası araç boş kalmaz, **boş bırakılır**.",

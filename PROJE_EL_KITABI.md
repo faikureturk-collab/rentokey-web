@@ -222,9 +222,11 @@ Paketler yalnız araç sayısına göre değil; ekip, şube ve operasyon karmaş
 - Sayfa başlıkları, açıklamalar, canonical adresler, Open Graph ve Twitter kartları merkezi bir metadata yardımcısında toplandı.
 - Ana sayfaya Organization, WebSite ve SoftwareApplication türlerinde JSON-LD yapılandırılmış veri eklendi.
 - `robots.txt` ve `sitemap.xml` Next.js metadata route'larıyla üretiliyor.
-- Sitemap yalnız aramada sunulmaya hazır `/`, `/ucretsiz-dene` ve `/kaynaklar` sayfalarını içeriyor.
+- Standart üretim adresi `https://www.rentokey.com`; apex alan adı kalıcı yönlendirmeyle `www` sürümüne taşınıyor. Canonical, sitemap, robots, Open Graph ve JSON-LD aynı merkezi `SITE_URL` değerinden üretiliyor.
+- Sitemap aramada sunulmaya hazır `/`, `/ucretsiz-dene`, `/kaynaklar`, `/blog` ve üç yayındaki blog yazısını içeriyor. Statik sayfa güncellemeleri ile blog yayın/değişiklik tarihleri ayrı tutuluyor.
 - Yer tutucu içerikler ve uzman onayı bekleyen yasal metinler `noindex, follow` durumunda. Gerçek içerik tamamlandığında metadata ve sitemap birlikte güncellenmeli.
 - Hero'nun görünen metninde Türkiye, KKTC ve araç kiralama programı bağlamı doğal biçimde açıklandı.
+- Google Search Console alan adı mülkü ve Bing Webmaster Tools doğrulandı; sitemap iki panele de gönderildi. Yeni sitemap yayına çıktıktan sonra keşfedilen URL sayısı tekrar kontrol edilmeli.
 
 ## 7. Ana sayfanın baştan sona hikâyesi
 

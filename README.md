@@ -56,6 +56,7 @@ npm run lint
 ## Önemli durum
 
 - Bu repo çalışan Rent Okey uygulaması değildir; ürün uygulaması `https://app.rentokey.com` adresindedir.
+- Pazarlama sitesinin standart üretim adresi `https://www.rentokey.com` değeridir. `src/lib/seo.ts` içindeki `SITE_URL`; canonical, sitemap, robots, sosyal paylaşım ve JSON-LD adreslerinin tek kaynağıdır. Apex alan adı `next.config.ts` üzerinden kalıcı olarak `www` sürümüne yönlendirilir.
 - `/ucretsiz-dene`, isteği aynı origin `/api/kayit-ol` route'una gönderir. Bu route hesabı `https://app.rentokey.com/api/kayit-ol` üzerinden sunucu tarafında oluşturur; doğrulama e-postası `mail.rentokey.com` üzerinden gönderilir. Firma ve filo bilgileri e-posta onayından sonra uygulamada alınır.
 - Web sitesi artık Supabase istemcisi veya Supabase ortam değişkeni kullanmaz. Daha önce Vercel'e eklenen `NEXT_PUBLIC_SUPABASE_URL` ve `NEXT_PUBLIC_SUPABASE_ANON_KEY` değerleri kullanılmadığı için kaldırılabilir.
 - İletişim formu `https://app.rentokey.com/api/iletisim-formu-gonder` endpoint'ine gerçek gönderim yapar. Cloudflare Turnstile `contact-form` action'ıyla üretilen token `turnstileToken` alanında gönderilir. Pazarlama sitesi yalnız `NEXT_PUBLIC_TURNSTILE_SITE_KEY` kullanır; `TURNSTILE_SECRET_KEY` yalnız API projesinde tutulur. API üretimde yalnız `rentokey.com` ve `www.rentokey.com` origin'lerini kabul eder; yerel ortamdan canlı gönderim beklenmemelidir.

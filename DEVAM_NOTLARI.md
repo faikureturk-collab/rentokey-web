@@ -40,7 +40,9 @@ Marka varlıkları `RentOkey_Tick_Konumu_Duzeltilmis` klasöründeki resmî setl
 
 Slogansız yatay logo ayrıca optik olarak yeniden hizalandı. İkon 36 iç SVG birimi yukarı alınarak RentOkey kelime işaretiyle aynı görsel merkeze getirildi; yazı, bulut ve tik çizimleri değiştirilmedi. Renkli, siyah ve beyaz sürümler SVG, outlined SVG, yüksek çözünürlüklü PNG, PDF ve EPS olarak `RentOkey_Slogansiz_Optik_Hizali` klasörüne eklendi. Header ve `og.png` bu yeni slogansız kilidi kullanıyor; sloganlı footer kilidi ve yalnız ikon dosyaları özgün geometrilerini koruyor. Tekrar üretim kaynağı `scripts/export-logo-assets.mjs` içinde tutuluyor.
 
-Teknik SEO altyapısı tamamlandı. Tüm güçlü sayfalara benzersiz başlık, açıklama, canonical, Open Graph ve Twitter metadata eklendi; ana sayfada Organization, WebSite ve SoftwareApplication JSON-LD verisi kullanılıyor. `robots.txt` ve yalnız indekslenmesi istenen `/`, `/ucretsiz-dene` ve `/kaynaklar` adreslerini içeren `sitemap.xml` üretildi. Yer tutucu blog/kılavuz/güncelleme sayfaları ile henüz uzman onayı almamış yasal metinler `noindex, follow` durumunda tutuluyor. Bu sayfalar gerçek içerik ve gerekli onaylar tamamlandığında hem indekslemeye hem sitemap'e ayrıca açılmalıdır.
+Teknik SEO altyapısı tamamlandı. Tüm güçlü sayfalara benzersiz başlık, açıklama, canonical, Open Graph ve Twitter metadata eklendi; ana sayfada Organization, WebSite ve SoftwareApplication JSON-LD verisi kullanılıyor. Standart üretim adresi `https://www.rentokey.com` olarak belirlendi; `rentokey.com` istekleri kalıcı olarak `www` sürümüne yönlendiriliyor. `robots.txt`, canonical adresler, sosyal paylaşım URL'leri, JSON-LD ve `sitemap.xml` aynı merkezi `SITE_URL` değerini kullanıyor. Sitemap; `/`, `/ucretsiz-dene`, `/kaynaklar`, `/blog` ve üç yayındaki blog yazısını içeriyor; statik sayfalar için gerçek içerik güncelleme tarihleri, yazılar için ayrı yayın/değişiklik tarihleri kullanılıyor. Yer tutucu kılavuz/güncelleme sayfaları ile henüz uzman onayı almamış yasal metinler `noindex, follow` durumunda tutuluyor.
+
+29 Ağustos 2026'da Google Search Console alan adı mülkü ve Bing Webmaster Tools doğrulandı. Sitemap iki panele de gönderildi. Google, `www` ana sayfayı dizine eklenmiş gösterdi; ücretsiz deneme, kaynaklar, blog ve üç blog yazısı için öncelikli tarama isteği oluşturuldu. İlk Google sitemap okuması eski `www` olmayan URL'lerle “Getirilemedi” sonucunu verdiği için yeni canonical sitemap yayınlandıktan sonra panel durumu tekrar kontrol edilmelidir. Bing gönderimi hatasız biçimde işleme alındı.
 
 ## Ürün görseli notu
 
@@ -55,7 +57,7 @@ Teknik SEO altyapısı tamamlandı. Tüm güçlü sayfalara benzersiz başlık, 
 3. Yeni modül akışındaki metin ve örnek değerleri gerçek paket kapsamıyla son kez doğrula.
 4. İletişim formunu üretime almadan önce tercih edilen form servisine veya backend mesaj endpoint'ine bağla; e-posta taslağı geçici ama dürüst bir ara çözümdür.
 5. Yayına geçmeden önce Git diff'ini kullanıcıyla gözden geçir, ardından yalnız açık onayla commit/push/deploy yap.
-6. Yayın sonrası Google Search Console'a `https://rentokey.com/sitemap.xml` gönder ve ana URL'lerde canlı URL denetimi yap.
+6. Bu SEO düzeltmesi yayınlandıktan sonra Google ve Bing'de `https://www.rentokey.com/sitemap.xml` adresini yeniden gönder; Google'daki eski “Getirilemedi” kaydının başarılı okumaya ve 7 keşfedilen URL'ye dönüştüğünü doğrula.
 
 ## Git durumu
 

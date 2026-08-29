@@ -74,41 +74,22 @@ B2B SaaS'ta organik trafiğin tipik olarak %70–80'i ürün sayfalarından değ
 
 ---
 
-### A3. www / non-www ikiliği — teknik olarak en acil madde
+### A3. www / non-www ikiliği — çözüldü (29 Ağustos 2026)
 
-| Sinyal | Değer |
-|---|---|
-| `SITE_URL` (kodda) | `https://rentokey.com` (www yok) |
-| robots.txt `Host:` | `https://rentokey.com` |
-| sitemap.xml URL'leri | `https://rentokey.com/...` |
-| canonical etiketleri | `https://rentokey.com/...` |
-| **Sitenin fiilen sunulduğu adres** | `https://www.rentokey.com` |
+Standart üretim adresi **`https://www.rentokey.com`** olarak belirlendi. `SITE_URL` bu adrese taşındı; canonical, sitemap, robots, Open Graph ve JSON-LD aynı merkezi değerden üretiliyor. `next.config.ts`, `rentokey.com` host'undaki tüm yolları kalıcı 308 yönlendirmeyle karşılık gelen `www` adresine taşıyor.
 
-İnceleme sırasında **her iki host da içerik döndürdü** (yönlendirme değil). Bu, aynı içeriğin iki farklı adreste yayınlanması demek: bağlantı gücü ikiye bölünür, Google hangi sürümü sıralayacağına kendi karar verir, Search Console verisi ikiye ayrılır.
-
-**Doğrulama komutu:**
-```bash
-curl -sI https://rentokey.com/      | head -1
-curl -sI https://www.rentokey.com/  | head -1
-```
-İkisi de `200` dönüyorsa sorun doğrulanmış demektir.
-
-**Yapılacak:**
-1. Tercih edilen host'a karar ver. Öneri: **www.rentokey.com** (menü, paylaşımlar ve mevcut bağlantılar zaten www).
-2. Diğer host'u sunucu/DNS seviyesinde **301** ile tercih edilene yönlendir (Vercel/Cloudflare'de tek ayar).
-3. `src/lib/seo.ts` içindeki `SITE_URL`'i seçilen host ile eşitle — canonical, sitemap, robots ve JSON-LD hepsi buradan besleniyor, tek satırlık düzeltme.
-4. Search Console'da her iki sürümü de mülk olarak ekle, tercih edileni izle.
+Google URL Denetimi de ana sayfa için Google'ın seçtiği standart URL'nin `https://www.rentokey.com/` olduğunu doğruladı. Yayın sonrasında apex ve `www` sürümleri tekrar kontrol edilmeli; apex bütün yollarda yalnız yönlendirme vermeli, doğrudan içerik sunmamalıdır.
 
 ---
 
-### A4. Analitik ve Search Console kurulu değil
+### A4. Search Console kuruldu; analitik ölçüm bekliyor
 
 Kod tabanında GA4, Google Tag Manager, Plausible veya benzeri **hiçbir ölçüm aracı yok**; metadata'da `verification` alanı da tanımlı değil.
 
 Bu, SEO çalışmasının sonucunu görmenin imkânsız olduğu anlamına gelir: hangi kelimeden kaç tıklama geldiği, hangi sayfanın dönüştürdüğü, denemeye kaç kişinin başladığı ölçülemiyor.
 
-**Yapılacak (bu hafta, 1 saatlik iş):**
-1. Google Search Console'a siteyi ekle + sitemap gönder.
+**Durum / yapılacak:**
+1. Google Search Console ve Bing Webmaster Tools doğrulandı; sitemap iki panele de gönderildi.
 2. GA4 kur (Next.js'te `@next/third-parties/google` ile tek bileşen).
 3. Dönüşüm olaylarını tanımla: `ucretsiz_dene_tiklama`, `kayit_tamamlandi`, `iletisim_formu_gonderildi`, `whatsapp_tiklama`.
 4. Bing Webmaster Tools (ücretsiz, GSC'den içe aktarılır).
@@ -130,10 +111,8 @@ Anasayfa H1: *"Operasyonu yönetin. Yoğunluğu değil."* Güçlü bir slogan am
 
 veya H1'in hemen altındaki alt başlığı kelimeyle başlat (şu an "Rent Okey, Türkiye ve KKTC için geliştirilen araç kiralama operasyon yazılımıdır" — bu iyi, ama H1'e taşımak daha etkili).
 
-### B3. Sitemap eksik ve tarihi sabit kodlanmış
-`src/app/sitemap.ts` yalnızca 3 URL içeriyor ve `lastModified` elle yazılmış sabit bir tarih (`2026-08-23`). Yeni sayfa eklendiğinde sitemap'e otomatik yansımıyor, tarih de zamanla yanıltıcı hâle geliyor.
-
-**Yapılacak:** Sayfa listesini merkezi bir yapıdan (örn. `src/lib/nav.ts`) türet; blog/kılavuz yayına girince içerik dosyalarının gerçek tarihini kullan.
+### B3. Sitemap kapsamı ve tarihleri — çözüldü (29 Ağustos 2026)
+`src/app/sitemap.ts`; `/`, `/ucretsiz-dene`, `/kaynaklar`, `/blog` ve üç yayındaki yazıyı içeriyor. Statik sayfalar için içerik güncelleme tarihleri ayrı tutuluyor; blog kayıtlarında `publishedAt` ve `updatedAt` ayrıştırıldı. Sitemap, JSON-LD ve Open Graph makale verileri son değişiklik tarihini `updatedAt` üzerinden yayınlıyor.
 
 ### B4. `/kaynaklar` ince (thin) sayfa
 İndekslenebilir tek "içerik" sayfası, ama işlevi iki adet **noindex** sayfaya (blog, kılavuzlar) link vermekten ibaret. Google için değeri düşük, tarama bütçesi israfı.
@@ -185,9 +164,9 @@ Mevcut şema iyi kurulmuş; eksikler:
 ## E. 30 GÜNLÜK UYGULAMA PLANI
 
 ### Hafta 1 — Ölçüm ve teknik temel
-- [ ] Search Console + Bing Webmaster kurulumu, sitemap gönderimi
+- [x] Search Console + Bing Webmaster kurulumu, sitemap gönderimi
 - [ ] GA4 kurulumu + 4 dönüşüm olayı
-- [ ] www / non-www kararı, 301 yönlendirme, `SITE_URL` düzeltmesi
+- [x] www / non-www kararı, kalıcı yönlendirme, `SITE_URL` düzeltmesi
 - [ ] `FAQPage` şeması ekle (`src/lib/faq.ts` verisi hazır)
 - [ ] `/giris` → `permanentRedirect`, özel 404 sayfası
 
@@ -195,7 +174,7 @@ Mevcut şema iyi kurulmuş; eksikler:
 - [ ] `next.config.ts`'teki 6 yönlendirmeyi kaldır
 - [ ] `/fiyatlandirma`, `/ozellikler`, `/hakkimizda`, `/iletisim`, `/sss` sayfalarını gerçek sayfa olarak aç
 - [ ] Her birine özgün title/description/canonical + `BreadcrumbList`
-- [ ] Sitemap'i dinamikleştir
+- [x] Sitemap'i yayındaki blog içerikleri ve gerçek güncelleme tarihleriyle genişlet
 - [ ] H1'e anahtar kelime yedir
 
 ### Hafta 3 — Derinlik

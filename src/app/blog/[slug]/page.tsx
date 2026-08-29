@@ -43,6 +43,7 @@ export async function generateMetadata({
       ...metadata.openGraph,
       type: "article",
       publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt,
     },
   };
 }
@@ -68,7 +69,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         articleSection: post.category,
         inLanguage: "tr-TR",
         datePublished: post.publishedAt,
-        dateModified: post.publishedAt,
+        dateModified: post.updatedAt,
         mainEntityOfPage: url,
         url,
         image: `${SITE_URL}${DEFAULT_OG_IMAGE.url}`,
