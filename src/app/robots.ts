@@ -12,6 +12,18 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "OAI-SearchBot",
         allow: "/",
       },
+      {
+        userAgent: "Claude-SearchBot",
+        allow: "/",
+      },
+      {
+        userAgent: "Claude-User",
+        allow: "/",
+      },
+      {
+        userAgent: "ClaudeBot",
+        allow: "/",
+      },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,

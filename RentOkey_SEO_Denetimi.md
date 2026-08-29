@@ -141,6 +141,7 @@ Mevcut şema iyi kurulmuş; eksikler:
 ## C. ORTA — Teknik hijyen
 
 - **ChatGPT arama taraması:** `OAI-SearchBot`, ChatGPT arama özelliklerinde görünürlük amacıyla `robots.txt` içinde açıkça izinli. Bu tercih, model eğitimi için kullanılan `GPTBot` kontrolünden bağımsızdır.
+- **Claude taraması:** `Claude-SearchBot` arama görünürlüğü, `Claude-User` kullanıcı tarafından başlatılan sayfa erişimi ve `ClaudeBot` herkese açık pazarlama içeriğinin model geliştirme süreçlerinde kullanılabilmesi için açıkça izinli. Arama ve model geliştirme tercihleri ayrı amaçlara sahiptir.
 - **robots.txt `Host:` direktifi:** Google tarafından yok sayılır (yalnızca Yandex destekler). Zararsız ama işlevsiz; asıl çözüm A3'teki 301.
 - **`/giris` yönlendirmesi:** `redirect()` kullanılmış — Next.js varsayılan olarak **307 (geçici)** döner. Kalıcı bir dış yönlendirme olduğu için `permanentRedirect()` (308) daha doğru.
 - **`app.rentokey.com` indekslenmesi:** Uygulama alt alanının arama sonuçlarına düşmemesi için orada `X-Robots-Tag: noindex` veya kendi robots.txt'i olmalı. Kontrol edilmeli.
