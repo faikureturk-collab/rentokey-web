@@ -18,7 +18,7 @@ export const metadata = createPageMetadata({
 const benefits = [
   "Rezervasyon ve zaman çizelgesini kendi araçlarınızla deneyin",
   "Teslim, iade ve yaklaşan riskleri tek akışta görün",
-  "İlk 48 saat içinde ilk CSV aktarımınız için ücretsiz destek alın",
+  "Araç, rezervasyon ve gider verilerinizi uygulama içindeki hazır CSV şablonlarıyla aktarın",
   "Masaüstü, tablet ve mobil kullanım düzenini test edin",
 ];
 
@@ -45,7 +45,8 @@ export default function UcretsizDenePage() {
           <p className="mt-5 max-w-xl text-base leading-relaxed text-brand-navy/55">
             Hesabınızı oluşturun, e-posta adresinizi doğrulayın ve kendi filonuz,
             rezervasyonlarınız ve ekibinizle Rent Okey&apos;i 21 gün değerlendirin.
-            İlk 48 saat içinde CSV aktarım desteğinden yararlanın.
+            Uygulama içindeki hazır CSV şablonlarıyla verinizi kendiniz aktarın;
+            ilk 48 saat içinde ihtiyaç halinde ücretsiz destek de alın.
           </p>
 
           <ul className="mt-7 space-y-3.5">
