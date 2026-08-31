@@ -669,15 +669,124 @@ export const posts: BlogPost[] = [
       },
     ],
   },
-];
-
-export const upcomingPosts: UpcomingPost[] = [
   {
+    slug: "dogru-metriklerle-filo-karliligini-artirma",
     category: "Raporlama",
     title: "Doğru metriklerle filo kârlılığınızı nasıl artırırsınız?",
     excerpt: "Doluluk oranı, araç başı gelir ve boşta kalma süresi gibi kritik metrikler.",
+    description:
+      "Doluluk oranı yükselirken kârlılık neden yerinde sayar? Doluluk oranı, araç başı gelir ve boşta kalma süresini birlikte okuyarak fiyatlandırma, filo kompozisyonu ve büyüme kararlarını doğru vermenin yolu.",
+    publishedAt: "2026-08-31",
+    updatedAt: "2026-08-31",
+    readingMinutes: 9,
+    intro: [
+      "Ay sonunda doluluk oranı raporuna bakıp rahatlıyorsunuz: geçen aya göre birkaç puan yükselmiş. Ama üç ay sonra kâr-zarar tablosuna baktığınızda hikâye aynı değil — ciro biraz artmış, banka hesabınız neredeyse yerinde saymış. Bu iki tablo neden birbirini doğrulamıyor?",
+      "**Doluluk oranı size ne kadar çalıştığınızı söyler; kârlı çalışıp çalışmadığınızı söylemez.** Bunu görmek tek bir sayıya bakmakla değil, doluluk oranı, araç başı gelir ve boşta kalma süresinin birlikte anlattığı hikâyeyi okumakla mümkündür.",
+      "Bu yazı, filonun boş günlerini azaltmanın operasyonel yollarını değil — onu ayrı bir yazıda ele aldık — aynı üç metriği fiyatlandırma, filo kompozisyonu ve büyüme kararlarına nasıl çevireceğinizi anlatıyor.",
+    ],
+    body: [
+      { type: "h2", id: "doluluk-tuzagi", text: "1. Doluluk oranı yükselirken kâr neden yerinde sayar" },
+      {
+        type: "p",
+        text: "Doluluk oranını yükseltmenin en hızlı yolu bellidir: fiyatı kırmak, minimum kiralama süresini kaldırmak, uzun dönem sözleşmeye ağırlık vermek. Bu üçü de takvimi doldurur. Ama hiçbiri, o dolan takvimin ne kadar kazandırdığını söylemez.",
+      },
+      {
+        type: "quote",
+        text: "Yüksek doluluk, düşük fiyattan satın alınmışsa bir başarı değil, ertelenmiş bir zarardır.",
+      },
+      { type: "h3", text: "Basit bir kontrol: doluluk artışının kaynağı ne?" },
+      {
+        type: "p",
+        text: "İki farklı senaryo aynı doluluk grafiğini üretebilir. Birincisi: aynı fiyattan, daha fazla araç kiralanmış — gerçek bir talep artışı. İkincisi: fiyat kırılarak veya ortalama kiralama süresi yapay olarak uzatılarak doluluk şişirilmiş — görünüşte büyüme, gerçekte marj kaybı. Bu ikisini birbirinden ayıran tek şey, aynı dönemin araç başı gelirine bakmaktır.",
+      },
+      {
+        type: "callout",
+        title: "Hızlı test",
+        text: "Bu ayın doluluk oranı geçen aya göre yükseldiyse, aynı dönemin araç başı gelirine bakın. İkisi birlikte yükselmiyorsa doluluk artışınız büyük ihtimalle fiyattan geliyor — talepten değil.",
+      },
+
+      { type: "h2", id: "arac-basi-geliri-okumak", text: "2. Araç başı geliri okumanın doğru yolu" },
+      {
+        type: "p",
+        text: "Araç başı gelir basit bir bölme işlemidir: belirli bir dönemdeki toplam kiralama gelirinin, filodaki araç sayısına bölünmesi. Ama filo geneli tek bir ortalama, tıpkı doluluk oranında olduğu gibi, kararı yanlış yöne çekebilir.",
+      },
+      { type: "h3", text: "Filo ortalaması, kararı yanlış yöne çeker" },
+      {
+        type: "p",
+        text: "Otuz ekonomi sınıfı ve on premium araçtan oluşan kırk araçlık bir filo düşünün. Filo ortalaması makul görünse bile, bu ortalama iki çok farklı gerçekliği gizliyor olabilir: ekonomi sınıfı yüksek talep ve düzenli getiriyle çalışırken, premium sınıf düşük talep ve yüksek sabit giderle (finansman, sigorta, bakım) filonun kârını aşağı çekiyor olabilir. Filo ortalamasına bakan yönetici bu tabloyu görmez; segment bazında ayrıştırmayan hiçbir rapor bunu göstermez.",
+      },
+      {
+        type: "table",
+        head: ["Segment", "Araç sayısı", "Araç başı aylık gelir (örnek)", "Yorum"],
+        rows: [
+          ["Ekonomi", "30", "₺28.000", "Talep yüksek, sabit gider düşük"],
+          ["Premium", "10", "₺19.000", "Talep düşük, sabit gider yüksek"],
+          ["Filo ortalaması", "40", "₺25.750", "İkisini de gizliyor"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Buradaki rakamlar mekanizmayı göstermek için kurulmuş bir örnektir; kendi filonuzdaki gerçek dağılımı görmek için segment bazlı hesaplama gerekir. Filoya yeni araç eklemeden önce sorulması gereken soru şudur: **eklenecek araç, o segmentin sabit giderini araç başı gelirle rahatça karşılıyor mu, yoksa filo ortalamasının arkasına gizlenerek mi büyüyor?**",
+      },
+
+      {
+        type: "h2",
+        id: "bosta-kalma-suresini-paraya-cevirmek",
+        text: "3. Boşta kalma süresini doğrudan paraya çevirin",
+      },
+      {
+        type: "p",
+        text: "Boşta kalma süresi bir operasyon göstergesi olarak raporlanır, ama aslında doğrudan bir gelir kaybı kalemidir — gün cinsinden, dolayısıyla para cinsinden ölçülebilir.",
+      },
+      {
+        type: "callout",
+        title: "Hesabı yapalım",
+        text: "Bir aracın ortalama günlük getirisi 900 TL ise ve o araç ayda üç gün fazladan boşta kalıyorsa, tek bir araç için aylık kayıp 2.700 TL'dir. Yirmi araçlık bir filoda aynı ortalama geçerliyse, bu 54.000 TL'lik aylık, görünmeyen bir gelir kaybı demektir.",
+      },
+      {
+        type: "p",
+        text: "Bu boşluğun nereden geldiğini — talep eksikliğinden mi, yoksa atama ve devir süreçlerinden mi — ayırt etmek ayrı bir çalışmadır; [Filo yönetiminde verimliliği artırmanın 5 yolu](/blog/filo-yonetiminde-verimliligi-artirmanin-5-yolu) yazımızda kırık gün ve devir süresi mekanizmalarını bu yüzden ayrıca ele aldık. Buradaki asıl mesele farklı: bu süreyi bir rapor satırı olarak değil, aylık bir maliyet kalemi olarak görmek.",
+      },
+      { type: "h3", text: "Kim, ne sıklıkla bakmalı" },
+      {
+        type: "p",
+        text: "Boşta kalma süresi ay sonunda değil, haftalık gözden geçirilmelidir. Bir sorunun fark edilmesi ile düzeltilmesi arasındaki gecikme, doğrudan kaybedilen araç-gün sayısına eklenir. Küçük filolarda bu takibi filo sorumlusu, büyüyen filolarda şube müdürleri üstlenmelidir — tek bir kişinin ay sonunda göz atacağı bir rapor değil, düzenli sahiplenilen bir alışkanlık olmalıdır.",
+      },
+
+      { type: "h2", id: "uc-metrigi-birlikte-okumak", text: "4. Üç metriği bir arada okumak: basit bir karar matrisi" },
+      {
+        type: "p",
+        text: "Bu üç metrik tek başına değil, birlikte okunduğunda karar üretir. Aşağıdaki kombinasyonlar kesin bir formül değil, ilk teşhis için bir başlangıç noktasıdır:",
+      },
+      {
+        type: "table",
+        head: ["Doluluk oranı", "Araç başı gelir", "Boşta kalma süresi", "Muhtemel anlamı", "Hangi karara işaret eder"],
+        rows: [
+          ["Yüksek", "Düşük", "Düşük", "Doluluk fiyattan satın alınmış", "Fiyat ve segment kararını gözden geçir"],
+          ["Düşük", "Yüksek", "Düşük", "Az ama kârlı çalışıyor, kapasite fazlası var", "Talebi büyütmeyi veya filoyu küçültmeyi değerlendir"],
+          ["Düşük", "Düşük", "Yüksek", "Hem talep hem operasyon sorunu bir arada", "Önce operasyonel nedenleri ayıkla, sonra fiyata dokun"],
+          ["Yüksek", "Yüksek", "Düşük", "Sağlıklı ve tekrarlanabilir performans", "Büyüme veya yeni araç kararı için güvenli sinyal"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Bu matrisin değeri, hangi kutuda olduğunuzu bulduktan sonra doğru soruyu sormanızdır. Örneğin \"yüksek doluluk, düşük araç başı gelir\" kutusundaysanız, cevap daha fazla araç kiralamak değil, mevcut araçları daha iyi fiyattan kiralamaktır — tam tersi bir refleksle çoğu firma bu noktada filoyu büyütmeyi dener ve sorunu büyütür.",
+      },
+
+      { type: "h2", id: "sonuc", text: "Bunu bir alışkanlığa çevirmek" },
+      {
+        type: "p",
+        text: "Doğru metrikleri bilmek yetmez; onlara ne sıklıkla ve hangi düzeyde (filo geneli mi, segment bazlı mı) bakacağınızı da bir alışkanlık hâline getirmeniz gerekir. Tek bir ayın rakamına aşırı tepki vermeyin — sezonsallık, kampanya dönemleri ve tek seferlik olaylar kısa vadede metrikleri oynatabilir. Asıl anlam, üç ayı aşan bir eğilimde ortaya çıkar.",
+      },
+      {
+        type: "p",
+        text: "Bu üç metriğin ortak noktası şudur: hiçbiri tek başına, filonun geri kalanından kopuk okunduğunda anlam taşımaz. Doluluk oranı araç başı gelirle, araç başı gelir boşta kalma süresiyle birlikte değerlendirilmeli — üçü de rezervasyon, teslim/iade ve finans verisinin aynı ekranda görülebilmesini gerektirir. Excel'de ayrı ayrı tutulan bu üç veri seti, hiçbir zaman aynı anda okunmaz; ve okunmayan metrik, karara dönüşmez.",
+      },
+    ],
   },
 ];
+
+export const upcomingPosts: UpcomingPost[] = [];
 
 export function getSortedPosts(): BlogPost[] {
   return [...posts].sort(

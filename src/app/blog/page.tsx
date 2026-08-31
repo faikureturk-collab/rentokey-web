@@ -56,25 +56,29 @@ export default function BlogPage() {
           ))}
         </div>
 
-        <h2 className="mt-16 text-sm font-extrabold uppercase tracking-wide text-brand-navy/35">
-          Hazırlanıyor
-        </h2>
-        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {upcomingPosts.map((post) => (
-            <article
-              key={post.title}
-              className="rounded-2xl border border-dashed border-surface-border p-7"
-            >
-              <span className="inline-flex rounded-full bg-surface-soft px-3 py-1 text-xs font-semibold text-brand-navy/45">
-                {post.category}
-              </span>
-              <h3 className="mt-4 text-base font-bold leading-snug text-brand-navy/70">
-                {post.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-brand-navy/45">{post.excerpt}</p>
-            </article>
-          ))}
-        </div>
+        {upcomingPosts.length > 0 && (
+          <>
+            <h2 className="mt-16 text-sm font-extrabold uppercase tracking-wide text-brand-navy/35">
+              Hazırlanıyor
+            </h2>
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
+              {upcomingPosts.map((post) => (
+                <article
+                  key={post.title}
+                  className="rounded-2xl border border-dashed border-surface-border p-7"
+                >
+                  <span className="inline-flex rounded-full bg-surface-soft px-3 py-1 text-xs font-semibold text-brand-navy/45">
+                    {post.category}
+                  </span>
+                  <h3 className="mt-4 text-base font-bold leading-snug text-brand-navy/70">
+                    {post.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-brand-navy/45">{post.excerpt}</p>
+                </article>
+              ))}
+            </div>
+          </>
+        )}
       </section>
     </>
   );
