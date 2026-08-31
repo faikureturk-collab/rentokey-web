@@ -493,6 +493,7 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 8. Turnstile public site key pazarlama sitesi Vercel ortamına, secret key ise yalnız API projesine eklenmeli ve gerçek iletişim gönderimi üretim alan adında uçtan uca doğrulanmalıdır.
 9. Checkout, ödeme, abonelik ve faturalandırma akışı henüz yoktur.
 10. `YEARLY_DISCOUNT` dışa aktarılıyor; arayüz hesaplaması bunun yerine açıkça tanımlanmış yıllık fiyatları kullanıyor. Fiyat mantığı tek modele indirgenmelidir.
+11. GA4 veya başka bir analitik sağlayıcı henüz kurulu değildir. UTM/referrer bilgisi yakalanmıyor ve deneme hesabıyla ilişkilendirilmiyor; Search Console tıklamaları kayıt dönüşümüne bağlanamıyor.
 
 ## 16. Önerilen sonraki geliştirme sırası
 
@@ -506,8 +507,12 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 ### P1 — Lead ve ölçümleme
 
 1. İletişim formunun Turnstile doğrulaması ve e-posta teslimini üretim alan adında uçtan uca test et.
-2. CTA tıklaması, deneme başlangıcı, form terk oranı ve paket ilgisi için analitik ekle.
-3. KVKK/çerez tercihi ve ölçümleme izinlerini hukuki metinlerle birlikte ele al.
+2. GA4 mülkü ve web veri akışı oluştur; Measurement ID'yi ortam değişkeni üzerinden pazarlama sitesine bağla.
+3. İlk ziyaret için UTM parametreleri, yönlendiren alan adı, landing page ve ilk görülme zamanını birinci taraf depolamada tut; Google, Bing, ChatGPT, Claude, LinkedIn ve doğrudan trafik sınıflandırmasını tanımla.
+4. `trial_cta_click`, `trial_form_start`, `sign_up`, `email_verified` ve `onboarding_completed` ölçüm olaylarını kur; yalnız başarılı hesap oluşturma sonrasında gönderilen `sign_up` olayını önemli etkinlik olarak işaretle.
+5. Pazarlama sitesi kayıt route'u ile uygulama kayıt API'sini `attribution` nesnesi kabul edecek şekilde birlikte genişlet ve kaynak bilgisini hesap kaydına kalıcı olarak bağla. Analitik servisine ad, e-posta, şifre veya başka kişisel veri gönderme.
+6. Search Console ile GA4'ü ilişkilendir; kaynak/medium bazında deneme başlangıcı, e-posta doğrulama ve onboarding tamamlama raporları oluştur.
+7. KVKK/çerez tercihi ve ölçümleme izinlerini hukuki metinlerle birlikte ele al; kullanıcı analitik izni vermediğinde sunucu tarafı birinci taraf attribution yaklaşımının kapsamını hukuk danışmanıyla doğrula.
 
 ### P1 — İçerik ve güven
 

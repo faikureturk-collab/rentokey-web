@@ -55,9 +55,9 @@ Teknik SEO altyapısı tamamlandı. Tüm güçlü sayfalara benzersiz başlık, 
 1. Gerçek ürün galerisi eklenecekse uygulamadan temiz, yüksek çözünürlüklü ve kontrollü yeni ekran görüntüleri al; mevcut geçici görselleri doğrudan yayına koyma.
 2. `app.rentokey.com` canlı uygulamasındaki `+` butonunun gerçek kaynak kodunu düzeltmek için uygulamanın frontend deposuna erişim gerektiğini unutma; şu an yalnız pazarlama görseli düzeltildi.
 3. Yeni modül akışındaki metin ve örnek değerleri gerçek paket kapsamıyla son kez doğrula.
-4. İletişim formunu üretime almadan önce tercih edilen form servisine veya backend mesaj endpoint'ine bağla; e-posta taslağı geçici ama dürüst bir ara çözümdür.
+4. Google Arama, ChatGPT, Claude ve diğer kaynaklardan gelen deneme kayıtlarını ölçmek için GA4 ve sunucu tarafı attribution çalışmasını ele al. İlk ziyaret UTM/referrer/landing page bilgisi saklanmalı; `trial_cta_click`, `trial_form_start`, `sign_up`, `email_verified` ve `onboarding_completed` olayları tanımlanmalı; `sign_up` önemli etkinlik yapılmalıdır.
 5. Yayına geçmeden önce Git diff'ini kullanıcıyla gözden geçir, ardından yalnız açık onayla commit/push/deploy yap.
-6. Bu SEO düzeltmesi yayınlandıktan sonra Google ve Bing'de `https://www.rentokey.com/sitemap.xml` adresini yeniden gönder; Google'daki eski “Getirilemedi” kaydının başarılı okumaya ve 7 keşfedilen URL'ye dönüştüğünü doğrula.
+6. Attribution bilgisinin gerçek hesapla kalıcı biçimde eşleşmesi için pazarlama sitesindeki `/api/kayit-ol` route'unu ve `app.rentokey.com/api/kayit-ol` sözleşmesini birlikte genişlet. Analitik servisine ad, e-posta veya şifre gönderme; ölçümlemeyi KVKK/çerez tercihiyle birlikte tasarla.
 
 ## Git durumu
 
