@@ -478,7 +478,7 @@ export const posts: BlogPost[] = [
     description:
       "Boş araç günlerini azaltmanın ve filo kullanım oranını artırmanın beş yolu: kırık gün yönetimi, devir süresi, taban yük kurgusu, kural bazlı doluluk ve araç başına günlük gelir.",
     publishedAt: "2026-07-01",
-    updatedAt: "2026-08-29",
+    updatedAt: "2026-09-02",
     readingMinutes: 9,
     intro: [
       "Boş araç günü konuşulduğunda ilk akla gelen şey talep olur. Sezon kısa, rekabet yoğun, fiyatlar baskı altında. Bu tespitlerin hepsi doğru olabilir. Ama 40 araçlık bir filoda kaybedilen günlerin büyük kısmı talep yokluğundan doğmaz; atama, devir ve planlama hatalarından doğar. Kısacası araç boş kalmaz, **boş bırakılır**.",
@@ -507,6 +507,10 @@ export const posts: BlogPost[] = [
       {
         type: "p",
         text: "Yani aynı sınıftaki araçlar arasında, rezervasyonun öncesindeki ya da sonrasındaki dolu güne yaslanan aracı seçin. Müşteri hangi plakayı aldığını umursamaz; takviminiz fazlasıyla umursar.",
+      },
+      {
+        type: "p",
+        text: "Bu kararı takvim üzerinde nasıl kuracağınızı; çakışma, hazırlık tamponu ve büyük filo görünümüyle birlikte [araç kiralama firmaları için rezervasyon takvimi rehberinde](/blog/arac-kiralama-rezervasyon-takvimi-nasil-yonetilir) ele aldık.",
       },
       { type: "h3", text: "Kaybın büyüklüğü" },
       {
@@ -781,6 +785,257 @@ export const posts: BlogPost[] = [
       {
         type: "p",
         text: "Bu üç metriğin ortak noktası şudur: hiçbiri tek başına, filonun geri kalanından kopuk okunduğunda anlam taşımaz. Doluluk oranı araç başı gelirle, araç başı gelir boşta kalma süresiyle birlikte değerlendirilmeli — üçü de rezervasyon, teslim/iade ve finans verisinin aynı ekranda görülebilmesini gerektirir. Excel'de ayrı ayrı tutulan bu üç veri seti, hiçbir zaman aynı anda okunmaz; ve okunmayan metrik, karara dönüşmez.",
+      },
+    ],
+  },
+  {
+    slug: "arac-kiralama-rezervasyon-takvimi-nasil-yonetilir",
+    category: "Rezervasyon Yönetimi",
+    title: "Araç kiralama firmaları için rezervasyon takvimi nasıl yönetilir?",
+    excerpt:
+      "Çakışmaları, kırık günleri, hazırlık süresini ve araç atama hatalarını azaltmak için uygulamalı planlama rehberi.",
+    description:
+      "Araç kiralama rezervasyon takvimi nasıl yönetilir? Çakışma, hazırlık süresi, araç atama, aylık kiralama ve 70 araçlık filo planlaması için uygulamalı rehber.",
+    publishedAt: "2026-09-02",
+    updatedAt: "2026-09-02",
+    readingMinutes: 12,
+    intro: [
+      "Bir araç kiralama firmasında takvim yalnızca hangi aracın hangi tarihte kirada olduğunu gösteriyorsa işin yarısını yapıyor demektir. Çünkü günlük operasyonu bozan sorunların çoğu, rezervasyon kaydının kendisinde değil; **iki rezervasyonun arasında, araç atama kararında ve teslim–iade hazırlığında** ortaya çıkar.",
+      "Bir tabloda iki rezervasyon üst üste gelmeyebilir ama araç yine de ikinci müşteriye yetişmeyebilir. İlk müşteri aracı havalimanında 10.00'da bırakır, sonraki müşteri merkez şubeden 10.35'te teslim almak ister. Kâğıt üzerinde 35 dakika boşluk vardır; sahada ise iade kontrolü, temizlik ve transfer için zaman yoktur.",
+      "Bu rehber araç kiralayacak müşteriye değil, filoyu yöneten ekibe yöneliktir. Amaç takvimi doldurmak değil; **rezervasyon, araç, lokasyon ve hazırlık süresini birlikte yöneterek uygulanabilir bir operasyon planı kurmaktır.**",
+    ],
+    body: [
+      {
+        type: "h2",
+        id: "takvim-kapasite-haritasi",
+        text: "1. Rezervasyon takvimini randevu listesi değil, kapasite haritası olarak okuyun",
+      },
+      {
+        type: "p",
+        text: "Randevu listesi size müşterinin adını ve teslim saatini söyler. Kapasite haritası ise aynı anda dört soruya cevap verir: **hangi araç kirada, hangisi gerçekten müsait, hangisi hazırlıkta ve hangi rezervasyon henüz bir araca atanmadı?** Bu ayrım yapılmadığında boş görünen her araç kiralanabilir sanılır.",
+      },
+      {
+        type: "table",
+        head: ["Takvim durumu", "Ne anlatır", "Beklenen aksiyon"],
+        rows: [
+          ["Kirada", "Araç aktif bir rezervasyonda", "Teslim/iade saatini takip et"],
+          ["Müsait", "Bilinen engeli ve aktif rezervasyonu yok", "Yeni talep için değerlendir"],
+          ["Hazırlıkta", "Temizlik, kontrol veya transfer bekliyor", "Sorumlu ve hazır olma saati ata"],
+          ["Serviste/bakımda", "Operasyon dışı", "Tahmini dönüş tarihini güncelle"],
+          ["Araç atanmamış", "Talep var, kesin plaka henüz yok", "Uygun sınıftan araç planla"],
+          ["Çakışma/risk", "Aynı zaman, yetersiz tampon veya lokasyon sorunu", "Teslimden önce çöz"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Renk kullanmak bu durumları ilk bakışta ayırmayı kolaylaştırır; fakat renk tek başına yeterli değildir. Durum adı, saat, lokasyon ve gereken aksiyon metin olarak da görünmelidir. Böylece yoğun ekranda hata riski azalır ve renk görme farklılıkları olan kullanıcılar da bilgiyi okuyabilir.",
+      },
+
+      {
+        type: "h2",
+        id: "once-sinif-sonra-arac",
+        text: "2. Rezervasyonu önce sınıfa, doğru zamanda plakaya bağlayın",
+      },
+      {
+        type: "p",
+        text: "Müşteri çoğu zaman belirli bir plakayı değil, ekonomi otomatik veya SUV gibi bir araç sınıfını satın alır. Buna rağmen rezervasyon oluşturulduğu anda kesin araç seçmek, takvimi gereksiz yere kilitler. Daha sonraki bir rezervasyon aynı araçta daha iyi bir boşluk kapatacak olsa bile plan değiştirilemez hâle gelir.",
+      },
+      {
+        type: "p",
+        text: "Daha esnek yöntem iki aşamalıdır: talebi önce araç sınıfına kaydedin, kesin plakayı teslim yaklaşınca atayın. Sistem uygun araç önerirken yalnız boşluğu değil; önceki rezervasyonun bitişini, sonraki rezervasyonun başlangıcını, lokasyonu, bakım durumunu ve oluşacak kırık günleri birlikte değerlendirmelidir.",
+      },
+      {
+        type: "callout",
+        title: "Örnek atama kararı",
+        text: "Beş günlük bir ekonomi sınıfı rezervasyon için iki araç müsait olsun. Birinci araç on iki gün kesintisiz boş, ikinci araç ise rezervasyondan bir gün önce dönüyor. Yeni işi birinci araca vermek iki uzun boşluğu parçalar; ikinci araca yaslamak çoğu durumda daha az kırık gün üretir. Öneri otomatik olabilir, son karar yine kullanıcıda kalmalıdır.",
+      },
+      {
+        type: "p",
+        text: "Kırık günlerin gelir üzerindeki etkisini ve sınıf içi atama yöntemlerini [filo yönetiminde verimliliği artırmanın 5 yolu](/blog/filo-yonetiminde-verimliligi-artirmanin-5-yolu) yazısında daha ayrıntılı ele aldık.",
+      },
+
+      {
+        type: "h2",
+        id: "cakisma-ve-operasyon-riski",
+        text: "3. Takvim çakışması ile operasyon riskini birbirinden ayırın",
+      },
+      {
+        type: "p",
+        text: "Takvim çakışması nettir: aynı araç, kesişen iki zaman aralığında iki müşteriye atanmıştır. Operasyon riski ise daha sinsidir; saatler teknik olarak kesişmez ama araç ikinci işe yetişemez. Bu iki durum aynı uyarı seviyesinde gösterilirse ekip bir süre sonra bütün uyarıları görmezden gelmeye başlar.",
+      },
+      {
+        type: "table",
+        head: ["Durum", "Örnek", "Nasıl davranmalı"],
+        rows: [
+          ["Kesin çakışma", "İki rezervasyon aynı araçta 14.00–16.00 arasında örtüşüyor", "Kaydetmeden önce açık onay veya yeniden atama iste"],
+          ["Hazırlık riski", "İade ile yeni teslim arasında yalnız 35 dakika var", "Uyar, alternatif araç ve saat öner"],
+          ["Lokasyon riski", "Araç Girne'de iade, Lefkoşa'da teslim edilecek", "Transfer süresini ve görevliyi planla"],
+          ["Belirsiz atama", "Rezervasyon sınıfa kayıtlı ama plaka yok", "Teslime kalan süreye göre önceliklendir"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Uyarının amacı kullanıcıyı durdurmak değil, kararın sonucunu görünür kılmaktır. Belge veya araç kontrolü gibi bilgilendirmeler operasyonu gereksiz yere kilitlememeli; kullanıcı gerekçeyi görüp yetkisi dahilinde devam edebilmelidir. Kesin zaman çakışmalarında ise yanlışlıkla çift teslimi önleyecek daha güçlü bir onay adımı kullanılmalıdır.",
+      },
+
+      {
+        type: "h2",
+        id: "hazirlik-transfer-tamponu",
+        text: "4. İki rezervasyon arasına gerçekçi hazırlık ve transfer süresi koyun",
+      },
+      {
+        type: "p",
+        text: "Bir aracın iade edildiği an ile yeniden kiralanabilir olduğu an aynı değildir. İade kontrolü, fotoğraf, yakıt, kilometre, temizlik, hasar değerlendirmesi ve gerekiyorsa şubeler arası transfer tamamlanmadan araç müsait sayılmamalıdır.",
+      },
+      {
+        type: "p",
+        text: "Sabit bir tampon süresi başlangıç için işe yarar, fakat her işlem aynı değildir. Merkez şubede dönen temiz bir araçla havalimanından alınıp başka şubeye götürülecek aracın hazırlık süresi eşit olamaz. En sağlıklı yaklaşım, sınıf ve lokasyon bazında asgari süre tanımlamak ve plan bu sürenin altına düştüğünde uyarı üretmektir.",
+      },
+      {
+        type: "callout",
+        title: "35 dakikalık boşluk neden boşluk değildir?",
+        text: "Araç 10.00'da Girne Limanı'nda iade edilecek, sonraki teslim 10.35'te merkez şubede yapılacaksa takvimde 35 dakika boş görünür. On dakikalık iade kontrolü, yirmi dakikalık transfer ve on beş dakikalık temizlik varsayımında en iyi ihtimalle on dakika gecikme oluşur. Çözüm müşteriye gecikince haber vermek değil; aracı önceden değiştirmek, teslim saatini düzenlemek veya hazırlık görevini planlamaktır.",
+      },
+      {
+        type: "p",
+        text: "Teslim ve iade kayıtlarının neden operasyonun temel parçası olduğunu [araç teslim/iade sürecini dijitalleştirmek](/blog/arac-teslim-iade-surecini-dijitallestirmek) yazısında bulabilirsiniz.",
+      },
+
+      {
+        type: "h2",
+        id: "dogru-zaman-olcegi",
+        text: "5. Günlük, 14 günlük ve aylık görünümü farklı kararlar için kullanın",
+      },
+      {
+        type: "p",
+        text: "Tek bir zaman ölçeği bütün soruları cevaplamaz. Çok geniş görünümde saatlik riskler kaybolur; çok dar görünümde ise aylık kiralamalar ve ileride oluşacak kapasite açığı fark edilmez. Bu nedenle görünüm seçimi yapılan işe göre değişmelidir.",
+      },
+      {
+        type: "ul",
+        items: [
+          "**7 günlük görünüm:** Yaklaşan teslimler, iadeler, kısa boşluklar ve saha görevleri için uygundur.",
+          "**14 günlük görünüm:** Günlük operasyonla kapasite planı arasındaki en dengeli çalışma alanıdır; aynı sınıftaki araçları karşılaştırmayı kolaylaştırır.",
+          "**Aylık görünüm:** Uzun kiralamaları, sezon yoğunluğunu, bakım pencerelerini ve sınıf bazlı kapasite ihtiyacını gösterir.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Aylık kiralamalar dar görünümde bile kaybolmamalıdır. Uzun süreli bir rezervasyon, takvimde sürekliliği olan ayrı bir görünümle işaretlenirse kullanıcı hem aracın uzun dönem bağlı olduğunu hem de günlük kiralamaya ne zaman döneceğini ilk bakışta anlayabilir.",
+      },
+
+      {
+        type: "h2",
+        id: "yetmis-aracli-filo",
+        text: "6. Yetmiş araçlık filoda bütün satırları aynı anda göstermeyin",
+      },
+      {
+        type: "p",
+        text: "On iki araçlık takvimde tüm filoyu tek ekranda görmek mümkündür. Yetmiş araçta aynı yaklaşım bilgi sağlamaz; yalnızca uzun bir kaydırma alanı üretir. Büyük filoda amaç bütün araçları sürekli göstermek değil, ihtiyaç duyulan kümeyi birkaç saniyede bulmaktır.",
+      },
+      {
+        type: "ol",
+        items: [
+          "Araçları ekonomi, orta sınıf, SUV veya ticari gibi **sınıflara göre gruplayın**; her grubun araç sayısını ve doluluk oranını başlıkta gösterin.",
+          "Plaka veya model aramasını, sınıf, durum ve lokasyon filtreleriyle **tek satırda** tutun.",
+          "Kullanılmayan grupları daraltın; teslimi yaklaşan, araç atanmamış veya riskli satırları üstte gösterecek hazır görünümler sunun.",
+          "Araç satırını gereksiz yere büyütmeyin. Plaka, model ve kritik durum bir bakışta okunmalı; ayrıntılar seçildiğinde açılmalıdır.",
+          "Filtre temizleme ve grup daraltma işlemlerini görünür tutun; kullanıcı hangi filtre nedeniyle bazı araçları göremediğini anlamalıdır.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Bu düzen yalnız ekran alanını korumaz. Aynı sınıftaki araçların yan yana görülmesini sağladığı için araç atama kararını da iyileştirir. Yetmiş satırlık bir listeyi taramak yerine ilgili on araçlık grupta doğru boşluğu ararsınız.",
+      },
+
+      {
+        type: "h2",
+        id: "takvimden-hizli-islem",
+        text: "7. Takvimi yalnız görüntüleme alanı değil, işlem başlangıç noktası yapın",
+      },
+      {
+        type: "p",
+        text: "Kullanıcı boş bir hücreye tıkladığında araç ve tarih bilgisi zaten bellidir. Aynı bilgileri yeni rezervasyon formunda tekrar seçtirmek hata ve zaman kaybı üretir. Takvimden açılan hızlı rezervasyon penceresi seçilen aracı, başlangıç tarihini ve mümkünse sınıfı hazır getirmelidir; kullanıcı müşteri, bitiş tarihi ve temel fiyat bilgilerini tamamlamalıdır.",
+      },
+      {
+        type: "p",
+        text: "Bu özellik yalnız tamamen boş araçlarla sınırlı kalmamalıdır. Aracın başka bir günde rezervasyonu bulunması, seçilen boş aralık için yeni kayıt açılmasına engel değildir. Kontrol, aracın genel durumuna değil **seçilen tarih aralığındaki müsaitliğine** göre yapılmalıdır.",
+      },
+      {
+        type: "h3",
+        text: "Sürükle-bırak ne zaman güvenlidir?",
+      },
+      {
+        type: "p",
+        text: "Rezervasyonu başka bir araca sürüklemek planlamayı hızlandırır; fakat işlem sessizce tamamlanmamalıdır. Hedef aracın sınıfı, seçilen tarihlerdeki müsaitliği, lokasyonu ve hazırlık tamponu kontrol edilmeli; araç sınıfı değişiyorsa kullanıcıya açıkça gösterilmelidir. İşlem sonrasında kısa bir geri alma seçeneği hatalı taşımaları güvenle düzeltir.",
+      },
+
+      {
+        type: "h2",
+        id: "onerilen-odak",
+        text: "8. Takvimin göstermediği riskleri önerilen odakta toplayın",
+      },
+      {
+        type: "p",
+        text: "Bazı sorunların takvimde doğal bir satırı yoktur. Araç kiradadır ama ödemenin bir bölümü alınmamıştır. İki rezervasyon çakışmıyordur ama temizlik süresi yetmiyordur. Teslim yaklaşmıştır fakat rezervasyon hâlâ sınıfa bağlıdır ve kesin araç atanmamıştır. Bunların her biri farklı sayfalarda saklanırsa ancak sorun yaşandığında fark edilir.",
+      },
+      {
+        type: "p",
+        text: "Önerilen odak alanı bu sinyalleri tek bir operasyon kuyruğunda birleştirmelidir. Sıralama yalnız uyarı türüne göre değil, **kalan süre ve iş etkisine göre** yapılmalıdır: kesin çakışma, gecikme riski, araçsız rezervasyon, açık bakiye ve yaklaşan belge süresi gibi konular kendi bağlamlarıyla gösterilmelidir.",
+      },
+      {
+        type: "quote",
+        text: "İyi bir operasyon ekranı yalnız bugünü göstermez; yarın sorun olacak işi bugün görünür kılar.",
+      },
+
+      {
+        type: "h2",
+        id: "takvim-metrikleri",
+        text: "9. Takvimin sağlıklı çalıştığını beş metrikle kontrol edin",
+      },
+      {
+        type: "table",
+        head: ["Metrik", "Neyi gösterir", "Ne sıklıkla bakılmalı"],
+        rows: [
+          ["Araç atanmamış yaklaşan rezervasyon", "Teslim hazırlığı riski", "Günlük"],
+          ["Asgari tamponun altındaki devir", "Gecikme ve temizlik riski", "Günlük"],
+          ["Tek ve iki günlük kırık boşluk", "Atama kaynaklı kapasite kaybı", "Haftalık"],
+          ["Sınıf ve lokasyon bazlı doluluk", "Talep ile filo dağılımının uyumu", "Haftalık"],
+          ["Araç başına gelir ve boş gün", "Takvim kararının finansal sonucu", "Aylık"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Doluluk oranını tek başına başarı kabul etmeyin. Takvim dolarken fiyat veya operasyon maliyeti bozuluyorsa sonuç kârlı olmayabilir. Doluluk, araç başı gelir ve boşta kalma süresinin birlikte nasıl okunacağını [filo kârlılığı için doğru metrikler](/blog/dogru-metriklerle-filo-karliligini-artirma) yazısında anlattık.",
+      },
+
+      {
+        type: "h2",
+        id: "gunluk-rutin",
+        text: "10. Uygulanabilir günlük rezervasyon rutini",
+      },
+      {
+        type: "ol",
+        items: [
+          "Güne başlarken önünüzdeki 48 saatin teslim, iade, araç atanmamış rezervasyon ve hazırlık risklerini kontrol edin.",
+          "İade saatlerini lokasyona göre gruplayın; temizlik ve transfer görevlerini sorumlu kişilere dağıtın.",
+          "Yeni rezervasyonu kaydederken önce sınıfı ve aralığı doğrulayın, ardından en az kırık gün üreten aracı değerlendirin.",
+          "Kesin çakışmaları hemen çözün; tampon ve lokasyon risklerini teslim yaklaşmadan araç, saat veya görev planıyla kapatın.",
+          "Gün sonunda ertesi günün araç atamalarını, açık bakiyelerini ve belge uyarılarını son kez gözden geçirin.",
+          "Haftada bir sınıf bazlı doluluk, kırık gün ve devir süresi eğilimini değerlendirin; tek bir güne bakarak filo kararı vermeyin.",
+        ],
+      },
+      {
+        type: "h2",
+        id: "sonuc",
+        text: "Takvimin amacı daha çok renk göstermek değil, daha erken karar verdirmektir",
+      },
+      {
+        type: "p",
+        text: "İyi yönetilen bir rezervasyon takvimi, kiradaki ve boş araçları ayırmanın ötesine geçer. Aracın nerede olduğunu, bir sonraki işe hazırlanıp hazırlanamayacağını, rezervasyonun kesin plakaya bağlanıp bağlanmadığını ve hangi kararın kırık gün üreteceğini aynı bağlamda gösterir.",
+      },
+      {
+        type: "p",
+        text: "Başlangıç için bütün sistemi bir günde değiştirmek gerekmez. Önce araç durumlarını standardize edin, sonra sınıfa göre atama ve hazırlık tamponunu kurun; ardından önerilen odak ve metriklerle istisnaları yönetin. Amaç takvimi doldurmak değil, **taahhüt ettiğiniz her teslimi zamanında ve doğru araçla gerçekleştirebileceğiniz bir plan oluşturmaktır.**",
       },
     ],
   },

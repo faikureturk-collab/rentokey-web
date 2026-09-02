@@ -226,7 +226,7 @@ Paketler yalnız araç sayısına göre değil; ekip, şube ve operasyon karmaş
 - ChatGPT arama özelliklerinde görünürlük için `OAI-SearchBot` tarayıcısına `robots.txt` içinde açıkça izin veriliyor. Bu arama tarayıcısı kuralı, model eğitimiyle ilgili `GPTBot` tercihinden bağımsız ele alınıyor.
 - Claude arama görünürlüğü ve kullanıcı tarafından başlatılan sayfa erişimi için `Claude-SearchBot` ile `Claude-User` açıkça izinli. Pazarlama sitesinin herkese açık içeriğinin Anthropic model geliştirme süreçlerinde kullanılabilmesi için `ClaudeBot` da izinli; bu tercih arama erişiminden ayrı değerlendiriliyor.
 - Standart üretim adresi `https://www.rentokey.com`; apex alan adı kalıcı yönlendirmeyle `www` sürümüne taşınıyor. Canonical, sitemap, robots, Open Graph ve JSON-LD aynı merkezi `SITE_URL` değerinden üretiliyor.
-- Sitemap aramada sunulmaya hazır `/`, `/ucretsiz-dene`, `/kaynaklar`, `/blog` ve üç yayındaki blog yazısını içeriyor. Statik sayfa güncellemeleri ile blog yayın/değişiklik tarihleri ayrı tutuluyor.
+- Sitemap aramada sunulmaya hazır `/`, `/ucretsiz-dene`, `/kaynaklar`, `/blog` ve beş yayındaki blog yazısını içeriyor. Statik sayfa güncellemeleri ile blog yayın/değişiklik tarihleri ayrı tutuluyor.
 - Yer tutucu içerikler ve uzman onayı bekleyen yasal metinler `noindex, follow` durumunda. Gerçek içerik tamamlandığında metadata ve sitemap birlikte güncellenmeli.
 - Hero'nun görünen metninde Türkiye, KKTC ve araç kiralama programı bağlamı doğal biçimde açıklandı.
 - Google Search Console alan adı mülkü ve Bing Webmaster Tools doğrulandı; sitemap iki panele de gönderildi. Yeni sitemap yayına çıktıktan sonra keşfedilen URL sayısı tekrar kontrol edilmeli.
@@ -359,7 +359,7 @@ Canlı API yalnız `https://rentokey.com` ve `https://www.rentokey.com` origin'l
 | `/ucretsiz-dene` | Uygulama kayıt API'sine bağlı tek adımlı hesap başvurusu ve e-posta doğrulama akışı |
 | `/giris` | `https://app.rentokey.com` adresine yönlendirir |
 | `/kaynaklar` | Kaynak merkezine giriş sayfası |
-| `/blog` | Yer tutucu yazı başlıkları; gerçek makale yok |
+| `/blog` | Beş özgün araç kiralama operasyonu ve filo yönetimi yazısı yayında |
 | `/kilavuzlar` | Yer tutucu kılavuz listesi; içerikler henüz yok |
 | `/guncellemeler` | Örnek güncelleme kayıtları içerir; canlı ürünle doğrulanmadan yayınlanmamalı |
 | `/kariyer` | Açık pozisyon olmadığını söyler, e-posta bağlantısı verir |

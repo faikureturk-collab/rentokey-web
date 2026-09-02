@@ -6,7 +6,7 @@ const pageLastModified = {
   home: "2026-08-28",
   trial: "2026-08-28",
   resources: "2026-08-29",
-  blog: "2026-08-31",
+  blog: "2026-09-02",
 } as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

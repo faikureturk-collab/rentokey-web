@@ -35,12 +35,12 @@ export default function Footer() {
           <FooterColumn title="Kaynaklar" links={footerNav.kaynaklar} />
           <FooterColumn title="Şirket" links={footerNav.sirket} />
 
-          <div>
+          <div className="min-w-0">
             <h4 className="text-sm font-semibold text-white">İletişim</h4>
             <ul className="mt-4 space-y-3 text-sm text-white/60">
               <li className="flex items-start gap-2">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" />
-                <a href="mailto:hello@rentokey.com" className="hover:text-white">
+                <a href="mailto:hello@rentokey.com" className="break-all hover:text-white">
                   hello@rentokey.com
                 </a>
               </li>
