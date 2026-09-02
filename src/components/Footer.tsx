@@ -9,8 +9,8 @@ export default function Footer() {
   return (
     <footer className="bg-brand-navy-deep text-white">
       <div className="container-page py-14">
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-6">
-          <div className="col-span-2">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(12.5rem,1.25fr)]">
+          <div className="sm:col-span-2 lg:col-span-1">
             <Logo variant="white" withSlogan size="h-11" />
             <p className="mt-4 max-w-[270px] text-sm leading-relaxed text-white/60">
               Türkiye ve KKTC’de araç kiralama operasyonları için rezervasyon, filo, teslim/iade ve önerilen odak platformu.
@@ -40,7 +40,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-white/60">
               <li className="flex items-start gap-2">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" />
-                <a href="mailto:hello@rentokey.com" className="break-all hover:text-white">
+                <a href="mailto:hello@rentokey.com" className="whitespace-nowrap hover:text-white">
                   hello@rentokey.com
                 </a>
               </li>
