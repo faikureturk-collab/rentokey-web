@@ -24,15 +24,15 @@ const steps: Step[] = [
     eyebrow: "2 dakika",
     title: "Hesabınızı açın",
     description:
-      "Firma ve şube bilgilerinizi girerek çalışma alanınızı hemen oluşturun.",
+      "E-posta adresinizi doğrulayın; ilk girişte firma, filo büyüklüğü ve bölge bilgilerinizi tanımlayın.",
     icon: KeyRound,
   },
   {
     number: "02",
     eyebrow: "İlk 48 saat",
-    title: "Verilerinizi birlikte aktarın",
+    title: "Örnek filoyla başlayın veya verinizi aktarın",
     description:
-      "Rezervasyon, gider, filo ve bakım CSV dosyalarınızı iletin; ilk aktarımınız için ücretsiz destek alın.",
+      "8 araçlık örnek filoyu kurun ya da müşteri, rezervasyon, filo, gider ve bakım Excel / CSV dosyalarınız için ücretsiz ilk aktarım desteği alın.",
     icon: CarFront,
   },
   {
@@ -56,7 +56,7 @@ const steps: Step[] = [
 const assurances = [
   "Kredi kartı gerekmez",
   "Kurulum ücreti yok",
-  "İlk 48 saatte CSV desteği",
+  "İlk 48 saatte Excel / CSV desteği",
 ];
 
 export default function HowItWorks() {
@@ -72,7 +72,7 @@ export default function HowItWorks() {
           </h2>
         </div>
         <p className="max-w-xl text-[15px] leading-relaxed text-brand-navy/55 lg:justify-self-end">
-          Hazır bir örnek ekran yerine kendi araçlarınız, rezervasyonlarınız ve ekibinizle gerçek çalışma düzenini kurun.
+          Önce örnek filoyla keşfedin veya kendi araç, müşteri, rezervasyon ve ekibinizle gerçek çalışma düzenini kurun.
         </p>
       </div>
 

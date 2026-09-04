@@ -9,7 +9,7 @@ export default function FaqGroupTabs() {
   const activeGroup = faqGroups.find((group) => group.id === activeId) ?? faqGroups[0];
 
   return (
-    <div>
+    <div className="min-w-0">
       <div className="rounded-2xl bg-surface-soft p-1.5">
         <div
           aria-label="Sıkça sorulan soru kategorileri"

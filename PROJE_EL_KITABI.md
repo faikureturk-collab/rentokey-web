@@ -70,7 +70,15 @@ Aşağıdaki özellikler çalışan ürün için kullanıcı tarafından açık�
 - Kasko bitiş uyarısı
 - Vergi ödeme tarihi uyarısı
 - Egzoz emisyon bitiş tarihi uyarısı
-- Rezervasyon, gider, filo ve bakım kayıtlarını CSV ile içeri aktarma
+- Müşteri ve sürücü kayıtlarını canlı arama, rezervasyonla birlikte otomatik oluşturma ve isteğe bağlı kimlik/ehliyet bilgileri
+- Benzersiz `ROK-00001` biçiminde rezervasyon numarası ve taslak kayıt
+- Markalı Rezervasyon Onay Belgesi; WhatsApp, e-posta ve PDF paylaşımı
+- Müşteri, rezervasyon, filo, gider ve bakım kayıtlarını Excel/CSV ile içeri aktarma
+- Hatalı satırları yükleme öncesi doğrulama, eksik alanları toplu tamamlama ve son içe aktarmayı geri alma
+- Excel dışa aktarma
+- Bakım maliyetini otomatik giderleştirme ve tekrarlayan gider şablonları
+- Genel arama ve merkezi bildirim paneli
+- Yeni firmalar için 8 araçlık örnek filo
 - Masaüstü, tablet ve mobil kullanım
 - Pozisyona göre sayfa yetkilendirmesi
 - Önerilen odak
@@ -85,7 +93,7 @@ Arayüzde toplam beş seçenek görünür; doğru anlatım **bir ana rol ve dör
 4. Teknik & Operasyon
 5. B2B / Kurumsal Ortak
 
-Başlangıç paketinde bu gelişmiş rol yapısı bulunmaz. Büyüme paketinden itibaren pozisyon bazlı sayfa yetkilendirmesi sunulur. Profesyonel pakette ayrıntılı yetki ve aktivite geçmişi de yer alır.
+Rol ve sayfa yetkilendirmesi bütün paketlerde aynı ürün altyapısının parçasıdır; pratik kullanım paket kullanıcı limitiyle sınırlıdır. Başlangıç paketi 1 kullanıcı içerdiği için ekip rolleri ancak kullanıcı limiti artırıldığında anlamlı hâle gelir. Sistem işlemleri denetim amacıyla kaydeder; kullanıcıların inceleyebileceği ayrıntılı aktivite ekranı yol haritasındadır.
 
 ### Önerilen odak nasıl anlatılmalı?
 
@@ -179,7 +187,7 @@ Demo sekmeleri:
 
 Masaüstü ve mobil sahneler aynı iş mantığını farklı yerleşimlerle anlatır. Mobilde zaman çizelgesi küçültülmez; tarih ve hızlı aksiyon akışına dönüşür.
 
-Hero dönüşüm hiyerarşisi 1280×720 görünümünde ana aksiyonu kaydırmadan gösterecek biçimde kuruludur. Kısa açıklamanın hemen altında yalnızca **21 gün ücretsiz deneyin** CTA'sı bulunur. Aynı görünümdeki ürün demosuna tekrar bağlantı veren ikincil CTA kullanılmaz. CTA'nın altında “Kredi kartı yok · Kurulum ücreti yok · İlk 48 saatte ücretsiz CSV aktarım desteği” güven satırı bulunur. Varsayılan Bugünkü operasyon sahnesi, önerilen odak özelliğini ayrıca sekme değiştirmeyi gerektirmeden 35 dakikalık hazırlık ve transfer riskiyle görünür kılar.
+Hero dönüşüm hiyerarşisi 1280×720 görünümünde ana aksiyonu kaydırmadan gösterecek biçimde kuruludur. Kısa açıklamanın hemen altında yalnızca **21 gün ücretsiz deneyin** CTA'sı bulunur. Aynı görünümdeki ürün demosuna tekrar bağlantı veren ikincil CTA kullanılmaz. CTA'nın altında “Kredi kartı yok · Kurulum ücreti yok · İlk 48 saatte ücretsiz Excel / CSV aktarım desteği” güven satırı bulunur. Varsayılan Bugünkü operasyon sahnesi, önerilen odak özelliğini ayrıca sekme değiştirmeyi gerektirmeden 35 dakikalık hazırlık ve transfer riskiyle görünür kılar.
 
 ### Aşama 4 — Ürün vaadinin sadeleştirilmesi
 
@@ -198,16 +206,16 @@ Deneme süreci Netflix/Vercel benzeri hızlı başlangıç fikrinden esinlendi; 
 - 21 gün ücretsiz
 - Kredi kartı gerekmez
 - Kurulum ücreti yok
-- Deneme hesabı açıldıktan sonraki ilk 48 saat içinde ilk CSV aktarımı için ücretsiz destek talep edilebilir
-- Kullanıcı kendi filosu ve rezervasyonlarıyla dener
+- Deneme hesabı açıldıktan sonraki ilk 48 saat içinde ilk Excel / CSV aktarımı için ücretsiz destek talep edilebilir
+- Kullanıcı ister 8 araçlık örnek filoyla keşfeder, ister kendi müşteri, araç ve rezervasyonlarıyla dener
 - Deneme bitince otomatik ödeme alınmaz
 - Devam edecek kullanıcı paketini sonradan seçer
 
 `/ucretsiz-dene` başlangıçta iki adımlı onboarding olarak tasarlandı; daha sonra sürtünmeyi azaltmak için tek adımlı gerçek hesap başvurusuna dönüştürüldü. Web sitesi ad-soyad, e-posta ve şifreyi uygulamanın kayıt API'sine gönderir. Hesap sunucu tarafında oluşturulur, doğrulama e-postası `mail.rentokey.com` üzerinden iletilir. Firma adı ve filo büyüklüğü e-posta doğrulamasından sonra uygulamada alınır.
 
-### Aşama 6 — Paketlerin yeniden dağıtılması
+### Aşama 6 — Paketlerin gerçek ürün limitleriyle eşleştirilmesi
 
-Paketler yalnız araç sayısına göre değil; ekip, şube ve operasyon karmaşıklığına göre anlamlandırıldı. Çekirdek operasyon her pakette korunurken, ekip koordinasyonu Büyüme’ye, çoklu şube ve kayıt derinliği Profesyonel’e, entegrasyon Kurumsal’a taşındı.
+Canlı uygulamada özellik kapıları hazır olsa da kapalıdır; mevcut özellikler bütün paketlerde açıktır. Pazarlama sitesi bu nedenle tamamlanmış özellikleri paketler arasında var/yok şeklinde ayırmaz. Paket farkı araç, kullanıcı ve şube limitleri ile destek kapsamıdır. Henüz hazır olmayan fotoğraflı hasar, dijital sözleşme/imza ve API gibi başlıklar paket vaadi değil, açıkça “Geliştiriliyor” etiketi taşıyan yol haritasıdır.
 
 ### Aşama 7 — Marka varlıklarının temizlenmesi
 
@@ -243,14 +251,15 @@ Ana sayfa sırası `src/app/page.tsx` içindedir. Sıra bilinçlidir; yalnız g�
 | 4 | `UrunSection / UrunTabs` | Ürün hangi süreçleri birleştiriyor? | Planlama, operasyon, filo, finans ve yönetimi tek akış olarak anlatır. |
 | 5 | `FeatureGrid` | Neden mevcut yöntemimi değiştireyim? | Dağınık WhatsApp/tablo düzeninden aksiyon merkezine geçişi gösterir. |
 | 6 | `FocusSection` | Rakiplerden farkı ne? | Önerilen odağı ve bağlamsal risk yaklaşımını örneklerle kanıtlar. |
-| 7 | `HowItWorks` | Başlamak zor mu? | Hesap, veri, ekip ve gerçek operasyon olmak üzere dört adımlı denemeyi açıklar. |
-| 8 | `PricingSection` | Bana uygun paket ve maliyet ne? | Araç/kullanıcı/şube limitlerini, aylık-yıllık bedeli ve karşılaştırmayı gösterir. |
-| 9 | `HakkimizdaSection` | Ürün yerel operasyonumu anlıyor mu? | Türkiye/KKTC’ye özgü belge, lokasyon, süre ve ekip gerçeklerini anlatır. |
-| 10 | `ComingSoonSection` | Ürün gelişmeye devam edecek mi? | Mevcut özelliklerle karıştırmadan açıkça etiketlenmiş yol haritasını gösterir. |
-| 11 | `FaqSection` | Satın alma öncesi itirazlarım ne olacak? | Deneme, ödeme, paket, cihaz, aktarım ve yetki sorularını cevaplar. |
-| 12 | `IletisimSection` | Biriyle görüşebilir miyim? | Paket, geçiş ve kurulum sorularını e-posta taslağına dönüştürür. |
-| 13 | `CtaBanner` | Şimdi ne yapmalıyım? | Son kez deneme veya ekip görüşmesi seçeneği sunar. |
-| 14 | Footer | Kurumsal ve yasal bilgilere nasıl ulaşırım? | Marka, iletişim, içerik ve yasal bağlantıları kapatır. |
+| 7 | `ReservationFlowSection` | Müşteriden onaya kadar süreç nasıl ilerliyor? | Canlı müşteri tanıma, otomatik rezervasyon numarası, taslak ve paylaşılabilir onay belgesini anlatır. |
+| 8 | `HowItWorks` | Başlamak zor mu? | Hesap, örnek filo/veri aktarımı, ekip ve gerçek operasyon olmak üzere dört adımlı denemeyi açıklar. |
+| 9 | `PricingSection` | Bana uygun paket ve maliyet ne? | Bütün paketlerde ortak ürün özelliklerini; araç/kullanıcı/şube ve destek farklarını gösterir. |
+| 10 | `HakkimizdaSection` | Ürün yerel operasyonumu anlıyor mu? | Türkiye/KKTC’ye özgü belge, lokasyon, süre ve ekip gerçeklerini anlatır. |
+| 11 | `ComingSoonSection` | Ürün gelişmeye devam edecek mi? | Mevcut özelliklerle karıştırmadan açıkça etiketlenmiş yol haritasını gösterir. |
+| 12 | `FaqSection` | Satın alma öncesi itirazlarım ne olacak? | Deneme, ödeme, paket, cihaz, aktarım ve yetki sorularını cevaplar. |
+| 13 | `IletisimSection` | Biriyle görüşebilir miyim? | Paket, geçiş ve kurulum sorularını gerçek iletişim API'sine gönderir. |
+| 14 | `CtaBanner` | Şimdi ne yapmalıyım? | Son kez deneme veya ekip görüşmesi seçeneği sunar. |
+| 15 | Footer | Kurumsal ve yasal bilgilere nasıl ulaşırım? | Marka, iletişim, içerik ve yasal bağlantıları kapatır. |
 
 ### Dönüşüm mantığı
 
@@ -288,19 +297,26 @@ Fiyatlara KDV dahil değildir.
 ### Tüm paketlerde bulunması gereken çekirdek
 
 - Rezervasyon ve zaman çizelgesi
+- Müşteri ve sürücü yönetimi
 - Otomatik uygun araç önerisi
 - Önerilen odak ve bağlamsal riskler
 - Filo, teslim ve iade
 - Mobil operasyon
 - Bakım ve belge süresi uyarıları
-- Gider, ödeme ve temel raporlar
-- CSV ile rezervasyon, gider, filo ve bakım aktarımı
+- Gider, tahsilat ve yönetim raporları
+- Müşteri, rezervasyon, filo, gider ve bakım için Excel / CSV içe aktarma
+- Excel dışa aktarma
+- Genel arama ve merkezi bildirimler
+- Rezervasyon onay belgesi ve paylaşım
 
-### Paket büyüdükçe eklenen değer
+### Paket ayrımı
 
-- Büyüme: rol/yetki, lokasyon, gelişmiş analiz, Excel dışa aktarım
-- Profesyonel: çoklu şube, fotoğraflı teslim/iade/hasar, aktivite geçmişi, gelişmiş rapor
-- Kurumsal: API, özel entegrasyon, veri/kurulum desteği, özel yetki/rapor, destek yöneticisi
+- Başlangıç: 10 araç, 1 kullanıcı, 1 şube, standart destek
+- Büyüme: 30 araç, 5 kullanıcı, 1 şube, öncelikli destek
+- Profesyonel: 70 araç, 15 kullanıcı, 3 şube, öncelikli destek
+- Kurumsal: sınırsız araç/kullanıcı/şube, özel kurulum ve destek kapsamı
+
+Tamamlanmış ürün özellikleri bütün paketlerde açıktır. Fotoğraflı hasar, dijital sözleşme/imza ve kurumsal API mevcut paket karşılaştırmasına dahil edilmez; yol haritasında “Geliştiriliyor” olarak kalır.
 
 Fiyatlar veya limitler yalnız bir kartta değiştirilmemelidir. Şunları birlikte ara ve güncelle:
 
@@ -327,7 +343,7 @@ Mevcut durum:
 
 Firma adı ve filo büyüklüğü e-posta doğrulamasından sonra `app.rentokey.com` içindeki onboarding akışında alınır. Web sitesi doğrudan Supabase istemcisi veya Supabase anahtarı kullanmaz. Şifre başarılı istekten sonra frontend state'inden temizlenir.
 
-Deneme hesabını oluşturduktan sonraki ilk 48 saat içinde kullanıcı rezervasyon, gider, filo veya bakım CSV dosyası için ücretsiz ilk aktarım desteği talep edebilir. Destek ekibi dosyanın yapısını kontrol eder, gerekli düzeltmeleri bildirir ve ilk aktarımın tamamlanmasına yardımcı olur. 48 saatlik süre aktarımın bitiş garantisi değil, destek talebinin oluşturulma penceresidir; tamamlanma süresi dosyanın kapsamına ve veri kalitesine göre değişebilir.
+Deneme hesabını oluşturduktan sonraki ilk 48 saat içinde kullanıcı müşteri, rezervasyon, filo, gider veya bakım Excel / CSV dosyası için ücretsiz ilk aktarım desteği talep edebilir. Destek ekibi dosyanın yapısını kontrol eder, gerekli düzeltmeleri bildirir ve ilk aktarımın tamamlanmasına yardımcı olur. 48 saatlik süre aktarımın bitiş garantisi değil, destek talebinin oluşturulma penceresidir; tamamlanma süresi dosyanın kapsamına ve veri kalitesine göre değişebilir.
 
 ### Abonelik
 
@@ -415,11 +431,13 @@ Sosyal paylaşım görseli `scripts/build-og-card.mjs` ile `public/og.png` olara
 
 ## 13. Yol haritası ile mevcut özellikleri ayır
 
-Ana sayfadaki `ComingSoonSection` şu üç konuyu açıkça “Geliştiriliyor” olarak gösterir:
+Ana sayfadaki `ComingSoonSection` şu konuları açıkça “Geliştiriliyor” olarak gösterir:
 
 - Fotoğraflı hasar karşılaştırması
 - Akıllı fiyat önerisi
 - Mesajdan rezervasyon taslağı
+- Dijital sözleşme ve imza
+- Özel entegrasyon ve API
 
 Bu alanlarda kesin yayın tarihi veya tamamlanmış özellik dili kullanılmamalıdır.
 
@@ -453,6 +471,7 @@ Aşağıdaki vaatler canlı üründe yeniden doğrulanmadan aktif satış metnin
 - Hero ürün demosu: `src/components/DashboardMock.tsx`
 - Beş modüllü ürün anlatımı: `src/components/home/UrunTabs.tsx`
 - Önerilen odak anlatımı: `src/components/home/FocusSection.tsx`
+- Müşteriden onaya rezervasyon akışı: `src/components/home/ReservationFlowSection.tsx`
 - Fiyatlandırma ve karşılaştırma: `src/components/PricingSection.tsx`
 - Deneme formu: `src/components/TrialOnboarding.tsx`
 - Kayıt API istemcisi: `src/lib/trial-signup.ts`
@@ -549,7 +568,7 @@ Yeni çalışmaya şu sırayla başla:
 - Siteyi özellik deposuna çevirmeden operasyon sonucu anlat.
 - Önerilen odağı ürünün ana farklılaştırıcısı olarak koru.
 - 21 günlük denemeyi hızlı, kredi kartsız ve otomatik ödemesiz anlat.
-- İlk 48 saatlik CSV aktarım desteğini talep penceresi olarak anlat; tamamlanma süresi garantisi verme.
+- İlk 48 saatlik Excel / CSV aktarım desteğini talep penceresi olarak anlat; tamamlanma süresi garantisi verme.
 - Türkiye ve KKTC yerel bağlamını görünür tut.
 - Kullanıcı/şube limitlerini paketler arasında tutarlı göster.
 - Yol haritasını mevcut özellik gibi sunma.

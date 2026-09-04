@@ -20,9 +20,9 @@ export const faqGroups: FaqGroup[] = [
           "Ad, e-posta ve şifre bilgilerinizi girip e-posta adresinizi doğrulayarak hesabınızı oluşturursunuz. İlk girişte firma adı ve filo büyüklüğünü tanımlarsınız. Kredi kartı gerekmez; deneme süresince kendi araç ve rezervasyonlarınızla ürünü değerlendirebilirsiniz.",
       },
       {
-        question: "İlk 48 saatte CSV aktarım desteği nasıl çalışır?",
+        question: "İlk 48 saatte Excel / CSV aktarım desteği nasıl çalışır?",
         answer:
-          "Deneme hesabınızı oluşturduktan sonraki ilk 48 saat içinde rezervasyon, gider, filo veya bakım CSV dosyanızı iletebilirsiniz. Ekibimiz destek saatleri içinde dosyanın yapısını kontrol eder, gerekli düzeltmeleri bildirir ve ilk aktarımı tamamlamanıza yardımcı olur. 48 saatlik süre destek talebinin oluşturulması için geçerlidir. Aktarımın tamamlanma süresi dosyanın kapsamına ve veri kalitesine göre değişebilir.",
+          "Deneme hesabınızı oluşturduktan sonraki ilk 48 saat içinde müşteri, rezervasyon, filo, gider veya bakım Excel / CSV dosyanız için destek talebi oluşturabilirsiniz. Ekibimiz destek saatleri içinde dosyanın yapısını kontrol eder, gerekli düzeltmeleri bildirir ve ilk aktarımı tamamlamanıza yardımcı olur. 48 saatlik süre destek talebinin oluşturulması için geçerlidir. Aktarımın tamamlanma süresi dosyanın kapsamına ve veri kalitesine göre değişebilir.",
       },
       {
         question: "Deneme sonunda otomatik ödeme alınır mı?",
@@ -37,7 +37,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "Paketimi daha sonra değiştirebilir miyim?",
         answer:
-          "Evet. Araç, kullanıcı veya şube sayınız değiştiğinde paketinizi yükseltebilir ya da uygun alt pakete geçebilirsiniz. Yeni limitler seçilen fatura döneminde uygulanır.",
+          "Evet. Araç, kullanıcı veya şube sayınız değiştiğinde Rent Okey ekibiyle iletişime geçerek paketinizi güncelleyebilirsiniz. Ödeme ve paket aktivasyonu şu anda ekip tarafından yönetilir; otomatik kart çekimi yapılmaz.",
       },
     ],
   },
@@ -48,7 +48,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "Bütün paketlerde hangi özellikler var?",
         answer:
-          "Rezervasyon ve zaman çizelgesi, uygun araç önerisi, filo, teslim/iade, mobil operasyon, bakım ve belge süresi uyarıları, gider ve ödeme takibi ile CSV içe aktarma bütün paketlerde yer alır.",
+          "Rezervasyon ve zaman çizelgesi, müşteri/sürücü yönetimi, uygun araç önerisi, önerilen odak, filo, teslim/iade, mobil operasyon, bakım ve belge uyarıları, gider ve tahsilat takibi, raporlar ile Excel/CSV içe aktarma bütün paketlerde yer alır. Paketler araç, kullanıcı, şube ve destek kapsamına göre ayrılır.",
       },
       {
         question: "Sistem rezervasyona uygun aracı önerebilir mi?",
@@ -71,9 +71,24 @@ export const faqGroups: FaqGroup[] = [
           "Evet. Masaüstü görünümü planlama ve yoğun zaman çizelgesi için; tablet ve mobil görünüm ise sıradaki teslim, iade ve diğer hızlı operasyon aksiyonları için düzenlenmiştir.",
       },
       {
-        question: "Mevcut verilerimi CSV ile içeri aktarabilir miyim?",
+        question: "Mevcut verilerimi Excel veya CSV ile içeri aktarabilir miyim?",
         answer:
-          "Evet. Rezervasyonlarınızı, giderlerinizi, filo bilgilerinizi ve bakım kayıtlarınızı CSV dosyalarıyla içeri aktarabilirsiniz. Deneme hesabınızı oluşturduktan sonraki ilk 48 saat içinde ilk aktarımınız için ücretsiz destek talep edebilirsiniz. Kurumsal pakette veri hazırlama ve kurulum kapsamı ayrıca genişletilebilir.",
+          "Evet. Müşteri, rezervasyon, filo, gider ve bakım kayıtlarınızı Excel veya CSV dosyalarıyla içeri aktarabilirsiniz. Sistem hatalı satırları yükleme öncesinde gösterir; müşteri ve araç listelerindeki eksik alanları daha sonra aynı dosyayla toplu tamamlayabilirsiniz. Deneme hesabınızı oluşturduktan sonraki ilk 48 saat içinde ilk aktarımınız için ücretsiz destek talep edebilirsiniz.",
+      },
+      {
+        question: "İçe aktarmada hata yaparsam geri alabilir miyim?",
+        answer:
+          "Evet. Toplu içe aktarmada yeni eklenen kayıtlar aktarım partisiyle ilişkilendirilir. Yanlış bir dosya yüklediğinizde yalnızca o aktarımda eklenen kayıtları tek onayla geri alabilirsiniz; daha önce var olan kayıtlar etkilenmez.",
+      },
+      {
+        question: "Müşteri ve sürücü kayıtları rezervasyonda nasıl çalışır?",
+        answer:
+          "Müşteri alanına isim, telefon veya kimlik/pasaport bilgisi yazarak kayıtlı kişiyi bulabilirsiniz. Yeni bir müşteri yazarsanız kayıt rezervasyonla birlikte otomatik oluşturulur. Müşteri aracı kullanacaksa ehliyet bilgisi kendi profilinde tutulabilir; farklı bir sürücü de ayrıca seçilebilir. Kimlik ve ehliyet alanları isteğe bağlıdır.",
+      },
+      {
+        question: "Rezervasyon onayını müşterimle paylaşabilir miyim?",
+        answer:
+          "Evet. Her rezervasyon için firma logonuz ve rezervasyon bilgileriyle markalı bir Rezervasyon Onay Belgesi oluşturabilirsiniz. Belgeyi WhatsApp ile paylaşabilir, PDF olarak kaydedebilir veya müşterinin e-posta adresine gönderebilirsiniz. Bu belge, imzalanacak kira sözleşmesinden ayrı bir rezervasyon bilgilendirmesidir.",
       },
       {
         question: "Verilerimi Excel olarak dışarı aktarabilir miyim?",
@@ -109,7 +124,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "Rol bazlı yetki ve aktivite geçmişi var mı?",
         answer:
-          "Evet. Kullanıcılara görevlerine göre sayfa ve işlem yetkileri verilebilir. Sistem üzerinde yapılan kayıt oluşturma, güncelleme ve silme işlemleri aktivite geçmişine kaydedilir. Böylece işlemin hangi kullanıcı tarafından ve ne zaman gerçekleştirildiği takip edilebilir.",
+          "Evet. Kullanıcılara görevlerine göre sayfa ve işlem yetkileri verilebilir. Kayıt oluşturma, güncelleme ve silme işlemleri güvenlik ve denetim amacıyla kullanıcı ve zaman bilgisiyle sistem kayıtlarına alınır. Kullanıcıların inceleyebileceği ayrıntılı aktivite ekranı ise ürün yol haritasındadır.",
       },
       {
         question: "Destek kanalları ve yanıt süreleri nelerdir?",

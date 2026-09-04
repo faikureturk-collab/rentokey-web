@@ -7,6 +7,7 @@ import {
   Building2,
   ChevronDown,
   CircleHelp,
+  Headphones,
   Minus,
   ShieldCheck,
   Sparkles,
@@ -21,21 +22,19 @@ const comparisonRows: { label: string; values: ComparisonValue[] }[] = [
   { label: "Dahil kullanıcı", values: plans.map((plan) => plan.includedUsers) },
   { label: "Dahil şube", values: plans.map((plan) => plan.includedBranches) },
   { label: "Rezervasyon ve zaman çizelgesi", values: [true, true, true, true] },
+  { label: "Müşteri ve sürücü yönetimi", values: [true, true, true, true] },
   { label: "Otomatik uygun araç önerisi", values: [true, true, true, true] },
   { label: "Önerilen odak ve bağlamsal operasyon riskleri", values: [true, true, true, true] },
   { label: "Filo, teslim ve iade yönetimi", values: [true, true, true, true] },
   { label: "Mobil operasyon ekranı", values: [true, true, true, true] },
   { label: "Bakım ve belge süresi uyarıları", values: [true, true, true, true] },
-  { label: "Gider, ödeme ve temel raporlar", values: [true, true, true, true] },
-  { label: "CSV ile rezervasyon, gider, filo ve bakım aktarımı", values: [true, true, true, true] },
-  { label: "5 pozisyonlu rol ve sayfa yetkilendirmesi", values: [false, true, true, true] },
-  { label: "Lokasyon ve teslim noktası takibi", values: [false, true, true, true] },
-  { label: "Gelişmiş gelir, gider ve doluluk analizi", values: [false, true, true, true] },
-  { label: "Excel'e veri aktarımı", values: [false, true, true, true] },
-  { label: "Çoklu şube / lokasyon yönetimi", values: [false, false, true, true] },
-  { label: "Fotoğraflı teslim, iade ve hasar kaydı", values: [false, false, true, true] },
-  { label: "Detaylı yetki ve aktivite geçmişi", values: [false, false, true, true] },
-  { label: "Özel entegrasyon ve API erişimi", values: [false, false, false, true] },
+  { label: "Gider, tahsilat ve yönetim raporları", values: [true, true, true, true] },
+  { label: "Müşteri, rezervasyon, filo, gider ve bakım için Excel / CSV aktarımı", values: [true, true, true, true] },
+  { label: "Excel'e veri aktarımı", values: [true, true, true, true] },
+  { label: "Rol ve sayfa yetkilendirmesi (kullanıcı limiti dahilinde)", values: [true, true, true, true] },
+  { label: "B2B / kurumsal ortak erişimi", values: [true, true, true, true] },
+  { label: "Genel arama ve merkezi bildirimler", values: [true, true, true, true] },
+  { label: "Rezervasyon onay belgesi ve paylaşım", values: [true, true, true, true] },
   { label: "Destek seviyesi", values: plans.map((plan) => plan.supportLevel) },
 ];
 
@@ -43,7 +42,7 @@ const assurances = [
   "21 gün ücretsiz deneyin",
   "Kredi kartı gerekmez",
   "Kurulum ücreti yok",
-  "İlk 48 saatte CSV desteği",
+  "İlk 48 saatte Excel / CSV desteği",
 ];
 
 function formatPrice(value: number) {
@@ -116,6 +115,10 @@ export default function PricingSection({
                     <p className={`mt-1.5 text-[10px] font-bold ${highlighted ? "text-white/75" : "text-brand-navy/65"}`}>{plan.includedBranches}</p>
                   </div>
                 </div>
+                <div className={`mt-2.5 flex items-center gap-2 rounded-xl px-3 py-2.5 ${highlighted ? "bg-white/[0.06] text-white/70" : "bg-surface-soft text-brand-navy/60"}`}>
+                  <Headphones className={`h-3.5 w-3.5 ${highlighted ? "text-brand-green" : "text-brand-blue"}`} />
+                  <span className="text-[10px] font-bold">{plan.supportLevel}</span>
+                </div>
 
                 <div className={`mt-5 border-t pt-5 ${highlighted ? "border-white/10" : "border-surface-border"}`}>
                   {price !== null ? (
@@ -144,7 +147,7 @@ export default function PricingSection({
                 </div>
 
                 <div className={`my-6 h-px ${highlighted ? "bg-white/10" : "bg-surface-border"}`} />
-                <p className={`text-[10px] font-bold uppercase tracking-[0.14em] ${highlighted ? "text-white/35" : "text-brand-navy/35"}`}>Pakete dahil</p>
+                <p className={`text-[10px] font-bold uppercase tracking-[0.14em] ${highlighted ? "text-white/35" : "text-brand-navy/35"}`}>{plan.name === "Kurumsal" ? "Kurumsal kapsam" : "Tüm ürün özellikleri dahil"}</p>
                 <ul className="mt-4 flex-1 space-y-3">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5">

@@ -11,21 +11,21 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata({
   title: "Araç Kiralama Programını 21 Gün Ücretsiz Deneyin",
   description:
-    "Kredi kartı ve kurulum ücreti olmadan Rent Okey çalışma alanınızı oluşturun; kendi filonuzla 21 gün ücretsiz deneyin ve ilk 48 saatte CSV aktarım desteği alın.",
+    "Kredi kartı ve kurulum ücreti olmadan Rent Okey çalışma alanınızı oluşturun; örnek veya kendi filonuzla 21 gün ücretsiz deneyin ve ilk 48 saatte Excel / CSV aktarım desteği alın.",
   path: "/ucretsiz-dene",
 });
 
 const benefits = [
-  "Rezervasyon ve zaman çizelgesini kendi araçlarınızla deneyin",
+  "8 araçlık örnek filoyla keşfedin veya kendi araçlarınızı ekleyin",
   "Teslim, iade ve yaklaşan riskleri tek akışta görün",
-  "Araç, rezervasyon ve gider verilerinizi uygulama içindeki hazır CSV şablonlarıyla aktarın",
+  "Müşteri, araç, rezervasyon, gider ve bakım verilerinizi Excel / CSV ile aktarın",
   "Masaüstü, tablet ve mobil kullanım düzenini test edin",
 ];
 
 const metrics = [
   { icon: CalendarDays, value: "21 gün", label: "Ücretsiz kullanım" },
   { icon: CreditCard, value: "0 ₺", label: "Başlangıç ücreti" },
-  { icon: Gauge, value: "48 saat", label: "CSV aktarım desteği" },
+  { icon: Gauge, value: "48 saat", label: "Excel / CSV desteği" },
 ];
 
 export default function UcretsizDenePage() {
@@ -45,7 +45,7 @@ export default function UcretsizDenePage() {
           <p className="mt-5 max-w-xl text-base leading-relaxed text-brand-navy/55">
             Hesabınızı oluşturun, e-posta adresinizi doğrulayın ve kendi filonuz,
             rezervasyonlarınız ve ekibinizle Rent Okey&apos;i 21 gün değerlendirin.
-            Uygulama içindeki hazır CSV şablonlarıyla verinizi kendiniz aktarın;
+            Uygulama içindeki Excel / CSV aktarımıyla verinizi kendiniz yükleyin;
             ilk 48 saat içinde ihtiyaç halinde ücretsiz destek de alın.
           </p>
 

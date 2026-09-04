@@ -13,7 +13,7 @@ const guides = [
   { title: "Hızlı başlangıç: Hesabınızı 5 dakikada kurun", duration: "5 dk" },
   { title: "Araç ve müşteri verilerini içe aktarma", duration: "8 dk" },
   { title: "Ekibinizi davet etme ve rol bazlı yetkilendirme", duration: "6 dk" },
-  { title: "Mobil saha uygulamasını sahada kullanmak", duration: "7 dk" },
+  { title: "Mobil uyumlu saha ekranlarını kullanmak", duration: "7 dk" },
   { title: "Raporları özelleştirme ve dışa aktarma", duration: "6 dk" },
   { title: "Fiyatlandırma kurallarını yapılandırma", duration: "9 dk" },
 ];

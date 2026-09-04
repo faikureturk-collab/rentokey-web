@@ -6,7 +6,7 @@ export default function FaqSection() {
   return (
     <section id="sss" className="scroll-mt-24 bg-white py-16 sm:py-24">
       <div className="container-page grid gap-10 lg:grid-cols-[.72fr_1.28fr] lg:gap-16">
-        <div className="lg:sticky lg:top-28 lg:h-fit">
+        <div className="min-w-0 lg:sticky lg:top-28 lg:h-fit">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand-blue/10 px-4 py-1.5 text-sm font-semibold text-brand-blue"><HelpCircle className="h-4 w-4" /> Sıkça sorulan sorular</span>
           <h2 className="mt-5 text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-navy sm:text-4xl">Karar vermeden önce bilmek isteyecekleriniz.</h2>
           <p className="mt-5 text-[15px] leading-relaxed text-brand-navy/55">Deneme süreci, günlük kullanım, veri güvenliği ve destek hakkında en sık karşılaştığımız sorular.</p>
@@ -19,7 +19,9 @@ export default function FaqSection() {
           </div>
         </div>
 
-        <FaqGroupTabs />
+        <div className="min-w-0">
+          <FaqGroupTabs />
+        </div>
       </div>
     </section>
   );

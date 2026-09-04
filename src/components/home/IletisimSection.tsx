@@ -28,7 +28,7 @@ export default function IletisimSection() {
             </p>
 
             <ul className="mt-6 space-y-3">
-              {["Filo büyüklüğünüze uygun paket", "Mevcut CSV verilerinizle geçiş", "Türkiye ve KKTC operasyonlarına uygun kurulum"].map(
+              {["Filo büyüklüğünüze uygun paket", "Mevcut Excel / CSV verilerinizle geçiş", "Türkiye ve KKTC operasyonlarına uygun kurulum"].map(
                 (item) => (
                   <li key={item} className="flex items-start gap-2.5 text-sm text-brand-navy/70">
                     <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-green/10 text-brand-green">

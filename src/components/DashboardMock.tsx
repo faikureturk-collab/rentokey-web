@@ -60,7 +60,7 @@ export default function DashboardMock() {
           <div className="flex min-h-14 items-center gap-3 border-b border-white/10 px-4 py-2.5">
             <div className="flex shrink-0 items-center gap-2.5 pr-1">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white">
-                <Image src="/logo/rentokey-icon.svg" alt="" width={22} height={17} aria-hidden />
+                <Image src="/logo/rentokey-icon.svg" alt="" width={276} height={206} style={{ width: 22, height: "auto" }} aria-hidden />
               </span>
               <div className="hidden xl:block">
                 <p className="text-[11px] font-extrabold text-white">Rent Okey</p>
@@ -92,7 +92,7 @@ export default function DashboardMock() {
           <div className="flex items-center justify-between border-b border-surface-border px-4 py-3">
             <div className="flex items-center gap-2.5">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface-soft">
-                <Image src="/logo/rentokey-icon.svg" alt="" width={22} height={17} aria-hidden />
+                <Image src="/logo/rentokey-icon.svg" alt="" width={276} height={206} style={{ width: 22, height: "auto" }} aria-hidden />
               </span>
               <div>
                 <p className="text-xs font-extrabold text-brand-navy">Operasyon Merkezi</p>

@@ -1,26 +1,42 @@
+import type { ReactNode } from "react";
+import { Cable, FileSignature } from "lucide-react";
 import { AiDamageCompareIcon, SmartPricingIcon, ChatBookingIcon } from "@/components/icons/ColorIcons";
 
-const items = [
+const items: { icon: ReactNode; label: string; title: string; description: string }[] = [
   {
-    icon: AiDamageCompareIcon,
+    icon: <AiDamageCompareIcon size={44} />,
     label: "Saha operasyonu",
     title: "Fotoğraflı hasar karşılaştırması",
     description:
       "Teslim ve iade fotoğrafları arasındaki olası farkların ekip tarafından daha hızlı incelenmesi.",
   },
   {
-    icon: SmartPricingIcon,
+    icon: <SmartPricingIcon size={44} />,
     label: "Gelir yönetimi",
     title: "Akıllı fiyat önerisi",
     description:
       "Sezon, doluluk ve geçmiş rezervasyon verilerinden yararlanan onaylı fiyat önerileri.",
   },
   {
-    icon: ChatBookingIcon,
+    icon: <ChatBookingIcon size={44} />,
     label: "Müşteri iletişimi",
     title: "Mesajdan rezervasyon taslağı",
     description:
       "Gelen müşteri talebinden ekip onayına sunulacak araç ve fiyat taslağı hazırlanması.",
+  },
+  {
+    icon: <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue"><FileSignature className="h-5 w-5" /></span>,
+    label: "Doküman ve onay",
+    title: "Dijital sözleşme ve imza",
+    description:
+      "Rezervasyon onay belgesinden ayrı, hukuki metin ve elektronik imza sürecinin uçtan uca yönetilmesi.",
+  },
+  {
+    icon: <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-green/10 text-brand-green-dark"><Cable className="h-5 w-5" /></span>,
+    label: "Kurumsal bağlantılar",
+    title: "Özel entegrasyon ve API",
+    description:
+      "Yetkilendirilmiş veri bağlantıları ve kuruma özel API erişimiyle farklı sistemlerin birlikte çalışması.",
   },
 ];
 
@@ -42,14 +58,14 @@ export default function ComingSoonSection() {
           </p>
         </div>
 
-        <div className="mt-10 grid overflow-hidden rounded-[28px] border border-surface-border bg-white sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((item, index) => (
+        <div className="mt-10 grid gap-px overflow-hidden rounded-[28px] border border-surface-border bg-surface-border sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((item) => (
             <article
               key={item.title}
-              className={`relative p-6 sm:p-7 ${index > 0 ? "border-t border-surface-border sm:border-l sm:border-t-0" : ""} ${index === 2 ? "sm:col-span-2 lg:col-span-1" : ""}`}
+              className="relative bg-white p-6 sm:p-7"
             >
               <div className="flex items-start justify-between gap-4">
-                <item.icon size={44} />
+                {item.icon}
                 <span className="rounded-full bg-amber-50 px-2.5 py-1 text-[10px] font-bold text-amber-700">
                   Geliştiriliyor
                 </span>

@@ -21,13 +21,13 @@ export const allFeatures = [
   },
   {
     icon: Smartphone,
-    title: "Mobil saha uygulaması",
-    description: "Sahada teslimat, iade ve kontrolleri hızlıca yapın.",
+    title: "Mobil uyumlu saha ekranları",
+    description: "Telefondan teslim, iade ve hızlı kayıt işlemlerini yürütün.",
   },
   {
     icon: KeyRound,
     title: "Araç teslim / iade yönetimi",
-    description: "Hasar, yakıt ve km kontrolünü dijitalleştirin.",
+    description: "Planlanan ve gerçekleşen zamanı, kilometreyi ve operasyon notunu kaydedin.",
   },
   {
     icon: PieChart,
@@ -51,8 +51,8 @@ export const allFeatures = [
   },
   {
     icon: FileText,
-    title: "Dijital sözleşme ve tutanaklar",
-    description: "Sözleşme ve teslim tutanaklarını dijital imza ile onaylayın.",
+    title: "Rezervasyon onay belgesi",
+    description: "Markalı onay belgesini PDF, WhatsApp veya e-posta ile paylaşın.",
   },
   {
     icon: ShieldCheck,
@@ -61,8 +61,8 @@ export const allFeatures = [
   },
   {
     icon: Wallet,
-    title: "Fatura ve tahsilat takibi",
-    description: "Ödemeleri ve bekleyen tahsilatları kolayca yönetin.",
+    title: "Ödeme, tahsilat ve gider takibi",
+    description: "Ödenen tutarları, kalan bakiyeyi ve operasyon giderlerini yönetin.",
   },
   {
     icon: MapPin,
