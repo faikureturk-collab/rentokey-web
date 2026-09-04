@@ -8,6 +8,7 @@ export type Plan = {
   supportLevel: string;
   monthlyPrice: number | null;
   yearlyPrice: number | null;
+  featureLabel: string;
   popular?: boolean;
   features: string[];
   ctaLabel?: string;
@@ -25,12 +26,13 @@ export const plans: Plan[] = [
     supportLevel: "Standart destek",
     monthlyPrice: 1490,
     yearlyPrice: 1190,
+    featureLabel: "Temel operasyon",
     features: [
       "Rezervasyon, müşteri / sürücü ve filo yönetimi",
       "Gantt, uygun araç önerisi ve önerilen odak",
       "Teslim / iade, bakım ve belge süresi takibi",
-      "Gider, tahsilat ve yönetim raporları",
-      "Excel / CSV içe aktarma ve Excel dışa aktarma",
+      "Gider, tahsilat ve temel raporlar",
+      "Excel / CSV içe aktarma ve onay belgesi paylaşımı",
     ],
   },
   {
@@ -43,13 +45,14 @@ export const plans: Plan[] = [
     supportLevel: "Öncelikli destek",
     monthlyPrice: 2890,
     yearlyPrice: 2290,
+    featureLabel: "Başlangıç + ekip ve analiz",
     popular: true,
     features: [
-      "Rezervasyon, müşteri / sürücü ve filo yönetimi",
-      "Gantt, uygun araç önerisi ve önerilen odak",
-      "Teslim / iade, bakım ve belge süresi takibi",
-      "Gider, tahsilat ve yönetim raporları",
-      "Excel / CSV içe aktarma ve Excel dışa aktarma",
+      "Başlangıç paketindeki tüm özellikler",
+      "5 pozisyonlu rol ve sayfa yetkilendirmesi",
+      "Lokasyon ve teslim noktası takibi",
+      "Gelir, gider ve doluluk analizi",
+      "Excel'e veri aktarımı",
     ],
   },
   {
@@ -62,12 +65,13 @@ export const plans: Plan[] = [
     supportLevel: "Öncelikli destek",
     monthlyPrice: 4990,
     yearlyPrice: 3990,
+    featureLabel: "Büyüme + çoklu şube",
     features: [
-      "Rezervasyon, müşteri / sürücü ve filo yönetimi",
-      "Gantt, uygun araç önerisi ve önerilen odak",
-      "Teslim / iade, bakım ve belge süresi takibi",
-      "Gider, tahsilat ve yönetim raporları",
-      "Excel / CSV içe aktarma ve Excel dışa aktarma",
+      "Büyüme paketindeki tüm özellikler",
+      "Çoklu şube ve lokasyon yönetimi",
+      "B2B / kurumsal ortak erişimi",
+      "Şube ve araç bazlı gelişmiş raporlar",
+      "Gelişmiş ekip ve yetki kapsamı",
     ],
   },
   {
@@ -80,8 +84,9 @@ export const plans: Plan[] = [
     supportLevel: "Özel destek yöneticisi",
     monthlyPrice: null,
     yearlyPrice: null,
+    featureLabel: "Kurumsal kapsam",
     features: [
-      "Tüm mevcut Rent Okey özellikleri",
+      "Profesyonel paketindeki tüm özellikler",
       "Sınırsız araç, kullanıcı ve şube",
       "Kuruma özel veri aktarımı ve kurulum desteği",
       "İhtiyaca göre rapor ve yetki kapsamı değerlendirmesi",

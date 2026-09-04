@@ -215,7 +215,7 @@ Deneme süreci Netflix/Vercel benzeri hızlı başlangıç fikrinden esinlendi; 
 
 ### Aşama 6 — Paketlerin gerçek ürün limitleriyle eşleştirilmesi
 
-Canlı uygulamada özellik kapıları hazır olsa da kapalıdır; mevcut özellikler bütün paketlerde açıktır. Pazarlama sitesi bu nedenle tamamlanmış özellikleri paketler arasında var/yok şeklinde ayırmaz. Paket farkı araç, kullanıcı ve şube limitleri ile destek kapsamıdır. Henüz hazır olmayan fotoğraflı hasar, dijital sözleşme/imza ve API gibi başlıklar paket vaadi değil, açıkça “Geliştiriliyor” etiketi taşıyan yol haritasıdır.
+Canlı uygulamadaki teknik özellik kapılarının mevcut durumu, pazarlama sitesindeki ticari paket kurgusundan ayrı değerlendirilir. Başlangıç temel operasyonu; Büyüme ekip rolleri, lokasyon takibi, gelişmiş analiz ve Excel dışa aktarmayı; Profesyonel çoklu şube, B2B erişimi ve gelişmiş raporlamayı; Kurumsal ise sınırsız kapasite, özel kurulum ve destek kapsamını sunar. Henüz hazır olmayan fotoğraflı hasar, dijital sözleşme/imza ve API gibi başlıklar paket vaadi değil, açıkça “Geliştiriliyor” etiketi taşıyan yol haritasıdır.
 
 ### Aşama 7 — Marka varlıklarının temizlenmesi
 

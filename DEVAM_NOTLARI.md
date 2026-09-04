@@ -65,7 +65,7 @@ Teknik SEO altyapısı tamamlandı. Tüm güçlü sayfalara benzersiz başlık, 
 
 ## 4 Eylül 2026 — Uygulama dokümanlarıyla pazarlama sitesi eşleştirmesi
 
-Canlı uygulamanın `PAZARLAMA-OZELLIK-OZETI.md`, `KULLANICI-KILAVUZU.md` ve `TEKNIK-KILAVUZ.md` kaynakları yeniden karşılaştırıldı. Uygulamada özellik kapıları kapalı olduğu için paketler artık tamamlanmış özellikleri var/yok şeklinde ayırmıyor; bütün mevcut ürün özellikleri ortak, ticari ayrım araç/kullanıcı/şube limitleri ve destek seviyesidir. Fotoğraflı hasar, dijital sözleşme/imza ve kurumsal API kaldırılmadı; aktif paket vaadinden çıkarılıp “Geliştiriliyor” yol haritasında tutuldu.
+Canlı uygulamanın `PAZARLAMA-OZELLIK-OZETI.md`, `KULLANICI-KILAVUZU.md` ve `TEKNIK-KILAVUZ.md` kaynakları yeniden karşılaştırıldı. Teknik özellik kapılarının mevcut durumu ticari paket kurgusundan ayrıldı: Başlangıç temel operasyonu; Büyüme ekip/yetki, lokasyon, analiz ve Excel dışa aktarmayı; Profesyonel çoklu şube, B2B erişimi ve gelişmiş raporlamayı; Kurumsal sınırsız kapasite, özel kurulum ve desteği içerir. Fotoğraflı hasar, dijital sözleşme/imza ve kurumsal API kaldırılmadı; aktif paket vaadinden çıkarılıp “Geliştiriliyor” yol haritasında tutuldu.
 
 Ana sayfaya `ReservationFlowSection` eklendi. Bölüm canlı müşteri/sürücü aramasını ve otomatik oluşturmayı, benzersiz rezervasyon numarası/taslağı ve markalı Rezervasyon Onay Belgesi'nin WhatsApp, e-posta ve PDF paylaşımını üç adımda anlatır. Onay belgesinin imzalanacak kira sözleşmesinden ayrı olduğu açıkça belirtilir.
 

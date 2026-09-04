@@ -46,9 +46,9 @@ export const faqGroups: FaqGroup[] = [
     label: "Ürün ve günlük kullanım",
     items: [
       {
-        question: "Bütün paketlerde hangi özellikler var?",
+        question: "Paketler hangi özelliklere göre ayrılıyor?",
         answer:
-          "Rezervasyon ve zaman çizelgesi, müşteri/sürücü yönetimi, uygun araç önerisi, önerilen odak, filo, teslim/iade, mobil operasyon, bakım ve belge uyarıları, gider ve tahsilat takibi, raporlar ile Excel/CSV içe aktarma bütün paketlerde yer alır. Paketler araç, kullanıcı, şube ve destek kapsamına göre ayrılır.",
+          "Başlangıç paketi rezervasyon, müşteri/sürücü, zaman çizelgesi, uygun araç önerisi, önerilen odak, filo, teslim/iade, bakım-belge uyarıları, temel finans, Excel/CSV içe aktarma ve onay belgesi paylaşımını içerir. Büyüme paketi ekip rolleri, lokasyon takibi, gelişmiş analiz ve Excel dışa aktarmayı; Profesyonel paket çoklu şube, B2B erişimi ve şube/araç bazlı gelişmiş raporları ekler. Kurumsal paket sınırsız kapasite, özel kurulum ve destek kapsamı sunar.",
       },
       {
         question: "Sistem rezervasyona uygun aracı önerebilir mi?",

@@ -28,13 +28,18 @@ const comparisonRows: { label: string; values: ComparisonValue[] }[] = [
   { label: "Filo, teslim ve iade yönetimi", values: [true, true, true, true] },
   { label: "Mobil operasyon ekranı", values: [true, true, true, true] },
   { label: "Bakım ve belge süresi uyarıları", values: [true, true, true, true] },
-  { label: "Gider, tahsilat ve yönetim raporları", values: [true, true, true, true] },
+  { label: "Gider, tahsilat ve temel raporlar", values: [true, true, true, true] },
   { label: "Müşteri, rezervasyon, filo, gider ve bakım için Excel / CSV aktarımı", values: [true, true, true, true] },
-  { label: "Excel'e veri aktarımı", values: [true, true, true, true] },
-  { label: "Rol ve sayfa yetkilendirmesi (kullanıcı limiti dahilinde)", values: [true, true, true, true] },
-  { label: "B2B / kurumsal ortak erişimi", values: [true, true, true, true] },
-  { label: "Genel arama ve merkezi bildirimler", values: [true, true, true, true] },
   { label: "Rezervasyon onay belgesi ve paylaşım", values: [true, true, true, true] },
+  { label: "Genel arama ve merkezi bildirimler", values: [true, true, true, true] },
+  { label: "Rol ve sayfa yetkilendirmesi", values: [false, true, true, true] },
+  { label: "Lokasyon ve teslim noktası takibi", values: [false, true, true, true] },
+  { label: "Gelişmiş gelir, gider ve doluluk analizi", values: [false, true, true, true] },
+  { label: "Excel'e veri aktarımı", values: [false, true, true, true] },
+  { label: "Çoklu şube / lokasyon yönetimi", values: [false, false, true, true] },
+  { label: "B2B / kurumsal ortak erişimi", values: [false, false, true, true] },
+  { label: "Şube ve araç bazlı gelişmiş raporlar", values: [false, false, true, true] },
+  { label: "Kuruma özel veri aktarımı ve kurulum", values: [false, false, false, true] },
   { label: "Destek seviyesi", values: plans.map((plan) => plan.supportLevel) },
 ];
 
@@ -147,7 +152,7 @@ export default function PricingSection({
                 </div>
 
                 <div className={`my-6 h-px ${highlighted ? "bg-white/10" : "bg-surface-border"}`} />
-                <p className={`text-[10px] font-bold uppercase tracking-[0.14em] ${highlighted ? "text-white/35" : "text-brand-navy/35"}`}>{plan.name === "Kurumsal" ? "Kurumsal kapsam" : "Tüm ürün özellikleri dahil"}</p>
+                <p className={`text-[10px] font-bold uppercase tracking-[0.14em] ${highlighted ? "text-white/35" : "text-brand-navy/35"}`}>{plan.featureLabel}</p>
                 <ul className="mt-4 flex-1 space-y-3">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5">
