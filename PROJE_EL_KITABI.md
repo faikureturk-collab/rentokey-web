@@ -1,7 +1,7 @@
 # Rent Okey web sitesi — proje el kitabı
 
-Son güncelleme: 28 Ağustos 2026
-Doğrulanan Git başlangıç noktası: `35c65c5` — `logo tasarımı güncellendi.`
+Son güncelleme: 7 Eylül 2026
+Doğrulanan Git başlangıç noktası: `268dfa3` — `Fiyatlandırma yeni versiyon`
 
 Bu belge, Rent Okey web sitesinde yapılacak bir sonraki geliştirmeden önce okunması gereken ana bağlam dosyasıdır. Yalnız mevcut ekranları anlatmaz; ürünün ne olduğu, sitenin ziyaretçiyi hangi sırayla ikna ettiği, hangi kararların neden alındığı, hangi vaatlerin doğrulandığı ve hangi alanların henüz prototip olduğu burada ayrıştırılır.
 
@@ -54,6 +54,7 @@ Rent Okey genel amaçlı bir CRM, filo tablosu veya yalnız rezervasyon takvimi 
 1. **Tek operasyon akışı:** rezervasyon, filo, teslim/iade, finans ve ekip aynı veride buluşur.
 2. **Aksiyon görünürlüğü:** sıradaki teslim, iade, belge, bakım ve riskler doğrudan yapılacak iş olarak sunulur.
 3. **Önerilen odak:** sabit kurala sığmayan, farklı verilerin birlikte değerlendirilmesini gerektiren riskler önceden gösterilir.
+4. **RentOkey Pilot:** riski uygulanabilir, etkisi ölçülebilir ve kullanıcı onaylı bir operasyon planına dönüştürür. Aktif üründür; taban aboneliğe dahil olmayan opsiyonel ek paket olarak satılır.
 
 ## 4. Kullanıcı tarafından doğrulanan ürün özellikleri
 
@@ -82,6 +83,7 @@ Aşağıdaki özellikler çalışan ürün için kullanıcı tarafından açık�
 - Masaüstü, tablet ve mobil kullanım
 - Pozisyona göre sayfa yetkilendirmesi
 - Önerilen odak
+- RentOkey Pilot operasyon optimizasyonu — aktif, opsiyonel ek paket
 
 ### Yetki yapısı
 
@@ -106,6 +108,17 @@ Onaylı anlatım örnekleri:
 - Teslim yaklaşıyor ama rezervasyona henüz araç atanmadı; uygun araç önerisi hazır.
 
 Özelliği “kendi başına karar veren yapay zekâ” şeklinde anlatma. Kullanıcıya karar ve aksiyon hazırlığı sağlayan bağlamsal öneri sistemi olarak konumlandır.
+
+### RentOkey Pilot nasıl anlatılmalı?
+
+Önerilen Odak yaklaşan riski görünür kılar; RentOkey Pilot ise bir sonraki operasyon için çözüm planını hazırlar. Rezervasyon, araç, bakım, tahsilat, lokasyon ve hazırlık süresini birlikte değerlendirir. Her öneride sorun, çözüm, gerekçe ve tahmini finansal/operasyonel etki bulunur.
+
+- Pilot aktif ve kullanıma hazır bir ek pakettir.
+- Araç sayısına göre hesaplanan taban fiyata dahil değildir; ayrıca satın alınır.
+- Kullanıcı önerileri tek tek seçer ve son onayı verir.
+- Kullanıcı onayı olmadan araç ataması, saat veya görev değiştirilmez.
+- Finansal etkiler mevcut verilerden hesaplanan tahminlerdir; garanti edilen kazanç gibi anlatılmaz.
+- İlk kapsam: yetersiz hazırlık süresi, araçsız/yanlış sınıflı rezervasyon, bakım çakışması, teslim öncesi eksik tahsilat ve uzun süre boşta kalan araç.
 
 ## 5. Ürün tasarımından web sitesine taşınan ilkeler
 
@@ -177,13 +190,14 @@ Ana hero alanına `DashboardMock` eklendi. Bu çözüm:
 - çözünürlükten bağımsızdır,
 - metinleri her cihazda okunabilir tutar,
 - gerçek müşteri verisi içermez,
-- ürünün tamamını değil, satın alma kararını etkileyen üç ana senaryoyu gösterir.
+- ürünün tamamını değil, satın alma kararını etkileyen dört ana senaryoyu gösterir.
 
 Demo sekmeleri:
 
 1. Bugünkü operasyon
 2. Planlama
 3. Önerilen odak
+4. RentOkey Pilot
 
 Masaüstü ve mobil sahneler aynı iş mantığını farklı yerleşimlerle anlatır. Mobilde zaman çizelgesi küçültülmez; tarih ve hızlı aksiyon akışına dönüşür.
 
@@ -213,9 +227,9 @@ Deneme süreci Netflix/Vercel benzeri hızlı başlangıç fikrinden esinlendi; 
 
 `/ucretsiz-dene` başlangıçta iki adımlı onboarding olarak tasarlandı; daha sonra sürtünmeyi azaltmak için tek adımlı gerçek hesap başvurusuna dönüştürüldü. Web sitesi ad-soyad, e-posta ve şifreyi uygulamanın kayıt API'sine gönderir. Hesap sunucu tarafında oluşturulur, doğrulama e-postası `mail.rentokey.com` üzerinden iletilir. Firma adı ve filo büyüklüğü e-posta doğrulamasından sonra uygulamada alınır.
 
-### Aşama 6 — Paketlerin gerçek ürün limitleriyle eşleştirilmesi
+### Aşama 6 — Araç bazlı fiyatlandırma ve ek modül ayrımı
 
-Canlı uygulamadaki teknik özellik kapılarının mevcut durumu, pazarlama sitesindeki ticari paket kurgusundan ayrı değerlendirilir. Başlangıç temel operasyonu; Büyüme ekip rolleri, lokasyon takibi, gelişmiş analiz ve Excel dışa aktarmayı; Profesyonel çoklu şube, B2B erişimi ve gelişmiş raporlamayı; Kurumsal ise sınırsız kapasite, özel kurulum ve destek kapsamını sunar. Henüz hazır olmayan fotoğraflı hasar, dijital sözleşme/imza ve API gibi başlıklar paket vaadi değil, açıkça “Geliştiriliyor” etiketi taşıyan yol haritasıdır.
+Sabit Başlangıç/Büyüme/Profesyonel paketleri yerine araç sayısına göre kademeli fiyatlandırmaya geçildi. Tüm filolar aynı temel özellik setini kullanır; kilitli üst paket yoktur. RentOkey Pilot ve diğer opsiyonel ek modüller taban fiyata dahil değildir. Kurumsal Destek ise araç sayısından bağımsız, isteğe bağlı hizmet olarak sunulur.
 
 ### Aşama 7 — Marka varlıklarının temizlenmesi
 
@@ -234,10 +248,14 @@ Canlı uygulamadaki teknik özellik kapılarının mevcut durumu, pazarlama site
 - ChatGPT arama özelliklerinde görünürlük için `OAI-SearchBot` tarayıcısına `robots.txt` içinde açıkça izin veriliyor. Bu arama tarayıcısı kuralı, model eğitimiyle ilgili `GPTBot` tercihinden bağımsız ele alınıyor.
 - Claude arama görünürlüğü ve kullanıcı tarafından başlatılan sayfa erişimi için `Claude-SearchBot` ile `Claude-User` açıkça izinli. Pazarlama sitesinin herkese açık içeriğinin Anthropic model geliştirme süreçlerinde kullanılabilmesi için `ClaudeBot` da izinli; bu tercih arama erişiminden ayrı değerlendiriliyor.
 - Standart üretim adresi `https://www.rentokey.com`; apex alan adı kalıcı yönlendirmeyle `www` sürümüne taşınıyor. Canonical, sitemap, robots, Open Graph ve JSON-LD aynı merkezi `SITE_URL` değerinden üretiliyor.
-- Sitemap aramada sunulmaya hazır `/`, `/ucretsiz-dene`, `/kaynaklar`, `/blog` ve beş yayındaki blog yazısını içeriyor. Statik sayfa güncellemeleri ile blog yayın/değişiklik tarihleri ayrı tutuluyor.
+- Sitemap aramada sunulmaya hazır `/`, `/ucretsiz-dene`, `/okey-pilot`, `/kaynaklar`, `/blog` ve yayındaki blog yazılarını içeriyor. Statik sayfa güncellemeleri ile blog yayın/değişiklik tarihleri ayrı tutuluyor.
 - Yer tutucu içerikler ve uzman onayı bekleyen yasal metinler `noindex, follow` durumunda. Gerçek içerik tamamlandığında metadata ve sitemap birlikte güncellenmeli.
 - Hero'nun görünen metninde Türkiye, KKTC ve araç kiralama programı bağlamı doğal biçimde açıklandı.
 - Google Search Console alan adı mülkü ve Bing Webmaster Tools doğrulandı; sitemap iki panele de gönderildi. Yeni sitemap yayına çıktıktan sonra keşfedilen URL sayısı tekrar kontrol edilmeli.
+
+### Aşama 9 — RentOkey Pilot'ın aktif ek paket olarak konumlandırılması
+
+RentOkey Pilot tamamlanmış ürün davranışı olarak siteye eklendi. Ana sayfada Önerilen Odak bölümünün hemen arkasında yer alır: önce riskin nasıl fark edildiği, ardından Pilot'ın bu riski nasıl çözüm planına çevirdiği anlatılır. Hero demosunda ayrı sekmesi, fiyatlandırmada taban fiyattan ayrı aktif ek paket kartı, ek modüller alanında öne çıkan kartı ve `/okey-pilot` adresinde indekslenebilir ürün sayfası bulunur. SSS, yapılandırılmış veri, navigasyon ve sitemap aynı konumlandırmayı kullanır.
 
 ## 7. Ana sayfanın baştan sona hikâyesi
 
@@ -251,15 +269,16 @@ Ana sayfa sırası `src/app/page.tsx` içindedir. Sıra bilinçlidir; yalnız g�
 | 4 | `UrunSection / UrunTabs` | Ürün hangi süreçleri birleştiriyor? | Planlama, operasyon, filo, finans ve yönetimi tek akış olarak anlatır. |
 | 5 | `FeatureGrid` | Neden mevcut yöntemimi değiştireyim? | Dağınık WhatsApp/tablo düzeninden aksiyon merkezine geçişi gösterir. |
 | 6 | `FocusSection` | Rakiplerden farkı ne? | Önerilen odağı ve bağlamsal risk yaklaşımını örneklerle kanıtlar. |
-| 7 | `ReservationFlowSection` | Müşteriden onaya kadar süreç nasıl ilerliyor? | Canlı müşteri tanıma, otomatik rezervasyon numarası, taslak ve paylaşılabilir onay belgesini anlatır. |
-| 8 | `HowItWorks` | Başlamak zor mu? | Hesap, örnek filo/veri aktarımı, ekip ve gerçek operasyon olmak üzere dört adımlı denemeyi açıklar. |
-| 9 | `PricingSection` | Bana uygun paket ve maliyet ne? | Bütün paketlerde ortak ürün özelliklerini; araç/kullanıcı/şube ve destek farklarını gösterir. |
-| 10 | `HakkimizdaSection` | Ürün yerel operasyonumu anlıyor mu? | Türkiye/KKTC’ye özgü belge, lokasyon, süre ve ekip gerçeklerini anlatır. |
-| 11 | `ComingSoonSection` | Ürün gelişmeye devam edecek mi? | Mevcut özelliklerle karıştırmadan açıkça etiketlenmiş yol haritasını gösterir. |
-| 12 | `FaqSection` | Satın alma öncesi itirazlarım ne olacak? | Deneme, ödeme, paket, cihaz, aktarım ve yetki sorularını cevaplar. |
-| 13 | `IletisimSection` | Biriyle görüşebilir miyim? | Paket, geçiş ve kurulum sorularını gerçek iletişim API'sine gönderir. |
-| 14 | `CtaBanner` | Şimdi ne yapmalıyım? | Son kez deneme veya ekip görüşmesi seçeneği sunar. |
-| 15 | Footer | Kurumsal ve yasal bilgilere nasıl ulaşırım? | Marka, iletişim, içerik ve yasal bağlantıları kapatır. |
+| 7 | `PilotSection` | Risk için en iyi çözümü kim hazırlayacak? | RentOkey Pilot'ın çözüm, etki ve kullanıcı onaylı uygulama farkını gösterir. |
+| 8 | `ReservationFlowSection` | Müşteriden onaya kadar süreç nasıl ilerliyor? | Canlı müşteri tanıma, otomatik rezervasyon numarası, taslak ve paylaşılabilir onay belgesini anlatır. |
+| 9 | `HowItWorks` | Başlamak zor mu? | Hesap, örnek filo/veri aktarımı, ekip ve gerçek operasyon olmak üzere dört adımlı denemeyi açıklar. |
+| 10 | `PricingSection` | Bana uygun maliyet ne? | Araç bazlı taban fiyatı, dahil temel özellikleri ve ayrı satın alınan ek paketleri gösterir. |
+| 11 | `HakkimizdaSection` | Ürün yerel operasyonumu anlıyor mu? | Türkiye/KKTC’ye özgü belge, lokasyon, süre ve ekip gerçeklerini anlatır. |
+| 12 | `AddonModulesSection` | Taban ürüne başka ne ekleyebilirim? | RentOkey Pilot'ı aktif öne çıkan ek paket, diğer modülleri ayrı seçenekler olarak sunar. |
+| 13 | `FaqSection` | Satın alma öncesi itirazlarım ne olacak? | Deneme, ödeme, fiyat, cihaz, aktarım, Pilot ve yetki sorularını cevaplar. |
+| 14 | `IletisimSection` | Biriyle görüşebilir miyim? | Paket, geçiş, ek modül ve kurulum sorularını gerçek iletişim API'sine gönderir. |
+| 15 | `CtaBanner` | Şimdi ne yapmalıyım? | Son kez deneme veya ekip görüşmesi seçeneği sunar. |
+| 16 | Footer | Kurumsal ve yasal bilgilere nasıl ulaşırım? | Marka, iletişim, içerik ve yasal bağlantıları kapatır. |
 
 ### Dönüşüm mantığı
 
@@ -281,50 +300,52 @@ SSS tek uzun liste değildir; `src/lib/faq.ts` içinde üç kategori altında tu
 
 `FaqGroupTabs` masaüstünde üçlü, mobilde yana kaydırılabilir kategori seçimi sunar ve yalnızca seçilen grubun sorularını gösterir. Veri güvenliği cevapları; AWS İrlanda (`eu-west-1`) veri konumu, HTTPS/TLS ve depolama seviyesi şifreleme, günlük ve 7 gün saklanan veritabanı yedekleri, firma hesabı ayrımı, aktivite geçmişi, Excel dışa aktarma ve doğrulanmış destek saatlerini içerir. Sistem belge dosyası saklamadığı için dosya yedekleme vaadi bulunmaz.
 
-## 8. Paketler için tek doğru kaynak
+## 8. Fiyatlandırma ve ek paketler için tek doğru kaynak
 
-Paket verilerinin ana kaynağı `src/lib/pricing.ts` dosyasıdır. Metin veya fiyat güncellenirken kartlar, karşılaştırma tablosu ve SSS birlikte kontrol edilmelidir.
+Araç bazlı fiyat formülünün ana kaynağı `src/lib/pricing.ts` dosyasıdır. Sabit Başlangıç/Büyüme/Profesyonel paketleri artık güncel ticari model değildir.
 
-| Paket | Araç | Kullanıcı | Şube | Aylık | Yıllık ödeme seçeneğinde aylık karşılık |
-|---|---:|---:|---:|---:|---:|
-| Başlangıç | 1–10 | 1 | 1 | ₺1.490 | ₺1.190 |
-| Büyüme | 11–30 | 5 | 1 | ₺2.890 | ₺2.290 |
-| Profesyonel | 31–70 | 15 | 3 | ₺4.990 | ₺3.990 |
-| Kurumsal | 71+ | Sınırsız | Sınırsız | Özel teklif | Özel teklif |
+| Bileşen | Güncel değer |
+|---|---:|
+| Aylık taban ücret | ₺390 |
+| 1–15. araç | araç başı ₺140 |
+| 16–40. araç | araç başı ₺100 |
+| 41–80. araç | araç başı ₺75 |
+| 81–150. araç | araç başı ₺65 |
+| 150 araç üzeri | Özel teklif |
+| Yıllık ödeme avantajı | %20 |
 
-Fiyatlara KDV dahil değildir.
+Kademeler marjinal hesaplanır; araç sayısı yeni banda geçtiğinde önceki araçların oranı değişmez. Fiyatlara KDV dahil değildir.
 
-### Tüm paketlerde bulunması gereken çekirdek
+### Taban fiyata dahil temel ürün
 
 - Rezervasyon ve zaman çizelgesi
 - Müşteri ve sürücü yönetimi
 - Otomatik uygun araç önerisi
-- Önerilen odak ve bağlamsal riskler
+- Önerilen Odak ve bağlamsal riskler
 - Filo, teslim ve iade
 - Mobil operasyon
 - Bakım ve belge süresi uyarıları
 - Gider, tahsilat ve yönetim raporları
-- Müşteri, rezervasyon, filo, gider ve bakım için Excel / CSV içe aktarma
-- Excel dışa aktarma
-- Genel arama ve merkezi bildirimler
-- Rezervasyon onay belgesi ve paylaşım
+- Sınırsız kullanıcı ve şube; rol ve sayfa bazlı yetkilendirme
+- Excel / CSV içe ve dışa aktarma
+- Genel arama, merkezi bildirimler ve rezervasyon onay belgesi
 
-### Paket ayrımı
+### Taban fiyata dahil olmayanlar
 
-- Başlangıç: 10 araç, 1 kullanıcı, 1 şube, standart destek
-- Büyüme: 30 araç, 5 kullanıcı, 1 şube, öncelikli destek
-- Profesyonel: 70 araç, 15 kullanıcı, 3 şube, öncelikli destek
-- Kurumsal: sınırsız araç/kullanıcı/şube, özel kurulum ve destek kapsamı
+- **RentOkey Pilot:** aktif, ayrıca satın alınan operasyon optimizasyonu ek paketi
+- Diğer ek modüller: yalnız ihtiyaç halinde ayrı kapsam ve fiyatla eklenir
+- **Kurumsal Destek:** ürün özelliği değil; araç sayısından bağımsız isteğe bağlı ek hizmettir
 
-Tamamlanmış ürün özellikleri bütün paketlerde açıktır. Fotoğraflı hasar, dijital sözleşme/imza ve kurumsal API mevcut paket karşılaştırmasına dahil edilmez; yol haritasında “Geliştiriliyor” olarak kalır.
+“Tüm özellikler dahil” ifadesi tek başına kullanılmamalıdır; doğru ifade **“Tüm temel özellikler dahil”** olmalıdır. Böylece Pilot'ın ek paket konumu bulanıklaşmaz.
 
-Fiyatlar veya limitler yalnız bir kartta değiştirilmemelidir. Şunları birlikte ara ve güncelle:
+Fiyat veya ek paket anlatımı değiştiğinde şunları birlikte güncelle:
 
 - `src/lib/pricing.ts`
 - `src/components/PricingSection.tsx`
+- `src/components/home/AddonModulesSection.tsx`
 - `src/lib/faq.ts`
-- `/ucretsiz-dene` içindeki filo aralıkları
-- İletişim formundaki filo aralıkları
+- `src/lib/structured-data.ts`
+- `/ucretsiz-dene` ve iletişim formundaki filo aralıkları
 
 ## 9. Deneme, ödeme ve iletişim gerçeği
 
@@ -471,6 +492,8 @@ Aşağıdaki vaatler canlı üründe yeniden doğrulanmadan aktif satış metnin
 - Hero ürün demosu: `src/components/DashboardMock.tsx`
 - Beş modüllü ürün anlatımı: `src/components/home/UrunTabs.tsx`
 - Önerilen odak anlatımı: `src/components/home/FocusSection.tsx`
+- RentOkey Pilot ana sayfa anlatımı: `src/components/home/PilotSection.tsx`
+- RentOkey Pilot ürün sayfası: `src/app/okey-pilot/page.tsx`
 - Müşteriden onaya rezervasyon akışı: `src/components/home/ReservationFlowSection.tsx`
 - Fiyatlandırma ve karşılaştırma: `src/components/PricingSection.tsx`
 - Deneme formu: `src/components/TrialOnboarding.tsx`
@@ -511,7 +534,7 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 7. Deneme formunun kötüye kullanımına karşı kayıt API'sinin rate limit ayarları izlenmeli; ihtiyaç oluşursa CAPTCHA eklenmelidir.
 8. Turnstile public site key pazarlama sitesi Vercel ortamına, secret key ise yalnız API projesine eklenmeli ve gerçek iletişim gönderimi üretim alan adında uçtan uca doğrulanmalıdır.
 9. Checkout, ödeme, abonelik ve faturalandırma akışı henüz yoktur.
-10. `YEARLY_DISCOUNT` dışa aktarılıyor; arayüz hesaplaması bunun yerine açıkça tanımlanmış yıllık fiyatları kullanıyor. Fiyat mantığı tek modele indirgenmelidir.
+10. RentOkey Pilot'ın ek paket fiyatı sitede sayısal olarak yayınlanmıyor; fiyatlandırma politikası netleşirse fiyat kartı, SSS ve yapılandırılmış veri birlikte güncellenmelidir.
 11. GA4 veya başka bir analitik sağlayıcı henüz kurulu değildir. UTM/referrer bilgisi yakalanmıyor ve deneme hesabıyla ilişkilendirilmiyor; Search Console tıklamaları kayıt dönüşümüne bağlanamıyor.
 
 ## 16. Önerilen sonraki geliştirme sırası
@@ -570,7 +593,8 @@ Yeni çalışmaya şu sırayla başla:
 - 21 günlük denemeyi hızlı, kredi kartsız ve otomatik ödemesiz anlat.
 - İlk 48 saatlik Excel / CSV aktarım desteğini talep penceresi olarak anlat; tamamlanma süresi garantisi verme.
 - Türkiye ve KKTC yerel bağlamını görünür tut.
-- Kullanıcı/şube limitlerini paketler arasında tutarlı göster.
+- Araç bazlı taban fiyatı ve sınırsız kullanıcı/şube kapsamını tutarlı göster; eski sabit paket dilini geri getirme.
+- RentOkey Pilot'ı aktif ama taban fiyata dahil olmayan, kullanıcı onaylı ek paket olarak konumlandır.
 - Yol haritasını mevcut özellik gibi sunma.
 - Header’da slogansız optik hizalı logo, footer’da sloganlı kilit kullan.
 - Mobilde masaüstünü küçültme; görev ve aksiyon akışını yeniden kur.

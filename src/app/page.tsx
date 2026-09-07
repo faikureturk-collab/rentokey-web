@@ -4,6 +4,7 @@ import StatsBar from "@/components/home/StatsBar";
 import UrunSection from "@/components/home/UrunSection";
 import FeatureGrid from "@/components/home/FeatureGrid";
 import FocusSection from "@/components/home/FocusSection";
+import PilotSection from "@/components/home/PilotSection";
 import ReservationFlowSection from "@/components/home/ReservationFlowSection";
 import AddonModulesSection from "@/components/home/AddonModulesSection";
 import HowItWorks from "@/components/home/HowItWorks";
@@ -30,6 +31,7 @@ export default function Home() {
       <UrunSection />
       <FeatureGrid />
       <FocusSection />
+      <PilotSection />
       <ReservationFlowSection />
       <HowItWorks />
       <PricingSection id="fiyatlandirma" />

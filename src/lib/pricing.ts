@@ -72,9 +72,9 @@ export type FeatureGroup = {
 };
 
 /**
- * "Bu fiyata tam olarak ne alıyorum?" sorusuna doğrudan cevap: ürün özellikleri artık araç
- * sayısına göre kilitlenmiyor, tüm filolar aynı seti kullanır. Kategorilere ayırmak, tek bir
- * uzun liste yerine bir alışveriş fişi gibi taranabilir bir görünüm sağlar.
+ * "Taban fiyata ne dahil?" sorusuna doğrudan cevap: temel ürün özellikleri araç sayısına göre
+ * kilitlenmiyor, tüm filolar aynı seti kullanır. RentOkey Pilot ve diğer opsiyonel ek modüller
+ * bu listeye dahil değildir; ayrıca satın alınır.
  */
 export const includedFeatureGroups: FeatureGroup[] = [
   {

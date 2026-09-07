@@ -18,7 +18,7 @@ export default function CtaBanner() {
               Rent Okey’i kendi filonuz ve ekibinizle deneyin.
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/60 sm:text-[15px]">
-              Rezervasyonlarınızı planlayın, uygun araç önerisini görün ve operasyon kuyruğunu tek ekrandan yönetin. Paketinize deneme sonunda karar verin.
+              Rezervasyonlarınızı planlayın, uygun araç önerisini görün ve operasyon kuyruğunu tek ekrandan yönetin. Aboneliğinize deneme sonunda karar verin.
             </p>
             <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs font-medium text-white/70 sm:text-sm">
               {["Kredi kartı gerekmez", "Kurulum ücreti yok", "İlk 48 saatte ücretsiz Excel / CSV desteği"].map((item) => (

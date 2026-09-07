@@ -74,3 +74,15 @@ Deneme ve veri aktarımı anlatımı Excel / CSV olarak genişletildi; müşteri
 ## Git durumu
 
 Değişiklikler henüz commit veya push edilmedi. Kullanıcının diğer mevcut değişiklikleri korunmalı ve yalnız açık onayla GitHub'a gönderilmeli.
+
+## 7 Eylül 2026 — RentOkey Pilot
+
+RentOkey Pilot kullanıcı tarafından geliştirilmiş ve çalışır ürün özelliği olarak doğrulandı. Pazarlama sitesinde “Geliştiriliyor” veya yol haritası özelliği olarak değil, **aktif ve ayrıca satın alınabilen opsiyonel ek paket** olarak konumlandırıldı. Araç sayısına göre hesaplanan taban ürün fiyatına dahil değildir.
+
+Ana sayfada Önerilen Odak bölümünün hemen arkasına `PilotSection` eklendi. Anlatı bilinçli olarak iki aşamalıdır: Önerilen Odak yaklaşan riski görünür kılar; RentOkey Pilot uygulanabilir çözüm planını, gerekçeyi ve tahmini finansal/operasyonel etkiyi hazırlar. Kullanıcı önerileri tek tek seçer; hiçbir araç ataması, saat veya görev kullanıcı onayı olmadan değiştirilmez.
+
+Kod tabanlı hero demosuna masaüstü ve mobil için dördüncü **RentOkey Pilot** sekmesi eklendi. Fiyatlandırma alanındaki ifade “Tüm temel özellikler dahil” olarak netleştirildi ve Pilot için ayrı aktif ek paket kartı oluşturuldu. Ek Modüller bölümünün öne çıkan kartı Pilot'a ayrıldı; daha önceki fotoğraflı hasar ve diğer modüller kaldırılmadan ikincil kartlara taşındı.
+
+`/okey-pilot` adresinde indekslenebilir ürün sayfası oluşturuldu. Sayfa; beş temel operasyon senaryosunu, üç aşamalı çalışma mantığını, insan onaylı kontrol ilkesini ve ek paket iletişim çağrısını açıklar. Header/footer navigasyonu, SSS, SoftwareApplication JSON-LD özellik listesi ve sitemap aynı konumlandırmayla güncellendi.
+
+Pazarlamada kullanılabilecek örnek değerler — `%72 → %78 doluluk`, `₺31.400 → ₺38.300 gelir`, `₺6.900 kurtarılabilir gelir` — açıkça örnek senaryo ve tahmini etki olarak etiketlenmelidir; garanti edilen sonuç gibi kullanılmamalıdır.

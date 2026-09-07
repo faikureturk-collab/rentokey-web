@@ -14,18 +14,26 @@ import {
   LayoutDashboard,
   MapPin,
   Search,
+  ShieldCheck,
   Sparkles,
   WalletCards,
   Wrench,
   type LucideIcon,
 } from "lucide-react";
 
-type DemoId = "today" | "planning" | "focus";
+type DemoId = "today" | "planning" | "focus" | "pilot";
 
 const demoTabs: { id: DemoId; label: string; mobileLabel: string; icon: LucideIcon }[] = [
   { id: "today", label: "Bugünkü operasyon", mobileLabel: "Bugün", icon: LayoutDashboard },
   { id: "planning", label: "Planlama", mobileLabel: "Planlama", icon: CalendarDays },
   { id: "focus", label: "Önerilen odak", mobileLabel: "Odak", icon: Sparkles },
+  { id: "pilot", label: "RentOkey Pilot", mobileLabel: "Pilot", icon: Sparkles },
+];
+
+const pilotActions = [
+  { title: "34 ROK 123 → Clio ile değiştir", reason: "Mevcut araç bakıma girecek", effect: "₺2.800" },
+  { title: "Ercan teslimini 30 dk öne al", reason: "Transfer süresi yetersiz", effect: "Gecikmeyi önler" },
+  { title: "Eksik ödemeyi teslimden önce al", reason: "Teslime 90 dakika kaldı", effect: "₺4.100" },
 ];
 
 const operations = [
@@ -102,7 +110,7 @@ export default function DashboardMock() {
             <Bell className="h-4 w-4 text-brand-navy/45" />
           </div>
 
-          <div className="grid grid-cols-3 border-b border-surface-border bg-surface-soft p-1.5" role="tablist" aria-label="Mobil ürün demosu">
+          <div className="grid grid-cols-4 border-b border-surface-border bg-surface-soft p-1.5" role="tablist" aria-label="Mobil ürün demosu">
             {demoTabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = active === tab.id;
@@ -167,6 +175,7 @@ function DesktopScene({ active }: { active: DemoId }) {
       {active === "today" && <DesktopToday />}
       {active === "planning" && <DesktopPlanning />}
       {active === "focus" && <DesktopFocus />}
+      {active === "pilot" && <DesktopPilot />}
     </div>
   );
 }
@@ -354,6 +363,61 @@ function DesktopFocus() {
   );
 }
 
+function DesktopPilot() {
+  return (
+    <div>
+      <SceneHeader
+        eyebrow="RentOkey Pilot · Aktif ek modül"
+        title="Yarının optimize edilmiş planı hazır."
+        detail="Örnek operasyon senaryosu · Tahmini finansal ve operasyonel etkiler"
+      />
+      <div className="grid gap-3 p-3 lg:grid-cols-[1.18fr_.82fr] lg:p-4">
+        <div className="overflow-hidden rounded-xl border border-surface-border">
+          <div className="flex items-center justify-between bg-surface-soft px-3 py-2.5">
+            <p className="text-[10px] font-extrabold text-brand-navy">Önerilen plan</p>
+            <span className="rounded-full bg-brand-green/10 px-2 py-1 text-[8px] font-bold text-brand-green-dark">3 / 3 seçili</span>
+          </div>
+          <div className="divide-y divide-surface-border px-3">
+            {pilotActions.map((item) => (
+              <div key={item.title} className="grid grid-cols-[24px_1fr_auto] items-center gap-2.5 py-3">
+                <span className="flex h-5 w-5 items-center justify-center rounded-md bg-brand-green text-white">
+                  <Check className="h-3 w-3" strokeWidth={3} />
+                </span>
+                <div className="min-w-0">
+                  <p className="truncate text-[10px] font-extrabold text-brand-navy lg:text-[11px]">{item.title}</p>
+                  <p className="mt-0.5 truncate text-[8px] text-brand-navy/40 lg:text-[9px]">{item.reason}</p>
+                </div>
+                <span className="rounded-full bg-brand-blue/8 px-2 py-1 text-[8px] font-bold text-brand-blue">{item.effect}</span>
+              </div>
+            ))}
+          </div>
+          <div className="m-3 flex items-center gap-2 rounded-lg bg-brand-green/5 px-3 py-2.5">
+            <ShieldCheck className="h-3.5 w-3.5 text-brand-green" />
+            <p className="text-[8px] font-medium text-brand-navy/55">Yalnızca seçili değişiklikler, kullanıcı onayıyla uygulanır.</p>
+          </div>
+        </div>
+
+        <div className="rounded-xl bg-brand-navy p-4 text-white">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-green/15 px-2.5 py-1 text-[8px] font-bold text-brand-green">
+            <Sparkles className="h-3 w-3" /> BUGÜNKÜ FIRSAT
+          </span>
+          <p className="mt-4 text-xl font-extrabold tracking-[-0.03em]">₺6.900</p>
+          <p className="mt-1 text-[10px] font-bold text-white/75">kurtarılabilir gelir</p>
+          <p className="mt-1 text-[8px] text-white/35">3 önerilen aksiyon · yaklaşık 2 dakika</p>
+          <div className="mt-4 grid grid-cols-2 gap-2">
+            <div className="rounded-lg bg-white/[0.06] p-2.5"><p className="text-[7px] text-white/35">Mevcut</p><p className="mt-1 text-[10px] font-bold">%72 · ₺31.400</p></div>
+            <div className="rounded-lg bg-brand-green/15 p-2.5"><p className="text-[7px] text-brand-green">Önerilen</p><p className="mt-1 text-[10px] font-bold">%78 · ₺38.300</p></div>
+          </div>
+          <button type="button" className="mt-4 flex w-full items-center justify-center gap-1.5 rounded-lg bg-brand-green py-2.5 text-[9px] font-bold text-white">
+            <Sparkles className="h-3.5 w-3.5" /> Seçili önerileri uygula
+          </button>
+          <p className="mt-2 text-center text-[7px] text-white/30">Kullanıcı onayı bekleniyor</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Metric({ label, value, meta, tone, icon: Icon }: { label: string; value: string; meta: string; tone: "blue" | "green" | "navy" | "amber"; icon: LucideIcon }) {
   const styles = {
     blue: "bg-brand-blue/8 text-brand-blue",
@@ -388,6 +452,7 @@ function FocusCard({ icon: Icon, tone, label, title, detail, action }: { icon: L
 function MobileScene({ active }: { active: DemoId }) {
   if (active === "planning") return <MobilePlanning />;
   if (active === "focus") return <MobileFocus />;
+  if (active === "pilot") return <MobilePilot />;
   return <MobileToday />;
 }
 
@@ -447,6 +512,35 @@ function MobileFocus() {
         <MobileFocusCard icon={Clock3} label="HAZIRLIK SÜRESİ" title="Yalnızca 35 dakika var" detail="Temizlik ve transfer süresi yetersiz" action="Planı düzenle" tone="red" />
         <MobileFocusCard icon={CarFront} label="ARAÇ ATANMAMIŞ" title="Uygun araç bulundu" detail="34 ROK 311 · Toyota Corolla" action="Öneriyi ata" tone="green" />
       </div>
+    </div>
+  );
+}
+
+function MobilePilot() {
+  return (
+    <div>
+      <MobileTitle eyebrow="RentOkey Pilot · Ek modül" title="Yarının planı hazır" meta="Seçin, kontrol edin, onayınızla uygulayın" />
+      <div className="rounded-xl bg-brand-navy p-4 text-white">
+        <p className="text-[8px] font-bold uppercase tracking-[0.1em] text-brand-green">Bugünkü fırsat</p>
+        <p className="mt-2 text-2xl font-extrabold tracking-[-0.03em]">₺6.900</p>
+        <p className="text-[9px] text-white/55">kurtarılabilir gelir · 3 aksiyon</p>
+        <div className="mt-3 flex gap-2 text-[8px]">
+          <span className="rounded-full bg-white/8 px-2 py-1 text-white/55">%72 mevcut</span>
+          <span className="rounded-full bg-brand-green/15 px-2 py-1 font-bold text-brand-green">%78 önerilen</span>
+        </div>
+      </div>
+      <div className="mt-3 space-y-2">
+        {pilotActions.map((item) => (
+          <div key={item.title} className="grid grid-cols-[22px_1fr] gap-2.5 rounded-xl border border-surface-border bg-white p-3">
+            <span className="flex h-5 w-5 items-center justify-center rounded-md bg-brand-green text-white"><Check className="h-3 w-3" strokeWidth={3} /></span>
+            <div><p className="text-[10px] font-extrabold leading-snug text-brand-navy">{item.title}</p><p className="mt-1 text-[8px] text-brand-navy/40">{item.reason} · <strong className="text-brand-blue">{item.effect}</strong></p></div>
+          </div>
+        ))}
+      </div>
+      <button type="button" className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-xl bg-brand-green py-3 text-[10px] font-bold text-white">
+        <Sparkles className="h-3.5 w-3.5" /> Seçili önerileri uygula
+      </button>
+      <p className="mt-2 text-center text-[8px] text-brand-navy/35">Onayınız olmadan değişiklik yapılmaz.</p>
     </div>
   );
 }

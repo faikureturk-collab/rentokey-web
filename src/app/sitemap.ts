@@ -3,10 +3,11 @@ import { posts } from "@/lib/blog";
 import { SITE_URL } from "@/lib/seo";
 
 const pageLastModified = {
-  home: "2026-08-28",
+  home: "2026-09-07",
   trial: "2026-08-28",
   resources: "2026-08-29",
   blog: "2026-09-02",
+  pilot: "2026-09-07",
 } as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -21,6 +22,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}/ucretsiz-dene`,
       lastModified: pageLastModified.trial,
       changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/okey-pilot`,
+      lastModified: pageLastModified.pilot,
+      changeFrequency: "weekly",
       priority: 0.9,
     },
     {

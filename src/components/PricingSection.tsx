@@ -133,8 +133,9 @@ export default function PricingSection({
 
             <p className="mt-6 border-t border-surface-border pt-5 text-xs leading-relaxed text-brand-navy/50">
               Fiyat, sabit bir pakete zorlanmadan doğrudan araç sayınızdan hesaplanır: küçük bir taban
-              ücrete, filonuz büyüdükçe düşen bir araç başı ücret eklenir. Tüm ürün özellikleri her
-              araç sayısında aynıdır — kilitli bir &ldquo;üst paket&rdquo; yoktur.{" "}
+              ücrete, filonuz büyüdükçe düşen bir araç başı ücret eklenir. Tüm temel ürün özellikleri her
+              araç sayısında aynıdır — kilitli bir &ldquo;üst paket&rdquo; yoktur. RentOkey Pilot ve diğer
+              opsiyonel ek modüller ayrıca seçilir.{" "}
               <a href="#iletisim" className="font-semibold text-brand-navy underline underline-offset-2">
                 {SELF_SERVICE_MAX_VEHICLES}&apos;den fazla aracınız mı var? Bize ulaşın.
               </a>
@@ -143,7 +144,7 @@ export default function PricingSection({
 
           <div className="flex flex-col rounded-[24px] border border-surface-border bg-white p-6 sm:p-8">
             <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-green/10 px-3 py-1 text-xs font-bold text-brand-green-dark">
-              <Check className="h-3.5 w-3.5" /> Tüm özellikler dahil
+              <Check className="h-3.5 w-3.5" /> Tüm temel özellikler dahil
             </span>
 
             {price !== null ? (
@@ -198,11 +199,12 @@ export default function PricingSection({
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs font-bold uppercase tracking-[0.14em] text-brand-navy/35">Ne alıyorsunuz</p>
             <h3 className="mt-2 text-2xl font-extrabold tracking-[-0.03em] text-brand-navy sm:text-[28px]">
-              Bu fiyata tam olarak dahil olanlar
+              Taban fiyata dahil olanlar
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-brand-navy/50">
-              1 araçlık bir filo da, 150 araçlık bir filo da aynı özellik setini kullanır. Kilitli bir
-              &ldquo;üst paket&rdquo; yok — aşağıdakilerin tamamı fiyata dahildir.
+              1 araçlık bir filo da, 150 araçlık bir filo da aynı temel özellik setini kullanır. Kilitli
+              bir &ldquo;üst paket&rdquo; yok — aşağıdakilerin tamamı taban fiyata dahildir. Opsiyonel ek
+              modülleri yalnızca ihtiyacınız olduğunda eklersiniz.
             </p>
           </div>
 
@@ -226,6 +228,48 @@ export default function PricingSection({
                 </div>
               );
             })}
+          </div>
+        </div>
+
+        <div className="mt-6 overflow-hidden rounded-[24px] border border-brand-green/25 bg-[linear-gradient(120deg,#f4fffa_0%,#ffffff_58%,#eef6ff_100%)] p-7 sm:p-9">
+          <div className="grid gap-8 lg:grid-cols-[1fr_.85fr] lg:items-center">
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-green/12 px-3 py-1 text-[11px] font-bold text-brand-green-dark">
+                  <Sparkles className="h-3.5 w-3.5" /> Aktif · Opsiyonel ek paket
+                </span>
+                <span className="rounded-full border border-surface-border bg-white px-3 py-1 text-[10px] font-bold text-brand-navy/50">
+                  Taban fiyata dahil değildir
+                </span>
+              </div>
+              <h3 className="mt-4 text-2xl font-extrabold tracking-[-0.025em] text-brand-navy sm:text-3xl">RentOkey Pilot</h3>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-brand-navy/55">
+                Yarınki operasyonu analiz eder; sorunu, önerilen çözümü ve tahmini finansal ya da
+                operasyonel etkiyi birlikte gösterir. Yalnızca seçtiğiniz önerileri onayınızla uygular.
+              </p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <Button href="/okey-pilot" icon>
+                  Pilot’ı inceleyin
+                </Button>
+                <Button href="/#iletisim" variant="secondary">
+                  Fiyat bilgisi alın
+                </Button>
+              </div>
+            </div>
+            <div className="rounded-[20px] border border-surface-border bg-white p-5 shadow-sm">
+              <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-brand-navy/35">Örnek günlük etki</p>
+              <p className="mt-2 text-2xl font-extrabold tracking-[-0.03em] text-brand-navy">₺6.900 kurtarılabilir gelir</p>
+              <ul className="mt-4 space-y-2.5">
+                {["Araç ve rezervasyon yeniden atama", "Teslim saati ve hazırlık planı", "Eksik tahsilat ve boşta araç aksiyonu"].map((item) => (
+                  <li key={item} className="flex items-center gap-2 text-xs text-brand-navy/60">
+                    <Check className="h-3.5 w-3.5 shrink-0 text-brand-green" strokeWidth={3} /> {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 border-t border-surface-border pt-3 text-[10px] leading-relaxed text-brand-navy/35">
+                Filonuzun araç sayısından bağımsız olarak ayrıca satın alınabilir. Gösterilen etki örnek senaryodur.
+              </p>
+            </div>
           </div>
         </div>
 

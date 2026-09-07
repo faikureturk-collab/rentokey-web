@@ -19,7 +19,7 @@ const links = [
   },
   {
     title: "Fiyatlandırma",
-    description: "Filo büyüklüğünüze uygun paketi ve içeriğini inceleyin.",
+    description: "Filo büyüklüğünüze göre hesaplanan fiyatı ve temel kapsamı inceleyin.",
     href: "/#fiyatlandirma",
   },
   {
@@ -29,7 +29,7 @@ const links = [
   },
   {
     title: "İletişim",
-    description: "Paket seçimi ve veri aktarımı için ekibimize yazın.",
+    description: "Fiyatlandırma, ek modül ve veri aktarımı için ekibimize yazın.",
     href: "/#iletisim",
   },
 ];

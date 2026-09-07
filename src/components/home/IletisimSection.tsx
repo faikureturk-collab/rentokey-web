@@ -24,11 +24,11 @@ export default function IletisimSection() {
               Satın alma öncesi sorularınızı birlikte netleştirelim.
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-brand-navy/55">
-              Paket seçimi, veri aktarımı, kullanıcı yetkileri veya kurulum hakkında doğrudan Rent Okey ekibiyle görüşün.
+              Araç bazlı fiyatlandırma, RentOkey Pilot ve diğer ek modüller, veri aktarımı veya kurulum hakkında doğrudan Rent Okey ekibiyle görüşün.
             </p>
 
             <ul className="mt-6 space-y-3">
-              {["Filo büyüklüğünüze uygun paket", "Mevcut Excel / CSV verilerinizle geçiş", "Türkiye ve KKTC operasyonlarına uygun kurulum"].map(
+              {["Filo büyüklüğünüze uygun fiyat", "RentOkey Pilot ve ek modül seçimi", "Mevcut Excel / CSV verilerinizle geçiş", "Türkiye ve KKTC operasyonlarına uygun kurulum"].map(
                 (item) => (
                   <li key={item} className="flex items-start gap-2.5 text-sm text-brand-navy/70">
                     <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-green/10 text-brand-green">

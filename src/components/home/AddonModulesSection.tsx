@@ -8,10 +8,11 @@ import {
   MessageCircle,
   PackagePlus,
   SlidersHorizontal,
+  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 import Button from "../Button";
-import { AiDamageCompareIcon, ChatBookingIcon, SmartPricingIcon } from "@/components/icons/ColorIcons";
+import { AiDamageCompareIcon, SmartPricingIcon } from "@/components/icons/ColorIcons";
 
 const highlights: { icon: LucideIcon; label: string }[] = [
   { icon: PackagePlus, label: "Taban fiyata dahil değil, ayrı satın alınır" },
@@ -20,18 +21,26 @@ const highlights: { icon: LucideIcon; label: string }[] = [
 ];
 
 const featured = {
-  badge: "Öne çıkan modül",
-  label: "Saha operasyonu",
-  title: "Fotoğraflı hasar karşılaştırması",
+  badge: "Aktif · Öne çıkan ek modül",
+  label: "Operasyon optimizasyonu",
+  title: "RentOkey Pilot",
   description:
-    "Teslim ve iade sırasında çekilen fotoğrafları yan yana getirir, olası farkları ekibinizin daha hızlı ve tutarlı şekilde değerlendirmesini sağlar.",
+    "Yarınki operasyonu analiz eder; uygulanabilir çözüm planını, gerekçesini ve tahmini etkisini birlikte sunar. Seçtiğiniz değişiklikleri yalnızca onayınızla uygular.",
   points: [
-    "Teslim ve iade fotoğrafları otomatik eşleşir",
-    "Şüpheli farklar ekip onayına düşer",
+    "Finansal ve operasyonel etkiyi öneriyle birlikte gösterir",
+    "Seçtiğiniz araç atamalarını ve görevleri kontrollü biçimde günceller",
+    "Kullanıcı onayı olmadan hiçbir değişiklik yapmaz",
   ],
 };
 
 const secondary = [
+  {
+    icon: <AiDamageCompareIcon size={40} />,
+    label: "Saha operasyonu",
+    title: "Fotoğraflı hasar karşılaştırması",
+    description:
+      "Teslim ve iade fotoğraflarını eşleştirerek olası farkları ekip onayına sunar.",
+  },
   {
     icon: <SmartPricingIcon size={40} />,
     label: "Gelir yönetimi",
@@ -39,16 +48,17 @@ const secondary = [
     description:
       "Sezon, doluluk ve geçmiş rezervasyon verilerinden yararlanan onaylı fiyat önerileri.",
   },
-  {
-    icon: <ChatBookingIcon size={40} />,
-    label: "Müşteri iletişimi",
-    title: "Mesajdan rezervasyon taslağı",
-    description:
-      "Gelen müşteri talebinden ekip onayına sunulacak araç ve fiyat taslağı hazırlanması.",
-  },
 ];
 
 const compact: { icon: LucideIcon; accent: string; label: string; title: string; description: string }[] = [
+  {
+    icon: MessageCircle,
+    accent: "bg-brand-blue/10 text-brand-blue",
+    label: "Müşteri iletişimi",
+    title: "Mesajdan rezervasyon taslağı",
+    description:
+      "Gelen müşteri talebinden ekip onayına sunulacak araç ve fiyat taslağının hazırlanması.",
+  },
   {
     icon: FileSignature,
     accent: "bg-brand-blue/10 text-brand-blue",
@@ -91,7 +101,7 @@ export default function AddonModulesSection() {
               Ek Modüller
             </span>
             <h2 className="mt-4 max-w-2xl text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-navy sm:text-4xl">
-              Taban paketinize dokunmadan, ihtiyacınız olan modülü ekleyin.
+              Temel aboneliğinize, yalnızca ihtiyacınız olan modülü ekleyin.
             </h2>
           </div>
           <p className="max-w-xl text-[15px] leading-relaxed text-brand-navy/55 lg:justify-self-end">
@@ -111,7 +121,9 @@ export default function AddonModulesSection() {
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
           <article className="flex flex-col rounded-[24px] border border-surface-border bg-white p-7 sm:p-8 lg:col-span-2 lg:row-span-2">
             <div className="flex items-start justify-between gap-4">
-              <AiDamageCompareIcon size={52} />
+              <span className="flex h-[52px] w-[52px] items-center justify-center rounded-2xl bg-brand-green/12 text-brand-green-dark">
+                <Sparkles className="h-6 w-6" />
+              </span>
               <span className="rounded-full bg-brand-green/10 px-2.5 py-1 text-[10px] font-bold text-brand-green-dark">
                 {featured.badge}
               </span>
@@ -127,8 +139,8 @@ export default function AddonModulesSection() {
                 </li>
               ))}
             </ul>
-            <Button href="/#iletisim" size="md" icon className="mt-6 w-fit">
-              Bilgi alın
+            <Button href="/okey-pilot" size="md" icon className="mt-6 w-fit">
+              Pilot’ı inceleyin
             </Button>
           </article>
 
@@ -148,7 +160,7 @@ export default function AddonModulesSection() {
           ))}
         </div>
 
-        <div className="mt-4 grid gap-4 sm:grid-cols-3">
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {compact.map((item) => {
             const Icon = item.icon;
             return (

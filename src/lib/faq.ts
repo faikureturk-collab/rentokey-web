@@ -39,6 +39,11 @@ export const faqGroups: FaqGroup[] = [
         answer:
           "Fiyatınız araç sayınıza göre hesaplanır; filonuz büyüyüp küçüldükçe fiyatınız da buna göre güncellenir. Güncellemeyi Rent Okey ekibiyle iletişime geçerek yaptırabilirsiniz. Ödeme şu anda ekip tarafından yönetilir; otomatik kart çekimi yapılmaz.",
       },
+      {
+        question: "RentOkey Pilot taban fiyata dahil mi?",
+        answer:
+          "Hayır. RentOkey Pilot, araç sayısına göre hesaplanan taban ürün fiyatına dahil olmayan ve ayrıca satın alınabilen aktif bir ek pakettir. Filonuzun araç sayısından bağımsız olarak hesabınıza eklenebilir. Kapsam ve fiyat bilgisi için Rent Okey ekibiyle iletişime geçebilirsiniz.",
+      },
     ],
   },
   {
@@ -46,9 +51,9 @@ export const faqGroups: FaqGroup[] = [
     label: "Ürün ve günlük kullanım",
     items: [
       {
-        question: "Araç sayıma göre özellik farkı var mı?",
+        question: "Araç sayıma göre temel özellik farkı var mı?",
         answer:
-          "Hayır. Rezervasyon, müşteri/sürücü, zaman çizelgesi, uygun araç önerisi, önerilen odak, filo, teslim/iade, bakım-belge uyarıları, finans/raporlama, çoklu şube, B2B erişimi, Excel/CSV aktarımı ve onay belgesi paylaşımı dahil tüm özellikler, araç sayınızdan bağımsız olarak her filoda aynıdır. Ölçekle orantılı olan tek şey isteğe bağlı Kurumsal Destek hizmetidir: özel destek yöneticisi, öncelikli SLA ve onboarding desteği.",
+          "Hayır. Rezervasyon, müşteri/sürücü, zaman çizelgesi, uygun araç önerisi, önerilen odak, filo, teslim/iade, bakım-belge uyarıları, finans/raporlama, çoklu şube, B2B erişimi, Excel/CSV aktarımı ve onay belgesi paylaşımı dahil temel özellikler, araç sayınızdan bağımsız olarak her filoda aynıdır. RentOkey Pilot ve diğer opsiyonel modüller taban ürüne dahil değildir; ayrıca satın alınır. Kurumsal Destek de isteğe bağlı bir ek hizmettir.",
       },
       {
         question: "Sistem rezervasyona uygun aracı önerebilir mi?",
@@ -59,6 +64,16 @@ export const faqGroups: FaqGroup[] = [
         question: "Önerilen odak özelliği neyi takip eder?",
         answer:
           "Önerilen odak, sabit teslim/iade veya belge uyarılarının yanında farklı verileri birlikte değerlendirir. Kiralama devam ederken kalan ödeme bakiyesi ya da arka arkaya iki rezervasyon arasında temizlik ve lokasyon transferi için yeterli süre bulunmaması gibi durumları önceden göstererek ekibin aksiyon hazırlamasına yardımcı olur.",
+      },
+      {
+        question: "RentOkey Pilot nedir, Önerilen Odak'tan farkı nedir?",
+        answer:
+          "Önerilen Odak yaklaşan riski görünür kılar. RentOkey Pilot ise rezervasyon, araç, bakım, tahsilat, lokasyon ve hazırlık süresi verilerini birlikte değerlendirerek uygulanabilir bir operasyon planı hazırlar; önerilen çözümü ve tahmini etkisini gösterir. Yalnızca kullanıcının seçtiği aksiyonları son onaydan sonra uygular.",
+      },
+      {
+        question: "RentOkey Pilot değişiklikleri kendiliğinden uygular mı?",
+        answer:
+          "Hayır. Pilot hiçbir araç atamasını, teslim saatini veya görevi kullanıcı onayı olmadan değiştirmez. Yetkili kullanıcı önerileri tek tek seçer, gerekçeyi ve tahmini etkiyi inceler; yalnızca onaylanan değişiklikler uygulanır. Gösterilen finansal etkiler mevcut operasyon verilerinden hesaplanan tahminlerdir ve garanti edilen kazanç anlamına gelmez.",
       },
       {
         question: "Rent Okey Türkiye ve KKTC'de kullanılabilir mi?",

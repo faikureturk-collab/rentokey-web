@@ -14,7 +14,7 @@ export default function FaqSection() {
           <div className="mt-7 rounded-2xl bg-surface-soft p-5">
             <Mail className="h-5 w-5 text-brand-green" />
             <p className="mt-4 text-sm font-extrabold text-brand-navy">Başka bir sorunuz mu var?</p>
-            <p className="mt-1.5 text-xs leading-relaxed text-brand-navy/45">Ekibimize doğrudan yazın; ürün ve paket seçimi konusunda yardımcı olalım.</p>
+            <p className="mt-1.5 text-xs leading-relaxed text-brand-navy/45">Ekibimize doğrudan yazın; fiyatlandırma ve ek modül seçimi konusunda yardımcı olalım.</p>
             <Link href="mailto:hello@rentokey.com" className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-brand-green-dark">hello@rentokey.com <ArrowUpRight className="h-3.5 w-3.5" /></Link>
           </div>
         </div>

@@ -28,8 +28,8 @@ export default function KullanimSartlariPage() {
 
           <h2 className="text-lg font-bold text-brand-navy">3. Ödeme ve Faturalandırma</h2>
           <p>
-            Seçtiğiniz pakete göre aylık veya yıllık olarak faturalandırılırsınız. Fiyatlara KDV
-            dahil değildir.
+            Araç sayınıza göre hesaplanan abonelik bedeli aylık veya yıllık olarak faturalandırılır.
+            Opsiyonel ek modül ve hizmetler ayrıca ücretlendirilebilir. Fiyatlara KDV dahil değildir.
           </p>
 
           <h2 className="text-lg font-bold text-brand-navy">4. Fesih</h2>

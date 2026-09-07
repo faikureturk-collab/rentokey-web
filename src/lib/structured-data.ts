@@ -98,6 +98,7 @@ export const homeStructuredData = {
         "Genel arama ve merkezi bildirimler",
         "Pozisyon bazlı sayfa yetkilendirmesi",
         "Önerilen odak ve bağlamsal risk uyarıları",
+        "Opsiyonel RentOkey Pilot operasyon optimizasyonu ve kullanıcı onaylı plan uygulama",
       ],
     },
     {
