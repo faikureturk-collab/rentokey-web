@@ -1,5 +1,16 @@
 import Link from "next/link";
-import { ArrowRight, Camera, Cable, FileSignature, History, MessageCircle } from "lucide-react";
+import {
+  ArrowRight,
+  Camera,
+  Cable,
+  CheckCircle2,
+  FileSignature,
+  History,
+  MessageCircle,
+  ShieldCheck,
+  Sparkles,
+  TrendingUp,
+} from "lucide-react";
 
 const modules = [
   { icon: Camera, title: "Fotoğraflı hasar karşılaştırması", description: "Teslim ve iade fotoğraflarındaki olası farkları ekip onayına sunar." },
@@ -12,11 +23,84 @@ export default function AddonModulesSection() {
   return (
     <section id="ek-moduller" className="scroll-mt-24 border-y border-surface-border bg-surface-soft/60">
       <div className="container-page py-12 sm:py-16">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div><p className="text-sm font-bold text-brand-green-dark">Opsiyonel ek modüller</p><h2 className="mt-2 text-3xl font-extrabold tracking-tight text-brand-navy">İhtiyacınıza göre genişletin.</h2></div>
-          <Link href="/okey-pilot" className="text-sm font-semibold text-brand-blue underline underline-offset-4">Operasyon ve akıllı fiyat önerisi: RentOkey Pilot</Link>
+        <div>
+          <p className="text-sm font-bold text-brand-green-dark">RentOkey’i genişletin</p>
+          <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-brand-navy">
+            Operasyonunuza uygun ek modülleri seçin.
+          </h2>
         </div>
-        <p className="mt-4 max-w-3xl text-base text-brand-navy/65">Aşağıdaki modüller temel abonelikten ayrı sunulur. İlgilendiğiniz modülün kapsamını, kullanılabilirliğini ve fiyatını ekibimizle netleştirin.</p>
+        <p className="mt-4 max-w-3xl text-base text-brand-navy/65">
+          RentOkey Pilot ile planlama ve fiyat kararlarını optimize edin; diğer modülleri yalnızca
+          ihtiyacınız olduğunda ekleyin.
+        </p>
+
+        <article className="relative mt-7 overflow-hidden rounded-[24px] bg-brand-navy p-6 text-white sm:p-8">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-brand-green/20 blur-3xl"
+          />
+          <div className="relative grid gap-7 lg:grid-cols-[1.2fr_.8fr] lg:items-center">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full bg-brand-green/15 px-3.5 py-2 text-sm font-bold text-brand-green">
+                <Sparkles className="h-4 w-4" /> Öne çıkan ek paket
+              </span>
+              <h3 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                RentOkey Pilot
+              </h3>
+              <p className="mt-3 max-w-2xl text-xl font-bold leading-snug text-white">
+                Yarının operasyon planını hazırlayın. Boşta kalan araçlar için akıllı fiyat
+                önerileri alın.
+              </p>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70">
+                Pilot; araç atama, bakım çakışması, hazırlık süresi ve fiyat fırsatlarını birlikte
+                değerlendirir. Planı tahmini etkisiyle sunar ve yalnızca onayladığınız değişiklikleri
+                uygular.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
+                {[
+                  "Operasyon optimizasyonu",
+                  "Akıllı fiyat önerisi",
+                  "Kullanıcı onaylı uygulama",
+                ].map((item) => (
+                  <span key={item} className="flex items-center gap-2 text-sm font-semibold text-white/85">
+                    <CheckCircle2 className="h-4 w-4 shrink-0 text-brand-green" /> {item}
+                  </span>
+                ))}
+              </div>
+              <Link
+                href="/okey-pilot"
+                className="mt-7 inline-flex min-h-12 items-center gap-2 rounded-full bg-brand-green px-6 text-sm font-bold text-white transition-colors hover:bg-brand-green-dark"
+              >
+                Pilot’ı inceleyin <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="rounded-2xl border border-white/15 bg-white/[0.07] p-5 backdrop-blur-sm sm:p-6">
+              <p className="flex items-center gap-2 text-sm font-bold text-brand-green">
+                <TrendingUp className="h-4 w-4" /> 70 araçlık örnek senaryo
+              </p>
+              <p className="mt-3 text-3xl font-extrabold tracking-tight">₺55.840</p>
+              <p className="mt-1 text-sm font-semibold text-white/85">
+                7 günlük rezervasyon geliri potansiyeli
+              </p>
+              <div className="mt-5 space-y-3 border-y border-white/10 py-4 text-sm text-white/70">
+                <div className="flex justify-between gap-4">
+                  <span>Korunabilecek rezervasyon</span>
+                  <strong className="text-white">₺44.800</strong>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <span>Koşullu yeni kiralama</span>
+                  <strong className="text-white">₺11.040</strong>
+                </div>
+              </div>
+              <p className="mt-4 flex items-start gap-2 text-sm leading-relaxed text-white/60">
+                <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" />
+                Örnek brüt rezervasyon tutarıdır; yeni kiralama ve gelir artışı garanti edilmez.
+              </p>
+            </div>
+          </div>
+        </article>
+
         <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {modules.map(({ icon: Icon, title, description }) => <article key={title} className="rounded-xl border border-surface-border bg-white p-5"><Icon className="h-5 w-5 text-brand-green-dark" /><h3 className="mt-3 text-base font-bold text-brand-navy">{title}</h3><p className="mt-2 text-sm text-brand-navy/65">{description}</p></article>)}
           <div className="flex flex-col justify-center rounded-xl bg-brand-navy p-5 text-white"><p className="text-base font-bold">İşinize uygun kapsamı belirleyelim.</p><Link href="/#iletisim" className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-brand-green">Ek modüller için görüşün <ArrowRight className="h-4 w-4" /></Link></div>
