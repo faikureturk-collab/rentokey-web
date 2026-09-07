@@ -1,5 +1,5 @@
 import { faqGroups } from "@/lib/faq";
-import { plans } from "@/lib/pricing";
+import { computeMonthlyPrice, SELF_SERVICE_MAX_VEHICLES } from "@/lib/pricing";
 import { DEFAULT_DESCRIPTION, LINKEDIN_URL, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const organizationId = `${SITE_URL}/#organization`;
@@ -7,17 +7,23 @@ const websiteId = `${SITE_URL}/#website`;
 const softwareId = `${SITE_URL}/#software`;
 const faqId = `${SITE_URL}/#faq`;
 
-const offers = plans
-  .filter((plan) => plan.monthlyPrice !== null)
-  .map((plan) => ({
-    "@type": "Offer",
-    name: `${plan.name} paketi`,
-    price: String(plan.monthlyPrice),
+// Fiyat artık 4 sabit paket değil, araç sayısına göre sürekli hesaplanan bir formül;
+// bu yüzden tek bir Offer yerine 1-150 araç aralığını kapsayan bir AggregateOffer bildiriyoruz.
+const lowPrice = computeMonthlyPrice(1);
+const highPrice = computeMonthlyPrice(SELF_SERVICE_MAX_VEHICLES);
+
+const offers = [
+  {
+    "@type": "AggregateOffer",
     priceCurrency: "TRY",
+    lowPrice: String(lowPrice),
+    highPrice: String(highPrice),
+    offerCount: SELF_SERVICE_MAX_VEHICLES,
     availability: "https://schema.org/InStock",
     url: `${SITE_URL}/#fiyatlandirma`,
-    description: `${plan.description} için ${plan.includedUsers} ve ${plan.includedBranches}`,
-  }));
+    description: `Araç sayınıza göre hesaplanan aylık ücret (1 – ${SELF_SERVICE_MAX_VEHICLES} araç); ${SELF_SERVICE_MAX_VEHICLES} araç üzeri filolar için özel teklif sunulur.`,
+  },
+];
 
 const faqMainEntity = faqGroups.flatMap((group) =>
   group.items.map((item) => ({

@@ -1,61 +1,56 @@
 "use client";
 
-import { useState } from "react";
-import {
-  Check,
-  CheckCircle2,
-  Building2,
-  ChevronDown,
-  CircleHelp,
-  Headphones,
-  Minus,
-  ShieldCheck,
-  Sparkles,
-  UsersRound,
-} from "lucide-react";
+import { useMemo, useState } from "react";
+import type { LucideIcon } from "lucide-react";
+import { CalendarClock, Check, CircleDollarSign, Headphones, Share2, ShieldCheck, Sparkles, UsersRound } from "lucide-react";
 import Button from "./Button";
-import { plans } from "@/lib/pricing";
+import {
+  BASE_FEE,
+  SELF_SERVICE_MAX_VEHICLES,
+  YEARLY_DISCOUNT,
+  computeMonthlyPrice,
+  computePriceBreakdown,
+  enterpriseSupport,
+  includedFeatureGroups,
+  type FeatureGroup,
+} from "@/lib/pricing";
 
-type ComparisonValue = boolean | string;
+const quickPicks = [1, 10, 31, 40, 100, 150];
 
-const comparisonRows: { label: string; values: ComparisonValue[] }[] = [
-  { label: "Dahil kullanıcı", values: plans.map((plan) => plan.includedUsers) },
-  { label: "Dahil şube", values: plans.map((plan) => plan.includedBranches) },
-  { label: "Rezervasyon ve zaman çizelgesi", values: [true, true, true, true] },
-  { label: "Müşteri ve sürücü yönetimi", values: [true, true, true, true] },
-  { label: "Otomatik uygun araç önerisi", values: [true, true, true, true] },
-  { label: "Önerilen odak ve bağlamsal operasyon riskleri", values: [true, true, true, true] },
-  { label: "Filo, teslim ve iade yönetimi", values: [true, true, true, true] },
-  { label: "Mobil operasyon ekranı", values: [true, true, true, true] },
-  { label: "Bakım ve belge süresi uyarıları", values: [true, true, true, true] },
-  { label: "Gider, tahsilat ve temel raporlar", values: [true, true, true, true] },
-  { label: "Müşteri, rezervasyon, filo, gider ve bakım için Excel / CSV aktarımı", values: [true, true, true, true] },
-  { label: "Rezervasyon onay belgesi ve paylaşım", values: [true, true, true, true] },
-  { label: "Genel arama ve merkezi bildirimler", values: [true, true, true, true] },
-  { label: "Rol ve sayfa yetkilendirmesi", values: [false, true, true, true] },
-  { label: "Lokasyon ve teslim noktası takibi", values: [false, true, true, true] },
-  { label: "Gelişmiş gelir, gider ve doluluk analizi", values: [false, true, true, true] },
-  { label: "Excel'e veri aktarımı", values: [false, true, true, true] },
-  { label: "Çoklu şube / lokasyon yönetimi", values: [false, false, true, true] },
-  { label: "B2B / kurumsal ortak erişimi", values: [false, false, true, true] },
-  { label: "Şube ve araç bazlı gelişmiş raporlar", values: [false, false, true, true] },
-  { label: "Kuruma özel veri aktarımı ve kurulum", values: [false, false, false, true] },
-  { label: "Destek seviyesi", values: plans.map((plan) => plan.supportLevel) },
-];
+const groupIcons: Record<FeatureGroup["key"], LucideIcon> = {
+  operasyon: CalendarClock,
+  ekip: UsersRound,
+  finans: CircleDollarSign,
+  veri: Share2,
+};
+
+const groupAccents: Record<FeatureGroup["key"], string> = {
+  operasyon: "bg-brand-blue/10 text-brand-blue",
+  ekip: "bg-brand-green/10 text-brand-green-dark",
+  finans: "bg-amber-50 text-amber-600",
+  veri: "bg-[#705DE8]/10 text-[#705DE8]",
+};
 
 const assurances = [
   "21 gün ücretsiz deneyin",
   "Kredi kartı gerekmez",
   "Kurulum ücreti yok",
-  "İlk 48 saatte Excel / CSV desteği",
+  "Hazır CSV şablonlarıyla kendi verinizi aktarın",
 ];
 
 function formatPrice(value: number) {
   return value.toLocaleString("tr-TR");
 }
 
+function formatPerVehicle(value: number) {
+  return value.toLocaleString("tr-TR", {
+    minimumFractionDigits: value % 1 === 0 ? 0 : 2,
+    maximumFractionDigits: 2,
+  });
+}
+
 export default function PricingSection({
-  title = "Filonuza uygun planı seçin",
+  title = "Filonuza uygun fiyatı görün",
   showHeading = true,
   id,
 }: {
@@ -64,7 +59,14 @@ export default function PricingSection({
   id?: string;
 }) {
   const [yearly, setYearly] = useState(false);
-  const [showComparison, setShowComparison] = useState(false);
+  const [vehicleCount, setVehicleCount] = useState(40);
+
+  const monthlyPrice = computeMonthlyPrice(vehicleCount);
+  const breakdown = useMemo(() => computePriceBreakdown(vehicleCount), [vehicleCount]);
+  const price = monthlyPrice === null ? null : yearly ? Math.round(monthlyPrice * (1 - YEARLY_DISCOUNT)) : monthlyPrice;
+  const perVehicle = price !== null ? price / vehicleCount : null;
+  const yearlyTotal = monthlyPrice !== null ? Math.round(monthlyPrice * (1 - YEARLY_DISCOUNT) * 12) : null;
+  const yearlySaving = monthlyPrice !== null ? Math.round(monthlyPrice * YEARLY_DISCOUNT * 12) : null;
 
   return (
     <section id={id} className="scroll-mt-24 border-y border-surface-border bg-surface-soft/55">
@@ -76,8 +78,8 @@ export default function PricingSection({
             </span>
             <h2 className="mt-5 text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-navy sm:text-4xl">{title}</h2>
             <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-brand-navy/55">
-              Filo büyüklüğünüze göre başlayın; kullanıcı ve şube kapsamını paket kartlarında
-              açıkça görün. Gerçek operasyonunuzu 21 gün boyunca deneyin.
+              Sabit paketlere zorlanmadan, doğrudan araç sayınızdan hesaplanan bir fiyat. Kaydırıcıyı
+              filonuza göre ayarlayın, gerçek operasyonunuzu 21 gün boyunca deneyin.
             </p>
 
             <div className="mt-7 inline-flex rounded-full border border-surface-border bg-white p-1 shadow-sm" aria-label="Ödeme dönemi">
@@ -90,84 +92,167 @@ export default function PricingSection({
           </div>
         )}
 
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {plans.map((plan) => {
-            const price = yearly ? plan.yearlyPrice : plan.monthlyPrice;
-            const perVehicle = price && plan.maxVehicles ? Math.round(price / plan.maxVehicles) : null;
-            const yearlyTotal = plan.yearlyPrice ? plan.yearlyPrice * 12 : null;
-            const yearlySaving = plan.monthlyPrice && plan.yearlyPrice ? (plan.monthlyPrice - plan.yearlyPrice) * 12 : null;
-            const highlighted = Boolean(plan.popular);
+        <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-[1.1fr_1fr]">
+          <div className="flex flex-col rounded-[24px] border border-surface-border bg-white p-6 sm:p-8">
+            <div className="flex items-baseline justify-between">
+              <span className="text-xs font-bold uppercase tracking-[0.1em] text-brand-navy/40">Filonuzda kaç araç var?</span>
+              <span className="text-2xl font-extrabold tracking-[-0.02em] text-brand-navy">
+                {vehicleCount} <span className="text-sm font-semibold text-brand-navy/40">araç</span>
+              </span>
+            </div>
+            <input
+              type="range"
+              min={1}
+              max={SELF_SERVICE_MAX_VEHICLES}
+              value={vehicleCount}
+              onChange={(event) => setVehicleCount(Number(event.target.value))}
+              className="mt-4 h-2 w-full cursor-pointer accent-brand-green"
+              aria-label="Araç sayısı"
+            />
+            <div className="flex justify-between text-[11px] text-brand-navy/40">
+              <span>1</span>
+              <span>{SELF_SERVICE_MAX_VEHICLES}</span>
+            </div>
 
-            return (
-              <article key={plan.name} className={`relative flex flex-col overflow-hidden rounded-[24px] border p-6 transition-transform sm:p-7 ${highlighted ? "border-brand-navy bg-brand-navy text-white shadow-2xl shadow-brand-navy/15 lg:-translate-y-2" : "border-surface-border bg-white text-brand-navy"}`}>
-                {highlighted && (
-                  <span className="absolute right-0 top-0 rounded-bl-2xl bg-brand-green px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.12em] text-white">En çok tercih edilen</span>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {quickPicks.map((n) => (
+                <button
+                  key={n}
+                  type="button"
+                  onClick={() => setVehicleCount(n)}
+                  className={`rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+                    vehicleCount === n
+                      ? "border-brand-green bg-brand-green text-white"
+                      : "border-surface-border bg-surface-soft text-brand-navy/60 hover:border-brand-green/40 hover:text-brand-green-dark"
+                  }`}
+                >
+                  {n} araç
+                </button>
+              ))}
+            </div>
+
+            <p className="mt-6 border-t border-surface-border pt-5 text-xs leading-relaxed text-brand-navy/50">
+              Fiyat, sabit bir pakete zorlanmadan doğrudan araç sayınızdan hesaplanır: küçük bir taban
+              ücrete, filonuz büyüdükçe düşen bir araç başı ücret eklenir. Tüm ürün özellikleri her
+              araç sayısında aynıdır — kilitli bir &ldquo;üst paket&rdquo; yoktur.{" "}
+              <a href="#iletisim" className="font-semibold text-brand-navy underline underline-offset-2">
+                {SELF_SERVICE_MAX_VEHICLES}&apos;den fazla aracınız mı var? Bize ulaşın.
+              </a>
+            </p>
+          </div>
+
+          <div className="flex flex-col rounded-[24px] border border-surface-border bg-white p-6 sm:p-8">
+            <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-green/10 px-3 py-1 text-xs font-bold text-brand-green-dark">
+              <Check className="h-3.5 w-3.5" /> Tüm özellikler dahil
+            </span>
+
+            {price !== null ? (
+              <>
+                <div className="mt-4 flex items-end gap-1">
+                  <span className="pb-1 text-lg font-bold text-brand-navy/60">₺</span>
+                  <span className="text-[42px] font-extrabold leading-none tracking-[-0.04em] text-brand-navy">{formatPrice(price)}</span>
+                  <span className="pb-1 text-sm text-brand-navy/40">/ ay</span>
+                </div>
+                <p className="mt-2 text-[11px] text-brand-navy/40">
+                  {yearly && yearlyTotal ? `Yıllık toplam ₺${formatPrice(yearlyTotal)}` : "Aylık faturalandırılır"} · KDV hariç
+                </p>
+                {perVehicle !== null && (
+                  <div className="mt-4 flex items-center justify-between rounded-xl bg-surface-soft px-3.5 py-3 text-sm">
+                    <span className="text-brand-navy/55">Efektif araç başı ücret</span>
+                    <span className="font-bold text-brand-navy">₺{formatPerVehicle(perVehicle)} / araç</span>
+                  </div>
+                )}
+                {yearly && yearlySaving && (
+                  <span className="mt-3 inline-flex w-fit rounded-full bg-brand-green/10 px-2.5 py-1 text-[11px] font-bold text-brand-green-dark">
+                    Yılda ₺{formatPrice(yearlySaving)} tasarruf
+                  </span>
                 )}
 
-                <div className="pr-8">
-                  <p className={`text-[10px] font-bold uppercase tracking-[0.14em] ${highlighted ? "text-brand-green" : "text-brand-navy/35"}`}>{plan.description}</p>
-                  <h3 className="mt-2 text-xl font-extrabold">{plan.name}</h3>
-                </div>
-                <p className={`mt-3 min-h-[60px] text-xs leading-relaxed ${highlighted ? "text-white/55" : "text-brand-navy/50"}`}>{plan.audience}</p>
-
-                <div className="mt-4 grid grid-cols-2 gap-2">
-                  <div className={`rounded-xl p-2.5 ${highlighted ? "bg-white/[0.06]" : "bg-surface-soft"}`}>
-                    <UsersRound className={`h-3.5 w-3.5 ${highlighted ? "text-brand-green" : "text-brand-blue"}`} />
-                    <p className={`mt-1.5 text-[10px] font-bold ${highlighted ? "text-white/75" : "text-brand-navy/65"}`}>{plan.includedUsers}</p>
-                  </div>
-                  <div className={`rounded-xl p-2.5 ${highlighted ? "bg-white/[0.06]" : "bg-surface-soft"}`}>
-                    <Building2 className={`h-3.5 w-3.5 ${highlighted ? "text-brand-green" : "text-brand-blue"}`} />
-                    <p className={`mt-1.5 text-[10px] font-bold ${highlighted ? "text-white/75" : "text-brand-navy/65"}`}>{plan.includedBranches}</p>
-                  </div>
-                </div>
-                <div className={`mt-2.5 flex items-center gap-2 rounded-xl px-3 py-2.5 ${highlighted ? "bg-white/[0.06] text-white/70" : "bg-surface-soft text-brand-navy/60"}`}>
-                  <Headphones className={`h-3.5 w-3.5 ${highlighted ? "text-brand-green" : "text-brand-blue"}`} />
-                  <span className="text-[10px] font-bold">{plan.supportLevel}</span>
-                </div>
-
-                <div className={`mt-5 border-t pt-5 ${highlighted ? "border-white/10" : "border-surface-border"}`}>
-                  {price !== null ? (
-                    <>
-                      <div className="flex items-end gap-1">
-                        <span className={`pb-1 text-base font-bold ${highlighted ? "text-white/70" : "text-brand-navy/60"}`}>₺</span>
-                        <span className="text-[34px] font-extrabold leading-none tracking-[-0.04em]">{formatPrice(price)}</span>
-                        <span className={`pb-1 text-xs ${highlighted ? "text-white/45" : "text-brand-navy/40"}`}>/ ay</span>
-                      </div>
-                      <p className={`mt-2 min-h-4 text-[10px] ${highlighted ? "text-white/40" : "text-brand-navy/40"}`}>
-                        {yearly && yearlyTotal ? `Yıllık toplam ₺${formatPrice(yearlyTotal)}` : "Aylık faturalandırılır"}
-                      </p>
-                      {perVehicle && (
-                        <p className={`mt-1 text-[10px] font-semibold ${highlighted ? "text-brand-green" : "text-brand-green-dark"}`}>{plan.maxVehicles} araçta araç başına yaklaşık ₺{formatPrice(perVehicle)}</p>
-                      )}
-                      {yearly && yearlySaving && (
-                        <span className={`mt-3 inline-flex rounded-full px-2.5 py-1 text-[10px] font-bold ${highlighted ? "bg-white/10 text-white/75" : "bg-brand-green/10 text-brand-green-dark"}`}>Yılda ₺{formatPrice(yearlySaving)} tasarruf</span>
-                      )}
-                    </>
-                  ) : (
-                    <>
-                      <p className="text-[30px] font-extrabold leading-none tracking-[-0.03em]">Özel teklif</p>
-                      <p className={`mt-2 text-[10px] ${highlighted ? "text-white/40" : "text-brand-navy/40"}`}>Filonuza ve ihtiyaçlarınıza göre</p>
-                    </>
-                  )}
-                </div>
-
-                <div className={`my-6 h-px ${highlighted ? "bg-white/10" : "bg-surface-border"}`} />
-                <p className={`text-[10px] font-bold uppercase tracking-[0.14em] ${highlighted ? "text-white/35" : "text-brand-navy/35"}`}>{plan.featureLabel}</p>
-                <ul className="mt-4 flex-1 space-y-3">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" />
-                      <span className={`text-xs leading-relaxed ${highlighted ? "text-white/70" : "text-brand-navy/65"}`}>{feature}</span>
-                    </li>
+                <div className="mt-5 flex flex-col gap-1.5 border-t border-surface-border pt-5 text-xs">
+                  {breakdown.map((row) => (
+                    <div key={row.label} className="flex justify-between text-brand-navy/50">
+                      <span>{row.label}</span>
+                      <span className="font-semibold text-brand-navy/70">₺{formatPrice(row.amount)}</span>
+                    </div>
                   ))}
-                </ul>
+                  <div className="mt-1 flex justify-between border-t border-dashed border-surface-border pt-2 text-[13px] font-extrabold text-brand-navy">
+                    <span>Toplam / ay</span>
+                    <span>₺{formatPrice(monthlyPrice ?? 0)}</span>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="mt-4 text-[30px] font-extrabold leading-none tracking-[-0.03em] text-brand-navy">Özel teklif</p>
+                <p className="mt-2 text-[11px] text-brand-navy/40">Filonuza ve ihtiyaçlarınıza göre</p>
+              </>
+            )}
 
-                <Button href={plan.ctaHref ?? "/ucretsiz-dene"} variant={highlighted ? "primary" : "secondary"} className="mt-7 w-full">
-                  {plan.ctaLabel ?? "21 gün ücretsiz dene"}
-                </Button>
-              </article>
-            );
-          })}
+            <Button href={price !== null ? "/ucretsiz-dene" : "/#iletisim"} className="mt-7 w-full">
+              {price !== null ? "21 gün ücretsiz dene" : "Bize ulaşın"}
+            </Button>
+          </div>
+        </div>
+
+        <div className="mt-14">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-brand-navy/35">Ne alıyorsunuz</p>
+            <h3 className="mt-2 text-2xl font-extrabold tracking-[-0.03em] text-brand-navy sm:text-[28px]">
+              Bu fiyata tam olarak dahil olanlar
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-brand-navy/50">
+              1 araçlık bir filo da, 150 araçlık bir filo da aynı özellik setini kullanır. Kilitli bir
+              &ldquo;üst paket&rdquo; yok — aşağıdakilerin tamamı fiyata dahildir.
+            </p>
+          </div>
+
+          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {includedFeatureGroups.map((group) => {
+              const Icon = groupIcons[group.key];
+              return (
+                <div key={group.key} className="rounded-[20px] border border-surface-border bg-white p-6">
+                  <span className={`flex h-11 w-11 items-center justify-center rounded-xl ${groupAccents[group.key]}`}>
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <h4 className="mt-5 text-sm font-extrabold text-brand-navy">{group.title}</h4>
+                  <ul className="mt-3.5 space-y-2.5">
+                    {group.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-green" strokeWidth={3} />
+                        <span className="text-xs leading-relaxed text-brand-navy/60">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="mt-6 overflow-hidden rounded-[24px] bg-brand-navy p-7 text-white sm:p-9">
+          <div className="grid gap-8 lg:grid-cols-[.85fr_1.15fr] lg:items-center">
+            <div>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-green/15 px-3 py-1 text-[11px] font-bold text-brand-green">
+                <Headphones className="h-3.5 w-3.5" /> {enterpriseSupport.description}
+              </span>
+              <h3 className="mt-3 text-2xl font-extrabold tracking-[-0.02em]">{enterpriseSupport.name}</h3>
+              <p className="mt-2.5 max-w-sm text-sm leading-relaxed text-white/55">
+                30 araçlık ama çok şubeli bir filo da, 150 araçlık bir filo da aynı şekilde ekleyebilir —
+                araç sayınız değil, operasyonunuzun karmaşıklığı belirler.
+              </p>
+              <Button href={enterpriseSupport.ctaHref} variant="secondary" className="mt-6">
+                {enterpriseSupport.ctaLabel}
+              </Button>
+            </div>
+            <ul className="grid gap-3 sm:grid-cols-2">
+              {enterpriseSupport.features.map((feature) => (
+                <li key={feature} className="flex items-start gap-2.5 rounded-2xl bg-white/[0.06] p-4">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" strokeWidth={3} />
+                  <span className="text-xs leading-relaxed text-white/75">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
@@ -175,47 +260,9 @@ export default function PricingSection({
             <span key={item} className="flex items-center gap-1.5 text-xs font-medium text-brand-navy/50"><ShieldCheck className="h-3.5 w-3.5 text-brand-green" /> {item}</span>
           ))}
         </div>
-        <p className="mt-4 text-center text-[11px] text-brand-navy/35">Fiyatlara KDV dahil değildir.</p>
-
-        <div className="mt-10">
-          <button type="button" onClick={() => setShowComparison((value) => !value)} aria-expanded={showComparison} className="mx-auto flex items-center gap-2 rounded-full border border-surface-border bg-white px-5 py-2.5 text-sm font-bold text-brand-navy transition-colors hover:border-brand-navy/20">
-            <CircleHelp className="h-4 w-4 text-brand-blue" /> Paket özelliklerini karşılaştır
-            <ChevronDown className={`h-4 w-4 transition-transform ${showComparison ? "rotate-180" : ""}`} />
-          </button>
-
-          {showComparison && (
-            <div className="mt-5 overflow-hidden rounded-[24px] border border-surface-border bg-white">
-              <div className="overflow-x-auto">
-                <table className="w-full min-w-[760px] border-collapse text-left">
-                  <thead>
-                    <tr className="bg-brand-navy text-white">
-                      <th className="w-[36%] px-5 py-4 text-xs font-semibold">Özellik</th>
-                      {plans.map((plan) => <th key={plan.name} className="px-4 py-4 text-center text-xs font-bold">{plan.name}</th>)}
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-surface-border">
-                    {comparisonRows.map((row) => (
-                      <tr key={row.label} className="hover:bg-surface-soft/60">
-                        <td className="px-5 py-3.5 text-xs font-medium text-brand-navy/65">{row.label}</td>
-                        {row.values.map((value, index) => (
-                          <td key={`${row.label}-${plans[index].name}`} className="px-4 py-3.5 text-center">
-                            {typeof value === "string" ? (
-                              <span className="text-[11px] font-semibold text-brand-navy/65">{value}</span>
-                            ) : value ? (
-                              <Check className="mx-auto h-4 w-4 text-brand-green" strokeWidth={3} aria-label="Dahil" />
-                            ) : (
-                              <Minus className="mx-auto h-4 w-4 text-brand-navy/20" aria-label="Dahil değil" />
-                            )}
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
-        </div>
+        <p className="mt-4 text-center text-[11px] text-brand-navy/35">
+          Fiyatlara KDV dahil değildir. Taban ücret ₺{formatPrice(BASE_FEE)}/ay olup araç sayınıza göre kademeli olarak artar.
+        </p>
       </div>
     </section>
   );

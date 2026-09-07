@@ -5,7 +5,7 @@ import UrunSection from "@/components/home/UrunSection";
 import FeatureGrid from "@/components/home/FeatureGrid";
 import FocusSection from "@/components/home/FocusSection";
 import ReservationFlowSection from "@/components/home/ReservationFlowSection";
-import ComingSoonSection from "@/components/home/ComingSoonSection";
+import AddonModulesSection from "@/components/home/AddonModulesSection";
 import HowItWorks from "@/components/home/HowItWorks";
 import PricingSection from "@/components/PricingSection";
 import HakkimizdaSection from "@/components/home/HakkimizdaSection";
@@ -34,7 +34,7 @@ export default function Home() {
       <HowItWorks />
       <PricingSection id="fiyatlandirma" />
       <HakkimizdaSection />
-      <ComingSoonSection />
+      <AddonModulesSection />
       <FaqSection />
       <IletisimSection />
       <CtaBanner />

@@ -27,17 +27,17 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "Deneme sonunda otomatik ödeme alınır mı?",
         answer:
-          "Hayır. Başlangıçta ödeme bilgisi alınmadığı için 21 gün sonunda otomatik ücretlendirme yapılmaz. Devam etmek isterseniz filonuza uygun paketi seçersiniz.",
+          "Hayır. Başlangıçta ödeme bilgisi alınmadığı için 21 gün sonunda otomatik ücretlendirme yapılmaz. Devam etmek isterseniz araç sayınıza göre hesaplanan fiyattan devam edersiniz.",
       },
       {
-        question: "Paketlerde kaç kullanıcı ve şube bulunuyor?",
+        question: "Kaç kullanıcı ve şube ekleyebilirim?",
         answer:
-          "Başlangıç paketinde 1 kullanıcı ve 1 şube, Büyüme paketinde 5 kullanıcı ve 1 şube, Profesyonel pakette 15 kullanıcı ve 3 şube bulunur. Kurumsal paket sınırsız kullanıcı ve şubeye göre özel fiyatlandırılır.",
+          "Kullanıcı ve şube sayısında sınır yoktur; 1 araçlık bir filo da 150 araçlık bir filo da sınırsız kullanıcı ve şube ile çalışır. İsteğe bağlı Kurumsal Destek hizmetini eklediğinizde ayrıca özel bir destek yöneticisi ve öncelikli SLA sağlanır.",
       },
       {
-        question: "Paketimi daha sonra değiştirebilir miyim?",
+        question: "Araç sayım değişirse fiyatım ne olur?",
         answer:
-          "Evet. Araç, kullanıcı veya şube sayınız değiştiğinde Rent Okey ekibiyle iletişime geçerek paketinizi güncelleyebilirsiniz. Ödeme ve paket aktivasyonu şu anda ekip tarafından yönetilir; otomatik kart çekimi yapılmaz.",
+          "Fiyatınız araç sayınıza göre hesaplanır; filonuz büyüyüp küçüldükçe fiyatınız da buna göre güncellenir. Güncellemeyi Rent Okey ekibiyle iletişime geçerek yaptırabilirsiniz. Ödeme şu anda ekip tarafından yönetilir; otomatik kart çekimi yapılmaz.",
       },
     ],
   },
@@ -46,9 +46,9 @@ export const faqGroups: FaqGroup[] = [
     label: "Ürün ve günlük kullanım",
     items: [
       {
-        question: "Paketler hangi özelliklere göre ayrılıyor?",
+        question: "Araç sayıma göre özellik farkı var mı?",
         answer:
-          "Başlangıç paketi rezervasyon, müşteri/sürücü, zaman çizelgesi, uygun araç önerisi, önerilen odak, filo, teslim/iade, bakım-belge uyarıları, temel finans, Excel/CSV içe aktarma ve onay belgesi paylaşımını içerir. Büyüme paketi ekip rolleri, lokasyon takibi, gelişmiş analiz ve Excel dışa aktarmayı; Profesyonel paket çoklu şube, B2B erişimi ve şube/araç bazlı gelişmiş raporları ekler. Kurumsal paket sınırsız kapasite, özel kurulum ve destek kapsamı sunar.",
+          "Hayır. Rezervasyon, müşteri/sürücü, zaman çizelgesi, uygun araç önerisi, önerilen odak, filo, teslim/iade, bakım-belge uyarıları, finans/raporlama, çoklu şube, B2B erişimi, Excel/CSV aktarımı ve onay belgesi paylaşımı dahil tüm özellikler, araç sayınızdan bağımsız olarak her filoda aynıdır. Ölçekle orantılı olan tek şey isteğe bağlı Kurumsal Destek hizmetidir: özel destek yöneticisi, öncelikli SLA ve onboarding desteği.",
       },
       {
         question: "Sistem rezervasyona uygun aracı önerebilir mi?",
@@ -124,7 +124,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "Rol bazlı yetki ve aktivite geçmişi var mı?",
         answer:
-          "Evet. Kullanıcılara görevlerine göre sayfa ve işlem yetkileri verilebilir. Kayıt oluşturma, güncelleme ve silme işlemleri güvenlik ve denetim amacıyla kullanıcı ve zaman bilgisiyle sistem kayıtlarına alınır. Kullanıcıların inceleyebileceği ayrıntılı aktivite ekranı ise ürün yol haritasındadır.",
+          "Evet. Kullanıcılara görevlerine göre sayfa ve işlem yetkileri verilebilir. Kayıt oluşturma, güncelleme ve silme işlemleri güvenlik ve denetim amacıyla kullanıcı ve zaman bilgisiyle sistem kayıtlarına alınır. Kullanıcıların inceleyebileceği ayrıntılı aktivite ekranı, ek modül olarak talep üzerine sunulmaktadır.",
       },
       {
         question: "Destek kanalları ve yanıt süreleri nelerdir?",
