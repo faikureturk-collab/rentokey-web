@@ -1,5 +1,7 @@
 import { Check, Mail, MapPin, Phone } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
+import WhatsAppLink from "@/components/WhatsAppLink";
+import { SUPPORT_HOURS } from "@/lib/contact";
 
 const contactCards = [
   { icon: Mail, title: "E-posta", value: "hello@rentokey.com", href: "mailto:hello@rentokey.com" },
@@ -40,7 +42,12 @@ export default function IletisimSection() {
               )}
             </ul>
 
-            <div className="mt-8 divide-y divide-surface-border overflow-hidden rounded-2xl border border-surface-border bg-white">
+            <div className="mt-7">
+              <WhatsAppLink />
+              <p className="mt-2 text-xs leading-relaxed text-brand-navy/60">{SUPPORT_HOURS}</p>
+            </div>
+
+            <div className="mt-6 divide-y divide-surface-border overflow-hidden rounded-2xl border border-surface-border bg-white">
               {contactCards.map((card) => (
                 <div key={card.title} className="flex items-center gap-3 p-4">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-green/10 text-brand-green">

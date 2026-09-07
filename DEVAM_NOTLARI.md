@@ -113,3 +113,10 @@ Bu bölüm önceki demo yerleşimi notlarının güncel halidir. Canlı uygulama
 - 1 Temmuz 2027 yetki belgesi ALMA son tarihi, 1 Ocak 2027 yürürlük tarihidir. 2028 geçişi genel erteleme gibi sunulmaz. Hazırlık önerileri yasal zorunluluk veya RentOkey uyum garantisi olarak yazılmadı.
 - Eski dijitalleşme yazısındaki ayrıntılı hükümler değiştirilmedi. Özellikle eski “başvurusu” ifadesi ve iptal tablosu ayrı bir resmî metin denetimi gerektiriyor.
 - Commit/push veya canlıya dağıtım yapılmadı.
+
+## 7 Eylül 2026 — WhatsApp destek erişimi
+
+- Kullanıcı mevcut +90 541 390 10 20 numarasını WhatsApp destek hattı olarak teyit etti.
+- İletişim bölümü, destek SSS cevabı ve footer'a ortak `WhatsAppLink` eklendi. `src/lib/contact.ts` numara bağlantısı/hazır mesaj ve destek saatleri için ortak kaynaktır.
+- Hazır mesaj: “Merhaba, RentOkey hakkında bilgi almak istiyorum.” Bağlantı yeni sekmede sohbet açar; otomatik mesaj göndermez. Yüzen buton veya harici WhatsApp script'i eklenmedi.
+- İletişim bölümünde haftanın 7 günü 09.00–22.00 (Türkiye saati) bilgisi görünür. Mevcut telefon/e-posta/form seçenekleri korunur.

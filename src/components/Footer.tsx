@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Logo from "./Logo";
+import WhatsAppLink from "./WhatsAppLink";
 import { footerNav } from "@/lib/nav";
 import { LINKEDIN_URL } from "@/lib/seo";
 import { LinkedInIcon } from "./SocialIcons";
@@ -50,6 +51,7 @@ export default function Footer() {
                   +90 541 390 10 20
                 </a>
               </li>
+              <li><WhatsAppLink dark /></li>
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" />
                 <span>Maslak Mah. Eski Büyükdere Cad. No:27 Sarıyer / İstanbul</span>

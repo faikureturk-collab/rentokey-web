@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import WhatsAppLink from "./WhatsAppLink";
+import type { FaqItem } from "@/lib/faq";
 
 export default function FaqAccordion({
   items,
   columns = true,
 }: {
-  items: { question: string; answer: string }[];
+  items: FaqItem[];
   columns?: boolean;
 }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -34,9 +36,10 @@ export default function FaqAccordion({
               />
             </button>
             {open && (
-              <p className="px-5 pb-5 pl-[52px] text-sm leading-relaxed text-brand-navy/55 sm:px-6 sm:pl-[56px]">
-                {item.answer}
-              </p>
+              <div className="px-5 pb-5 pl-[52px] text-sm leading-relaxed text-brand-navy/55 sm:px-6 sm:pl-[56px]">
+                <p>{item.answer}</p>
+                {item.whatsapp && <div className="mt-4"><WhatsAppLink /></div>}
+              </div>
             )}
           </div>
         );
