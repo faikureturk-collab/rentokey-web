@@ -104,3 +104,12 @@ Bu bölüm önceki demo yerleşimi notlarının güncel halidir. Canlı uygulama
 - Bekleyen ticari kararlar: pasif/bakımda/satılmış araçların faturaya etkisi, Pilot fiyatı ve denemeye dahil kapsam. Bu konularda yeni kural veya ücretsiz Pilot vaadi uydurulmadı.
 - Doğrulama komutları: `node --test tests/marketing-demos.test.mjs`, `npm run lint`, `npm run build -- --webpack`. Tarayıcı etkileşim/görsel QA ayrıca yapılmalıdır.
 - Commit, push ve canlı yayın bu çalışma kapsamında yapılmaz.
+
+## 7 Eylül 2026 — 2027 yönetmeliği hazırlık rehberi
+
+- `/blog/2027-arac-kiralama-yonetmeligi` mevcut BlogPost / ArticleBody şablonuna eklendi. Ayrı stil oluşturulmadı; içindekiler, bilgi kutuları, tablolar ve deneme CTA'sı korunuyor.
+- Kısa yanıt, geçiş takvimi, hazırlık listesi, SSS ve görünür editör/son kontrol notu mevcut. Metadata, BlogPosting ve sitemap mevcut veri akışından üretilir; blog dizini tarihi güncellendi.
+- Yeni yazıda dış kaynaklar yalnız Ticaret Bakanlığı Aydın İl Müdürlüğü açıklaması ve bu sayfanın verdiği Resmî Gazete bağlantısıdır. Resmî Gazete doğrudan araştırma aracında açılamadığı için ayrıntılı madde hükümleri eklenmedi; hukuki özet Bakanlık açıklamasıyla sınırlıdır.
+- 1 Temmuz 2027 yetki belgesi ALMA son tarihi, 1 Ocak 2027 yürürlük tarihidir. 2028 geçişi genel erteleme gibi sunulmaz. Hazırlık önerileri yasal zorunluluk veya RentOkey uyum garantisi olarak yazılmadı.
+- Eski dijitalleşme yazısındaki ayrıntılı hükümler değiştirilmedi. Özellikle eski “başvurusu” ifadesi ve iptal tablosu ayrı bir resmî metin denetimi gerektiriyor.
+- Commit/push veya canlıya dağıtım yapılmadı.
