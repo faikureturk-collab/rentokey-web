@@ -16,7 +16,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata({
   title: "RentOkey Pilot | Araç Kiralama Operasyon Optimizasyonu",
   description:
-    "RentOkey Pilot rezervasyon, araç, bakım, tahsilat ve hazırlık sürelerini analiz eder; uygulanabilir operasyon planını tahmini etkisiyle sunar ve seçilen aksiyonları kullanıcı onayıyla uygular.",
+    "RentOkey Pilot rezervasyon, araç, bakım, tahsilat, fiyat ve hazırlık sürelerini analiz eder; uygulanabilir operasyon planını tahmini etkisiyle sunar ve seçilen aksiyonları kullanıcı onayıyla uygular.",
   path: "/okey-pilot",
 });
 
@@ -43,8 +43,8 @@ const scenarios: { icon: LucideIcon; title: string; description: string }[] = [
   },
   {
     icon: CalendarClock,
-    title: "Uzun süre boşta kalan araç",
-    description: "Boşta kalma süresini fark eder, fiyat veya planlama aksiyonunu önerir.",
+    title: "Akıllı fiyat önerisi",
+    description: "Boşta kalma, doluluk ve rezervasyon verilerini değerlendirerek fiyat önerir. Pilot kapsamındadır; ayrı modül satın almanız gerekmez.",
   },
 ];
 
@@ -52,7 +52,7 @@ const steps = [
   {
     number: "01",
     title: "Operasyonu değerlendirir",
-    description: "Rezervasyon, araç, bakım, tahsilat, lokasyon ve zaman verilerini birlikte okur.",
+    description: "Rezervasyon, araç, bakım, tahsilat, fiyat, lokasyon ve zaman verilerini birlikte okur.",
   },
   {
     number: "02",
@@ -62,7 +62,7 @@ const steps = [
   {
     number: "03",
     title: "Sizin onayınızla uygular",
-    description: "Yalnızca seçtiğiniz aksiyonlar üzerinden araç atamalarını ve ilgili görevleri günceller.",
+    description: "Yalnızca seçtiğiniz aksiyonlar üzerinden araç atamalarını, fiyat ve ilgili görev değişikliklerini uygular.",
   },
 ];
 
@@ -141,7 +141,7 @@ export default function OkeyPilotPage() {
                   RentOkey Pilot’ı operasyonunuza ekleyin.
                 </h2>
                 <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/55">
-                  Pilot taban fiyata dahil olmayan, ayrıca satın alınabilen aktif bir ek pakettir. Kapsam ve
+                  Pilot temel aboneliğe dahil olmayan, ayrıca satın alınabilen aktif bir ek pakettir. Kapsam ve
                   fiyat bilgisi için ekibimizle görüşün.
                 </p>
               </div>

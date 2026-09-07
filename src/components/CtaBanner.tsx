@@ -21,7 +21,7 @@ export default function CtaBanner() {
               Rezervasyonlarınızı planlayın, uygun araç önerisini görün ve operasyon kuyruğunu tek ekrandan yönetin. Aboneliğinize deneme sonunda karar verin.
             </p>
             <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs font-medium text-white/70 sm:text-sm">
-              {["Kredi kartı gerekmez", "Kurulum ücreti yok", "İlk 48 saatte ücretsiz Excel / CSV desteği"].map((item) => (
+              {["Kredi kartı gerekmez", "Kurulum ücreti yok", "İlk 48 saat içinde aktarım desteği talebi"].map((item) => (
                 <span key={item} className="inline-flex items-center gap-1.5">
                   <Check className="h-4 w-4 text-brand-green" strokeWidth={2.5} />
                   {item}

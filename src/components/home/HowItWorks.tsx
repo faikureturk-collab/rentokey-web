@@ -30,9 +30,9 @@ const steps: Step[] = [
   {
     number: "02",
     eyebrow: "İlk 48 saat",
-    title: "Örnek filoyla başlayın veya verinizi aktarın",
+    title: "Verinizi taşıyın",
     description:
-      "8 araçlık örnek filoyu kurun ya da müşteri, rezervasyon, filo, gider ve bakım Excel / CSV dosyalarınız için ücretsiz ilk aktarım desteği alın.",
+      "Müşteri, rezervasyon, filo, gider ve bakım dosyalarınızla başlayın; aktarım öncesi alanları ve hatalı satırları kontrol edin.",
     icon: CarFront,
   },
   {
@@ -56,7 +56,7 @@ const steps: Step[] = [
 const assurances = [
   "Kredi kartı gerekmez",
   "Kurulum ücreti yok",
-  "İlk 48 saatte Excel / CSV desteği",
+  "İlk aktarım için ücretsiz destek",
 ];
 
 export default function HowItWorks() {
@@ -68,11 +68,11 @@ export default function HowItWorks() {
             <CalendarCheck2 className="h-4 w-4" /> 21 günlük ücretsiz deneme
           </span>
           <h2 className="mt-5 max-w-2xl text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-navy sm:text-4xl">
-            Demo izlemeyin. <span className="text-brand-green">Kendi filonuzla deneyin.</span>
+            Mevcut kayıtlarınızla <span className="text-brand-green">yeni çalışma düzenine geçin.</span>
           </h2>
         </div>
         <p className="max-w-xl text-[15px] leading-relaxed text-brand-navy/55 lg:justify-self-end">
-          Önce örnek filoyla keşfedin veya kendi araç, müşteri, rezervasyon ve ekibinizle gerçek çalışma düzenini kurun.
+          70 aracınızı tek tek yeniden girmeyin. Excel / CSV dosyalarınızı aktarın, kayıtlarınızı kontrol edin ve ekibinizi davet edin. İsterseniz önce örnek filoyla keşfedin.
         </p>
       </div>
 
@@ -99,24 +99,11 @@ export default function HowItWorks() {
         })}
       </div>
 
-      <div className="mt-6 overflow-hidden rounded-[24px] bg-brand-navy lg:grid lg:grid-cols-[1fr_auto] lg:items-center">
-        <div className="p-6 sm:p-8">
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-brand-green">Başlamak için beklemeyin</p>
-          <h3 className="mt-2 text-xl font-extrabold text-white sm:text-2xl">Bugün hesabınızı açın, ilk operasyonunuzu kurun.</h3>
-          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
-            {assurances.map((item) => (
-              <span key={item} className="flex items-center gap-1.5 text-xs font-medium text-white/60">
-                <Check className="h-3.5 w-3.5 text-brand-green" /> {item}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div className="border-t border-white/10 p-6 sm:p-8 lg:border-l lg:border-t-0">
-          <Button href="/ucretsiz-dene" size="lg" icon className="w-full sm:w-auto">
-            Ücretsiz başlayın
-          </Button>
-        </div>
+      <div className="mt-6 grid gap-6 rounded-2xl border border-brand-green/25 bg-brand-green/5 p-6 lg:grid-cols-[1fr_1fr]">
+        <div><h3 className="text-xl font-extrabold text-brand-navy">İlk 48 saat içinde aktarım desteği talep edin.</h3><p className="mt-3 text-sm leading-relaxed text-brand-navy/65">Bu süre ücretsiz destek talebini açmanız içindir; taşımanın 48 saatte tamamlanacağı anlamına gelmez. Dosyalarınızın kapsamı ve veri kalitesi süreyi belirler.</p><Button href="/#iletisim" className="mt-4" variant="secondary">Veri aktarımı için görüşün</Button></div>
+        <div><p className="text-sm font-bold text-brand-navy">Geçiş kontrol listeniz</p><ul className="mt-3 space-y-3 text-sm text-brand-navy/70">{["Excel / CSV şablonuna göre dosyaları hazırlayın.", "Alan eşleştirmelerini ve hatalı satırları kontrol edin.", "Aktarım sonrası araç ve rezervasyon sayılarıyla örnek kayıtları karşılaştırın.", "Ekip rollerini belirleyip gerçek operasyonunuza başlayın."].map((item) => <li key={item} className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-green-dark" />{item}</li>)}</ul></div>
       </div>
+      <div className="mt-5 flex flex-wrap justify-center gap-4 text-xs text-brand-navy/65">{assurances.map((item) => <span key={item}>{item}</span>)}</div>
     </section>
   );
 }

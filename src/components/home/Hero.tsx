@@ -4,7 +4,7 @@ import DashboardMock from "../DashboardMock";
 const trustItems = [
   "Kredi kartı yok",
   "Kurulum ücreti yok",
-  "İlk 48 saatte ücretsiz Excel / CSV aktarım desteği",
+  "İlk 48 saat içinde ücretsiz aktarım desteği talep edin",
 ];
 
 export default function Hero() {

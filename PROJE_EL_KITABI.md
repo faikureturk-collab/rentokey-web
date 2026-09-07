@@ -5,6 +5,14 @@ Doğrulanan Git başlangıç noktası: `268dfa3` — `Fiyatlandırma yeni versiy
 
 Bu belge, Rent Okey web sitesinde yapılacak bir sonraki geliştirmeden önce okunması gereken ana bağlam dosyasıdır. Yalnız mevcut ekranları anlatmaz; ürünün ne olduğu, sitenin ziyaretçiyi hangi sırayla ikna ettiği, hangi kararların neden alındığı, hangi vaatlerin doğrulandığı ve hangi alanların henüz prototip olduğu burada ayrıştırılır.
 
+## Güncel demo ve kapsam notu — 7 Eylül 2026
+
+Hero artık üç kısa önizleme sekmesi sunar. Ayrıntılı 70 araçlık demo, ürün bölümünde `FleetDemo.tsx` ile çalışır: plaka/sınıf/şube/durum filtreleri, gruplama ve onaylı örnek çakışma çözümü. Canlı operasyon verisi kullanılmaz.
+
+Pilot'ın sayısal tek kaynağı `src/lib/pilot-demo.ts`, etkileşimi `PilotDemo.tsx` dosyasıdır. Yeni 7 günlük örnek: ₺44.800 korunabilecek rezervasyon + ₺11.040 koşullu yeni kiralama = ₺55.840 potansiyel. Başlangıç ₺168.000, tüm varsayımlar gerçekleşirse ₺223.840. ₺18.400 açık alacak ayrı tutulur. Eski ₺6.900 örneğini tekrar kullanma. Brüt rezervasyon tutarı net kâr değildir; kazanç garantisi verilemez.
+
+Akıllı fiyat önerisi Pilot kapsamındadır; ayrı modül olarak satılmaz. Pilot'ın fiyatı/deneme kapsamı ile pasif araç faturalama kuralı henüz belirlenmedi; varsayım yayımlama. Ayrıntılı güncel kararlar `DEVAM_NOTLARI.md` son bölümündedir.
+
 ## 1. Otuz saniyelik özet
 
 - Bu repo **Rent Okey pazarlama ve satış web sitesidir**. Çalışan Rent Okey SaaS uygulamasının frontend reposu değildir.
@@ -255,7 +263,7 @@ Sabit Başlangıç/Büyüme/Profesyonel paketleri yerine araç sayısına göre 
 
 ### Aşama 9 — RentOkey Pilot'ın aktif ek paket olarak konumlandırılması
 
-RentOkey Pilot tamamlanmış ürün davranışı olarak siteye eklendi. Ana sayfada Önerilen Odak bölümünün hemen arkasında yer alır: önce riskin nasıl fark edildiği, ardından Pilot'ın bu riski nasıl çözüm planına çevirdiği anlatılır. Hero demosunda ayrı sekmesi, fiyatlandırmada taban fiyattan ayrı aktif ek paket kartı, ek modüller alanında öne çıkan kartı ve `/okey-pilot` adresinde indekslenebilir ürün sayfası bulunur. SSS, yapılandırılmış veri, navigasyon ve sitemap aynı konumlandırmayı kullanır.
+RentOkey Pilot tamamlanmış ürün davranışı olarak siteye eklendi. Ana sayfada Önerilen Odak bölümünün hemen arkasında yer alır: önce riskin nasıl fark edildiği, ardından Pilot'ın bu riski nasıl çözüm planına çevirdiği anlatılır. Hero demosunda ayrı sekmesi, fiyatlandırmada taban fiyattan ayrı aktif ek paket kartı, ek modüller alanında kapsam bağlantısı ve `/okey-pilot` adresinde indekslenebilir ürün sayfası bulunur. SSS, yapılandırılmış veri, navigasyon ve sitemap aynı konumlandırmayı kullanır.
 
 ## 7. Ana sayfanın baştan sona hikâyesi
 
@@ -274,7 +282,7 @@ Ana sayfa sırası `src/app/page.tsx` içindedir. Sıra bilinçlidir; yalnız g�
 | 9 | `HowItWorks` | Başlamak zor mu? | Hesap, örnek filo/veri aktarımı, ekip ve gerçek operasyon olmak üzere dört adımlı denemeyi açıklar. |
 | 10 | `PricingSection` | Bana uygun maliyet ne? | Araç bazlı taban fiyatı, dahil temel özellikleri ve ayrı satın alınan ek paketleri gösterir. |
 | 11 | `HakkimizdaSection` | Ürün yerel operasyonumu anlıyor mu? | Türkiye/KKTC’ye özgü belge, lokasyon, süre ve ekip gerçeklerini anlatır. |
-| 12 | `AddonModulesSection` | Taban ürüne başka ne ekleyebilirim? | RentOkey Pilot'ı aktif öne çıkan ek paket, diğer modülleri ayrı seçenekler olarak sunar. |
+| 12 | `AddonModulesSection` | Taban ürüne başka ne ekleyebilirim? | Pilot’a kısa bağlantı verir; akıllı fiyat önerisi dışındaki ek modülleri kompakt sunar. |
 | 13 | `FaqSection` | Satın alma öncesi itirazlarım ne olacak? | Deneme, ödeme, fiyat, cihaz, aktarım, Pilot ve yetki sorularını cevaplar. |
 | 14 | `IletisimSection` | Biriyle görüşebilir miyim? | Paket, geçiş, ek modül ve kurulum sorularını gerçek iletişim API'sine gönderir. |
 | 15 | `CtaBanner` | Şimdi ne yapmalıyım? | Son kez deneme veya ekip görüşmesi seçeneği sunar. |
@@ -314,7 +322,7 @@ Araç bazlı fiyat formülünün ana kaynağı `src/lib/pricing.ts` dosyasıdır
 | 150 araç üzeri | Özel teklif |
 | Yıllık ödeme avantajı | %20 |
 
-Kademeler marjinal hesaplanır; araç sayısı yeni banda geçtiğinde önceki araçların oranı değişmez. Fiyatlara KDV dahil değildir.
+Kademeler marjinal hesaplanır; araç sayısı yeni banda geçtiğinde önceki araçların oranı değişmez. Fiyatlara KDV dahil değildir. 70 araç için aylık ₺7.240, yıllık aylık karşılık ₺5.792 ve yıllık toplam ₺69.504 gösterilir. Sayı girişi ve 70 araç hızlı seçimi vardır; yıllık döküm indirim sonrası tutarla eşleşir.
 
 ### Taban fiyata dahil temel ürün
 
@@ -332,7 +340,7 @@ Kademeler marjinal hesaplanır; araç sayısı yeni banda geçtiğinde önceki a
 
 ### Taban fiyata dahil olmayanlar
 
-- **RentOkey Pilot:** aktif, ayrıca satın alınan operasyon optimizasyonu ek paketi
+- **RentOkey Pilot:** aktif, ayrıca satın alınan operasyon optimizasyonu ve akıllı fiyat önerisi ek paketi
 - Diğer ek modüller: yalnız ihtiyaç halinde ayrı kapsam ve fiyatla eklenir
 - **Kurumsal Destek:** ürün özelliği değil; araç sayısından bağımsız isteğe bağlı ek hizmettir
 

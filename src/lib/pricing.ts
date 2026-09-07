@@ -30,7 +30,7 @@ export const YEARLY_DISCOUNT = 0.2;
  * bu durumda arayüz "Özel teklif" göstermelidir.
  */
 export function computeMonthlyPrice(vehicleCount: number): number | null {
-  if (!Number.isFinite(vehicleCount) || vehicleCount < 1 || vehicleCount > SELF_SERVICE_MAX_VEHICLES) {
+  if (!Number.isInteger(vehicleCount) || vehicleCount < 1 || vehicleCount > SELF_SERVICE_MAX_VEHICLES) {
     return null;
   }
 
@@ -83,6 +83,7 @@ export const includedFeatureGroups: FeatureGroup[] = [
     items: [
       "Rezervasyon ve canlı zaman çizelgesi",
       "Otomatik uygun araç önerisi",
+      "Önerilen odak ve operasyon riski takibi",
       "Filo, teslim ve iade yönetimi",
       "Bakım ve belge süresi uyarıları",
       "Mobil operasyon ekranı",

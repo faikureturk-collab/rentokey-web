@@ -15,7 +15,7 @@ import {
   type FeatureGroup,
 } from "@/lib/pricing";
 
-const quickPicks = [1, 10, 31, 40, 100, 150];
+const quickPicks = [10, 30, 50, 70, 100, 150];
 
 const groupIcons: Record<FeatureGroup["key"], LucideIcon> = {
   operasyon: CalendarClock,
@@ -59,7 +59,9 @@ export default function PricingSection({
   id?: string;
 }) {
   const [yearly, setYearly] = useState(false);
-  const [vehicleCount, setVehicleCount] = useState(40);
+  const [vehicleCount, setVehicleCount] = useState(70);
+  const [vehicleInput, setVehicleInput] = useState("70");
+  function updateVehicleCount(value: number) { setVehicleCount(value); setVehicleInput(String(value)); }
 
   const monthlyPrice = computeMonthlyPrice(vehicleCount);
   const breakdown = useMemo(() => computePriceBreakdown(vehicleCount), [vehicleCount]);
@@ -78,7 +80,7 @@ export default function PricingSection({
             </span>
             <h2 className="mt-5 text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-navy sm:text-4xl">{title}</h2>
             <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-brand-navy/55">
-              Sabit paketlere zorlanmadan, doğrudan araç sayınızdan hesaplanan bir fiyat. Kaydırıcıyı
+              Sabit paketlere zorlanmadan, doğrudan araç sayınızdan hesaplanan bir fiyat. Araç sayınızı girin veya kaydırıcıyı
               filonuza göre ayarlayın, gerçek operasyonunuzu 21 gün boyunca deneyin.
             </p>
 
@@ -96,16 +98,22 @@ export default function PricingSection({
           <div className="flex flex-col rounded-[24px] border border-surface-border bg-white p-6 sm:p-8">
             <div className="flex items-baseline justify-between">
               <span className="text-xs font-bold uppercase tracking-[0.1em] text-brand-navy/40">Filonuzda kaç araç var?</span>
-              <span className="text-2xl font-extrabold tracking-[-0.02em] text-brand-navy">
-                {vehicleCount} <span className="text-sm font-semibold text-brand-navy/40">araç</span>
-              </span>
+              <label className="flex items-center gap-2 text-sm font-semibold">
+                <span className="sr-only">Araç sayısını yazın</span>
+                <input type="number" min={1} max={SELF_SERVICE_MAX_VEHICLES} step={1} value={vehicleInput}
+                  onChange={(event) => { const raw = event.target.value; setVehicleInput(raw); const n = Number(raw); if (raw && Number.isInteger(n) && n >= 1 && n <= SELF_SERVICE_MAX_VEHICLES) setVehicleCount(n); }}
+                  onBlur={() => setVehicleInput(String(vehicleCount))}
+                  aria-invalid={vehicleInput !== "" && (!Number.isInteger(Number(vehicleInput)) || Number(vehicleInput) < 1 || Number(vehicleInput) > SELF_SERVICE_MAX_VEHICLES)}
+                  className="min-h-11 w-24 rounded-lg border border-surface-border px-3 text-xl font-bold" />
+                araç
+              </label>
             </div>
             <input
               type="range"
               min={1}
               max={SELF_SERVICE_MAX_VEHICLES}
               value={vehicleCount}
-              onChange={(event) => setVehicleCount(Number(event.target.value))}
+              onChange={(event) => updateVehicleCount(Number(event.target.value))}
               className="mt-4 h-2 w-full cursor-pointer accent-brand-green"
               aria-label="Araç sayısı"
             />
@@ -119,7 +127,7 @@ export default function PricingSection({
                 <button
                   key={n}
                   type="button"
-                  onClick={() => setVehicleCount(n)}
+                  onClick={() => updateVehicleCount(n)}
                   className={`rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-colors ${
                     vehicleCount === n
                       ? "border-brand-green bg-brand-green text-white"
@@ -131,6 +139,7 @@ export default function PricingSection({
               ))}
             </div>
 
+            <p className="mt-2 text-xs text-brand-navy/60">1–150 tam araç sayısı girin; 150 üzeri için teklif alın. Geçersiz girişte son geçerli fiyat korunur.</p>
             <p className="mt-6 border-t border-surface-border pt-5 text-xs leading-relaxed text-brand-navy/50">
               Fiyat, sabit bir pakete zorlanmadan doğrudan araç sayınızdan hesaplanır: küçük bir taban
               ücrete, filonuz büyüdükçe düşen bir araç başı ücret eklenir. Tüm temel ürün özellikleri her
@@ -176,9 +185,10 @@ export default function PricingSection({
                       <span className="font-semibold text-brand-navy/70">₺{formatPrice(row.amount)}</span>
                     </div>
                   ))}
+                  {yearly && <div className="flex justify-between text-brand-green-dark"><span>Yıllık ödeme indirimi (%20)</span><span>−₺{formatPrice((monthlyPrice ?? 0) - (price ?? 0))}</span></div>}
                   <div className="mt-1 flex justify-between border-t border-dashed border-surface-border pt-2 text-[13px] font-extrabold text-brand-navy">
-                    <span>Toplam / ay</span>
-                    <span>₺{formatPrice(monthlyPrice ?? 0)}</span>
+                    <span>{yearly ? "İndirimli aylık karşılık" : "Toplam / ay"}</span>
+                    <span>₺{formatPrice(price ?? 0)}</span>
                   </div>
                 </div>
               </>
@@ -199,11 +209,11 @@ export default function PricingSection({
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs font-bold uppercase tracking-[0.14em] text-brand-navy/35">Ne alıyorsunuz</p>
             <h3 className="mt-2 text-2xl font-extrabold tracking-[-0.03em] text-brand-navy sm:text-[28px]">
-              Taban fiyata dahil olanlar
+              Temel aboneliğe dahil olanlar
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-brand-navy/50">
               1 araçlık bir filo da, 150 araçlık bir filo da aynı temel özellik setini kullanır. Kilitli
-              bir &ldquo;üst paket&rdquo; yok — aşağıdakilerin tamamı taban fiyata dahildir. Opsiyonel ek
+              bir &ldquo;üst paket&rdquo; yok — aşağıdakilerin tamamı temel aboneliğe dahildir. Opsiyonel ek
               modülleri yalnızca ihtiyacınız olduğunda eklersiniz.
             </p>
           </div>
@@ -231,46 +241,9 @@ export default function PricingSection({
           </div>
         </div>
 
-        <div className="mt-6 overflow-hidden rounded-[24px] border border-brand-green/25 bg-[linear-gradient(120deg,#f4fffa_0%,#ffffff_58%,#eef6ff_100%)] p-7 sm:p-9">
-          <div className="grid gap-8 lg:grid-cols-[1fr_.85fr] lg:items-center">
-            <div>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-green/12 px-3 py-1 text-[11px] font-bold text-brand-green-dark">
-                  <Sparkles className="h-3.5 w-3.5" /> Aktif · Opsiyonel ek paket
-                </span>
-                <span className="rounded-full border border-surface-border bg-white px-3 py-1 text-[10px] font-bold text-brand-navy/50">
-                  Taban fiyata dahil değildir
-                </span>
-              </div>
-              <h3 className="mt-4 text-2xl font-extrabold tracking-[-0.025em] text-brand-navy sm:text-3xl">RentOkey Pilot</h3>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-brand-navy/55">
-                Yarınki operasyonu analiz eder; sorunu, önerilen çözümü ve tahmini finansal ya da
-                operasyonel etkiyi birlikte gösterir. Yalnızca seçtiğiniz önerileri onayınızla uygular.
-              </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Button href="/okey-pilot" icon>
-                  Pilot’ı inceleyin
-                </Button>
-                <Button href="/#iletisim" variant="secondary">
-                  Fiyat bilgisi alın
-                </Button>
-              </div>
-            </div>
-            <div className="rounded-[20px] border border-surface-border bg-white p-5 shadow-sm">
-              <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-brand-navy/35">Örnek günlük etki</p>
-              <p className="mt-2 text-2xl font-extrabold tracking-[-0.03em] text-brand-navy">₺6.900 kurtarılabilir gelir</p>
-              <ul className="mt-4 space-y-2.5">
-                {["Araç ve rezervasyon yeniden atama", "Teslim saati ve hazırlık planı", "Eksik tahsilat ve boşta araç aksiyonu"].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-xs text-brand-navy/60">
-                    <Check className="h-3.5 w-3.5 shrink-0 text-brand-green" strokeWidth={3} /> {item}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-4 border-t border-surface-border pt-3 text-[10px] leading-relaxed text-brand-navy/35">
-                Filonuzun araç sayısından bağımsız olarak ayrıca satın alınabilir. Gösterilen etki örnek senaryodur.
-              </p>
-            </div>
-          </div>
+        <div className="mt-6 flex flex-col gap-5 rounded-2xl border border-brand-green/25 bg-white p-6 sm:flex-row sm:items-center sm:justify-between">
+          <div><p className="text-xs font-bold text-brand-green-dark">İsteğe bağlı · Temel aboneliğe dahil değil</p><h3 className="mt-1 text-xl font-extrabold text-brand-navy">RentOkey Pilot</h3><p className="mt-2 max-w-2xl text-sm text-brand-navy/65">Operasyon optimizasyonu ve akıllı fiyat önerisi tek ek pakette. Fiyat ve deneme kapsamını ekibimizden öğrenin.</p></div>
+          <Button href="/okey-pilot" variant="secondary" className="shrink-0">Kapsam ve fiyat bilgisi</Button>
         </div>
 
         <div className="mt-6 overflow-hidden rounded-[24px] bg-brand-navy p-7 text-white sm:p-9">

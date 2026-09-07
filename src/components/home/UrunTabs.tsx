@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
+import FleetDemo from "@/components/FleetDemo";
 import {
   AlertTriangle,
   ArrowUpRight,
@@ -18,64 +19,6 @@ import {
   Wrench,
   type LucideIcon,
 } from "lucide-react";
-
-function PanelHeader({ title, meta }: { title: string; meta: string }) {
-  return (
-    <div className="flex items-center justify-between gap-4 border-b border-surface-border px-4 py-3.5 sm:px-5">
-      <div className="flex items-center gap-2.5">
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
-          <CalendarRange className="h-4 w-4" />
-        </span>
-        <span className="text-sm font-bold text-brand-navy">{title}</span>
-      </div>
-      <span className="whitespace-nowrap text-[11px] font-semibold text-brand-navy/40">{meta}</span>
-    </div>
-  );
-}
-
-const scheduleRows = [
-  { plate: "34 ROK 118", model: "Renault Clio", left: 2, width: 38, color: "bg-brand-blue", label: "Teslim · 10:30" },
-  { plate: "34 ROK 205", model: "Fiat Egea", left: 27, width: 48, color: "bg-brand-green", label: "Ayşe D. · 4 gün" },
-  { plate: "34 ROK 311", model: "Toyota Corolla", left: 58, width: 30, color: "bg-[#705DE8]", label: "İade · 17:45" },
-  { plate: "34 ROK 426", model: "Peugeot 2008", left: 8, width: 62, color: "bg-brand-navy-soft", label: "Aylık kiralama" },
-];
-
-function SchedulePanel() {
-  return (
-    <div className="overflow-hidden rounded-2xl border border-surface-border bg-white shadow-2xl shadow-black/10">
-      <PanelHeader title="Rezervasyon zaman çizelgesi" meta="14 günlük görünüm" />
-      <div className="p-4 sm:p-5">
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex gap-2 text-[10px] font-semibold">
-            <span className="rounded-full bg-brand-blue/10 px-2.5 py-1 text-brand-blue">12 kirada</span>
-            <span className="rounded-full bg-brand-green/10 px-2.5 py-1 text-brand-green-dark">8 müsait</span>
-            <span className="rounded-full bg-amber-50 px-2.5 py-1 text-amber-700">2 bakımda</span>
-          </div>
-          <span className="text-[10px] font-medium text-brand-navy/40">Doluluk %78</span>
-        </div>
-        <div className="grid grid-cols-[92px_1fr] border-b border-surface-border pb-2 text-[9px] font-semibold text-brand-navy/35 sm:grid-cols-[118px_1fr]">
-          <span>Araç</span>
-          <div className="grid grid-cols-5 text-center"><span>Bugün</span><span>Yarın</span><span>Çar</span><span>Per</span><span>Cum</span></div>
-        </div>
-        <div className="divide-y divide-surface-border">
-          {scheduleRows.map((row) => (
-            <div key={row.plate} className="grid grid-cols-[92px_1fr] items-center py-2 sm:grid-cols-[118px_1fr]">
-              <div className="min-w-0 pr-2">
-                <p className="truncate text-[10px] font-bold text-brand-navy sm:text-[11px]">{row.plate}</p>
-                <p className="truncate text-[9px] text-brand-navy/35">{row.model}</p>
-              </div>
-              <div className="relative h-7 rounded-md bg-surface-soft">
-                <div className={`absolute inset-y-1 flex items-center overflow-hidden rounded px-2 text-[9px] font-semibold text-white ${row.color}`} style={{ left: `${row.left}%`, width: `${row.width}%` }}>
-                  <span className="truncate">{row.label}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 const operationRows = [
   { time: "10:30", plate: "34 ROK 118", name: "Selim K.", place: "İstanbul Havalimanı", action: "Teslim et", color: "bg-brand-blue" },
@@ -98,9 +41,9 @@ function OperationPanel() {
               <p className="truncate text-xs font-bold text-brand-navy">{row.plate} · {row.name}</p>
               <p className="mt-0.5 truncate text-[10px] text-brand-navy/40">{row.place}</p>
             </div>
-            <button className={`col-start-2 flex w-fit items-center gap-1.5 rounded-lg px-3 py-2 text-[10px] font-bold text-white sm:col-start-auto ${row.color}`}>
+            <span className={`col-start-2 flex w-fit items-center gap-1.5 rounded-lg px-3 py-2 text-[10px] font-bold text-white sm:col-start-auto ${row.color}`}>
               <CarFront className="h-3.5 w-3.5" /> {row.action}
-            </button>
+            </span>
           </div>
         ))}
       </div>
@@ -226,11 +169,11 @@ const tabs: Tab[] = [
     eyebrow: "Planlama",
     navTitle: "Rezervasyon & takvim",
     navDescription: "Uygunluğu görün, çakışmayı önleyin.",
-    title: "Her aracın planı, tek zaman çizelgesinde.",
-    description: "Rezervasyonları araç ve tarih ekseninde yönetin. Müşteriyi canlı aramayla bulun veya kayıtla birlikte oluşturun; boş günleri görün, uygun araç önerisini değerlendirin ve gerektiğinde rezervasyonu sürükleyip başka araca taşıyın.",
+    title: "70 araç. Aradığınız plan birkaç dokunuş uzakta.",
+    description: "Aşağıdaki örnekte plaka arayın, sınıf ve şubeye göre filtreleyin. Çakışan rezervasyon için uygun aracı bulun ve örnek atamayı onaylayın.",
     bullets: ["7, 14 günlük ve aylık görünüm", "Uygunluk kriterlerine göre araç önerisi", "Çakışma ve araçsız rezervasyon uyarıları"],
     icon: CalendarRange,
-    panel: <SchedulePanel />,
+    panel: <FleetDemo />,
   },
   {
     eyebrow: "Operasyon",
@@ -276,6 +219,11 @@ const tabs: Tab[] = [
 
 export default function UrunTabs() {
   const [active, setActive] = useState(0);
+  useEffect(() => {
+    const showFleet = () => setActive(0);
+    window.addEventListener("rentokey:show-fleet-demo", showFleet);
+    return () => window.removeEventListener("rentokey:show-fleet-demo", showFleet);
+  }, []);
   const tab = tabs[active];
 
   return (
@@ -288,14 +236,14 @@ export default function UrunTabs() {
         <p className="max-w-xl text-[15px] leading-relaxed text-brand-navy/55 lg:justify-self-end">Rezervasyondan iadeye, bakım uyarısından tahsilata kadar ekibiniz aynı veriyle ve aynı çalışma düzeniyle ilerler.</p>
       </div>
 
-      <div className="mt-10 overflow-hidden rounded-[28px] border border-brand-navy/10 bg-brand-navy shadow-2xl shadow-brand-navy/10 lg:grid lg:grid-cols-[330px_minmax(0,1fr)]">
+      <div className="mt-8 overflow-hidden rounded-[28px] border border-brand-navy/10 bg-brand-navy shadow-2xl shadow-brand-navy/10">
         <div className="bg-[#f4f7fa] p-3 sm:p-4 lg:p-5">
-          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
+          <div className="flex gap-2 overflow-x-auto">
             {tabs.map((item, index) => {
               const Icon = item.icon;
               const isActive = index === active;
               return (
-                <button key={item.navTitle} type="button" onClick={() => setActive(index)} aria-pressed={isActive} className={`group flex min-h-[88px] w-full items-center gap-3 rounded-2xl border p-3.5 text-left transition-all ${isActive ? "border-brand-green/30 bg-white shadow-lg shadow-brand-navy/5" : "border-transparent hover:border-brand-navy/10 hover:bg-white/70"}`}>
+                <button key={item.navTitle} type="button" onClick={() => setActive(index)} aria-pressed={isActive} className={`group flex min-h-[64px] min-w-[165px] flex-1 items-center gap-3 rounded-2xl border p-3.5 text-left transition-all ${isActive ? "border-brand-green/30 bg-white shadow-lg shadow-brand-navy/5" : "border-transparent hover:border-brand-navy/10 hover:bg-white/70"}`}>
                   <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors ${isActive ? "bg-brand-green text-white" : "bg-white text-brand-navy/45 group-hover:text-brand-navy"}`}><Icon className="h-5 w-5" /></span>
                   <span className="min-w-0 flex-1"><span className={`block text-[10px] font-bold uppercase tracking-[0.12em] ${isActive ? "text-brand-green-dark" : "text-brand-navy/35"}`}>{String(index + 1).padStart(2, "0")} · {item.eyebrow}</span><span className="mt-0.5 block text-[13px] font-extrabold text-brand-navy">{item.navTitle}</span><span className="mt-0.5 hidden truncate text-[10px] text-brand-navy/40 sm:block">{item.navDescription}</span></span>
                   <ArrowUpRight className={`h-4 w-4 shrink-0 transition-colors ${isActive ? "text-brand-green" : "text-brand-navy/20"}`} />
@@ -305,16 +253,16 @@ export default function UrunTabs() {
           </div>
         </div>
 
-        <div className="relative overflow-hidden px-5 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+        <div className="relative overflow-hidden px-3 py-6 sm:px-6 sm:py-8">
           <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-green/10 blur-3xl" />
           <div className="relative">
             <span className="text-xs font-bold uppercase tracking-[0.16em] text-brand-green">{tab.eyebrow}</span>
             <h3 className="mt-3 max-w-2xl text-2xl font-extrabold leading-tight tracking-[-0.025em] text-white sm:text-3xl">{tab.title}</h3>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/55 sm:text-[15px]">{tab.description}</p>
-            <div className="mt-6 grid gap-2 sm:grid-cols-3">
+            <div className="mt-4 grid gap-2 sm:grid-cols-3">
               {tab.bullets.map((bullet) => <div key={bullet} className="flex items-start gap-2 rounded-xl border border-white/10 bg-white/[0.045] p-3"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" /><span className="text-[11px] leading-relaxed text-white/70">{bullet}</span></div>)}
             </div>
-            <div className="mt-7">{tab.panel}</div>
+            <div className="mt-5">{tab.panel}</div>
             <Link href="/ucretsiz-dene" className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-brand-green transition-colors hover:text-white">Kendi filonuzla deneyin <ArrowUpRight className="h-4 w-4" /></Link>
           </div>
         </div>

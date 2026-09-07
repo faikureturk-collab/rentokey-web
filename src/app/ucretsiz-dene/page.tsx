@@ -11,7 +11,7 @@ import { createPageMetadata } from "@/lib/seo";
 export const metadata = createPageMetadata({
   title: "Araç Kiralama Programını 21 Gün Ücretsiz Deneyin",
   description:
-    "Kredi kartı ve kurulum ücreti olmadan Rent Okey çalışma alanınızı oluşturun; örnek veya kendi filonuzla 21 gün ücretsiz deneyin ve ilk 48 saatte Excel / CSV aktarım desteği alın.",
+    "Kredi kartı ve kurulum ücreti olmadan Rent Okey çalışma alanınızı oluşturun; örnek veya kendi filonuzla 21 gün ücretsiz deneyin ve ilk 48 saat içinde ücretsiz Excel / CSV aktarım desteği talep edin.",
   path: "/ucretsiz-dene",
 });
 

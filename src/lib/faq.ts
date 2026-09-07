@@ -20,7 +20,7 @@ export const faqGroups: FaqGroup[] = [
           "Ad, e-posta ve şifre bilgilerinizi girip e-posta adresinizi doğrulayarak hesabınızı oluşturursunuz. İlk girişte firma adı ve filo büyüklüğünü tanımlarsınız. Kredi kartı gerekmez; deneme süresince kendi araç ve rezervasyonlarınızla ürünü değerlendirebilirsiniz.",
       },
       {
-        question: "İlk 48 saatte Excel / CSV aktarım desteği nasıl çalışır?",
+        question: "İlk 48 saat içinde aktarım desteğini nasıl talep ederim?",
         answer:
           "Deneme hesabınızı oluşturduktan sonraki ilk 48 saat içinde müşteri, rezervasyon, filo, gider veya bakım Excel / CSV dosyanız için destek talebi oluşturabilirsiniz. Ekibimiz destek saatleri içinde dosyanın yapısını kontrol eder, gerekli düzeltmeleri bildirir ve ilk aktarımı tamamlamanıza yardımcı olur. 48 saatlik süre destek talebinin oluşturulması için geçerlidir. Aktarımın tamamlanma süresi dosyanın kapsamına ve veri kalitesine göre değişebilir.",
       },
@@ -42,7 +42,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "RentOkey Pilot taban fiyata dahil mi?",
         answer:
-          "Hayır. RentOkey Pilot, araç sayısına göre hesaplanan taban ürün fiyatına dahil olmayan ve ayrıca satın alınabilen aktif bir ek pakettir. Filonuzun araç sayısından bağımsız olarak hesabınıza eklenebilir. Kapsam ve fiyat bilgisi için Rent Okey ekibiyle iletişime geçebilirsiniz.",
+          "Hayır. RentOkey Pilot, araç sayısına göre hesaplanan temel abonelik fiyatına dahil olmayan ve ayrıca satın alınabilen aktif bir ek pakettir. Filonuzun araç sayısından bağımsız olarak hesabınıza eklenebilir. Akıllı fiyat önerisi Pilot kapsamındadır; ayrı bir modül olarak ücretlendirilmez. Pilot fiyatı ve denemede erişilebilen kapsam için Rent Okey ekibiyle iletişime geçebilirsiniz.",
       },
     ],
   },
@@ -68,12 +68,12 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "RentOkey Pilot nedir, Önerilen Odak'tan farkı nedir?",
         answer:
-          "Önerilen Odak yaklaşan riski görünür kılar. RentOkey Pilot ise rezervasyon, araç, bakım, tahsilat, lokasyon ve hazırlık süresi verilerini birlikte değerlendirerek uygulanabilir bir operasyon planı hazırlar; önerilen çözümü ve tahmini etkisini gösterir. Yalnızca kullanıcının seçtiği aksiyonları son onaydan sonra uygular.",
+          "Önerilen Odak yaklaşan riski görünür kılar. RentOkey Pilot ise rezervasyon, araç, bakım, tahsilat, lokasyon ve hazırlık süresi verilerini birlikte değerlendirerek akıllı fiyat önerilerini de içeren uygulanabilir bir operasyon planı hazırlar; önerilen çözümü ve tahmini etkisini gösterir. Yalnızca kullanıcının seçtiği aksiyonları son onaydan sonra uygular.",
       },
       {
         question: "RentOkey Pilot değişiklikleri kendiliğinden uygular mı?",
         answer:
-          "Hayır. Pilot hiçbir araç atamasını, teslim saatini veya görevi kullanıcı onayı olmadan değiştirmez. Yetkili kullanıcı önerileri tek tek seçer, gerekçeyi ve tahmini etkiyi inceler; yalnızca onaylanan değişiklikler uygulanır. Gösterilen finansal etkiler mevcut operasyon verilerinden hesaplanan tahminlerdir ve garanti edilen kazanç anlamına gelmez.",
+          "Hayır. Pilot hiçbir araç atamasını, fiyatı, teslim saatini veya görevi kullanıcı onayı olmadan değiştirmez. Yetkili kullanıcı önerileri tek tek seçer, gerekçeyi ve tahmini etkiyi inceler; yalnızca onaylanan değişiklikler uygulanır. Gösterilen finansal etkiler mevcut operasyon verilerinden hesaplanan tahminlerdir ve garanti edilen kazanç anlamına gelmez.",
       },
       {
         question: "Rent Okey Türkiye ve KKTC'de kullanılabilir mi?",

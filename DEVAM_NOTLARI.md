@@ -85,4 +85,21 @@ Kod tabanlı hero demosuna masaüstü ve mobil için dördüncü **RentOkey Pilo
 
 `/okey-pilot` adresinde indekslenebilir ürün sayfası oluşturuldu. Sayfa; beş temel operasyon senaryosunu, üç aşamalı çalışma mantığını, insan onaylı kontrol ilkesini ve ek paket iletişim çağrısını açıklar. Header/footer navigasyonu, SSS, SoftwareApplication JSON-LD özellik listesi ve sitemap aynı konumlandırmayla güncellendi.
 
-Pazarlamada kullanılabilecek örnek değerler — `%72 → %78 doluluk`, `₺31.400 → ₺38.300 gelir`, `₺6.900 kurtarılabilir gelir` — açıkça örnek senaryo ve tahmini etki olarak etiketlenmelidir; garanti edilen sonuç gibi kullanılmamalıdır.
+Önceki ₺6.900 ve doluluk artışı örneği, aşağıdaki 70 araçlık senaryoyla değiştirilmiştir; eski rakamlar yeniden kullanılmamalıdır.
+
+## 7 Eylül 2026 — 70 araçlık işletme perspektifiyle güncelleme
+
+Bu bölüm önceki demo yerleşimi notlarının güncel halidir. Canlı uygulama değil, pazarlama sitesi düzenlendi.
+
+- Hero üç kısa sekmeye indirildi: Operasyon, 70 araçlık filo, Pilot. Ana etkileşim ürün bölümündeki `FleetDemo` içindedir; hero bağlantısı planlama sekmesini yeniden seçer.
+- `src/lib/fleet-demo.ts`: 70 sentetik araç, 30 Ekonomi / 25 Konfor / 15 SUV; 54 kirada, 10 müsait, 4 bakımda, 2 hazırlanıyor. Durumlar başlangıç anını, çizelge gelecek 7 günü gösterir.
+- Filtreler: plaka/model, sınıf, şube, durum. Daraltılabilir gruplar, sabit araç sütunu ve kaydırılabilir çizelge. R-2401 çakışması önce önerilir, ardından kullanıcı onayıyla ZRO 002'ye yalnız demoda taşınır. Aynı sınıf/şube ve tarih uygunluğu kontrol edilir.
+- Fiyat formülü değişmedi. Varsayılan 70 araç, doğrudan sayı alanı ve hızlı seçimler eklendi. 70 araç: aylık ₺7.240; yıllık aylık karşılık ₺5.792, yıllık toplam ₺69.504 (KDV hariç). Dökümde yıllık indirim ve son toplam artık aynı döneme göre gösterilir.
+- Akıllı fiyat önerisi Pilot'a dahildir; bağımsız ücretli modül kartı kaldırıldı. Diğer modüller korunup daha kompakt sunuldu. Pilot temel aboneliğe dahil değildir.
+- `src/lib/pilot-demo.ts` senaryo için tek kaynak: 7 günde ₺28.800 yeniden atama + ₺16.000 hazır alternatif araç = ₺44.800 korunabilecek rezervasyon tutarı; iki yeni kiralama oluşursa ₺11.040 fiyat önerisi kaynaklı koşullu tutar. Toplam potansiyel ₺55.840; varsayımsal başlangıç ₺168.000 → ₺223.840. KDV hariç brüt rezervasyon tutarıdır; net kâr veya garanti değildir.
+- ₺18.400 açık bakiye ayrı gösterilir, yeni gelir gibi toplanmaz. Öneri seçimleri toplamı değiştirir; önizleme, ayrı demo onayı ve sıfırlama çalışır. API isteği yok.
+- Önerilen Odak bölümü kısaldı; Pilot senaryosu yalnız ana Pilot bölümünde ayrıntılı. Fiyatlandırmada kısa kapsam kartı, ek modüllerde bağlantı var.
+- Geçiş akışı, Excel/CSV hazırlama → kontrol → aktarım sonrası kayıt karşılaştırma → ekip rollerini tanımlama olarak görünürleştirildi. İlk 48 saat, ücretsiz destek TALEBİ penceresidir; tamamlanma garantisi değildir.
+- Bekleyen ticari kararlar: pasif/bakımda/satılmış araçların faturaya etkisi, Pilot fiyatı ve denemeye dahil kapsam. Bu konularda yeni kural veya ücretsiz Pilot vaadi uydurulmadı.
+- Doğrulama komutları: `node --test tests/marketing-demos.test.mjs`, `npm run lint`, `npm run build -- --webpack`. Tarayıcı etkileşim/görsel QA ayrıca yapılmalıdır.
+- Commit, push ve canlı yayın bu çalışma kapsamında yapılmaz.
