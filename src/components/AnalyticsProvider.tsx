@@ -37,7 +37,9 @@ export default function AnalyticsProvider({ locale }: { locale: Locale }) {
     if (!measurementId || consent !== "granted") return;
     captureFirstTouch();
     window.dataLayer = window.dataLayer || [];
-    window.gtag = window.gtag || function gtag(...args: unknown[]) { window.dataLayer?.push(args); };
+    window.gtag = window.gtag || function gtag(..._args: unknown[]) {
+      window.dataLayer?.push(arguments);
+    };
     if (!gaInitialised.current) {
       window.gtag("js", new Date());
       window.gtag("consent", "update", { analytics_storage: "granted" });

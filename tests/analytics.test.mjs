@@ -5,6 +5,7 @@ import vm from "node:vm";
 import ts from "typescript";
 
 const source = fs.readFileSync(new URL("../src/lib/analytics.ts", import.meta.url), "utf8");
+const providerSource = fs.readFileSync(new URL("../src/components/AnalyticsProvider.tsx", import.meta.url), "utf8");
 const { outputText } = ts.transpileModule(source, {
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2021 },
 });
@@ -39,4 +40,9 @@ test("ChatGPT UTM traffic uses one stable source name", () => {
     "",
   );
   assert.equal(attribution.source, "chatgpt");
+});
+
+test("gtag commands use Google's arguments-object queue format", () => {
+  assert.match(providerSource, /dataLayer\?\.push\(arguments\)/);
+  assert.doesNotMatch(providerSource, /dataLayer\?\.push\(args\)/);
 });
