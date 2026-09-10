@@ -2,21 +2,20 @@
 
 import { useState } from "react";
 import FaqAccordion from "../FaqAccordion";
-import { englishFaqGroups, faqGroups } from "@/lib/faq";
+import { faqGroups } from "@/lib/faq";
 
-export default function FaqGroupTabs({ locale = "tr" }: { locale?: "tr" | "en" }) {
-  const groups = locale === "en" ? englishFaqGroups : faqGroups;
-  const [activeId, setActiveId] = useState(groups[0].id);
-  const activeGroup = groups.find((group) => group.id === activeId) ?? groups[0];
+export default function FaqGroupTabs() {
+  const [activeId, setActiveId] = useState(faqGroups[0].id);
+  const activeGroup = faqGroups.find((group) => group.id === activeId) ?? faqGroups[0];
 
   return (
     <div className="min-w-0">
       <div className="rounded-2xl bg-surface-soft p-1.5">
         <div
-          aria-label={locale === "en" ? "Frequently asked question categories" : "Sıkça sorulan soru kategorileri"}
+          aria-label="Sıkça sorulan soru kategorileri"
           className="flex gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-3"
         >
-          {groups.map((group) => {
+          {faqGroups.map((group) => {
             const active = group.id === activeGroup.id;
 
             return (
@@ -44,7 +43,7 @@ export default function FaqGroupTabs({ locale = "tr" }: { locale?: "tr" | "en" }
         id={`faq-panel-${activeGroup.id}`}
         className="mt-4"
       >
-        <FaqAccordion items={activeGroup.items} columns={false} locale={locale} />
+        <FaqAccordion items={activeGroup.items} columns={false} />
       </div>
     </div>
   );

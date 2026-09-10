@@ -1,6 +1,6 @@
 import { GroupGlossyIcon, ShieldBoltIcon, TimerIcon, QuickLearnIcon } from "@/components/icons/ColorIcons";
 
-const statsTr = [
+const stats = [
   {
     icon: GroupGlossyIcon,
     value: "Bugün",
@@ -27,15 +27,7 @@ const statsTr = [
   },
 ];
 
-const statsEn = [
-  { icon: GroupGlossyIcon, value: "Today", label: "Priority operation queue", hint: "Handovers, returns, risks and documents" },
-  { icon: TimerIcon, value: "Live", label: "Reservation timeline", hint: "Availability and vehicle assignments" },
-  { icon: ShieldBoltIcon, value: "3 screens", label: "Desktop, tablet and mobile", hint: "Plan at the office, complete in the field" },
-  { icon: QuickLearnIcon, value: "21 days", label: "Real free trial", hint: "No credit card required" },
-];
-
-export default function StatsBar({ locale = "tr" }: { locale?: "tr" | "en" }) {
-  const stats = locale === "en" ? statsEn : statsTr;
+export default function StatsBar() {
   return (
     <section className="container-page -mt-4 sm:mt-0">
       <div className="grid grid-cols-2 gap-x-6 gap-y-8 rounded-3xl border border-surface-border bg-white p-6 shadow-sm shadow-brand-navy/5 sm:p-8 lg:grid-cols-4 lg:gap-y-0 lg:divide-x lg:divide-surface-border">
