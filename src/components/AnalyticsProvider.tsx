@@ -44,6 +44,7 @@ export default function AnalyticsProvider({ locale }: { locale: Locale }) {
       window.gtag("config", measurementId, {
         send_page_view: false,
         anonymize_ip: true,
+        debug_mode: true, // TEMP: GA4 DebugView doğrulaması için, sonra kaldırılacak
         linker: { domains: ["rentokey.com", "www.rentokey.com", "app.rentokey.com"] },
       });
       gaInitialised.current = true;
