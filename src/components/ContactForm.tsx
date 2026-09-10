@@ -5,9 +5,10 @@ import { createContactRequestPayload } from "@/lib/contact-request";
 import type { Locale } from "@/lib/locale";
 
 import Link from "next/link";
-import { useCallback, useState, type FormEvent } from "react";
+import { useCallback, useRef, useState, type FormEvent } from "react";
 import { AlertCircle, CheckCircle2, LoaderCircle, Send, ShieldCheck } from "lucide-react";
 import TurnstileWidget from "./TurnstileWidget";
+import { trackEvent } from "@/lib/analytics";
 
 const CONTACT_ENDPOINT = "https://app.rentokey.com/api/iletisim-formu-gonder";
 const TURNSTILE_ACTION = "contact-form";
@@ -44,6 +45,7 @@ export default function ContactForm({ locale = "tr" }: { locale?: Locale }) {
   const [feedback, setFeedback] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
+  const formStarted = useRef(false);
 
   const handleTurnstileError = useCallback((message: string) => {
     setStatus("error");
@@ -121,6 +123,7 @@ export default function ContactForm({ locale = "tr" }: { locale?: Locale }) {
       resetTurnstile();
       setStatus("success");
       setFeedback(t("Mesajınızı aldık. En kısa sürede sizinle iletişime geçeceğiz."));
+      trackEvent("generate_lead", { locale, lead_type: "contact_form" });
     } catch {
       resetTurnstile();
       setStatus("error");
@@ -140,7 +143,13 @@ export default function ContactForm({ locale = "tr" }: { locale?: Locale }) {
   return (
     <form
       onSubmit={handleSubmit}
-      onInput={clearFeedback}
+      onInput={() => {
+        clearFeedback();
+        if (!formStarted.current) {
+          formStarted.current = true;
+          trackEvent("contact_form_start", { locale });
+        }
+      }}
       aria-busy={sending}
       className="relative rounded-[28px] border border-surface-border bg-white p-6 shadow-sm shadow-brand-navy/5 sm:p-8"
     >

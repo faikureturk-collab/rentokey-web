@@ -1,4 +1,4 @@
-import { faqGroups } from "@/lib/faq";
+import { englishFaqGroups, faqGroups, type FaqGroup } from "@/lib/faq";
 import { computeMonthlyPrice, SELF_SERVICE_MAX_VEHICLES } from "@/lib/pricing";
 import { DEFAULT_DESCRIPTION, LINKEDIN_URL, SITE_NAME, SITE_URL } from "@/lib/seo";
 
@@ -25,7 +25,8 @@ const offers = [
   },
 ];
 
-const faqMainEntity = faqGroups.flatMap((group) =>
+function createFaqMainEntity(groups: FaqGroup[]) {
+  return groups.flatMap((group) =>
   group.items.map((item) => ({
     "@type": "Question",
     name: item.question,
@@ -33,8 +34,10 @@ const faqMainEntity = faqGroups.flatMap((group) =>
       "@type": "Answer",
       text: item.answer,
     },
-  })),
-);
+  })));
+}
+
+const faqMainEntity = createFaqMainEntity(faqGroups);
 
 export const homeStructuredData = {
   "@context": "https://schema.org",
@@ -110,6 +113,93 @@ export const homeStructuredData = {
       isPartOf: { "@id": websiteId },
       about: { "@id": softwareId },
       mainEntity: faqMainEntity,
+    },
+  ],
+};
+
+const englishDescription =
+  "Rent Okey is car rental operations and fleet management software for reservations, vehicles, handovers, returns, payments, maintenance and operational risks.";
+
+const englishOffers = [
+  {
+    ...offers[0],
+    url: `${SITE_URL}/en#pricing`,
+    description: `Monthly pricing calculated by vehicle count for fleets of 1–${SELF_SERVICE_MAX_VEHICLES} vehicles; larger fleets receive a tailored quote.`,
+  },
+];
+
+export const englishHomeStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": organizationId,
+      name: SITE_NAME,
+      alternateName: "RentOkey",
+      url: SITE_URL,
+      logo: `${SITE_URL}/icon.png`,
+      image: `${SITE_URL}/og.png`,
+      sameAs: [LINKEDIN_URL],
+      email: "hello@rentokey.com",
+      telephone: "+90 541 390 10 20",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Maslak Mah. Eski Büyükdere Cad. No:27",
+        addressLocality: "Sarıyer",
+        addressRegion: "İstanbul",
+        addressCountry: "TR",
+      },
+      areaServed: [
+        { "@type": "Country", name: "Türkiye" },
+        { "@type": "Place", name: "Northern Cyprus" },
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": websiteId,
+      url: SITE_URL,
+      name: SITE_NAME,
+      alternateName: "RentOkey",
+      description: englishDescription,
+      inLanguage: ["tr-TR", "en"],
+      publisher: { "@id": organizationId },
+    },
+    {
+      "@type": ["SoftwareApplication", "WebApplication"],
+      "@id": softwareId,
+      name: SITE_NAME,
+      url: `${SITE_URL}/en`,
+      description: englishDescription,
+      applicationCategory: "BusinessApplication",
+      applicationSubCategory: "Car rental operations and fleet management",
+      operatingSystem: "Web",
+      browserRequirements: "A current web browser",
+      inLanguage: "en",
+      image: `${SITE_URL}/og.png`,
+      provider: { "@id": organizationId },
+      offers: englishOffers,
+      featureList: [
+        "Reservation timeline and live fleet plan",
+        "Customer and driver management",
+        "Automatic suitable vehicle suggestions",
+        "Vehicle handover and return management",
+        "Fleet, maintenance and document deadline tracking",
+        "Expense, payment and management reports",
+        "Excel and CSV import and export",
+        "Role-based page and action permissions",
+        "Recommended Focus contextual risk alerts",
+        "Optional RentOkey Pilot operation optimisation and smart pricing suggestions",
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${SITE_URL}/en#faq`,
+      url: `${SITE_URL}/en#faq`,
+      name: "Rent Okey frequently asked questions",
+      inLanguage: "en",
+      isPartOf: { "@id": websiteId },
+      about: { "@id": softwareId },
+      mainEntity: createFaqMainEntity(englishFaqGroups),
     },
   ],
 };

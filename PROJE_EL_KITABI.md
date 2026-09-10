@@ -553,7 +553,7 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 8. Turnstile public site key pazarlama sitesi Vercel ortamına, secret key ise yalnız API projesine eklenmeli ve gerçek iletişim gönderimi üretim alan adında uçtan uca doğrulanmalıdır.
 9. Checkout, ödeme, abonelik ve faturalandırma akışı henüz yoktur.
 10. RentOkey Pilot'ın ek paket fiyatı sitede sayısal olarak yayınlanmıyor; fiyatlandırma politikası netleşirse fiyat kartı, SSS ve yapılandırılmış veri birlikte güncellenmelidir.
-11. GA4 veya başka bir analitik sağlayıcı henüz kurulu değildir. UTM/referrer bilgisi yakalanmıyor ve deneme hesabıyla ilişkilendirilmiyor; Search Console tıklamaları kayıt dönüşümüne bağlanamıyor.
+11. GA4 web ölçüm altyapısı hazırdır ve `NEXT_PUBLIC_GA_MEASUREMENT_ID` tanımlandığında yalnız ziyaretçi onayı sonrasında çalışır. İlk ziyaret UTM/referrer/landing page bilgisi birinci taraf tarayıcı depolamasında saklanır; Google, Bing, ChatGPT, Claude, LinkedIn ve doğrudan trafik sınıflandırılır. `trial_cta_click`, `trial_form_start`, başarılı kayıt sonrası `sign_up`, `contact_form_start` ve `generate_lead` olayları web tarafında tanımlıdır. GA4 mülkünün oluşturulması, Measurement ID'nin Vercel'e eklenmesi, `sign_up` olayının önemli etkinlik yapılması, Search Console bağlantısı ve uygulama tarafındaki `email_verified` / `onboarding_completed` olayları henüz tamamlanmalıdır. Kaynağın hesap kaydıyla sunucu tarafında kalıcı eşleştirilmesi de uygulama API sözleşmesiyle birlikte yapılmalıdır.
 
 ## 16. Önerilen sonraki geliştirme sırası
 
@@ -567,9 +567,9 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 ### P1 — Lead ve ölçümleme
 
 1. İletişim formunun Turnstile doğrulaması ve e-posta teslimini üretim alan adında uçtan uca test et.
-2. GA4 mülkü ve web veri akışı oluştur; Measurement ID'yi ortam değişkeni üzerinden pazarlama sitesine bağla.
-3. İlk ziyaret için UTM parametreleri, yönlendiren alan adı, landing page ve ilk görülme zamanını birinci taraf depolamada tut; Google, Bing, ChatGPT, Claude, LinkedIn ve doğrudan trafik sınıflandırmasını tanımla.
-4. `trial_cta_click`, `trial_form_start`, `sign_up`, `email_verified` ve `onboarding_completed` ölçüm olaylarını kur; yalnız başarılı hesap oluşturma sonrasında gönderilen `sign_up` olayını önemli etkinlik olarak işaretle.
+2. GA4 mülkü ve web veri akışı oluştur; Measurement ID'yi Vercel'de `NEXT_PUBLIC_GA_MEASUREMENT_ID` olarak tanımla.
+3. GA4'te web tarafında hazır olan `sign_up` olayını önemli etkinlik olarak işaretle; `trial_cta_click`, `trial_form_start`, `contact_form_start` ve `generate_lead` olaylarının DebugView/Realtime üzerinden geldiğini doğrula.
+4. Uygulama tarafında `email_verified` ve `onboarding_completed` olaylarını kur ve web akışıyla aynı ölçüm planına bağla.
 5. Pazarlama sitesi kayıt route'u ile uygulama kayıt API'sini `attribution` nesnesi kabul edecek şekilde birlikte genişlet ve kaynak bilgisini hesap kaydına kalıcı olarak bağla. Analitik servisine ad, e-posta, şifre veya başka kişisel veri gönderme.
 6. Search Console ile GA4'ü ilişkilendir; kaynak/medium bazında deneme başlangıcı, e-posta doğrulama ve onboarding tamamlama raporları oluştur.
 7. KVKK/çerez tercihi ve ölçümleme izinlerini hukuki metinlerle birlikte ele al; kullanıcı analitik izni vermediğinde sunucu tarafı birinci taraf attribution yaklaşımının kapsamını hukuk danışmanıyla doğrula.

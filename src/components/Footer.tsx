@@ -5,9 +5,11 @@ import WhatsAppLink from "./WhatsAppLink";
 import { footerNav } from "@/lib/nav";
 import { LINKEDIN_URL } from "@/lib/seo";
 import { LinkedInIcon } from "./SocialIcons";
+import CookiePreferencesButton from "./CookiePreferencesButton";
 
 export default function Footer({ locale = "tr" }: { locale?: "tr" | "en" }) {
   const en = locale === "en";
+  const analyticsEnabled = Boolean(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID);
   return (
     <footer className="bg-brand-navy-deep text-white">
       <div className="container-page py-14">
@@ -63,13 +65,14 @@ export default function Footer({ locale = "tr" }: { locale?: "tr" | "en" }) {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-sm text-white/50 sm:flex-row">
           <p>© {new Date().getFullYear()} Rent Okey. {en ? "All rights reserved." : "Tüm hakları saklıdır."}</p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:justify-end">
             <Link href={en ? "/en/privacy" : "/gizlilik-politikasi"} className="hover:text-white">
               {en ? "Privacy Policy" : "Gizlilik Politikası"}
             </Link>
             <Link href={en ? "/en/terms" : "/kullanim-sartlari"} className="hover:text-white">
               {en ? "Terms of Use" : "Kullanım Şartları"}
             </Link>
+            {analyticsEnabled && <CookiePreferencesButton locale={locale} />}
           </div>
         </div>
       </div>

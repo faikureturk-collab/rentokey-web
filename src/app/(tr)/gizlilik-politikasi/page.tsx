@@ -34,13 +34,23 @@ export default function GizlilikPage() {
             idari tedbirlerle korunur.
           </p>
 
-          <h2 className="text-lg font-bold text-brand-navy">4. Haklarınız</h2>
+          <h2 className="text-lg font-bold text-brand-navy">4. Analitik ve trafik kaynağı ölçümü</h2>
+          <p>
+            Açık izniniz olduğunda Google Analytics 4; ziyaretlerin hangi kanaldan geldiğini,
+            görüntülenen sayfaları ve ücretsiz deneme akışındaki adımları ölçmek için kullanılır.
+            İlk trafik kaynağı, kampanya parametreleri, yönlendiren alan adı ve açılış sayfası
+            birinci taraf tarayıcı depolamasında tutulabilir. Adınız, e-posta adresiniz, telefon
+            numaranız ve şifreniz analitik hizmetine gönderilmez. Tercihinizi sayfanın altındaki
+            “Çerez tercihleri” bağlantısından dilediğiniz zaman değiştirebilirsiniz.
+          </p>
+
+          <h2 className="text-lg font-bold text-brand-navy">5. Haklarınız</h2>
           <p>
             KVKK kapsamında verilerinize erişme, düzeltme, silme ve işlenmesine itiraz etme
             haklarına sahipsiniz. Taleplerinizi hello@rentokey.com adresine iletebilirsiniz.
           </p>
 
-          <h2 className="text-lg font-bold text-brand-navy">5. İletişim</h2>
+          <h2 className="text-lg font-bold text-brand-navy">6. İletişim</h2>
           <p>
             Gizlilik politikamızla ilgili sorularınız için hello@rentokey.com adresinden bizimle
             iletişime geçebilirsiniz.

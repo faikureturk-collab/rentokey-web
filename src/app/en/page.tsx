@@ -13,10 +13,11 @@ import AddonModulesSection from "@/components/home/AddonModulesSection";
 import FaqSection from "@/components/home/FaqSection";
 import IletisimSection from "@/components/home/IletisimSection";
 import CtaBanner from "@/components/CtaBanner";
-import { createPageMetadata, SITE_URL } from "@/lib/seo";
+import { createPageMetadata } from "@/lib/seo";
+import { englishHomeStructuredData } from "@/lib/structured-data";
 
 export const metadata = createPageMetadata({
-  title: "Car Rental & Fleet Management Software | RentOkey",
+  title: "Car Rental & Fleet Management Software | Rent Okey",
   description: "Manage reservations, fleet, handovers, returns, payments and operational risks with RentOkey. English support and a 21-day free trial.",
   path: "/en",
 });
@@ -24,15 +25,7 @@ export const metadata = createPageMetadata({
 export default function EnglishHome() {
   return (
     <>
-      <StructuredData data={{
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        name: "RentOkey",
-        url: `${SITE_URL}/en`,
-        applicationCategory: "BusinessApplication",
-        operatingSystem: "Web",
-        description: "Car rental operations and fleet management software for businesses in Türkiye and Northern Cyprus.",
-      }} />
+      <StructuredData data={englishHomeStructuredData} />
       <Hero locale="en" />
       <StatsBar locale="en" />
       <UrunSection locale="en" />

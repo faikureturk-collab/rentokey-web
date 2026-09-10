@@ -94,3 +94,13 @@ test("English homepage preserves the complete Turkish homepage section flow", ()
     assert.ok(html.includes(text), `missing English content: ${text}`);
   }
 });
+
+test("English homepage social title is not duplicated and schema matches the complete page", () => {
+  const html = fs.readFileSync(new URL("../.next/server/app/en.html", import.meta.url), "utf8");
+  assert.ok(html.includes('property="og:title" content="Car Rental &amp; Fleet Management Software | Rent Okey"'));
+  assert.equal(html.includes("RentOkey | Rent Okey"), false);
+  for (const schemaType of ["Organization", "WebSite", "SoftwareApplication", "FAQPage"]) {
+    assert.ok(html.includes(`\\\"@type\\\":\\\"${schemaType}\\\"`) || html.includes(`\\\"${schemaType}\\\"`), `missing ${schemaType} schema`);
+  }
+  assert.ok(html.includes("Where is my data stored?"));
+});

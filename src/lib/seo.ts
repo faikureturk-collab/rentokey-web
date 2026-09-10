@@ -27,7 +27,11 @@ export function createPageMetadata({
   path,
   index = true,
 }: PageMetadataOptions): Metadata {
-  const socialTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+  // Product copy occasionally uses the compact "RentOkey" spelling. Treat both
+  // spellings as the same brand so social titles never become
+  // "… | RentOkey | Rent Okey".
+  const hasBrand = /rent\s?okey/i.test(title);
+  const socialTitle = hasBrand ? title : `${title} | ${SITE_NAME}`;
   const languages = alternateRoutes(path);
   const en = path === "/en" || path.startsWith("/en/");
 

@@ -1,5 +1,9 @@
 # Rent Okey web sitesi — devam notları
 
+## Kalıcı geliştirme kontrolü
+
+Pazarlama sitesine yeni bir içerik veya işlev eklendiğinde Türkçe ve İngilizce sürümler aynı çalışma içinde birlikte ele alınır; İngilizce karşılık, rota eşleşmesi, dil değiştirici, `hreflang` ve form dili kontrol edilir. Her web sitesi güncellemesinde ayrıca SEO ve GEO etkisi değerlendirilir; metadata, canonical, sitemap, robots, indeksleme tercihi, yapılandırılmış veri, iç bağlantılar, semantik içerik ve güncelleme tarihleri yalnızca gerektiği ölçüde güncellenir. Bu iki kontrol tamamlanmadan geliştirme bitmiş kabul edilmez.
+
 Tarih: 2 Eylül 2026
 
 Projenin ürün doğruları, karar geçmişi, ana sayfa dönüşüm hikâyesi, paket sistemi, teknik mimarisi ve sonraki geliştirme sırası tek bir kalıcı kaynakta toplandı: `PROJE_EL_KITABI.md`. Yeni bir geliştirmeye başlamadan önce önce bu belge, ardından aşağıdaki son çalışma notları okunmalıdır.
@@ -55,7 +59,7 @@ Teknik SEO altyapısı tamamlandı. Tüm güçlü sayfalara benzersiz başlık, 
 1. Gerçek ürün galerisi eklenecekse uygulamadan temiz, yüksek çözünürlüklü ve kontrollü yeni ekran görüntüleri al; mevcut geçici görselleri doğrudan yayına koyma.
 2. `app.rentokey.com` canlı uygulamasındaki `+` butonunun gerçek kaynak kodunu düzeltmek için uygulamanın frontend deposuna erişim gerektiğini unutma; şu an yalnız pazarlama görseli düzeltildi.
 3. Yeni modül akışındaki metin ve örnek değerleri gerçek paket kapsamıyla son kez doğrula.
-4. Google Arama, ChatGPT, Claude ve diğer kaynaklardan gelen deneme kayıtlarını ölçmek için GA4 ve sunucu tarafı attribution çalışmasını ele al. İlk ziyaret UTM/referrer/landing page bilgisi saklanmalı; `trial_cta_click`, `trial_form_start`, `sign_up`, `email_verified` ve `onboarding_completed` olayları tanımlanmalı; `sign_up` önemli etkinlik yapılmalıdır.
+4. GA4 web ölçüm kodu ve onay arayüzü hazırlandı. İlk ziyaret UTM/referrer/landing page bilgisi saklanıyor; Google, Bing, ChatGPT, Claude, LinkedIn ve doğrudan trafik sınıflandırılıyor. Web tarafında `trial_cta_click`, `trial_form_start`, başarılı kayıt sonrası `sign_up`, `contact_form_start` ve `generate_lead` tanımlı. Sıradaki işler: GA4 mülkünü oluşturup `NEXT_PUBLIC_GA_MEASUREMENT_ID` değerini Vercel'e eklemek, `sign_up` olayını önemli etkinlik yapmak, Search Console'u bağlamak ve uygulamada `email_verified` ile `onboarding_completed` olaylarını kurmak.
 5. Yayına geçmeden önce Git diff'ini kullanıcıyla gözden geçir, ardından yalnız açık onayla commit/push/deploy yap.
 6. Attribution bilgisinin gerçek hesapla kalıcı biçimde eşleşmesi için pazarlama sitesindeki `/api/kayit-ol` route'unu ve `app.rentokey.com/api/kayit-ol` sözleşmesini birlikte genişlet. Analitik servisine ad, e-posta veya şifre gönderme; ölçümlemeyi KVKK/çerez tercihiyle birlikte tasarla.
 

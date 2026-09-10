@@ -3,7 +3,7 @@
 import { formCopy } from "@/lib/form-copy";
 import type { Locale } from "@/lib/locale";
 
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useRef, useState, type FormEvent, type ReactNode } from "react";
 import Link from "next/link";
 import {
   AlertCircle,
@@ -16,6 +16,7 @@ import {
   Mail,
 } from "lucide-react";
 import { createTrialAccount, getTrialSignupErrorMessage } from "@/lib/trial-signup";
+import { trackEvent } from "@/lib/analytics";
 
 type FormState = {
   fullName: string;
@@ -40,9 +41,14 @@ export default function TrialOnboarding({ locale = "tr" }: { locale?: Locale }) 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedEmail, setSubmittedEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const formStarted = useRef(false);
   const isComplete = submittedEmail.length > 0;
 
   function updateField<K extends keyof FormState>(key: K, value: FormState[K]) {
+    if (!formStarted.current) {
+      formStarted.current = true;
+      trackEvent("trial_form_start", { locale });
+    }
     setForm((current) => ({ ...current, [key]: value }));
     setErrorMessage("");
   }
@@ -73,6 +79,7 @@ export default function TrialOnboarding({ locale = "tr" }: { locale?: Locale }) 
 
       setForm((current) => ({ ...current, password: "" }));
       setSubmittedEmail(email);
+      trackEvent("sign_up", { method: "email", locale });
     } catch (error) {
       setErrorMessage(getTrialSignupErrorMessage(error, locale));
     } finally {
