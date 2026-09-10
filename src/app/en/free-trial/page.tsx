@@ -1,9 +1,52 @@
+import { CalendarDays, Check, CreditCard, Gauge, ShieldCheck } from "lucide-react";
 import TrialOnboarding from "@/components/TrialOnboarding";
-import WhatsAppLink from "@/components/WhatsAppLink";
 import { createPageMetadata } from "@/lib/seo";
 
-export const metadata = createPageMetadata({title:"Start Your 21-Day Free Trial", description:"Create your RentOkey account in one step. Verify your email, set up your fleet and start your 21-day trial. No credit card required. English support available.",path:"/en/free-trial"});
+export const metadata = createPageMetadata({
+  title: "Try Car Rental Software Free for 21 Days",
+  description: "Create your RentOkey workspace with no credit card or setup fee. Try it with your own fleet for 21 days and request free first-import support within 48 hours.",
+  path: "/en/free-trial",
+});
+
+const benefits = [
+  "Explore with an 8-vehicle sample fleet or add your own vehicles",
+  "See handovers, returns and upcoming risks in one flow",
+  "Import customer, vehicle, reservation, expense and maintenance data from Excel / CSV",
+  "Test the desktop, tablet and mobile workflows",
+];
+
+const metrics = [
+  { icon: CalendarDays, value: "21 days", label: "Free use" },
+  { icon: CreditCard, value: "TRY 0", label: "Starting fee" },
+  { icon: Gauge, value: "48 hours", label: "Excel / CSV support request" },
+];
 
 export default function FreeTrialPage() {
-  return <section className="bg-surface-soft/50"><div className="container-page grid items-start gap-10 py-12 sm:py-16 lg:grid-cols-2"><div className="lg:pt-10"><p className="text-xs font-bold uppercase tracking-widest text-brand-green-dark">Your fleet. Your team. Your trial.</p><h1 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">Start with a clearer working day.</h1><p className="mt-5 max-w-lg text-lg leading-relaxed text-brand-navy/60">Create your account, verify your email and set up your company in the app. Explore the core platform with your own vehicles for 21 days.</p><ul className="mt-7 space-y-3 text-sm text-brand-navy/70"><li>✓ No credit card or automatic charge</li><li>✓ Request first-import help within the first 48 hours</li><li>✓ Support in Turkish and English</li></ul><p className="mt-5 max-w-lg text-xs leading-relaxed text-brand-navy/55">Pilot and optional modules are separate; ask about trial access. Migration completion depends on your data. Verification emails and the application follow their own language settings.</p><div className="mt-7"><WhatsAppLink locale="en" /></div></div><TrialOnboarding locale="en" /></div></section>;
+  return (
+    <section className="relative overflow-hidden bg-[#f4f7fa]">
+      <div className="pointer-events-none absolute -left-40 top-24 h-96 w-96 rounded-full bg-brand-blue/[0.06] blur-3xl" />
+      <div className="pointer-events-none absolute -right-40 bottom-10 h-96 w-96 rounded-full bg-brand-green/[0.08] blur-3xl" />
+      <div className="container-page relative grid min-h-[calc(100vh-72px)] items-center gap-10 py-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-16 lg:py-16">
+        <div className="lg:py-8">
+          <span className="inline-flex items-center gap-2 rounded-full border border-brand-green/20 bg-white px-4 py-1.5 text-sm font-semibold text-brand-green-dark shadow-sm">
+            <span className="h-2 w-2 rounded-full bg-brand-green" /> Free account in one step
+          </span>
+          <h1 className="mt-6 max-w-xl text-4xl font-extrabold leading-[1.04] tracking-[-0.045em] text-brand-navy sm:text-5xl lg:text-[56px]">
+            Test your real operation <span className="text-brand-green">before you buy.</span>
+          </h1>
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-brand-navy/55">
+            Create your account, verify your email address and evaluate RentOkey with your own fleet, reservations and team for 21 days. Import data yourself with Excel / CSV and request free support within the first 48 hours if needed.
+          </p>
+          <ul className="mt-7 space-y-3.5">
+            {benefits.map((benefit) => <li key={benefit} className="flex items-start gap-3"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-green/10 text-brand-green-dark"><Check className="h-3 w-3" strokeWidth={3} /></span><span className="text-sm leading-relaxed text-brand-navy/70">{benefit}</span></li>)}
+          </ul>
+          <div className="mt-9 grid max-w-xl grid-cols-3 overflow-hidden rounded-2xl border border-surface-border bg-white">
+            {metrics.map((metric, index) => { const Icon = metric.icon; return <div key={metric.label} className={`p-3.5 sm:p-4 ${index > 0 ? "border-l border-surface-border" : ""}`}><Icon className="h-4 w-4 text-brand-blue" /><p className="mt-2 text-sm font-extrabold text-brand-navy sm:text-base">{metric.value}</p><p className="mt-0.5 text-[9px] leading-tight text-brand-navy/40 sm:text-[10px]">{metric.label}</p></div>; })}
+          </div>
+          <div className="mt-6 flex items-center gap-2 text-xs font-medium text-brand-navy/45"><ShieldCheck className="h-4 w-4 text-brand-green" /> A secure start without payment details</div>
+        </div>
+        <TrialOnboarding locale="en" />
+      </div>
+    </section>
+  );
 }

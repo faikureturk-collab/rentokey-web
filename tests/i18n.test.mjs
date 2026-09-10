@@ -60,3 +60,17 @@ test("built language pages have correct HTML language, canonical and reciprocal 
     }
   }
 });
+
+test("English homepage preserves the complete Turkish homepage section flow", () => {
+  const html = fs.readFileSync(new URL("../.next/server/app/en.html", import.meta.url), "utf8");
+  const ids = ["product", "features", "recommended-focus", "pilot", "reservation-flow", "how-it-works", "pricing", "about", "addons", "faq", "contact"];
+  let previous = -1;
+  for (const id of ids) {
+    const position = html.indexOf(`id="${id}"`);
+    assert.ok(position > previous, `${id} should exist in the expected order`);
+    previous = position;
+  }
+  for (const text of ["Start the day with Recommended Focus", "From customer request to confirmation", "Included in the core subscription", "Data security and support"]) {
+    assert.ok(html.includes(text), `missing English content: ${text}`);
+  }
+});

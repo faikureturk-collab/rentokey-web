@@ -1,25 +1,52 @@
-import Button from "@/components/Button";
 import StructuredData from "@/components/StructuredData";
-import EnglishFleetDemo from "@/components/english/EnglishFleetDemo";
-import EnglishPilotDemo from "@/components/english/EnglishPilotDemo";
-import EnglishPricing from "@/components/english/EnglishPricing";
-import { EnglishCta, EnglishContact, EnglishFaq, EnglishSection } from "@/components/english/EnglishSections";
-import { englishFeatures } from "@/lib/english";
+import Hero from "@/components/home/Hero";
+import StatsBar from "@/components/home/StatsBar";
+import UrunSection from "@/components/home/UrunSection";
+import FeatureGrid from "@/components/home/FeatureGrid";
+import FocusSection from "@/components/home/FocusSection";
+import PilotSection from "@/components/home/PilotSection";
+import ReservationFlowSection from "@/components/home/ReservationFlowSection";
+import HowItWorks from "@/components/home/HowItWorks";
+import PricingSection from "@/components/PricingSection";
+import HakkimizdaSection from "@/components/home/HakkimizdaSection";
+import AddonModulesSection from "@/components/home/AddonModulesSection";
+import FaqSection from "@/components/home/FaqSection";
+import IletisimSection from "@/components/home/IletisimSection";
+import CtaBanner from "@/components/CtaBanner";
 import { createPageMetadata, SITE_URL } from "@/lib/seo";
 
-export const metadata = createPageMetadata({ title: "Car Rental & Fleet Management Software", description: "Manage reservations, your fleet, pickups, returns and operational risks with RentOkey. English support, transparent TRY pricing and a 21-day free trial.", path: "/en" });
+export const metadata = createPageMetadata({
+  title: "Car Rental & Fleet Management Software | RentOkey",
+  description: "Manage reservations, fleet, handovers, returns, payments and operational risks with RentOkey. English support and a 21-day free trial.",
+  path: "/en",
+});
 
 export default function EnglishHome() {
-  return <>
-    <StructuredData data={{"@context":"https://schema.org","@type":"SoftwareApplication",name:"RentOkey",url:`${SITE_URL}/en`,applicationCategory:"BusinessApplication",operatingSystem:"Web",description:"Car rental operations and fleet management software for businesses in Türkiye and Northern Cyprus."}} />
-    <section className="overflow-hidden border-b border-surface-border bg-surface-soft/50"><div className="container-page grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-[1.1fr_.9fr]"><div><p className="text-xs font-bold uppercase tracking-widest text-brand-green-dark">Built for car rental operations</p><h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.06] tracking-[-.04em] sm:text-5xl lg:text-6xl">Run the operation.<br /><span className="text-brand-green">Not the chaos.</span></h1><p className="mt-5 max-w-xl text-base leading-relaxed text-brand-navy/60 sm:text-lg">Bookings, vehicles, handovers and payments in one place. See tomorrow’s pressure points before they become today’s delays.</p><div className="mt-6 flex flex-wrap gap-3"><Button href="/en/free-trial" size="lg" icon>Try free for 21 days</Button><Button href="#product" variant="secondary" size="lg">Explore the fleet demo</Button></div><p className="mt-4 max-w-lg text-xs leading-relaxed text-brand-navy/55">No credit card · No setup fee · Start without a sales call</p><p className="mt-2 text-xs font-semibold text-brand-green-dark">Support in English and Turkish</p></div><div className="rounded-3xl bg-brand-navy p-6 text-white shadow-xl sm:p-8"><p className="text-xs font-bold uppercase tracking-widest text-white/50">Recommended Focus · illustrative example</p><h2 className="mt-6 text-2xl font-extrabold">A booking is confirmed.<br />Is the next pickup ready?</h2><div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5"><p className="text-xs text-white/60">Outstanding balance</p><p className="mt-2 text-3xl font-extrabold">TRY 8,400</p><p className="mt-2 text-sm text-white/65">Review the balance before handover.</p></div><div className="mt-3 rounded-2xl border border-amber-300/20 bg-amber-300/10 p-5"><p className="font-bold text-amber-200">35-minute preparation window</p><p className="mt-2 text-sm text-white/65">Check cleaning and transfer time before the next booking.</p></div><p className="mt-4 text-xs text-white/40">Synthetic example, not a live customer account.</p></div></div></section>
-    <EnglishSection id="product" eyebrow="One timeline. The whole fleet." title="70 vehicles should not mean 70 separate conversations."><p className="mb-7 max-w-3xl text-brand-navy/60">Filter by vehicle, class, branch and status. Keep monthly rentals visible, identify overlapping reservations and review a suitable alternative before confirming a change.</p><EnglishFleetDemo /></EnglishSection>
-    <EnglishSection id="features" eyebrow="Your everyday essentials" title="From the first reservation to the final return."><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{englishFeatures.map(([title,text],i) => <div key={title} className="rounded-2xl border border-surface-border p-6"><span className="text-xs font-extrabold text-brand-green-dark">0{i+1}</span><h3 className="mt-4 text-lg font-bold">{title}</h3><p className="mt-3 text-sm leading-relaxed text-brand-navy/60">{text}</p></div>)}</div></EnglishSection>
-    <EnglishSection id="pilot" eyebrow="RentOkey Pilot · paid add-on" title="See the risk. Review the solution. Approve the plan."><p className="mb-7 max-w-3xl text-brand-navy/60">Recommended Focus shows what needs attention. Pilot prepares suggested actions, including smart pricing, with reasons and estimated impact. You decide what happens next.</p><EnglishPilotDemo /><div className="mt-7"><Button href="/en/pilot" variant="secondary" icon>Explore RentOkey Pilot</Button></div></EnglishSection>
-    <EnglishSection id="migration" eyebrow="Move over with a plan" title="Bring your records, not your old workarounds."><div className="grid gap-5 md:grid-cols-3">{[["01 · Prepare","Export your customers, reservations, vehicles, expenses and maintenance records to Excel or CSV."],["02 · Check","Review missing fields and validation errors. Request first-import support within 48 hours of opening your trial."],["03 · Start together","Compare imported records, assign team roles and test your first pickup and return workflow."]].map(([title,text]) => <div key={title} className="rounded-2xl bg-surface-soft p-6"><h3 className="font-bold">{title}</h3><p className="mt-3 text-sm leading-relaxed text-brand-navy/60">{text}</p></div>)}</div><p className="mt-5 text-xs leading-relaxed text-brand-navy/50">The first 48 hours are the window for requesting free first-import support, not a guaranteed completion time. Timing depends on the scope and quality of your data.</p></EnglishSection>
-    <EnglishPricing />
-    <EnglishSection id="about" eyebrow="About RentOkey" title="Designed around the work behind every rental."><p className="max-w-3xl text-lg leading-relaxed text-brand-navy/60">RentOkey brings fleet planning and day-to-day operations together for rental businesses in Türkiye and Northern Cyprus. Plan on desktop, keep the team informed and handle the next pickup or return from a mobile device. Our support team works in Turkish and English.</p></EnglishSection>
-    <EnglishSection id="addons" eyebrow="Optional modules" title="Extend your setup when you need more."><p className="mb-6 max-w-3xl text-brand-navy/60">Pilot includes operation plans and smart pricing suggestions. The following modules are separate from the base subscription; confirm scope, availability and pricing with our team.</p><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{[["Photo-based damage comparison","Review possible differences between pickup and return photos with team approval."],["Message-to-reservation draft","Prepare a vehicle and price draft from a customer request for your team to review."],["Digital contracts and signatures","A contract and signature workflow separate from the reservation confirmation."],["Custom integrations and API","Discuss authorised data connections and integration requirements."],["Activity history screen","Review record operations with user and time information in a detailed interface."]].map(([title,text]) => <div key={title} className="rounded-2xl border border-surface-border p-6"><h3 className="font-bold">{title}</h3><p className="mt-3 text-sm leading-relaxed text-brand-navy/60">{text}</p></div>)}<div className="rounded-2xl bg-brand-navy p-6 text-white"><h3 className="font-bold">Let’s define the right scope.</h3><a href="#contact" className="mt-6 inline-block text-sm font-bold text-brand-green underline underline-offset-4">Discuss optional modules</a></div></div></EnglishSection>
-    <EnglishFaq /><EnglishContact /><EnglishCta />
-  </>;
+  return (
+    <>
+      <StructuredData data={{
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "RentOkey",
+        url: `${SITE_URL}/en`,
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        description: "Car rental operations and fleet management software for businesses in Türkiye and Northern Cyprus.",
+      }} />
+      <Hero locale="en" />
+      <StatsBar locale="en" />
+      <UrunSection locale="en" />
+      <FeatureGrid locale="en" />
+      <FocusSection locale="en" />
+      <PilotSection locale="en" />
+      <ReservationFlowSection locale="en" />
+      <HowItWorks locale="en" />
+      <PricingSection id="pricing" locale="en" />
+      <HakkimizdaSection locale="en" />
+      <AddonModulesSection locale="en" />
+      <FaqSection locale="en" />
+      <IletisimSection locale="en" />
+      <CtaBanner locale="en" />
+    </>
+  );
 }
