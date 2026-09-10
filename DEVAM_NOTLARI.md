@@ -120,3 +120,17 @@ Bu bölüm önceki demo yerleşimi notlarının güncel halidir. Canlı uygulama
 - İletişim bölümü, destek SSS cevabı ve footer'a ortak `WhatsAppLink` eklendi. `src/lib/contact.ts` numara bağlantısı/hazır mesaj ve destek saatleri için ortak kaynaktır.
 - Hazır mesaj: “Merhaba, RentOkey hakkında bilgi almak istiyorum.” Bağlantı yeni sekmede sohbet açar; otomatik mesaj göndermez. Yüzen buton veya harici WhatsApp script'i eklenmedi.
 - İletişim bölümünde haftanın 7 günü 09.00–22.00 (Türkiye saati) bilgisi görünür. Mevcut telefon/e-posta/form seçenekleri korunur.
+
+## 10 Eylül 2026 — İngilizce pazarlama sürümü (ilk aşama)
+
+- Kullanıcı İngilizce destek sunulduğunu teyit etti. TR SSS/iletişim ve EN sayfalarında Türkçe/İngilizce destek bilgisi var; saatler 09.00–22.00 Türkiye saati. Uygulama arayüzü ve doğrulama e-postalarının İngilizce olduğu varsayılmadı.
+- İngilizce URL'ler: `/en`, `/en/pilot`, `/en/free-trial`, `/en/privacy`, `/en/terms`. Ana sayfada fiyatlandırma, iletişim, SSS, aktarım, özellikler ve ek modüller bulunur. Blog/kılavuz çevirileri sonraki aşamaya bırakıldı; EN blog bağlantısı “Blog (Turkish)” diye işaretli.
+- Türkçe sayfalar `src/app/(tr)/` route grubuna taşındı; silinmedi. URL'ler değişmedi. EN ve TR ayrı kök layout kullanır; doğru html lang sunucuda üretilir. Dil değiştirmek tam sayfa geçişidir. API/sitemap/robots/ikonlar ortak app kökünde kalır.
+- Dil seçimi `LanguageSwitcher` ve `lib/locale.ts` ile aynı sayfanın karşılığına gider; çevirisi olmayan sayfadan EN ana sayfaya geçer. Olmayan çevirilere hreflang verilmez. Gerçek karşılıklar için canonical, karşılıklı hreflang ve x-default üretilir; üç indekslenebilir EN sayfası sitemap'e eklendi.
+- Ortak bileşenler: Header, Footer, Logo, WhatsAppLink, FaqAccordion, ContactForm, TrialOnboarding, TurnstileWidget. Form çevirileri `lib/form-copy.ts` içinde. API endpoint/alan değerleri değişmedi; contact-form action ve turnstileToken korunur. İngilizce widget dili, geri bildirimler ve İngilizce hata fallback'leri eklendi. Kayıtta locale alanı backend'e gönderilmez; API sözleşmesi aynı kalır.
+- İngilizce içerik: `lib/english.ts`, `components/english/`. Filo/Pilot demoları ve fiyat hesaplayıcısı ortak fleet-demo/pilot-demo/pricing verisini kullanır. Para birimi TRY, yıllık indirim %20; yeni fiyat veya ücretsiz Pilot iddiası yok. Demolar onayla yalnız yerel örnek veriyi değiştirir.
+- Yasal sayfalar mevcut TR metnin çevirisidir; görünür orijinal bağlantıları vardır, noindex durumu TR ile aynı. Yayın öncesi hukuk kontrolü önerilir; yeni GDPR/uluslararası uyum garantisi eklenmedi.
+- Doğrulama: lint ve webpack üretim build başarılı; 5 mevcut demo testi. `tests/i18n.test.mjs` dil eşleştirmeleri, form metinleri, hatalar, mock kayıt isteği ve build HTML canonical/hreflang/lang kontrollerini içerir (önce build çalıştırın).
+- Tarayıcı: EN masaüstü görünümü; mobilde yatay taşma kontrolü; TR tablet menüsü; kayıt TR/EN karşılıklı geçişi ve şifre gösterme; EN 70 araç fiyatı aylık 7.240 TRY / yıllık aylık karşılık 5.792 TRY; araç yeniden atama ve Pilot onayı kontrol edildi.
+- Yerel ortamda Turnstile site key yok; gerçek iletişim gönderimi, canlı kayıt/e-posta veya yeni hesap oluşturma yapılmadı. Bu akışlar üretim ortamında ayrıca smoke-test edilmeli; güvenlik bypass edilmedi.
+- Önizleme için yerel production sunucusu 3012 portunda açıldı. Commit/push/canlı dağıtım yapılmadı.

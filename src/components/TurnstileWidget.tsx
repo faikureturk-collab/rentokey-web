@@ -1,11 +1,15 @@
 "use client";
 
+import { formCopy } from "@/lib/form-copy";
+import type { Locale } from "@/lib/locale";
+
 import Script from "next/script";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 type TurnstileOptions = {
   sitekey: string;
   action: string;
+  language: "tr" | "en";
   theme: "auto" | "light" | "dark";
   size: "normal" | "flexible" | "compact";
   callback: (token: string) => void;
@@ -26,18 +30,21 @@ declare global {
 }
 
 export default function TurnstileWidget({
+  locale = "tr",
   siteKey,
   action,
   resetSignal,
   onTokenChange,
   onError,
 }: {
+  locale?: Locale;
   siteKey: string;
   action: string;
   resetSignal: number;
   onTokenChange: (token: string) => void;
   onError: (message: string) => void;
 }) {
+  const t = useCallback((text: string) => formCopy(text, locale), [locale]);
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const initialResetSignal = useRef(resetSignal);
@@ -57,6 +64,7 @@ export default function TurnstileWidget({
       sitekey: siteKey,
       action,
       theme: "auto",
+      language: locale,
       size: "flexible",
       callback: (token) => onTokenChangeRef.current(token),
       "expired-callback": () => {
@@ -65,11 +73,11 @@ export default function TurnstileWidget({
       },
       "error-callback": () => {
         onTokenChangeRef.current("");
-        onErrorRef.current("Güvenlik doğrulaması tamamlanamadı. Lütfen sayfayı yenileyip tekrar deneyin.");
+        onErrorRef.current(t("Güvenlik doğrulaması tamamlanamadı. Lütfen sayfayı yenileyip tekrar deneyin."));
         return true;
       },
     });
-  }, [action, siteKey]);
+  }, [action, siteKey, locale, t]);
 
   useEffect(() => {
     if (scriptReady) renderWidget();
@@ -90,14 +98,12 @@ export default function TurnstileWidget({
 
   if (!siteKey) {
     return (
-      <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-800">
-        Güvenlik doğrulaması yapılandırılmadı. Lütfen daha sonra tekrar deneyin.
-      </div>
+      <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-800">{t("Güvenlik doğrulaması yapılandırılmadı. Lütfen daha sonra tekrar deneyin.")}</div>
     );
   }
 
   return (
-    <div id="contact-form-turnstile" tabIndex={-1} aria-label="Güvenlik doğrulaması" className="min-h-[65px] outline-none">
+    <div id="contact-form-turnstile" tabIndex={-1} aria-label={t("Güvenlik doğrulaması")} className="min-h-[65px] outline-none">
       <Script
         id="cloudflare-turnstile"
         src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"

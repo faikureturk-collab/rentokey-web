@@ -146,7 +146,7 @@ export const faqGroups: FaqGroup[] = [
         question: "Destek kanalları ve yanıt süreleri nelerdir?",
         whatsapp: true,
         answer:
-          "Rent Okey desteğine e-posta ve WhatsApp üzerinden ulaşabilirsiniz. Destek ekibimiz haftanın 7 günü 09.00–22.00 saatleri arasında hizmet verir. Destek çalışma saatleri içinde iletilen, operasyonu durduran kritik taleplere 1 saat içinde; diğer teknik ve kullanım taleplerine ise en geç 4 saat içinde ilk yanıt vermeyi hedefleriz. Çözüm süresi talebin kapsamına göre değişebilir. İnceleme devam ettiği sürece kullanıcıya düzenli olarak bilgi verilir.",
+          "Rent Okey desteğine Türkçe ve İngilizce olarak e-posta ve WhatsApp üzerinden ulaşabilirsiniz. Destek ekibimiz haftanın 7 günü 09.00–22.00 (Türkiye saati) arasında hizmet verir. Destek çalışma saatleri içinde iletilen, operasyonu durduran kritik taleplere 1 saat içinde; diğer teknik ve kullanım taleplerine ise en geç 4 saat içinde ilk yanıt vermeyi hedefleriz. Çözüm süresi talebin kapsamına göre değişebilir. İnceleme devam ettiği sürece kullanıcıya düzenli olarak bilgi verilir.",
       },
     ],
   },

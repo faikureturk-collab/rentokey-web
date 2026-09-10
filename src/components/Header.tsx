@@ -6,18 +6,27 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import Button from "./Button";
 import { primaryNav } from "@/lib/nav";
+import LanguageSwitcher from "./LanguageSwitcher";
+import type { Locale } from "@/lib/locale";
 
-export default function Header() {
+export default function Header({ locale = "tr" }: { locale?: Locale }) {
+  const en = locale === "en";
+  const navigation: typeof primaryNav = en ? [
+    { label: "Product", href: "/en#product" },
+    { label: "Pilot", href: "/en/pilot" },
+    { label: "Pricing", href: "/en#pricing" },
+    { label: "Contact", href: "/en#contact" },
+  ] : primaryNav;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSection, setMobileSection] = useState<string | null>(null);
 
   return (
     <header className="sticky top-0 z-50 border-b border-surface-border/70 bg-white/90 backdrop-blur">
       <div className="container-page flex h-[72px] items-center justify-between">
-        <Logo />
+        <Logo locale={locale} />
 
         <nav className="hidden items-center gap-8 lg:flex">
-          {primaryNav.map((item) =>
+          {navigation.map((item) =>
             item.children ? (
               <div key={item.label} className="group relative">
                 <button
@@ -61,24 +70,28 @@ export default function Header() {
             href="https://app.rentokey.com"
             className="px-3 text-[15px] font-medium text-brand-navy/80 hover:text-brand-navy"
           >
-            Giriş yap
+            {en ? "Sign in" : "Giriş yap"}
           </a>
-          <Button href="/ucretsiz-dene">Ücretsiz dene</Button>
+          <Button href={en ? "/en/free-trial" : "/ucretsiz-dene"}>{en ? "Start free trial" : "Ücretsiz dene"}</Button>
         </div>
 
+        <div className="flex items-center gap-2">
+        <LanguageSwitcher locale={locale} />
         <button
           className="flex h-10 w-10 items-center justify-center rounded-lg text-brand-navy lg:hidden"
           onClick={() => setMobileOpen((v) => !v)}
-          aria-label="Menüyü aç/kapat"
+          aria-label={en ? "Toggle menu" : "Menüyü aç/kapat"}
+          aria-expanded={mobileOpen}
         >
           {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
+        </div>
       </div>
 
       {mobileOpen && (
         <div className="border-t border-surface-border bg-white px-5 pb-6 pt-2 lg:hidden">
           <nav className="flex flex-col divide-y divide-surface-border/70">
-            {primaryNav.map((item) =>
+            {navigation.map((item) =>
               item.children ? (
                 <div key={item.label} className="py-1">
                   <button
@@ -130,10 +143,10 @@ export default function Header() {
               className="rounded-full border border-surface-border py-2.5 text-center text-[15px] font-medium text-brand-navy"
               onClick={() => setMobileOpen(false)}
             >
-              Giriş yap
+              {en ? "Sign in" : "Giriş yap"}
             </a>
-            <Button href="/ucretsiz-dene" className="w-full">
-              Ücretsiz dene
+            <Button href={en ? "/en/free-trial" : "/ucretsiz-dene"} className="w-full">
+              {en ? "Start free trial" : "Ücretsiz dene"}
             </Button>
           </div>
         </div>

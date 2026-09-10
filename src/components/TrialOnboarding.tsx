@@ -1,5 +1,8 @@
 "use client";
 
+import { formCopy } from "@/lib/form-copy";
+import type { Locale } from "@/lib/locale";
+
 import { useState, type FormEvent, type ReactNode } from "react";
 import Link from "next/link";
 import {
@@ -30,7 +33,8 @@ const initialForm: FormState = {
 
 const APP_URL = "https://app.rentokey.com/";
 
-export default function TrialOnboarding() {
+export default function TrialOnboarding({ locale = "tr" }: { locale?: Locale }) {
+  const t = (text: string) => formCopy(text, locale);
   const [form, setForm] = useState<FormState>(initialForm);
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -70,7 +74,7 @@ export default function TrialOnboarding() {
       setForm((current) => ({ ...current, password: "" }));
       setSubmittedEmail(email);
     } catch (error) {
-      setErrorMessage(getTrialSignupErrorMessage(error));
+      setErrorMessage(getTrialSignupErrorMessage(error, locale));
     } finally {
       setIsSubmitting(false);
     }
@@ -85,38 +89,26 @@ export default function TrialOnboarding() {
         <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-green/10 text-brand-green-dark">
           <CheckCircle2 className="h-7 w-7" />
         </span>
-        <p className="mt-7 text-xs font-bold uppercase tracking-[0.14em] text-brand-green-dark">
-          Hesabınız oluşturuldu
-        </p>
-        <h2 className="mt-2 text-2xl font-extrabold tracking-[-0.025em] text-brand-navy sm:text-3xl">
-          E-posta adresinizi doğrulayın.
-        </h2>
+        <p className="mt-7 text-xs font-bold uppercase tracking-[0.14em] text-brand-green-dark">{t("Hesabınız oluşturuldu")}</p>
+        <h2 className="mt-2 text-2xl font-extrabold tracking-[-0.025em] text-brand-navy sm:text-3xl">{t("E-posta adresinizi doğrulayın.")}</h2>
         <p className="mt-4 text-sm leading-relaxed text-brand-navy/55">
-          <span className="font-semibold text-brand-navy/70">mail.rentokey.com</span> üzerinden
-          gönderdiğimiz doğrulama bağlantısına tıklayın. Ardından Rent Okey&apos;e giriş yaparken
-          firma adınızı ve filo büyüklüğünüzü tanımlayabilirsiniz.
-        </p>
+          <span className="font-semibold text-brand-navy/70">mail.rentokey.com</span>{" "}{t("üzerinden gönderdiğimiz doğrulama bağlantısına tıklayın. Ardından Rent Okey&apos;e giriş yaparken firma adınızı ve filo büyüklüğünüzü tanımlayabilirsiniz.")}</p>
         <div className="mt-6 rounded-2xl bg-surface-soft p-4">
           <div className="flex items-center gap-2 text-xs font-semibold text-brand-navy">
             <Mail className="h-4 w-4 text-brand-blue" /> {submittedEmail}
           </div>
-          <p className="mt-2 text-[11px] leading-relaxed text-brand-navy/45">
-            E-posta birkaç dakika içinde görünmezse spam veya gereksiz klasörünü de kontrol edin.
-          </p>
+          <p className="mt-2 text-[11px] leading-relaxed text-brand-navy/45">{t("E-posta birkaç dakika içinde görünmezse spam veya gereksiz klasörünü de kontrol edin.")}</p>
         </div>
         <a
           href={APP_URL}
           className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-brand-green-dark"
-        >
-          Rent Okey girişine git <ArrowRight className="h-4 w-4" />
+        >{t("Rent Okey girişine git")}<ArrowRight className="h-4 w-4" />
         </a>
         <button
           type="button"
           onClick={resetForm}
           className="mt-3 w-full py-2 text-xs font-semibold text-brand-navy/45 hover:text-brand-navy"
-        >
-          Farklı bir e-posta ile başvur
-        </button>
+        >{t("Farklı bir e-posta ile başvur")}</button>
       </div>
     );
   }
@@ -125,25 +117,17 @@ export default function TrialOnboarding() {
     <div className="rounded-[28px] border border-surface-border bg-white p-5 shadow-2xl shadow-brand-navy/10 sm:p-8">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-green-dark">
-            21 günlük ücretsiz deneme
-          </p>
-          <h2 className="mt-2 text-xl font-extrabold tracking-[-0.02em] text-brand-navy sm:text-2xl">
-            Hesabınızı oluşturun
-          </h2>
+          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-green-dark">{t("21 günlük ücretsiz deneme")}</p>
+          <h2 className="mt-2 text-xl font-extrabold tracking-[-0.02em] text-brand-navy sm:text-2xl">{t("Hesabınızı oluşturun")}</h2>
         </div>
-        <span className="rounded-full bg-surface-soft px-3 py-1.5 text-[11px] font-bold text-brand-navy/45">
-          Tek adım
-        </span>
+        <span className="rounded-full bg-surface-soft px-3 py-1.5 text-[11px] font-bold text-brand-navy/45">{t("Tek adım")}</span>
       </div>
 
-      <p className="mt-3 text-xs leading-relaxed text-brand-navy/45">
-        Firma ve filo bilgilerinizi e-posta doğrulamasından sonra uygulamada tanımlayacaksınız.
-      </p>
+      <p className="mt-3 text-xs leading-relaxed text-brand-navy/45">{t("Firma ve filo bilgilerinizi e-posta doğrulamasından sonra uygulamada tanımlayacaksınız.")}</p>
 
       <form onSubmit={handleSubmit} className="mt-6" aria-busy={isSubmitting}>
         <div className="space-y-4">
-          <Field label="Ad soyad" htmlFor="fullName">
+          <Field label={t("Ad soyad")} htmlFor="fullName">
             <input
               id="fullName"
               autoComplete="name"
@@ -153,11 +137,11 @@ export default function TrialOnboarding() {
               disabled={isSubmitting}
               value={form.fullName}
               onChange={(event) => updateField("fullName", event.target.value)}
-              placeholder="Adınız Soyadınız"
+              placeholder={t("Adınız Soyadınız")}
               className="form-control disabled:cursor-wait disabled:opacity-60"
             />
           </Field>
-          <Field label="İş e-postası" htmlFor="email">
+          <Field label={t("İş e-postası")} htmlFor="email">
             <input
               id="email"
               type="email"
@@ -168,11 +152,11 @@ export default function TrialOnboarding() {
               disabled={isSubmitting}
               value={form.email}
               onChange={(event) => updateField("email", event.target.value)}
-              placeholder="ornek@firmaniz.com"
+              placeholder={t("ornek@firmaniz.com")}
               className="form-control disabled:cursor-wait disabled:opacity-60"
             />
           </Field>
-          <Field label="Şifre" htmlFor="password" helper="En az 8 karakter kullanın.">
+          <Field label={t("Şifre")} htmlFor="password" helper={t("En az 8 karakter kullanın.")}>
             <div className="relative">
               <input
                 id="password"
@@ -184,14 +168,14 @@ export default function TrialOnboarding() {
                 disabled={isSubmitting}
                 value={form.password}
                 onChange={(event) => updateField("password", event.target.value)}
-                placeholder="Güçlü bir şifre oluşturun"
+                placeholder={t("Güçlü bir şifre oluşturun")}
                 className="form-control form-control-action disabled:cursor-wait disabled:opacity-60"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword((visible) => !visible)}
                 disabled={isSubmitting}
-                aria-label={showPassword ? "Şifreyi gizle" : "Şifreyi göster"}
+                aria-label={showPassword ? t("Şifreyi gizle") : t("Şifreyi göster")}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-brand-navy/35 hover:text-brand-navy disabled:opacity-40"
               >
                 {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -209,15 +193,9 @@ export default function TrialOnboarding() {
               className="mt-0.5 h-4 w-4 accent-[#18b878]"
             />
             <span className="text-[11px] leading-relaxed text-brand-navy/55">
-              <Link href="/kullanim-sartlari" className="font-semibold text-brand-navy underline">
-                Kullanım Şartları
-              </Link>{" "}
-              ve{" "}
-              <Link href="/gizlilik-politikasi" className="font-semibold text-brand-navy underline">
-                Gizlilik Politikası
-              </Link>
-              &apos;nı kabul ediyorum.
-            </span>
+              {locale === "en" && "I agree to the "}
+              <Link href={locale === "en" ? "/en/terms" : "/kullanim-sartlari"} className="font-semibold text-brand-navy underline">{t("Kullanım Şartları")}</Link>{" "}{t("ve")}{" "}
+              <Link href={locale === "en" ? "/en/privacy" : "/gizlilik-politikasi"} className="font-semibold text-brand-navy underline">{t("Gizlilik Politikası")}</Link>{t("&apos;nı kabul ediyorum.")}</span>
           </label>
 
           {errorMessage && (
@@ -237,11 +215,9 @@ export default function TrialOnboarding() {
           >
             {isSubmitting ? (
               <>
-                <LoaderCircle className="h-4 w-4 animate-spin" /> Hesap oluşturuluyor
-              </>
+                <LoaderCircle className="h-4 w-4 animate-spin" />{t("Hesap oluşturuluyor")}</>
             ) : (
-              <>
-                Ücretsiz hesabı oluştur <ArrowRight className="h-4 w-4" />
+              <>{t("Ücretsiz hesabı oluştur")}<ArrowRight className="h-4 w-4" />
               </>
             )}
           </button>
@@ -249,9 +225,7 @@ export default function TrialOnboarding() {
       </form>
 
       <div className="mt-6 flex items-center justify-center gap-2 border-t border-surface-border pt-5 text-[10px] font-medium text-brand-navy/40">
-        <LockKeyhole className="h-3.5 w-3.5 text-brand-green" /> Kredi kartı ve ödeme bilgisi
-        istenmez
-      </div>
+        <LockKeyhole className="h-3.5 w-3.5 text-brand-green" />{t("Kredi kartı ve ödeme bilgisi istenmez")}</div>
     </div>
   );
 }

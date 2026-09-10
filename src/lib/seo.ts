@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { alternateRoutes } from "./locale";
 
 export const SITE_NAME = "Rent Okey";
 export const SITE_URL = "https://www.rentokey.com";
@@ -27,12 +28,15 @@ export function createPageMetadata({
   index = true,
 }: PageMetadataOptions): Metadata {
   const socialTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+  const languages = alternateRoutes(path);
+  const en = path === "/en" || path.startsWith("/en/");
 
   return {
     title,
     description,
     alternates: {
       canonical: path,
+      ...(languages ? { languages: { tr: languages[0], en: languages[1], "x-default": languages[0] } } : {}),
     },
     openGraph: {
       title: socialTitle,
@@ -40,8 +44,9 @@ export function createPageMetadata({
       url: path,
       siteName: SITE_NAME,
       type: "website",
-      locale: "tr_TR",
-      images: [DEFAULT_OG_IMAGE],
+      locale: en ? "en_GB" : "tr_TR",
+      ...(languages ? { alternateLocale: en ? "tr_TR" : "en_GB" } : {}),
+      images: [{ ...DEFAULT_OG_IMAGE, alt: en ? "Rent Okey car rental operations and fleet management software" : DEFAULT_OG_IMAGE.alt }],
     },
     twitter: {
       card: "summary_large_image",

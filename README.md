@@ -38,7 +38,9 @@ npm run lint
 
 ## Temel kaynaklar
 
-- `src/app/page.tsx` — ana sayfa bölüm sırası
+- `src/app/(tr)/page.tsx` — Türkçe ana sayfa bölüm sırası (URL hâlâ `/`)
+- `src/app/en/` — İngilizce ana sayfa, Pilot, deneme ve yasal metin çevirileri
+- `src/lib/locale.ts` — dil eşleştirmeleri; `src/lib/form-copy.ts` — ortak form çevirileri
 - `src/components/DashboardMock.tsx` — kod tabanlı etkileşimli ürün demosu
 - `src/lib/pricing.ts` — paketlerin ana veri kaynağı
 - `src/lib/faq.ts` — SSS içerikleri

@@ -37,9 +37,17 @@ export async function createTrialAccount(input: TrialSignupInput) {
   }
 }
 
-export function getTrialSignupErrorMessage(error: unknown) {
+export function getTrialSignupErrorMessage(error: unknown, locale: "tr" | "en" = "tr") {
   const message = error instanceof Error ? error.message.trim() : "";
   const normalizedMessage = message.toLocaleLowerCase("en-US");
+  if (locale === "en") {
+    if (message === "network_error") return "The account service is unavailable. Check your connection and try again.";
+    if (/already registered|already exists|user exists/.test(normalizedMessage)) return "An account already exists for this email. Sign in or reset your password in the app.";
+    if (/weak password|password should|password must/.test(normalizedMessage)) return "Please choose a stronger password.";
+    if (/invalid email|email address is invalid/.test(normalizedMessage)) return "Enter a valid work email address.";
+    if (/rate limit|too many request/.test(normalizedMessage)) return "Too many attempts. Please wait a few minutes and try again.";
+    return "Your account could not be created. Check your details and try again, or contact support.";
+  }
 
   if (message === "network_error") {
     return "Hesap oluşturma servisine şu anda ulaşılamıyor. Lütfen bağlantınızı kontrol edip yeniden deneyin.";

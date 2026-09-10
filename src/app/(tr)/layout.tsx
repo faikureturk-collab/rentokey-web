@@ -3,7 +3,7 @@ import "@fontsource-variable/inter";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo";
-import "./globals.css";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

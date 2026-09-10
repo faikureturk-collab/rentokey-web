@@ -8,9 +8,11 @@ import type { FaqItem } from "@/lib/faq";
 export default function FaqAccordion({
   items,
   columns = true,
+  locale = "tr",
 }: {
   items: FaqItem[];
   columns?: boolean;
+  locale?: "tr" | "en";
 }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -38,7 +40,7 @@ export default function FaqAccordion({
             {open && (
               <div className="px-5 pb-5 pl-[52px] text-sm leading-relaxed text-brand-navy/55 sm:px-6 sm:pl-[56px]">
                 <p>{item.answer}</p>
-                {item.whatsapp && <div className="mt-4"><WhatsAppLink /></div>}
+                {item.whatsapp && <div className="mt-4"><WhatsAppLink locale={locale} /></div>}
               </div>
             )}
           </div>

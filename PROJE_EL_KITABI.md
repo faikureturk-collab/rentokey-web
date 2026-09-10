@@ -1,9 +1,19 @@
 # Rent Okey web sitesi — proje el kitabı
 
-Son güncelleme: 7 Eylül 2026
+Son güncelleme: 10 Eylül 2026
 Doğrulanan Git başlangıç noktası: `268dfa3` — `Fiyatlandırma yeni versiyon`
 
 Bu belge, Rent Okey web sitesinde yapılacak bir sonraki geliştirmeden önce okunması gereken ana bağlam dosyasıdır. Yalnız mevcut ekranları anlatmaz; ürünün ne olduğu, sitenin ziyaretçiyi hangi sırayla ikna ettiği, hangi kararların neden alındığı, hangi vaatlerin doğrulandığı ve hangi alanların henüz prototip olduğu burada ayrıştırılır.
+
+## İki dil — 10 Eylül 2026
+
+Türkçe adresler değişmedi; dosyalar `src/app/(tr)` route grubuna taşındı. İngilizce satış akışı `src/app/en` altında: `/en`, `/en/pilot`, `/en/free-trial`, `/en/privacy`, `/en/terms`. İki ayrı kök layout sayesinde sunucudan doğru HTML dili gelir; root layout'u tekrar en üste taşıyıp bütün sayfalara `lang=tr` uygulamayın. API, robots, sitemap ve ikon adresleri değişmedi.
+
+Header/Footer/Logo/WhatsApp, ContactForm, TrialOnboarding, TurnstileWidget ve FaqAccordion dil parametresiyle ortaktır. İngilizce satış anlatısı `components/english`, metin verileri `lib/english.ts` ve `lib/form-copy.ts` içinde. İngilizce demo/pricing bileşenleri aynı `fleet-demo.ts`, `pilot-demo.ts` ve `pricing.ts` verilerini/hesaplarını kullanır. Dil başına farklı ticari hesap veya API eklemeyin.
+
+Kullanıcı İngilizce destek verildiğini teyit etti. Uygulama arayüzünün veya doğrulama e-postasının İngilizce olduğu ayrıca teyit edilmedi; web dilini backend'e tanımsız bir alan olarak göndermiyoruz. Destek: TR/EN, her gün 09.00–22.00 Türkiye saati. Bloglar/kılavuzlar henüz çevrilmedi; İngilizce footer'da blog dili açıkça belirtilir. Yasal sayfalar mevcut Türkçe metnin çevirisidir; yeni uluslararası mevzuat uyum iddiası içermez ve yayın öncesi hukuk kontrolü önerilir.
+
+`locale.ts` karşılıklar için tek kaynaktır. Yeni çevrilen sayfayı dil seçici, canonical/hreflang ve sitemap eşleştirmesine dahil edin. Eksik çevirilere sahte hreflang vermeyin. Ayrıntılı doğrulama ve sınırlar `DEVAM_NOTLARI.md` içindedir.
 
 ## Güncel demo ve kapsam notu — 7 Eylül 2026
 

@@ -45,6 +45,7 @@ export default function IletisimSection() {
             <div className="mt-7">
               <WhatsAppLink />
               <p className="mt-2 text-xs leading-relaxed text-brand-navy/60">{SUPPORT_HOURS}</p>
+              <p className="mt-1 text-xs text-brand-navy/60">Türkçe ve İngilizce destek</p>
             </div>
 
             <div className="mt-6 divide-y divide-surface-border overflow-hidden rounded-2xl border border-surface-border bg-white">
