@@ -14,6 +14,7 @@ function load(file, extra = {}) {
 const locale = load("locale");
 const copy = load("form-copy");
 const signup = load("trial-signup");
+const contactRequest = load("contact-request");
 
 test("language routes are paired; untranslated content falls back to the selected homepage", () => {
   for (const [tr,en] of locale.localeRoutes) {
@@ -46,6 +47,25 @@ test("signup uses the existing same-origin API contract without real requests", 
   assert.equal(request.url,"/api/kayit-ol");
   assert.equal(request.method,"POST");
   assert.deepEqual(JSON.parse(request.body),{fullName:"Demo User",email:"demo@example.test",password:"demo-only"});
+});
+
+test("contact requests include the selected website locale", () => {
+  const fields = {
+    topic: "paket-ve-fiyatlandirma",
+    fullName: "Demo User",
+    email: "demo@example.test",
+    company: "Demo Rent a Car",
+    phone: "+90 555 000 00 00",
+    fleetSize: "11-25",
+    message: "Paketler hakkında bilgi almak istiyorum.",
+    website: "",
+  };
+
+  const englishPayload = JSON.parse(JSON.stringify(contactRequest.createContactRequestPayload(fields, "en", "test-token")));
+  const turkishPayload = JSON.parse(JSON.stringify(contactRequest.createContactRequestPayload(fields, "tr", "test-token")));
+
+  assert.deepEqual(englishPayload, { ...fields, locale: "en", turnstileToken: "test-token" });
+  assert.equal(turkishPayload.locale, "tr");
 });
 
 test("built language pages have correct HTML language, canonical and reciprocal alternates", () => {

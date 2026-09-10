@@ -1,6 +1,7 @@
 "use client";
 
 import { formCopy } from "@/lib/form-copy";
+import { createContactRequestPayload } from "@/lib/contact-request";
 import type { Locale } from "@/lib/locale";
 
 import Link from "next/link";
@@ -78,7 +79,7 @@ export default function ContactForm({ locale = "tr" }: { locale?: Locale }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
+        body: JSON.stringify(createContactRequestPayload({
           topic: value("topic"),
           fullName: value("fullName"),
           email: value("email"),
@@ -87,8 +88,7 @@ export default function ContactForm({ locale = "tr" }: { locale?: Locale }) {
           fleetSize: value("fleetSize"),
           message: value("message"),
           website: value("website"),
-          turnstileToken,
-        }),
+        }, locale, turnstileToken)),
       });
 
       const result: ApiResponse = await response.json().catch(() => ({}));

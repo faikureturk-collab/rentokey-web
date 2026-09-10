@@ -390,7 +390,7 @@ Henüz gerçek checkout, kart saklama, abonelik başlatma, faturalandırma veya 
 
 ### İletişim formu
 
-`ContactForm`, `POST https://app.rentokey.com/api/iletisim-formu-gonder` endpoint'ine JSON gönderir. Konu, ad/soyad, e-posta, firma, telefon, filo büyüklüğü, mesaj, boş kalması gereken `website` honeypot alanı ve `turnstileToken` API sözleşmesiyle birebir eşleşir.
+`ContactForm`, `POST https://app.rentokey.com/api/iletisim-formu-gonder` endpoint'ine JSON gönderir. Konu, ad/soyad, e-posta, firma, telefon, filo büyüklüğü, mesaj, boş kalması gereken `website` honeypot alanı, `turnstileToken` ve seçili siteyi belirten `locale: "tr" | "en"` API sözleşmesiyle birebir eşleşir. Ziyaretçiye gönderilen onay e-postası `locale` dilinde hazırlanır; ekip bildirimi Türkçe kalır ve tercih edilen dili gösterir.
 
 - Buton normal durumda “Mesajı gönder”, istek sürerken “Gönderiliyor…” gösterir.
 - Başarılı yanıttan sonra form temizlenir ve “Mesajınızı aldık. En kısa sürede sizinle iletişime geçeceğiz.” mesajı gösterilir.
