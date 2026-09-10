@@ -1,6 +1,7 @@
 import { englishFaqGroups, faqGroups, type FaqGroup } from "@/lib/faq";
 import { computeMonthlyPrice, SELF_SERVICE_MAX_VEHICLES } from "@/lib/pricing";
 import { DEFAULT_DESCRIPTION, LINKEDIN_URL, SITE_NAME, SITE_URL } from "@/lib/seo";
+import type { ProductSeoContent } from "@/lib/product-pages";
 
 const organizationId = `${SITE_URL}/#organization`;
 const websiteId = `${SITE_URL}/#website`;
@@ -203,3 +204,77 @@ export const englishHomeStructuredData = {
     },
   ],
 };
+
+export function createProductPageStructuredData(content: ProductSeoContent) {
+  const pageUrl = `${SITE_URL}${content.path}`;
+  const locale = content.locale === "en" ? "en" : "tr-TR";
+  const homePath = content.locale === "en" ? "/en" : "";
+  const homeLabel = content.locale === "en" ? "Home" : "Ana sayfa";
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: content.title,
+        description: content.description,
+        inLanguage: locale,
+        isPartOf: { "@id": websiteId },
+        about: { "@id": softwareId },
+        breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: homeLabel,
+            item: `${SITE_URL}${homePath}`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: content.title,
+            item: pageUrl,
+          },
+        ],
+      },
+      {
+        "@type": ["SoftwareApplication", "WebApplication"],
+        "@id": softwareId,
+        name: SITE_NAME,
+        url: content.locale === "en" ? `${SITE_URL}/en` : SITE_URL,
+        description: content.description,
+        applicationCategory: "BusinessApplication",
+        applicationSubCategory:
+          content.locale === "en"
+            ? "Car rental operations and fleet management"
+            : "Araç kiralama operasyon ve filo yönetimi",
+        operatingSystem: "Web",
+        inLanguage: locale,
+        provider: { "@id": organizationId },
+        featureList: content.features.map((feature) => feature.title),
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${pageUrl}#faq`,
+        url: `${pageUrl}#faq`,
+        name: content.faqTitle,
+        inLanguage: locale,
+        isPartOf: { "@id": `${pageUrl}#webpage` },
+        mainEntity: content.faqs.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
+      },
+    ],
+  };
+}

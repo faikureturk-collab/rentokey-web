@@ -12,6 +12,8 @@ export const primaryNav: {
     label: "Ürün",
     href: "/#urun",
     children: [
+      { label: "Araç kiralama programı", href: "/arac-kiralama-programi" },
+      { label: "Rezervasyon takvimi", href: "/arac-kiralama-rezervasyon-takvimi" },
       { label: "Operasyon platformu", href: "/#urun" },
       { label: "Özellikler", href: "/#ozellikler" },
       { label: "Önerilen odak", href: "/#onerilen-odak" },
@@ -34,6 +36,8 @@ export const primaryNav: {
 
 export const footerNav = {
   urun: [
+    { label: "Araç kiralama programı", href: "/arac-kiralama-programi" },
+    { label: "Rezervasyon takvimi", href: "/arac-kiralama-rezervasyon-takvimi" },
     { label: "Operasyon platformu", href: "/#urun" },
     { label: "Özellikler", href: "/#ozellikler" },
     { label: "Önerilen odak", href: "/#onerilen-odak" },

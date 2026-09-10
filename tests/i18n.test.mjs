@@ -104,3 +104,25 @@ test("English homepage social title is not duplicated and schema matches the com
   }
   assert.ok(html.includes("Where is my data stored?"));
 });
+
+test("product SEO pages preserve language parity, metadata and structured data", () => {
+  const pairs = [
+    ["arac-kiralama-programi", "en/car-rental-software", "Araç Kiralama Programı", "Car Rental Software"],
+    ["arac-kiralama-rezervasyon-takvimi", "en/car-rental-reservation-calendar", "Araç Kiralama Rezervasyon Takvimi", "Car Rental Reservation Calendar"],
+  ];
+
+  for (const [trPath, enPath, trTitle, enTitle] of pairs) {
+    const tr = fs.readFileSync(new URL(`../.next/server/app/${trPath}.html`, import.meta.url), "utf8");
+    const en = fs.readFileSync(new URL(`../.next/server/app/${enPath}.html`, import.meta.url), "utf8");
+
+    assert.ok(tr.includes(trTitle), `missing Turkish product title for ${trPath}`);
+    assert.ok(en.includes(enTitle), `missing English product title for ${enPath}`);
+    assert.ok(tr.includes(`hrefLang=\"en\" href=\"https://www.rentokey.com/${enPath}\"`));
+    assert.ok(en.includes(`hrefLang=\"tr\" href=\"https://www.rentokey.com/${trPath}\"`));
+    for (const html of [tr, en]) {
+      assert.ok(html.includes("FAQPage"));
+      assert.ok(html.includes("BreadcrumbList"));
+      assert.ok(html.includes("SoftwareApplication"));
+    }
+  }
+});

@@ -12,7 +12,15 @@ import type { Locale } from "@/lib/locale";
 export default function Header({ locale = "tr" }: { locale?: Locale }) {
   const en = locale === "en";
   const navigation: typeof primaryNav = en ? [
-    { label: "Product", href: "/en#product" },
+    {
+      label: "Product",
+      href: "/en/car-rental-software",
+      children: [
+        { label: "Car rental software", href: "/en/car-rental-software" },
+        { label: "Reservation calendar", href: "/en/car-rental-reservation-calendar" },
+        { label: "Operations platform", href: "/en#product" },
+      ],
+    },
     { label: "Pilot", href: "/en/pilot" },
     { label: "Pricing", href: "/en#pricing" },
     { label: "Contact", href: "/en#contact" },

@@ -35,7 +35,7 @@ export default function Footer({ locale = "tr" }: { locale?: "tr" | "en" }) {
             </a>
           </div>
 
-          <FooterColumn title={en ? "Product" : "Ürün"} links={en ? [{label:"Operations platform",href:"/en#product"},{label:"RentOkey Pilot",href:"/en/pilot"},{label:"Pricing",href:"/en#pricing"},{label:"Start free trial",href:"/en/free-trial"}] : footerNav.urun} />
+          <FooterColumn title={en ? "Product" : "Ürün"} links={en ? [{label:"Car rental software",href:"/en/car-rental-software"},{label:"Reservation calendar",href:"/en/car-rental-reservation-calendar"},{label:"Operations platform",href:"/en#product"},{label:"RentOkey Pilot",href:"/en/pilot"},{label:"Pricing",href:"/en#pricing"},{label:"Start free trial",href:"/en/free-trial"}] : footerNav.urun} />
           <FooterColumn title={en ? "Resources" : "Kaynaklar"} links={en ? [{label:"FAQ",href:"/en#faq"},{label:"Data migration",href:"/en#how-it-works"},{label:"Blog (Turkish)",href:"/blog"}] : footerNav.kaynaklar} />
           <FooterColumn title={en ? "Company" : "Şirket"} links={en ? [{label:"About us",href:"/en#about"},{label:"Contact",href:"/en#contact"}] : footerNav.sirket} />
 

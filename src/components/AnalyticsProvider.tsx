@@ -37,7 +37,9 @@ export default function AnalyticsProvider({ locale }: { locale: Locale }) {
     if (!measurementId || consent !== "granted") return;
     captureFirstTouch();
     window.dataLayer = window.dataLayer || [];
-    window.gtag = window.gtag || function gtag(..._args: unknown[]) {
+    window.gtag = window.gtag || function gtag() {
+      // gtag.js requires the native Arguments object; a rest-parameter array is not processed as a command.
+      // eslint-disable-next-line prefer-rest-params
       window.dataLayer?.push(arguments);
     };
     if (!gaInitialised.current) {

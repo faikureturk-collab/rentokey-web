@@ -4,6 +4,8 @@ export const localeRoutes = [
   ["/", "/en"],
   ["/ucretsiz-dene", "/en/free-trial"],
   ["/okey-pilot", "/en/pilot"],
+  ["/arac-kiralama-programi", "/en/car-rental-software"],
+  ["/arac-kiralama-rezervasyon-takvimi", "/en/car-rental-reservation-calendar"],
   ["/gizlilik-politikasi", "/en/privacy"],
   ["/kullanim-sartlari", "/en/terms"],
 ] as const;

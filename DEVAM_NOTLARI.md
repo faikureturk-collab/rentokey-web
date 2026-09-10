@@ -138,3 +138,12 @@ Bu bölüm önceki demo yerleşimi notlarının güncel halidir. Canlı uygulama
 - Tarayıcı: EN masaüstü görünümü; mobilde yatay taşma kontrolü; TR tablet menüsü; kayıt TR/EN karşılıklı geçişi ve şifre gösterme; EN 70 araç fiyatı aylık 7.240 TRY / yıllık aylık karşılık 5.792 TRY; araç yeniden atama ve Pilot onayı kontrol edildi.
 - Yerel ortamda Turnstile site key yok; gerçek iletişim gönderimi, canlı kayıt/e-posta veya yeni hesap oluşturma yapılmadı. Bu akışlar üretim ortamında ayrıca smoke-test edilmeli; güvenlik bypass edilmedi.
 - Önizleme için yerel production sunucusu 3012 portunda açıldı. Commit/push/canlı dağıtım yapılmadı.
+
+## 10 Eylül 2026 — Türkçe ve İngilizce ürün odaklı SEO sayfaları
+
+- İki arama niyeti için dört eş ürün sayfası hazırlandı: `/arac-kiralama-programi` ↔ `/en/car-rental-software` ve `/arac-kiralama-rezervasyon-takvimi` ↔ `/en/car-rental-reservation-calendar`.
+- Araç kiralama programı sayfası rezervasyon, müşteri/sürücü, teslim/iade, filo-bakım, finans, önerilen odak, ekip yetkileri ve Excel/CSV geçişini tek operasyon anlatısında birleştirir. Takvim sayfası araç uygunluğu, 7/14 gün ve ay görünümü, filtreleme, hızlı rezervasyon, uygun araç önerisi, kesin çakışma ile hazırlık/transfer riski ayrımını anlatır.
+- Sayfalar ana sayfayı tekrar eden uzun vitrinler değildir: fayda odaklı hero, kod tabanlı ürün sahnesi, altı doğrulanmış yetenek, üç adımlı iş akışı, karar ilkesi, karşılıklı ürün bağlantısı, kısa SSS ve deneme çağrısından oluşur.
+- Her rota için benzersiz title/description, canonical, karşılıklı `hreflang` ve `x-default`; WebPage, BreadcrumbList, SoftwareApplication ve FAQPage JSON-LD eklendi. Dört URL sitemap'e ve TR/EN header-footer iç bağlantılarına dahil edildi.
+- Yeni ürün vaadi uydurulmadı. Araç/evrak kontrolleri bilgilendirici ve yetkili kullanıcı kontrollü; ilk 48 saat Excel/CSV desteği destek talebi penceresi olarak korundu. Ortak bileşen Türkçe/İngilizce işlev eşitliğini sağlar.
+- Commit/push veya canlı dağıtım bu çalışma kapsamında yapılmadı.

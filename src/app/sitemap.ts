@@ -9,6 +9,7 @@ const pageLastModified = {
   resources: "2026-08-29",
   blog: "2026-09-07",
   pilot: "2026-09-07",
+  productPages: "2026-09-10",
 } as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -32,6 +33,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${SITE_URL}/arac-kiralama-programi`,
+      lastModified: pageLastModified.productPages,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/arac-kiralama-rezervasyon-takvimi`,
+      lastModified: pageLastModified.productPages,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${SITE_URL}/kaynaklar`,
       lastModified: pageLastModified.resources,
       changeFrequency: "weekly",
@@ -49,7 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
-    ...["/en", "/en/free-trial", "/en/pilot"].map(path => ({
+    ...["/en", "/en/free-trial", "/en/pilot", "/en/car-rental-software", "/en/car-rental-reservation-calendar"].map(path => ({
       url: `${SITE_URL}${path}`,
       lastModified: "2026-09-10",
       changeFrequency: "monthly" as const,
