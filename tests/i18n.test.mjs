@@ -150,4 +150,6 @@ test("Pilot pages expose the same rule-engine scope and clearly mark the simulat
   }
   for (const text of ["Öneri kural motoru", "15.000 km", "Yakında · LLM destekli", "Uygulanabilir öneri", "Bilgilendirme"]) assert.ok(tr.includes(text), `missing Turkish Pilot content: ${text}`);
   for (const text of ["Rule engine", "15,000 km", "Coming soon · LLM-assisted", "Actionable suggestion", "Information"]) assert.ok(en.includes(text), `missing English Pilot content: ${text}`);
+  assert.ok(tr.includes("hazırlık sürelerinin nasıl değişebileceğini"));
+  assert.ok(en.includes("how preparation times may change"));
 });
