@@ -42,25 +42,32 @@ const outcomes = [
   },
 ];
 
-export default function FeatureGrid() {
+export default function FeatureGrid({ locale = "tr" }: { locale?: "tr" | "en" }) {
+  const en = locale === "en";
+  const localizedOutcomes = en ? [
+    { ...outcomes[0], title: "Start the day with Recommended Focus", description: "Alongside fixed alerts, contextual risks such as payments and preparation time are prioritised." },
+    { ...outcomes[1], title: "Know before a problem occurs", description: "Conflicts and upcoming maintenance or document deadlines connect directly to the relevant operation." },
+    { ...outcomes[2], title: "Keep order as the fleet grows", description: "Filter vehicles by class, status and branch, and find the right record quickly on a busy timeline." },
+    { ...outcomes[3], title: "Keep office and field teams in one flow", description: "Role-based pages appear for the right team member on desktop, tablet and mobile." },
+  ] : outcomes;
   return (
-    <section id="ozellikler" className="container-page scroll-mt-24 py-20 sm:py-28">
+    <section id={en ? "features" : "ozellikler"} className="container-page scroll-mt-24 py-20 sm:py-28">
       <div className="grid gap-6 lg:grid-cols-[1fr_.78fr] lg:items-end">
         <div>
           <span className="inline-flex items-center gap-2 text-sm font-bold text-brand-green-dark">
-            <Sparkles className="h-4 w-4" /> Neden Rent Okey?
+            <Sparkles className="h-4 w-4" /> {en ? "Why RentOkey?" : "Neden Rent Okey?"}
           </span>
           <h2 className="mt-4 max-w-2xl text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-navy sm:text-4xl">
-            Daha fazla ekran değil, daha az operasyon yükü.
+            {en ? "Fewer operational burdens, not more screens." : "Daha fazla ekran değil, daha az operasyon yükü."}
           </h2>
         </div>
         <p className="max-w-xl text-[15px] leading-relaxed text-brand-navy/55 lg:justify-self-end">
-          Rent Okey bilgiyi depolamakla yetinmez. Doğru anda neye bakmanız ve hangi aksiyonu almanız gerektiğini görünür kılar.
+          {en ? "RentOkey does more than store information. It makes the right priority and the right action visible at the right time." : "Rent Okey bilgiyi depolamakla yetinmez. Doğru anda neye bakmanız ve hangi aksiyonu almanız gerektiğini görünür kılar."}
         </p>
       </div>
 
       <div className="mt-10 grid gap-px overflow-hidden rounded-[28px] border border-surface-border bg-surface-border sm:grid-cols-2 lg:grid-cols-4">
-        {outcomes.map((outcome) => {
+        {localizedOutcomes.map((outcome) => {
           const Icon = outcome.icon;
           return (
             <article key={outcome.title} className="group bg-white p-6 transition-colors hover:bg-surface-soft sm:p-7">
@@ -79,15 +86,15 @@ export default function FeatureGrid() {
 
       <div className="mt-6 grid overflow-hidden rounded-2xl bg-[#f4f7fa] md:grid-cols-[1fr_auto_1fr] md:items-center">
         <div className="p-5 sm:p-6">
-          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-navy/35">Dağınık süreç</p>
-          <p className="mt-2 text-sm font-semibold text-brand-navy/60">WhatsApp mesajları, tablolar, notlar ve ayrı takvimler</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-navy/35">{en ? "Fragmented process" : "Dağınık süreç"}</p>
+          <p className="mt-2 text-sm font-semibold text-brand-navy/60">{en ? "WhatsApp messages, spreadsheets, notes and separate calendars" : "WhatsApp mesajları, tablolar, notlar ve ayrı takvimler"}</p>
         </div>
         <div className="hidden h-full items-center justify-center px-3 text-brand-green md:flex">
           <ChevronsRight className="h-6 w-6" />
         </div>
         <div className="border-t border-white bg-brand-navy p-5 text-white sm:p-6 md:border-l md:border-t-0">
-          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-green">Rent Okey ile</p>
-          <p className="mt-2 text-sm font-semibold text-white/85">Tek operasyon merkezi, net sorumluluklar ve görünür aksiyonlar</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-green">{en ? "With RentOkey" : "Rent Okey ile"}</p>
+          <p className="mt-2 text-sm font-semibold text-white/85">{en ? "One operation centre, clear responsibilities and visible actions" : "Tek operasyon merkezi, net sorumluluklar ve görünür aksiyonlar"}</p>
         </div>
       </div>
     </section>

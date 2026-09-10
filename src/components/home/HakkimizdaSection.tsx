@@ -50,21 +50,33 @@ const principles: { icon: LucideIcon; title: string; description: string }[] = [
   },
 ];
 
-export default function HakkimizdaSection() {
+export default function HakkimizdaSection({ locale = "tr" }: { locale?: "tr" | "en" }) {
+  const en = locale === "en";
+  const details = en ? [
+    { icon: FileClock, title: "Document deadlines", description: "Track insurance, comprehensive cover, tax and emissions dates alongside operations." },
+    { icon: MapPinned, title: "Handover locations", description: "Manage branch, airport, hotel and address deliveries in the same plan." },
+    { icon: CalendarRange, title: "Different rental periods", description: "See daily reservations and monthly rentals on the same timeline." },
+    { icon: UsersRound, title: "Office and field teams", description: "The System Administrator and four operation roles work only with authorised pages and actions." },
+  ] : localDetails;
+  const localizedPrinciples = en ? [
+    { icon: Workflow, title: "Operations come first", description: "Every screen helps the user complete the next task faster." },
+    { icon: ScanEye, title: "Actions must stay visible", description: "Risks, alerts and tasks do not disappear inside crowded lists." },
+    { icon: Expand, title: "Order must hold as the fleet grows", description: "A workflow that is simple for ten vehicles should remain clear for seventy." },
+  ] : principles;
   return (
-    <section id="hakkimizda" className="scroll-mt-24 bg-white py-16 sm:py-24">
+    <section id={en ? "about" : "hakkimizda"} className="scroll-mt-24 bg-white py-16 sm:py-24">
       <div className="container-page">
         <div className="grid gap-10 lg:grid-cols-[.82fr_1.18fr] lg:items-start lg:gap-16">
           <div className="lg:sticky lg:top-28">
-            <span className="inline-flex rounded-full bg-brand-green/10 px-4 py-1.5 text-sm font-semibold text-brand-green-dark">Rent Okey yaklaşımı</span>
+            <span className="inline-flex rounded-full bg-brand-green/10 px-4 py-1.5 text-sm font-semibold text-brand-green-dark">{en ? "The RentOkey approach" : "Rent Okey yaklaşımı"}</span>
             <h2 className="mt-5 text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-navy sm:text-4xl">
-              Türkiye ve KKTC&apos;deki <span className="text-brand-green">gerçek operasyona</span> göre tasarlandı.
+              {en ? <>Designed around <span className="text-brand-green">real operations</span> in Türkiye and Northern Cyprus.</> : <>Türkiye ve KKTC&apos;deki <span className="text-brand-green">gerçek operasyona</span> göre tasarlandı.</>}
             </h2>
             <p className="mt-5 text-[15px] leading-relaxed text-brand-navy/55">
-              Rent Okey genel amaçlı bir filo tablosu değil; araç kiralama firmasının rezervasyon, saha, belge ve finans süreçlerini aynı iş gününde buluşturan bir operasyon ürünüdür.
+              {en ? "RentOkey is not a generic fleet spreadsheet. It is an operation product that brings a rental company’s reservation, field, document and financial processes into the same working day." : "Rent Okey genel amaçlı bir filo tablosu değil; araç kiralama firmasının rezervasyon, saha, belge ve finans süreçlerini aynı iş gününde buluşturan bir operasyon ürünüdür."}
             </p>
             <div className="mt-7 flex flex-wrap gap-2">
-              {["Türkiye", "KKTC", "₺ / TRY", "Masaüstü + tablet + mobil"].map((item) => (
+              {(en ? ["Türkiye", "Northern Cyprus", "₺ / TRY", "Desktop + tablet + mobile"] : ["Türkiye", "KKTC", "₺ / TRY", "Masaüstü + tablet + mobil"]).map((item) => (
                 <span key={item} className="rounded-full border border-surface-border bg-surface-soft px-3 py-1.5 text-[11px] font-bold text-brand-navy/55">{item}</span>
               ))}
             </div>
@@ -73,13 +85,13 @@ export default function HakkimizdaSection() {
           <div className="overflow-hidden rounded-[28px] bg-brand-navy p-5 shadow-2xl shadow-brand-navy/10 sm:p-7">
             <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-5">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-green">Yerel operasyon ayrıntıları</p>
-                <h3 className="mt-2 text-xl font-extrabold text-white">Sahada karşılığı olan özellikler</h3>
+                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-green">{en ? "Local operation details" : "Yerel operasyon ayrıntıları"}</p>
+                <h3 className="mt-2 text-xl font-extrabold text-white">{en ? "Features with practical field value" : "Sahada karşılığı olan özellikler"}</h3>
               </div>
-              <span className="hidden rounded-full bg-white/[0.06] px-3 py-1.5 text-[10px] font-semibold text-white/45 sm:inline-flex">Tek platform</span>
+              <span className="hidden rounded-full bg-white/[0.06] px-3 py-1.5 text-[10px] font-semibold text-white/45 sm:inline-flex">{en ? "One platform" : "Tek platform"}</span>
             </div>
             <div className="mt-3 grid gap-3 sm:grid-cols-2">
-              {localDetails.map((detail) => {
+              {details.map((detail) => {
                 const Icon = detail.icon;
                 return (
                   <article key={detail.title} className="rounded-2xl border border-white/10 bg-white/[0.045] p-4 sm:p-5">
@@ -94,7 +106,7 @@ export default function HakkimizdaSection() {
         </div>
 
         <div className="mt-12 grid overflow-hidden rounded-[24px] border border-surface-border bg-surface-border md:grid-cols-3">
-          {principles.map((principle, index) => {
+          {localizedPrinciples.map((principle, index) => {
             const Icon = principle.icon;
             return (
               <article key={principle.title} className={`bg-surface-soft p-6 sm:p-7 ${index > 0 ? "border-t border-white md:border-l md:border-t-0" : ""}`}>
