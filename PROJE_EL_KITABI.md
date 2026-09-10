@@ -9,7 +9,7 @@ Bu belge, Rent Okey web sitesinde yapılacak bir sonraki geliştirmeden önce ok
 
 Türkçe adresler değişmedi; dosyalar `src/app/(tr)` route grubuna taşındı. İngilizce satış akışı `src/app/en` altında: `/en`, `/en/pilot`, `/en/free-trial`, `/en/privacy`, `/en/terms`. İki ayrı kök layout sayesinde sunucudan doğru HTML dili gelir; root layout'u tekrar en üste taşıyıp bütün sayfalara `lang=tr` uygulamayın. API, robots, sitemap ve ikon adresleri değişmedi.
 
-Header/Footer/Logo/WhatsApp, ContactForm, TrialOnboarding, TurnstileWidget, FaqAccordion ve ana sayfadaki bütün satış bileşenleri dil parametresiyle ortaktır. `/en` Türkçe ana sayfanın sadeleştirilmiş bir varyantı değildir: aynı 14 bölümü aynı sırada, aynı ürün demoları ve fiyat hesaplayıcısıyla gösterir. İngilizce form metinleri `lib/form-copy.ts`, iki dildeki gruplu SSS içeriği `lib/faq.ts` içindedir. Filo/Pilot demoları ve fiyat hesaplayıcısı aynı `fleet-demo.ts`, `pilot-demo.ts` ve `pricing.ts` verilerini/hesaplarını kullanır. Dil başına farklı ticari hesap veya API eklemeyin.
+Header/Footer/Logo/WhatsApp, ContactForm, TrialOnboarding, TurnstileWidget, FaqAccordion ve ana sayfadaki bütün satış bileşenleri dil parametresiyle ortaktır. `/en` Türkçe ana sayfanın kısaltılmış bir çevirisi değildir: iki dil de aynı 11 bölümü aynı sırada, aynı ürün demosu ve fiyat hesaplayıcısıyla gösterir. İngilizce form metinleri `lib/form-copy.ts`, iki dildeki gruplu SSS içeriği `lib/faq.ts` içindedir. Pilot demosu ve fiyat hesaplayıcısı aynı `pilot-demo.ts` ve `pricing.ts` verilerini/hesaplarını kullanır. Dil başına farklı ticari hesap veya API eklemeyin.
 
 Kullanıcı İngilizce destek verildiğini teyit etti. Uygulama arayüzünün veya doğrulama e-postasının İngilizce olduğu ayrıca teyit edilmedi; web dilini backend'e tanımsız bir alan olarak göndermiyoruz. Destek: TR/EN, her gün 09.00–22.00 Türkiye saati. Bloglar/kılavuzlar henüz çevrilmedi; İngilizce footer'da blog dili açıkça belirtilir. Yasal sayfalar mevcut Türkçe metnin çevirisidir; yeni uluslararası mevzuat uyum iddiası içermez ve yayın öncesi hukuk kontrolü önerilir.
 
@@ -500,19 +500,20 @@ Aşağıdaki vaatler canlı üründe yeniden doğrulanmadan aktif satış metnin
 
 ### Ana kaynak dosyalar
 
-- Sayfa sırası: `src/app/page.tsx`
-- Global layout ve metadata: `src/app/layout.tsx`
+- Sayfa sırası: `src/app/(tr)/page.tsx`, `src/app/en/page.tsx`
+- Dil layout ve metadata: `src/app/(tr)/layout.tsx`, `src/app/en/layout.tsx`
 - Tasarım tokenları: `src/app/globals.css`
 - Header/footer navigasyonu: `src/lib/nav.ts`
 - Paketlerin ana kaynağı: `src/lib/pricing.ts`
 - SSS ana kaynağı: `src/lib/faq.ts`
 - SSS kategori seçimi: `src/components/home/FaqGroupTabs.tsx`
 - Hero ürün demosu: `src/components/DashboardMock.tsx`
-- Beş modüllü ürün anlatımı: `src/components/home/UrunTabs.tsx`
+- Kompakt ürün girişleri: `src/components/home/ProductOverviewSection.tsx`
+- Yerel operasyon/güven özeti: `src/components/home/HomeTrustSection.tsx`
 - Önerilen odak anlatımı: `src/components/home/FocusSection.tsx`
 - RentOkey Pilot ana sayfa anlatımı: `src/components/home/PilotSection.tsx`
 - RentOkey Pilot ürün sayfası: `src/app/okey-pilot/page.tsx`
-- Müşteriden onaya rezervasyon akışı: `src/components/home/ReservationFlowSection.tsx`
+- Ayrıntılı ürün anlatımı: `src/components/ProductSeoPage.tsx`, `src/lib/product-pages.ts`
 - Fiyatlandırma ve karşılaştırma: `src/components/PricingSection.tsx`
 - Deneme formu: `src/components/TrialOnboarding.tsx`
 - Kayıt API istemcisi: `src/lib/trial-signup.ts`

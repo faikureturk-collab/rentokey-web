@@ -1,18 +1,15 @@
 import StructuredData from "@/components/StructuredData";
 import Hero from "@/components/home/Hero";
 import StatsBar from "@/components/home/StatsBar";
-import UrunSection from "@/components/home/UrunSection";
-import FeatureGrid from "@/components/home/FeatureGrid";
+import ProductOverviewSection from "@/components/home/ProductOverviewSection";
 import FocusSection from "@/components/home/FocusSection";
 import PilotSection from "@/components/home/PilotSection";
-import ReservationFlowSection from "@/components/home/ReservationFlowSection";
 import HowItWorks from "@/components/home/HowItWorks";
 import PricingSection from "@/components/PricingSection";
-import HakkimizdaSection from "@/components/home/HakkimizdaSection";
+import HomeTrustSection from "@/components/home/HomeTrustSection";
 import AddonModulesSection from "@/components/home/AddonModulesSection";
 import FaqSection from "@/components/home/FaqSection";
 import IletisimSection from "@/components/home/IletisimSection";
-import CtaBanner from "@/components/CtaBanner";
 import { createPageMetadata } from "@/lib/seo";
 import { englishHomeStructuredData } from "@/lib/structured-data";
 
@@ -28,18 +25,15 @@ export default function EnglishHome() {
       <StructuredData data={englishHomeStructuredData} />
       <Hero locale="en" />
       <StatsBar locale="en" />
-      <UrunSection locale="en" />
-      <FeatureGrid locale="en" />
+      <ProductOverviewSection locale="en" />
       <FocusSection locale="en" />
       <PilotSection locale="en" />
-      <ReservationFlowSection locale="en" />
       <HowItWorks locale="en" />
       <PricingSection id="pricing" locale="en" />
-      <HakkimizdaSection locale="en" />
       <AddonModulesSection locale="en" />
+      <HomeTrustSection locale="en" />
       <FaqSection locale="en" />
       <IletisimSection locale="en" />
-      <CtaBanner locale="en" />
     </>
   );
 }

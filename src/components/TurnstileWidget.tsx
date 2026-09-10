@@ -51,6 +51,29 @@ export default function TurnstileWidget({
   const onTokenChangeRef = useRef(onTokenChange);
   const onErrorRef = useRef(onError);
   const [scriptReady, setScriptReady] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || shouldLoad) return;
+
+    if (!("IntersectionObserver" in window)) {
+      const timer = setTimeout(() => setShouldLoad(true), 0);
+      return () => clearTimeout(timer);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setShouldLoad(true);
+        observer.disconnect();
+      },
+      { rootMargin: "400px" },
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [shouldLoad]);
 
   useEffect(() => {
     onTokenChangeRef.current = onTokenChange;
@@ -104,12 +127,14 @@ export default function TurnstileWidget({
 
   return (
     <div id="contact-form-turnstile" tabIndex={-1} aria-label={t("Güvenlik doğrulaması")} className="min-h-[65px] outline-none">
-      <Script
-        id="cloudflare-turnstile"
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
-        strategy="afterInteractive"
-        onReady={() => setScriptReady(true)}
-      />
+      {shouldLoad && (
+        <Script
+          id="cloudflare-turnstile"
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+          strategy="lazyOnload"
+          onReady={() => setScriptReady(true)}
+        />
+      )}
       <div ref={containerRef} className="w-full" />
     </div>
   );

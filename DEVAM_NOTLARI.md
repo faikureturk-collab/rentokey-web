@@ -147,3 +147,16 @@ Bu bölüm önceki demo yerleşimi notlarının güncel halidir. Canlı uygulama
 - Her rota için benzersiz title/description, canonical, karşılıklı `hreflang` ve `x-default`; WebPage, BreadcrumbList, SoftwareApplication ve FAQPage JSON-LD eklendi. Dört URL sitemap'e ve TR/EN header-footer iç bağlantılarına dahil edildi.
 - Yeni ürün vaadi uydurulmadı. Araç/evrak kontrolleri bilgilendirici ve yetkili kullanıcı kontrollü; ilk 48 saat Excel/CSV desteği destek talebi penceresi olarak korundu. Ortak bileşen Türkçe/İngilizce işlev eşitliğini sağlar.
 - Commit/push veya canlı dağıtım bu çalışma kapsamında yapılmadı.
+
+## 10 Eylül 2026 — Ana sayfa yükünü azaltma
+
+- Türkçe ve İngilizce ana sayfa aynı kapsamda sadeleştirildi; iki dil de aynı 11 bölümü aynı sırada gösterir. Dil eşitliği korunmuştur.
+- Eski uzun `UrunTabs` vitrini ile ayrı `FeatureGrid` ve `ReservationFlowSection`, ana sayfa akışından çıkarıldı. Bunların kullanıcı ve SEO açısından gerekli ayrıntıları `/arac-kiralama-programi` ile `/arac-kiralama-rezervasyon-takvimi` ve İngilizce karşılıklarında yaşamaya devam eder.
+- Yeni sunucu taraflı `ProductOverviewSection`, iki ürün sayfasını doğrudan iç bağlantıyla gösterir ve temel operasyon kapsamını dört kısa sonuç cümlesiyle özetler. Eski `#ozellikler` bağlantısı navigasyondan kaldırıldı; `#urun` bağlantısı korunur.
+- Pilot ana sayfada tek güçlü bölümde anlatılır. `AddonModulesSection` içindeki ikinci büyük Pilot vitrini kaldırıldı; fotoğraflı hasar, mesajdan rezervasyon taslağı, dijital sözleşme/imza, özel entegrasyon/API ve aktivite geçmişi kartları korunup kompakt sunuldu.
+- Uzun Hakkımızda anlatımı yerine `HomeTrustSection` eklendi. Yerel operasyon, rol/sayfa bazlı yetki ve Türkçe/İngilizce destek mesajları korunur; `#hakkimizda` ve `#about` hedefleri çalışmaya devam eder.
+- İletişim formundan sonraki yinelenen `CtaBanner` ana sayfadan kaldırıldı. Ürün SEO sayfalarında ilgili CTA kullanılmaya devam eder.
+- Cloudflare Turnstile betiği artık sayfa açılır açılmaz değil, kullanıcı iletişim formuna 400 piksel yaklaştığında `lazyOnload` stratejisiyle yüklenir. Form güvenliği ve `contact-form` action değişmedi.
+- Üretim çıktısında Türkçe ana sayfa HTML'i 344.676 bayttan 217.385 bayta; İngilizce ana sayfa HTML'i 328.445 bayttan 201.738 bayta düştü. Yaklaşık azalma sırasıyla %36,9 ve %38,6'dır. RSC çıktıları da küçüldü.
+- Ana sayfa metadata ve JSON-LD kapsamı değişmedi. Yeni ürün iç bağlantıları, karşılıklı TR/EN sayfalar, canonical/hreflang ve sitemap yapısı korunur; yeni URL eklenmediği için sitemap değişikliği gerekmedi.
+- Commit/push veya canlı dağıtım yapılmadı.

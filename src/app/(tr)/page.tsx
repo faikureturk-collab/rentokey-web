@@ -1,18 +1,15 @@
 import StructuredData from "@/components/StructuredData";
 import Hero from "@/components/home/Hero";
 import StatsBar from "@/components/home/StatsBar";
-import UrunSection from "@/components/home/UrunSection";
-import FeatureGrid from "@/components/home/FeatureGrid";
+import ProductOverviewSection from "@/components/home/ProductOverviewSection";
 import FocusSection from "@/components/home/FocusSection";
 import PilotSection from "@/components/home/PilotSection";
-import ReservationFlowSection from "@/components/home/ReservationFlowSection";
 import AddonModulesSection from "@/components/home/AddonModulesSection";
 import HowItWorks from "@/components/home/HowItWorks";
 import PricingSection from "@/components/PricingSection";
-import HakkimizdaSection from "@/components/home/HakkimizdaSection";
+import HomeTrustSection from "@/components/home/HomeTrustSection";
 import FaqSection from "@/components/home/FaqSection";
 import IletisimSection from "@/components/home/IletisimSection";
-import CtaBanner from "@/components/CtaBanner";
 import { createPageMetadata, DEFAULT_DESCRIPTION } from "@/lib/seo";
 import { homeStructuredData } from "@/lib/structured-data";
 
@@ -28,18 +25,15 @@ export default function Home() {
       <StructuredData data={homeStructuredData} />
       <Hero />
       <StatsBar />
-      <UrunSection />
-      <FeatureGrid />
+      <ProductOverviewSection />
       <FocusSection />
       <PilotSection />
-      <ReservationFlowSection />
       <HowItWorks />
       <PricingSection id="fiyatlandirma" />
-      <HakkimizdaSection />
       <AddonModulesSection />
+      <HomeTrustSection />
       <FaqSection />
       <IletisimSection />
-      <CtaBanner />
     </>
   );
 }

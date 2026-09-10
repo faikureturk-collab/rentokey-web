@@ -43,6 +43,9 @@ npm run lint
 
 - `src/app/(tr)/page.tsx` — Türkçe ana sayfa bölüm sırası (URL hâlâ `/`)
 - `src/app/en/` — İngilizce ana sayfa, Pilot, deneme ve yasal metin çevirileri
+- `src/components/home/ProductOverviewSection.tsx` — ana sayfadaki iki kompakt ürün girişi
+- `src/components/home/HomeTrustSection.tsx` — yerel operasyon, ekip yetkisi ve iki dilde destek özeti
+- `src/components/ProductSeoPage.tsx` / `src/lib/product-pages.ts` — dört Türkçe/İngilizce ürün SEO sayfasının ortak yapısı ve içeriği
 - `src/lib/locale.ts` — dil eşleştirmeleri; `src/lib/form-copy.ts` — ortak form çevirileri
 - `src/components/DashboardMock.tsx` — kod tabanlı etkileşimli ürün demosu
 - `src/lib/pricing.ts` — paketlerin ana veri kaynağı
@@ -54,7 +57,7 @@ npm run lint
 - `src/components/TrialOnboarding.tsx` — tek adımlı deneme hesabı formu
 - `src/lib/trial-signup.ts` — formun aynı origin kayıt istemcisi ve kullanıcı hata mesajları
 - `src/app/api/kayit-ol/route.ts` — kayıt isteğini uygulama API'sine sunucu tarafında ileten route
-- `src/components/TurnstileWidget.tsx` — iletişim formunun Cloudflare Turnstile widget'ı
+- `src/components/TurnstileWidget.tsx` — iletişim formuna yaklaşılınca yüklenen Cloudflare Turnstile widget'ı
 - `public/logo/` — aktif marka varlıkları
 - `scripts/build-og-card.mjs` — sosyal paylaşım görseli üretimi
 

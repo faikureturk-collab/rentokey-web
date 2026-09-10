@@ -81,18 +81,22 @@ test("built language pages have correct HTML language, canonical and reciprocal 
   }
 });
 
-test("English homepage preserves the complete Turkish homepage section flow", () => {
+test("English homepage preserves the compact Turkish homepage section flow", () => {
   const html = fs.readFileSync(new URL("../.next/server/app/en.html", import.meta.url), "utf8");
-  const ids = ["product", "features", "recommended-focus", "pilot", "reservation-flow", "how-it-works", "pricing", "about", "addons", "faq", "contact"];
+  const ids = ["product", "recommended-focus", "pilot", "how-it-works", "pricing", "addons", "about", "faq", "contact"];
   let previous = -1;
   for (const id of ids) {
     const position = html.indexOf(`id="${id}"`);
     assert.ok(position > previous, `${id} should exist in the expected order`);
     previous = position;
   }
-  for (const text of ["Start the day with Recommended Focus", "From customer request to confirmation", "Included in the core subscription", "Data security and support"]) {
+  for (const text of ["Car rental software", "Reservation calendar", "Included in the core subscription", "Data security and support"]) {
     assert.ok(html.includes(text), `missing English content: ${text}`);
   }
+  assert.ok(html.includes('href="/en/car-rental-software"'));
+  assert.ok(html.includes('href="/en/car-rental-reservation-calendar"'));
+  assert.equal(html.includes('id="reservation-flow"'), false);
+  assert.equal(html.includes('id="features"'), false);
 });
 
 test("English homepage social title is not duplicated and schema matches the complete page", () => {
