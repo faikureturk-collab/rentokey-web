@@ -42,6 +42,14 @@ test("Ana sayfa operasyon demosu 20 benzersiz araç ve geçerli rezervasyonlar i
     assert.ok(booking.start >= 0 && booking.start + booking.span <= 14);
   }
 });
+test("Ana sayfa çakışma örneği aynı sınıf ve şubedeki boş araca yönelir", () => {
+  const conflictVehicle = homeOperation.homeDemoVehicles.find((item) => item.plate === "ROK 102");
+  const candidate = homeOperation.homeDemoVehicles.find((item) => item.plate === "ROK 104");
+  assert.equal(candidate.category, conflictVehicle.category);
+  assert.equal(candidate.branch, conflictVehicle.branch);
+  assert.equal(candidate.status, "Müsait");
+  assert.equal(homeOperation.homeDemoBookings.some((item) => item.plate === candidate.plate), false);
+});
 test("Çakışma uygun aynı sınıf/şube aracına çözülür, tarihler korunur", () => {
   const booking = fleet.fleetBookings.find((item) => item.id === "R-2401");
   assert.ok(fleet.fleetBookings.some((other) => other.id !== booking.id && other.vehicle === booking.vehicle && fleet.overlaps(other, booking)));

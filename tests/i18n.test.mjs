@@ -90,7 +90,7 @@ test("English homepage preserves the compact Turkish homepage section flow", () 
     assert.ok(position > previous, `${id} should exist in the expected order`);
     previous = position;
   }
-  for (const text of ["Car rental software", "Reservation calendar", "Included in the core subscription", "Data security and support"]) {
+  for (const text of ["Car rental software", "Reservation calendar", "Operation centre", "Fleet &amp; finance", "Included in the core subscription", "Data security and support"]) {
     assert.ok(html.includes(text), `missing English content: ${text}`);
   }
   assert.ok(html.includes('href="/en/car-rental-software"'));

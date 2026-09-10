@@ -165,8 +165,11 @@ Bu bölüm önceki demo yerleşimi notlarının güncel halidir. Canlı uygulama
 ### Ana sayfa ürün vitrini — 20 araçlık sürüm
 
 - Kullanıcı gerçek ürün ekranını referans gösterdi. Sıralı planın ilk iki maddesi uygulandı: “Ürünün kalbi · Tek operasyon akışı” anlatımı ana sayfaya geri geldi ve gerçek uygulamanın açık renkli çalışma yüzeyine yakın, kod tabanlı 20 araçlık örnek operasyon merkezi hazırlandı.
+- Devam maddeleri de tamamlandı: vitrin **Operasyon merkezi**, **Rezervasyon zaman çizelgesi** ve **Filo ve finans** olmak üzere üç sekmeye ayrıldı; ilk açılışta çizelge ve sağ operasyon kuyruğu görünür kaldı. Çizelgeye R-2590 örnek çakışması, uygun aynı sınıf/şube aracı gösterme ve kullanıcı onayıyla atamayı değiştirme akışı eklendi. Bu etkileşim yalnızca tarayıcı içindeki sentetik demo durumunu değiştirir.
+- Demo altındaki aynı iki ürünü yeniden anlatan büyük kartlar kaldırıldı. `/arac-kiralama-programi`, `/arac-kiralama-rezervasyon-takvimi` ve İngilizce karşılıklarına verilen iç bağlantılar daha hafif tek satırlı yönlendirme olarak korundu. Böylece SEO bağlantıları kaybolmadan ana sayfa tekrarı ve görsel yükü azaltıldı.
+- Bu değişiklik yeni rota veya indekslenebilir içerik türü oluşturmadığı için sitemap, canonical, hreflang ve schema değişikliği gerekmedi. Türkçe ve İngilizce görünüm/metinler aynı bileşende birlikte güncellendi.
 - Demo; özet kartları, Önerilen Odak, 14 günlük rezervasyon çizelgesi, 20 sentetik araç, üç sınıf, bugünkü operasyon kuyruğu, plaka/model araması, sınıf/durum filtresi ve rezervasyon ayrıntısı seçimini içerir. Gerçek müşteri/veri kullanılmaz ve canlı uygulamaya istek göndermez.
 - Türkçe ve İngilizce aynı bileşeni ve aynı örnek veriyi kullanır; tüm görünen metinlerin iki dil karşılığı vardır.
-- İki ürün detay bağlantısı demo altında korunur. Planın sonraki sekme, gruplama ve yerleşim kararları bu çalışma kapsamında uygulanmadı.
+- İki ürün detay bağlantısı demo altında korunur. Ana sayfada 20 araçlık kısa karar demosu kullanılır; 70 araçlık ayrıntılı büyük filo senaryosu yalnız ilgili ürün ve Pilot anlatımında kalır.
 - Yeni rota oluşmadı. Ana sayfa metadata, schema, canonical/hreflang ve sitemap değişikliği gerekmedi; ürün sayfalarına iç bağlantılar korunur.
 - Görsel demo geri gelmesine rağmen son ana sayfa HTML'i ilk 14 bölümlü sürüme göre Türkçede yaklaşık %28,9, İngilizcede yaklaşık %30,1 daha küçüktür.

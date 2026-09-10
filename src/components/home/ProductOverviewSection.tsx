@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  CalendarDays,
   CarFront,
   CircleDollarSign,
   ClipboardCheck,
@@ -18,48 +17,6 @@ const outcomes = [
 
 export default function ProductOverviewSection({ locale = "tr" }: { locale?: "tr" | "en" }) {
   const en = locale === "en";
-
-  const products = en
-    ? [
-        {
-          icon: CarFront,
-          eyebrow: "One operation centre",
-          title: "Car rental software",
-          description: "Bring reservations, customers, vehicles, handovers, returns and finance into the same working flow.",
-          href: "/en/car-rental-software",
-          cta: "Explore the software",
-          accent: "bg-brand-blue/10 text-brand-blue",
-        },
-        {
-          icon: CalendarDays,
-          eyebrow: "Live vehicle planning",
-          title: "Reservation calendar",
-          description: "See availability, conflicts, preparation windows and suitable vehicle suggestions before confirming a booking.",
-          href: "/en/car-rental-reservation-calendar",
-          cta: "Explore the calendar",
-          accent: "bg-brand-green/10 text-brand-green-dark",
-        },
-      ]
-    : [
-        {
-          icon: CarFront,
-          eyebrow: "Tek operasyon merkezi",
-          title: "Araç kiralama programı",
-          description: "Rezervasyon, müşteri, araç, teslim, iade ve finans süreçlerini aynı çalışma düzeninde birleştirin.",
-          href: "/arac-kiralama-programi",
-          cta: "Programı inceleyin",
-          accent: "bg-brand-blue/10 text-brand-blue",
-        },
-        {
-          icon: CalendarDays,
-          eyebrow: "Canlı araç planı",
-          title: "Rezervasyon takvimi",
-          description: "Müsaitliği, çakışmaları, hazırlık sürelerini ve uygun araç önerilerini rezervasyonu onaylamadan görün.",
-          href: "/arac-kiralama-rezervasyon-takvimi",
-          cta: "Takvimi inceleyin",
-          accent: "bg-brand-green/10 text-brand-green-dark",
-        },
-      ];
 
   return (
     <section id={en ? "product" : "urun"} className="scroll-mt-24 border-y border-surface-border bg-white">
@@ -80,27 +37,16 @@ export default function ProductOverviewSection({ locale = "tr" }: { locale?: "tr
           <HomeOperationDemo locale={locale} />
         </div>
 
-        <div className="mt-5 grid gap-4 lg:grid-cols-2">
-          {products.map(({ icon: Icon, eyebrow, title, description, href, cta, accent }) => (
-            <Link
-              key={href}
-              href={href}
-              className="group rounded-[24px] border border-surface-border bg-surface-soft/45 p-6 transition-colors hover:border-brand-green/35 hover:bg-white sm:p-7"
-            >
-              <div className="flex items-start justify-between gap-6">
-                <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${accent}`}>
-                  <Icon className="h-5 w-5" />
-                </span>
-                <ArrowRight className="h-5 w-5 text-brand-navy/25 transition-transform group-hover:translate-x-1 group-hover:text-brand-green-dark" />
-              </div>
-              <p className="mt-7 text-xs font-bold uppercase tracking-[0.12em] text-brand-green-dark">{eyebrow}</p>
-              <h3 className="mt-2 text-2xl font-extrabold tracking-tight text-brand-navy">{title}</h3>
-              <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-brand-navy/55">{description}</p>
-              <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-blue">
-                {cta} <ArrowRight className="h-4 w-4" />
-              </span>
-            </Link>
-          ))}
+        <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl border border-surface-border bg-surface-soft/45 px-5 py-4">
+          <p className="text-xs font-bold uppercase tracking-[0.1em] text-brand-navy/45">{en ? "Product details" : "Ürün ayrıntıları"}</p>
+          <Link href={en ? "/en/car-rental-software" : "/arac-kiralama-programi"} className="group inline-flex items-center gap-2 text-sm font-bold text-brand-blue">
+            {en ? "Explore the car rental software" : "Araç kiralama programını inceleyin"}
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+          <Link href={en ? "/en/car-rental-reservation-calendar" : "/arac-kiralama-rezervasyon-takvimi"} className="group inline-flex items-center gap-2 text-sm font-bold text-brand-blue">
+            {en ? "Explore the reservation calendar" : "Rezervasyon takvimini inceleyin"}
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
 
         <div className="mt-4 grid gap-px overflow-hidden rounded-2xl border border-surface-border bg-surface-border sm:grid-cols-2 lg:grid-cols-4">

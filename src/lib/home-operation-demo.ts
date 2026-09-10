@@ -19,7 +19,7 @@ export const homeDemoVehicles: HomeDemoVehicle[] = [
   { plate: "ROK 101", model: "Toyota Yaris", category: "Ekonomi", status: "Kirada", branch: "Merkez" },
   { plate: "ROK 102", model: "Renault Clio", category: "Ekonomi", status: "Kirada", branch: "Havalimanı" },
   { plate: "ROK 103", model: "Fiat Egea", category: "Ekonomi", status: "Kirada", branch: "Merkez" },
-  { plate: "ROK 104", model: "Hyundai i20", category: "Ekonomi", status: "Müsait", branch: "Girne" },
+  { plate: "ROK 104", model: "Hyundai i20", category: "Ekonomi", status: "Müsait", branch: "Havalimanı" },
   { plate: "ROK 105", model: "Peugeot 208", category: "Ekonomi", status: "Kirada", branch: "Havalimanı" },
   { plate: "ROK 106", model: "Citroën C3", category: "Ekonomi", status: "Kirada", branch: "Merkez" },
   { plate: "ROK 107", model: "Opel Corsa", category: "Ekonomi", status: "Hazırlanıyor", branch: "Girne" },
