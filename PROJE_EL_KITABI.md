@@ -23,6 +23,8 @@ Pilot'ın sayısal tek kaynağı `src/lib/pilot-demo.ts`, etkileşimi `PilotDemo
 
 Akıllı fiyat önerisi Pilot kapsamındadır; ayrı modül olarak satılmaz. Pilot'ın fiyatı/deneme kapsamı ile pasif araç faturalama kuralı henüz belirlenmedi; varsayım yayımlama. Ayrıntılı güncel kararlar `DEVAM_NOTLARI.md` son bölümündedir.
 
+Ana sayfa ürün anlatımı 10 Eylül'de sadeleştirildi; fakat görsel kanıt kaldırılmadı. `ProductOverviewSection.tsx` içinde operasyon merkezi ve rezervasyon zaman çizelgesinin hafif, kod tabanlı önizlemeleri bulunur. Ayrıntılı program sayfası geniş operasyon merkezi örneğini, rezervasyon takvimi sayfası ise `FleetDemo.tsx` ile 70 araçlık etkileşimli çizelgeyi gösterir. `FleetDemo`yu tekrar ana sayfaya taşımayın; ayrıntıyı ürün sayfasında tutarak ana açılış yükünü sınırlayın.
+
 ## 1. Otuz saniyelik özet
 
 - Bu repo **Rent Okey pazarlama ve satış web sitesidir**. Çalışan Rent Okey SaaS uygulamasının frontend reposu değildir.
@@ -509,6 +511,8 @@ Aşağıdaki vaatler canlı üründe yeniden doğrulanmadan aktif satış metnin
 - SSS kategori seçimi: `src/components/home/FaqGroupTabs.tsx`
 - Hero ürün demosu: `src/components/DashboardMock.tsx`
 - Kompakt ürün girişleri: `src/components/home/ProductOverviewSection.tsx`
+- Paylaşılan hafif ürün önizlemeleri: `src/components/ProductPreviewScenes.tsx`
+- Detay sayfalarındaki geniş ürün örnekleri: `src/components/ProductEvidenceSection.tsx`
 - Yerel operasyon/güven özeti: `src/components/home/HomeTrustSection.tsx`
 - Önerilen odak anlatımı: `src/components/home/FocusSection.tsx`
 - RentOkey Pilot ana sayfa anlatımı: `src/components/home/PilotSection.tsx`

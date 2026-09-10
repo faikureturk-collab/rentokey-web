@@ -19,6 +19,8 @@ import {
 import Button from "@/components/Button";
 import CtaBanner from "@/components/CtaBanner";
 import FaqAccordion from "@/components/FaqAccordion";
+import ProductEvidenceSection from "@/components/ProductEvidenceSection";
+import { OperationCentrePreview, ReservationTimelinePreview } from "@/components/ProductPreviewScenes";
 import type { ProductIconName, ProductSeoContent } from "@/lib/product-pages";
 
 const icons: Record<ProductIconName, LucideIcon> = {
@@ -68,7 +70,7 @@ export default function ProductSeoPage({ content }: { content: ProductSeoContent
               <p className="mt-4 text-xs font-medium leading-relaxed text-brand-navy/45">{content.trustLine}</p>
             </div>
 
-            {content.variant === "calendar" ? <CalendarPreview locale={content.locale} /> : <SoftwarePreview locale={content.locale} />}
+            {content.variant === "calendar" ? <ReservationTimelinePreview locale={content.locale} /> : <OperationCentrePreview locale={content.locale} />}
           </div>
 
           <div className="mt-12 grid overflow-hidden rounded-2xl border border-surface-border bg-white shadow-sm sm:grid-cols-3">
@@ -81,6 +83,8 @@ export default function ProductSeoPage({ content }: { content: ProductSeoContent
           </div>
         </div>
       </section>
+
+      <ProductEvidenceSection content={content} />
 
       <section className="bg-white">
         <div className="container-page py-16 sm:py-24">
@@ -162,37 +166,5 @@ export default function ProductSeoPage({ content }: { content: ProductSeoContent
 
       <div className="pt-16 sm:pt-24"><CtaBanner locale={content.locale} /></div>
     </>
-  );
-}
-
-function SoftwarePreview({ locale }: { locale: "tr" | "en" }) {
-  const en = locale === "en";
-  const rows = en
-    ? [["11:30", "Handover · Airport", "Ready"], ["14:00", "Return · Branch", "Assigned"], ["16:20", "Balance before handover", "₺8,400"]]
-    : [["11:30", "Teslim · Havalimanı", "Hazır"], ["14:00", "İade · Şube", "Atandı"], ["16:20", "Teslim öncesi bakiye", "₺8.400"]];
-  return (
-    <div aria-label={en ? "Sample Rent Okey operation view" : "Örnek Rent Okey operasyon görünümü"} className="overflow-hidden rounded-[26px] border border-brand-navy/10 bg-brand-navy-deep text-white shadow-2xl shadow-brand-navy/15">
-      <div className="flex items-center justify-between border-b border-white/10 px-5 py-4"><strong className="text-sm">RentOkey · {en ? "Operation centre" : "Operasyon merkezi"}</strong><span className="text-[10px] text-white/40">{en ? "Sample data" : "Örnek veri"}</span></div>
-      <div className="grid grid-cols-3 gap-2 p-4">
-        {(en ? [["12", "Handovers"], ["9", "Returns"], ["70", "Vehicles"]] : [["12", "Teslim"], ["9", "İade"], ["70", "Araç"]]).map(([value, label]) => <div key={label} className="rounded-xl bg-white/10 p-3"><p className="text-xl font-extrabold">{value}</p><p className="mt-1 text-[10px] text-white/45">{label}</p></div>)}
-      </div>
-      <div className="px-4 pb-4">
-        <div className="mb-2 flex items-center justify-between"><p className="text-[10px] font-bold uppercase tracking-[0.12em] text-brand-green">{en ? "Next operations" : "Sıradaki operasyonlar"}</p><span className="text-[10px] text-white/35">{en ? "Live" : "Canlı"}</span></div>
-        <div className="overflow-hidden rounded-xl border border-white/10">{rows.map(([time, title, state], index) => <div key={`${time}-${title}`} className={`grid grid-cols-[3.2rem_1fr_auto] items-center gap-2 bg-white/[0.055] px-3 py-3 text-xs ${index ? "border-t border-white/10" : ""}`}><span className="font-bold text-sky-300">{time}</span><span className="truncate text-white/75">{title}</span><span className={index === 2 ? "text-amber-300" : "text-brand-green"}>{state}</span></div>)}</div>
-      </div>
-    </div>
-  );
-}
-
-function CalendarPreview({ locale }: { locale: "tr" | "en" }) {
-  const en = locale === "en";
-  const vehicles = en ? ["Clio · Economy", "Corolla · Mid-size", "Egea · Economy", "2008 · SUV"] : ["Clio · Ekonomi", "Corolla · Orta sınıf", "Egea · Ekonomi", "2008 · SUV"];
-  return (
-    <div aria-label={en ? "Sample car rental reservation timeline" : "Örnek araç kiralama rezervasyon zaman çizelgesi"} className="overflow-hidden rounded-[26px] border border-brand-navy/10 bg-brand-navy-deep text-white shadow-2xl shadow-brand-navy/15">
-      <div className="flex items-center justify-between border-b border-white/10 px-5 py-4"><strong className="text-sm">{en ? "Reservation timeline" : "Rezervasyon zaman çizelgesi"}</strong><span className="rounded-full bg-brand-blue px-2.5 py-1 text-[10px] font-bold">14 {en ? "days" : "gün"}</span></div>
-      <div className="grid grid-cols-[7rem_repeat(5,1fr)] border-b border-white/10 bg-white/[0.04] text-[9px] text-white/40"><span className="px-3 py-2">{en ? "Vehicle / class" : "Araç / sınıf"}</span>{["10", "11", "12", "13", "14"].map(day => <span key={day} className="border-l border-white/10 py-2 text-center">{day}</span>)}</div>
-      <div className="p-2">{vehicles.map((vehicle, index) => <div key={vehicle} className="grid min-h-11 grid-cols-[7rem_1fr] items-center border-b border-white/[0.07] last:border-0"><span className="px-2 text-[10px] text-white/65">{vehicle}</span><div className="relative h-7"><span className={`absolute top-1 h-5 rounded-md ${index === 1 ? "left-[18%] w-[62%] bg-brand-green" : index === 2 ? "left-[45%] w-[36%] bg-amber-500" : index === 3 ? "left-[4%] w-[30%] bg-[#705DE8]" : "left-[4%] w-[53%] bg-brand-blue"}`}><span className="block truncate px-2 pt-1 text-[8px] font-semibold text-white">{index === 2 ? (en ? "Maintenance" : "Bakım") : (en ? "Reservation" : "Rezervasyon")}</span></span></div></div>)}</div>
-      <div className="flex items-center gap-4 border-t border-white/10 px-4 py-3 text-[9px] text-white/45"><span className="flex items-center gap-1.5"><i className="h-2 w-2 rounded-sm bg-brand-blue" />{en ? "Rented" : "Kirada"}</span><span className="flex items-center gap-1.5"><i className="h-2 w-2 rounded-sm bg-brand-green" />{en ? "Available" : "Müsait"}</span><span className="flex items-center gap-1.5"><i className="h-2 w-2 rounded-sm bg-amber-500" />{en ? "Maintenance" : "Bakım"}</span></div>
-    </div>
   );
 }

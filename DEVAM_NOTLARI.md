@@ -157,6 +157,7 @@ Bu bölüm önceki demo yerleşimi notlarının güncel halidir. Canlı uygulama
 - Uzun Hakkımızda anlatımı yerine `HomeTrustSection` eklendi. Yerel operasyon, rol/sayfa bazlı yetki ve Türkçe/İngilizce destek mesajları korunur; `#hakkimizda` ve `#about` hedefleri çalışmaya devam eder.
 - İletişim formundan sonraki yinelenen `CtaBanner` ana sayfadan kaldırıldı. Ürün SEO sayfalarında ilgili CTA kullanılmaya devam eder.
 - Cloudflare Turnstile betiği artık sayfa açılır açılmaz değil, kullanıcı iletişim formuna 400 piksel yaklaştığında `lazyOnload` stratejisiyle yüklenir. Form güvenliği ve `contact-form` action değişmedi.
-- Üretim çıktısında Türkçe ana sayfa HTML'i 344.676 bayttan 217.385 bayta; İngilizce ana sayfa HTML'i 328.445 bayttan 201.738 bayta düştü. Yaklaşık azalma sırasıyla %36,9 ve %38,6'dır. RSC çıktıları da küçüldü.
+- İlk sadeleştirmede ürünün görsel kanıtı fazla azaltıldığı için düzeltildi. Ana sayfadaki iki ürün kartı yeniden kod tabanlı operasyon merkezi ve zaman çizelgesi önizlemelerini gösterir. Program detay sayfasında geniş örnek operasyon merkezi; takvim detay sayfasında filtreleme, çakışma inceleme ve kullanıcı onaylı örnek atama içeren 70 araçlık etkileşimli çizelge bulunur. Ağır etkileşimli çizelge ana sayfaya geri taşınmadı.
+- Son üretim çıktısında Türkçe ana sayfa HTML'i 344.676 bayttan 230.178 bayta; İngilizce ana sayfa HTML'i 328.445 bayttan 214.517 bayta düştü. Görsel örnekler korunurken yaklaşık azalma sırasıyla %33,2 ve %34,7'dir. RSC çıktıları da küçüldü.
 - Ana sayfa metadata ve JSON-LD kapsamı değişmedi. Yeni ürün iç bağlantıları, karşılıklı TR/EN sayfalar, canonical/hreflang ve sitemap yapısı korunur; yeni URL eklenmediği için sitemap değişikliği gerekmedi.
 - Commit/push veya canlı dağıtım yapılmadı.

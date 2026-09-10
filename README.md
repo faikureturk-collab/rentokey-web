@@ -44,6 +44,8 @@ npm run lint
 - `src/app/(tr)/page.tsx` — Türkçe ana sayfa bölüm sırası (URL hâlâ `/`)
 - `src/app/en/` — İngilizce ana sayfa, Pilot, deneme ve yasal metin çevirileri
 - `src/components/home/ProductOverviewSection.tsx` — ana sayfadaki iki kompakt ürün girişi
+- `src/components/ProductPreviewScenes.tsx` — ana sayfa ve detay sayfalarının kod tabanlı operasyon/takvim önizlemeleri
+- `src/components/ProductEvidenceSection.tsx` — program ve rezervasyon takvimi detay sayfalarındaki geniş örnekler
 - `src/components/home/HomeTrustSection.tsx` — yerel operasyon, ekip yetkisi ve iki dilde destek özeti
 - `src/components/ProductSeoPage.tsx` / `src/lib/product-pages.ts` — dört Türkçe/İngilizce ürün SEO sayfasının ortak yapısı ve içeriği
 - `src/lib/locale.ts` — dil eşleştirmeleri; `src/lib/form-copy.ts` — ortak form çevirileri
