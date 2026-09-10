@@ -1,17 +1,12 @@
-import { ArrowRightLeft, CalendarClock, CarFront, CheckCircle2, Clock3, ShieldCheck, WalletCards, Wrench, type LucideIcon } from "lucide-react";
+import { ArrowRightLeft, CheckCircle2, ShieldCheck } from "lucide-react";
 import Button from "@/components/Button";
+import PilotRulesSection from "@/components/PilotRulesSection";
+import StructuredData from "@/components/StructuredData";
 import PilotSection from "@/components/home/PilotSection";
 import { createPageMetadata } from "@/lib/seo";
+import { createPilotPageStructuredData } from "@/lib/structured-data";
 
-export const metadata = createPageMetadata({ title: "RentOkey Pilot | Car Rental Operation Optimisation", description: "RentOkey Pilot analyses reservations, vehicles, maintenance, collections, pricing and preparation time, then presents an actionable operation plan with estimated impact.", path: "/en/pilot" });
-
-const scenarios: { icon: LucideIcon; title: string; description: string }[] = [
-  { icon: Clock3, title: "Insufficient preparation time", description: "Evaluates cleaning, fuelling and transfer time between a return and the next handover." },
-  { icon: CarFront, title: "Unassigned or wrong-class vehicle", description: "Suggests a more suitable vehicle or class alternative for the reservation." },
-  { icon: Wrench, title: "Maintenance–reservation conflict", description: "Evaluates maintenance and reservations together and prepares an actionable change." },
-  { icon: WalletCards, title: "Outstanding collection before handover", description: "Makes the remaining balance and collection action visible for an upcoming handover." },
-  { icon: CalendarClock, title: "Smart pricing suggestion", description: "Evaluates idle time, occupancy and reservation data to suggest a price. It is included in Pilot, not purchased separately." },
-];
+export const metadata = createPageMetadata({ title: "RentOkey Pilot | Car Rental Operation Optimisation", description: "The RentOkey Pilot rule engine turns preparation, maintenance, pricing, branch capacity, vehicle transfer, renewal, expense and mileage signals into user-approved suggestions.", path: "/en/pilot" });
 
 const steps = [
   { number: "01", title: "Evaluates the operation", description: "Reads reservation, vehicle, maintenance, collection, pricing, location and time data together." },
@@ -21,11 +16,9 @@ const steps = [
 
 export default function PilotPage() {
   return <>
+    <StructuredData data={createPilotPageStructuredData("en")} />
     <PilotSection headingLevel="h1" standalone locale="en" />
-    <section className="bg-white"><div className="container-page py-16 sm:py-24">
-      <div className="mx-auto max-w-2xl text-center"><span className="text-xs font-bold uppercase tracking-[0.14em] text-brand-green-dark">Operation scenarios</span><h2 className="mt-3 text-3xl font-extrabold tracking-[-0.035em] text-brand-navy sm:text-4xl">What situations does Pilot evaluate?</h2><p className="mt-4 text-[15px] leading-relaxed text-brand-navy/55">Instead of a fixed alert list, it evaluates operational conditions that affect one another.</p></div>
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">{scenarios.map((scenario) => { const Icon = scenario.icon; return <article key={scenario.title} className="rounded-[20px] border border-surface-border bg-surface-soft/45 p-5"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue"><Icon className="h-4.5 w-4.5" /></span><h3 className="mt-4 text-sm font-extrabold leading-snug text-brand-navy">{scenario.title}</h3><p className="mt-2 text-xs leading-relaxed text-brand-navy/50">{scenario.description}</p></article>; })}</div>
-    </div></section>
+    <PilotRulesSection locale="en" />
     <section className="border-y border-surface-border bg-surface-soft/55"><div className="container-page py-16 sm:py-24"><div className="grid gap-10 lg:grid-cols-[.7fr_1.3fr] lg:items-start">
       <div><span className="inline-flex items-center gap-2 rounded-full bg-brand-green/10 px-4 py-1.5 text-sm font-semibold text-brand-green-dark"><ShieldCheck className="h-4 w-4" /> Human-approved design</span><h2 className="mt-5 text-3xl font-extrabold leading-tight tracking-[-0.035em] text-brand-navy sm:text-4xl">Decision support without taking control away.</h2><p className="mt-4 text-[15px] leading-relaxed text-brand-navy/55">RentOkey Pilot does not make uncontrolled changes. The user selects suggestions individually, reviews their impact and gives final approval before the plan is applied.</p></div>
       <div className="grid gap-4 sm:grid-cols-3">{steps.map((step) => <article key={step.number} className="rounded-[22px] border border-surface-border bg-white p-6"><span className="text-xs font-extrabold text-brand-green">{step.number}</span><h3 className="mt-4 text-base font-extrabold text-brand-navy">{step.title}</h3><p className="mt-2.5 text-sm leading-relaxed text-brand-navy/50">{step.description}</p></article>)}</div>

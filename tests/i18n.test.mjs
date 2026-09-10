@@ -140,3 +140,14 @@ test("product SEO pages preserve language parity, metadata and structured data",
   assert.ok(trCalendar.includes("ROK 102 · R-2590 çakışıyor"));
   assert.ok(enCalendar.includes("ROK 102 · R-2590 conflicts"));
 });
+
+test("Pilot pages expose the same rule-engine scope and clearly mark the simulator as upcoming", () => {
+  const tr = fs.readFileSync(new URL("../.next/server/app/okey-pilot.html", import.meta.url), "utf8");
+  const en = fs.readFileSync(new URL("../.next/server/app/en/pilot.html", import.meta.url), "utf8");
+  for (const html of [tr, en]) {
+    assert.ok(html.includes("SoftwareApplication"));
+    assert.ok(html.includes("RentOkey Pilot"));
+  }
+  for (const text of ["Öneri kural motoru", "15.000 km", "Yakında · LLM destekli", "Uygulanabilir öneri", "Bilgilendirme"]) assert.ok(tr.includes(text), `missing Turkish Pilot content: ${text}`);
+  for (const text of ["Rule engine", "15,000 km", "Coming soon · LLM-assisted", "Actionable suggestion", "Information"]) assert.ok(en.includes(text), `missing English Pilot content: ${text}`);
+});

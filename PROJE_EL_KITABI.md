@@ -137,6 +137,8 @@ Onaylı anlatım örnekleri:
 
 Önerilen Odak yaklaşan riski görünür kılar; RentOkey Pilot ise bir sonraki operasyon için çözüm planını hazırlar. Rezervasyon, araç, bakım, tahsilat, lokasyon ve hazırlık süresini birlikte değerlendirir. Her öneride sorun, çözüm, gerekçe ve tahmini finansal/operasyonel etki bulunur.
 
+Pilot'ın pazarlama sitesindeki güncel kapsam kaynağı `src/lib/pilot-rules.ts`, sunumu `PilotRulesSection.tsx` dosyasıdır. On kural dört grupta gösterilir: operasyon sürekliliği; şube ve ekip kapasitesi; gelir ve yenileme fırsatları; filo sağlığı ve maliyet kontrolü. Kurallar **uygulanabilir öneri**, **kontrol listesi** veya **bilgilendirme** olarak etiketlenir. Bilgilendirme kuralları otomatik aksiyon üretmez. Serbest metin operasyon simülatörü aktif özellik listesine karıştırılmaz; yalnızca “Yakında · LLM destekli” etiketiyle gösterilir.
+
 - Pilot aktif ve kullanıma hazır bir ek pakettir.
 - Araç sayısına göre hesaplanan taban fiyata dahil değildir; ayrıca satın alınır.
 - Kullanıcı önerileri tek tek seçer ve son onayı verir.

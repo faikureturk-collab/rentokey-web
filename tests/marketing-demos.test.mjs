@@ -15,6 +15,7 @@ const pricing = load("../src/lib/pricing.ts");
 const fleet = load("../src/lib/fleet-demo.ts");
 const homeOperation = load("../src/lib/home-operation-demo.ts");
 const pilot = load("../src/lib/pilot-demo.ts");
+const pilotRules = load("../src/lib/pilot-rules.ts");
 
 test("70 araç: aylık, yıllık karşılık, toplam ve döküm tutarlılığı", () => {
   const monthly = pricing.computeMonthlyPrice(70);
@@ -73,4 +74,18 @@ test("Pilot geliri tahsilattan ayrıdır ve bütün seçim toplamları geçerlid
     const total = pilot.pilotDemo.actions.filter((_, index) => mask & 1 << index).reduce((sum, item) => sum + item.amount, 0);
     assert.ok(total >= 0 && total <= 55840);
   }
+});
+test("Pilot kural motoru iki dilde aynı 10 senaryoyu ve doğru davranış türlerini içerir", () => {
+  for (const language of ["tr", "en"]) {
+    const rules = pilotRules.pilotRuleGroups[language].flatMap((group) => group.rules);
+    assert.equal(rules.length, 10);
+    assert.equal(new Set(rules.map((rule) => rule.id)).size, 10);
+    assert.equal(rules.filter((rule) => rule.mode === "action").length, 6);
+    assert.equal(rules.filter((rule) => rule.mode === "checklist").length, 1);
+    assert.equal(rules.filter((rule) => rule.mode === "information").length, 3);
+  }
+  assert.deepEqual(
+    pilotRules.pilotRuleGroups.tr.flatMap((group) => group.rules.map((rule) => rule.id)),
+    pilotRules.pilotRuleGroups.en.flatMap((group) => group.rules.map((rule) => rule.id)),
+  );
 });

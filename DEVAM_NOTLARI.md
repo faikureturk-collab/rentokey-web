@@ -87,7 +87,9 @@ Ana sayfada Önerilen Odak bölümünün hemen arkasına `PilotSection` eklendi.
 
 Kod tabanlı hero demosuna masaüstü ve mobil için dördüncü **RentOkey Pilot** sekmesi eklendi. Fiyatlandırma alanındaki ifade “Tüm temel özellikler dahil” olarak netleştirildi ve Pilot için ayrı aktif ek paket kartı oluşturuldu. Ek Modüller bölümünün öne çıkan kartı Pilot'a ayrıldı; daha önceki fotoğraflı hasar ve diğer modüller kaldırılmadan ikincil kartlara taşındı.
 
-`/okey-pilot` adresinde indekslenebilir ürün sayfası oluşturuldu. Sayfa; beş temel operasyon senaryosunu, üç aşamalı çalışma mantığını, insan onaylı kontrol ilkesini ve ek paket iletişim çağrısını açıklar. Header/footer navigasyonu, SSS, SoftwareApplication JSON-LD özellik listesi ve sitemap aynı konumlandırmayla güncellendi.
+`/okey-pilot` adresinde indekslenebilir ürün sayfası oluşturuldu. Sayfa; güncel on öneri kuralını dört karar grubunda, üç aşamalı çalışma mantığını, insan onaylı kontrol ilkesini ve ek paket iletişim çağrısını açıklar. Header/footer navigasyonu, SSS, SoftwareApplication JSON-LD özellik listesi ve sitemap aynı konumlandırmayla güncellendi.
+
+10 Eylül kapsam güncellemesinde hazırlık aralığı, bakım çakışması, boş araç, fiyat anomalisi, aylık yenileme checklist'i, anormal bakım/gider, şubeler arası araç sevkiyatı, üst kategori yükseltme, saatlik şube kapasitesi ve 15.000 km kilometre dengesizliği kurallarının tamamı Türkçe ve İngilizce sayfaya eklendi. Kullanıcı onayı bekleyen öneriler; checklist ve yalnız bilgi veren sonuçlardan görsel olarak ayrıldı. Ana sayfada ayrıntılı liste tekrarlanmadı; operasyon sürekliliği, gelir/fiyat fırsatı ve şube/kapasite dengesi olmak üzere üç sonuç cümlesi gösterildi. Serbest metin simülatörü yalnız **Yakında · LLM destekli** olarak konumlandırıldı. Pilot metadata açıklamaları, sayfaya özel SoftwareApplication JSON-LD ve sitemap değişiklik tarihi güncellendi.
 
 Önceki ₺6.900 ve doluluk artışı örneği, aşağıdaki 70 araçlık senaryoyla değiştirilmiştir; eski rakamlar yeniden kullanılmamalıdır.
 

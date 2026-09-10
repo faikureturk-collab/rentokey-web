@@ -45,6 +45,7 @@ npm run lint
 - `src/app/en/` — İngilizce ana sayfa, Pilot, deneme ve yasal metin çevirileri
 - `src/components/home/ProductOverviewSection.tsx` — ana sayfadaki ürün vitrini ve sade ürün detay bağlantıları
 - `src/components/HomeOperationDemo.tsx` / `src/lib/home-operation-demo.ts` — ana sayfanın üç görünümlü, 20 araçlık operasyon demosu ve örnek veri kaynağı
+- `src/components/PilotRulesSection.tsx` / `src/lib/pilot-rules.ts` — Pilot öneri kural motorunun iki dildeki 10 senaryosu ve yaklaşan simülatör anlatımı
 - `src/components/ProductPreviewScenes.tsx` — ana sayfa ve detay sayfalarının kod tabanlı operasyon/takvim önizlemeleri
 - `src/components/ProductEvidenceSection.tsx` — program ve rezervasyon takvimi detay sayfalarındaki geniş örnekler
 - `src/components/home/HomeTrustSection.tsx` — yerel operasyon, ekip yetkisi ve iki dilde destek özeti

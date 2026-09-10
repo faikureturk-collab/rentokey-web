@@ -8,7 +8,7 @@ const pageLastModified = {
   trial: "2026-08-28",
   resources: "2026-08-29",
   blog: "2026-09-07",
-  pilot: "2026-09-07",
+  pilot: "2026-09-10",
   productPages: "2026-09-10",
 } as const;
 

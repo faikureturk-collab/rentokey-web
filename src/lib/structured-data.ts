@@ -2,6 +2,7 @@ import { englishFaqGroups, faqGroups, type FaqGroup } from "@/lib/faq";
 import { computeMonthlyPrice, SELF_SERVICE_MAX_VEHICLES } from "@/lib/pricing";
 import { DEFAULT_DESCRIPTION, LINKEDIN_URL, SITE_NAME, SITE_URL } from "@/lib/seo";
 import type { ProductSeoContent } from "@/lib/product-pages";
+import { pilotRuleGroups } from "@/lib/pilot-rules";
 
 const organizationId = `${SITE_URL}/#organization`;
 const websiteId = `${SITE_URL}/#website`;
@@ -274,6 +275,45 @@ export function createProductPageStructuredData(content: ProductSeoContent) {
             text: item.answer,
           },
         })),
+      },
+    ],
+  };
+}
+
+export function createPilotPageStructuredData(locale: "tr" | "en") {
+  const en = locale === "en";
+  const path = en ? "/en/pilot" : "/okey-pilot";
+  const pageUrl = `${SITE_URL}${path}`;
+  const pilotId = `${pageUrl}#software`;
+  const description = en
+    ? "The RentOkey Pilot rule engine evaluates preparation, maintenance, pricing, branch capacity, vehicle transfer, renewal, expense and mileage signals and presents user-approved operational suggestions."
+    : "RentOkey Pilot öneri kural motoru; hazırlık, bakım, fiyat, şube kapasitesi, araç sevkiyatı, yenileme, gider ve kilometre sinyallerini kullanıcı onaylı operasyon önerilerine dönüştürür.";
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: en ? "RentOkey Pilot | Car Rental Operation Optimisation" : "RentOkey Pilot | Araç Kiralama Operasyon Optimizasyonu",
+        description,
+        inLanguage: en ? "en" : "tr-TR",
+        isPartOf: { "@id": websiteId },
+        mainEntity: { "@id": pilotId },
+      },
+      {
+        "@type": ["SoftwareApplication", "WebApplication"],
+        "@id": pilotId,
+        name: "RentOkey Pilot",
+        url: pageUrl,
+        description,
+        applicationCategory: "BusinessApplication",
+        applicationSubCategory: en ? "Car rental operational decision support" : "Araç kiralama operasyon karar desteği",
+        operatingSystem: "Web",
+        inLanguage: en ? "en" : "tr-TR",
+        provider: { "@id": organizationId },
+        featureList: pilotRuleGroups[locale].flatMap((group) => group.rules.map((rule) => rule.title)),
       },
     ],
   };
