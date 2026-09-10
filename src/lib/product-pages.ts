@@ -25,6 +25,7 @@ export type ProductSeoContent = {
   eyebrow: string;
   heroTitle: string;
   heroDescription: string;
+  heroProof: string;
   primaryCta: string;
   secondaryCta: string;
   trustLine: string;
@@ -61,8 +62,9 @@ const turkishSoftware: ProductSeoContent = {
   heroTitle: "Rezervasyondan iadeye, filonuzun bütün operasyonu tek ekranda.",
   heroDescription:
     "Rent Okey; rezervasyon takvimini, araç uygunluğunu, müşteri ve sürücü kayıtlarını, teslim/iade işlerini, bakımı ve finansal takibi aynı operasyon akışında birleştirir.",
+  heroProof: "Küçük filodan 70+ araçlı çok şubeli operasyonlara uyum sağlar.",
   primaryCta: "21 gün ücretsiz deneyin",
-  secondaryCta: "Rezervasyon takvimini inceleyin",
+  secondaryCta: "70 araçlık operasyonu inceleyin",
   trustLine: "Kredi kartı yok · Kurulum ücreti yok · İlk 48 saatte Excel/CSV aktarım desteği",
   outcomes: [
     { value: "Tek plan", label: "rezervasyon ve filo görünümü" },
@@ -121,13 +123,14 @@ const turkishCalendar: ProductSeoContent = {
   heroTitle: "Hangi araç, hangi gün, hangi müşteride? Tek bakışta görün.",
   heroDescription:
     "Rent Okey rezervasyon takvimi; araçların dolu ve boş günlerini, sınıfları, bakım durumunu ve hazırlık risklerini aynı zaman çizelgesinde gösterir.",
+  heroProof: "Takvimden rezervasyon oluşturun, aracı değiştirin ve çakışmayı çözün.",
   primaryCta: "21 gün ücretsiz deneyin",
-  secondaryCta: "Tüm araç kiralama programını inceleyin",
+  secondaryCta: "70 araçlık takvimi inceleyin",
   trustLine: "7 gün · 14 gün · Ay görünümü · Masaüstü, tablet ve mobil erişim",
   outcomes: [
-    { value: "Canlı", label: "araç uygunluk görünümü" },
-    { value: "Hızlı", label: "takvimden rezervasyon" },
-    { value: "Önceden", label: "çakışma ve hazırlık uyarısı" },
+    { value: "Canlı uygunluk", label: "kirada, boş ve bakımda" },
+    { value: "Hızlı rezervasyon", label: "boş gün aralığından başlayın" },
+    { value: "Önceden uyarı", label: "çakışma ve hazırlık riski" },
   ],
   featureEyebrow: "Takvimin yaptığı iş",
   featureTitle: "Sadece rezervasyonları değil, aradaki operasyonu da görün.",
@@ -179,8 +182,9 @@ const englishSoftware: ProductSeoContent = {
   eyebrow: "Car rental operations software",
   heroTitle: "Run the whole rental operation, from reservation to return, in one place.",
   heroDescription: "Rent Okey brings the reservation calendar, vehicle availability, customer and driver records, handovers, returns, maintenance and financial tracking into one operational flow.",
+  heroProof: "Built for operations ranging from small fleets to multi-branch businesses with 70+ vehicles.",
   primaryCta: "Start a 21-day free trial",
-  secondaryCta: "Explore the reservation calendar",
+  secondaryCta: "Explore the 70-vehicle operation",
   trustLine: "No credit card · No setup fee · Excel/CSV migration support in the first 48 hours",
   outcomes: [
     { value: "One plan", label: "for reservations and fleet" },
@@ -233,13 +237,14 @@ const englishCalendar: ProductSeoContent = {
   eyebrow: "Live reservation timeline",
   heroTitle: "Which vehicle, which date, which customer? See it at a glance.",
   heroDescription: "The Rent Okey reservation calendar shows booked and available dates, vehicle classes, maintenance status and preparation risks on the same timeline.",
+  heroProof: "Create a booking, change the assigned vehicle and resolve a conflict from the timeline.",
   primaryCta: "Start a 21-day free trial",
-  secondaryCta: "Explore the complete car rental software",
+  secondaryCta: "Explore the 70-vehicle timeline",
   trustLine: "7-day · 14-day · Monthly views · Desktop, tablet and mobile access",
   outcomes: [
-    { value: "Live", label: "vehicle availability" },
-    { value: "Quick", label: "bookings from the calendar" },
-    { value: "Early", label: "conflict and preparation alerts" },
+    { value: "Live availability", label: "rented, free and maintenance" },
+    { value: "Quick booking", label: "start from an available date range" },
+    { value: "Early warning", label: "conflicts and preparation risk" },
   ],
   featureEyebrow: "What the calendar does",
   featureTitle: "See the operation between reservations, not only the bookings.",

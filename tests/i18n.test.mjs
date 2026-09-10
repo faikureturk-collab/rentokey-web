@@ -127,6 +127,16 @@ test("product SEO pages preserve language parity, metadata and structured data",
       assert.ok(html.includes("FAQPage"));
       assert.ok(html.includes("BreadcrumbList"));
       assert.ok(html.includes("SoftwareApplication"));
+      assert.ok(html.includes('href="#product-demo"'));
+      assert.ok(html.includes('id="product-demo"'));
     }
   }
+  const trSoftware = fs.readFileSync(new URL("../.next/server/app/arac-kiralama-programi.html", import.meta.url), "utf8");
+  const enSoftware = fs.readFileSync(new URL("../.next/server/app/en/car-rental-software.html", import.meta.url), "utf8");
+  const trCalendar = fs.readFileSync(new URL("../.next/server/app/arac-kiralama-rezervasyon-takvimi.html", import.meta.url), "utf8");
+  const enCalendar = fs.readFileSync(new URL("../.next/server/app/en/car-rental-reservation-calendar.html", import.meta.url), "utf8");
+  assert.ok(trSoftware.includes("70+ araçlı çok şubeli"));
+  assert.ok(enSoftware.includes("multi-branch businesses with 70+ vehicles"));
+  assert.ok(trCalendar.includes("ROK 102 · R-2590 çakışıyor"));
+  assert.ok(enCalendar.includes("ROK 102 · R-2590 conflicts"));
 });

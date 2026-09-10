@@ -171,5 +171,12 @@ Bu bölüm önceki demo yerleşimi notlarının güncel halidir. Canlı uygulama
 - Demo; özet kartları, Önerilen Odak, 14 günlük rezervasyon çizelgesi, 20 sentetik araç, üç sınıf, bugünkü operasyon kuyruğu, plaka/model araması, sınıf/durum filtresi ve rezervasyon ayrıntısı seçimini içerir. Gerçek müşteri/veri kullanılmaz ve canlı uygulamaya istek göndermez.
 - Türkçe ve İngilizce aynı bileşeni ve aynı örnek veriyi kullanır; tüm görünen metinlerin iki dil karşılığı vardır.
 - İki ürün detay bağlantısı demo altında korunur. Ana sayfada 20 araçlık kısa karar demosu kullanılır; 70 araçlık ayrıntılı büyük filo senaryosu yalnız ilgili ürün ve Pilot anlatımında kalır.
+
+### Ürün SEO sayfalarının ilk ekran ayrımı
+
+- Araç kiralama programı ve rezervasyon takvimi sayfalarının birbirine benzeyen ilk ekranları kullanıcı gözüyle ayrıştırıldı. Program sayfası küçük filodan 70+ araçlı çok şubeli operasyona ölçeklenmeyi; takvim sayfası ise takvimden rezervasyon oluşturma, araç değiştirme ve çakışma çözme işini öne çıkarır.
+- Hero başlık ölçüsü ve sütun dengesi, ürün önizlemesinin başlık altında ezilmemesi için düzenlendi. Program önizlemesine teslim, iade, araç durumu ve açık bakiyenin aynı ekranda olduğu açıklaması; takvim önizlemesine görünür R-2590 çakışması ve aynı sınıftan ROK 104 araç önerisi eklendi.
+- Hero içindeki ikincil CTA artık karşı ürün sayfasına gitmez; `#product-demo` ile bulunduğu sayfadaki geniş 70 araçlık örneğe iner. Karşılıklı ürün iç bağlantıları sayfanın altındaki “İlgili ürün” bölümünde korunur.
+- Türkçe ve İngilizce içerik/işlev eşitliği sağlandı. Yeni rota açılmadığı, sayfa amacı ve ana arama niyeti değişmediği için title, description, canonical, hreflang, sitemap ve schema değiştirilmedi.
 - Yeni rota oluşmadı. Ana sayfa metadata, schema, canonical/hreflang ve sitemap değişikliği gerekmedi; ürün sayfalarına iç bağlantılar korunur.
 - Görsel demo geri gelmesine rağmen son ana sayfa HTML'i ilk 14 bölümlü sürüme göre Türkçede yaklaşık %28,9, İngilizcede yaklaşık %30,1 daha küçüktür.

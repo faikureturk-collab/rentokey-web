@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  Building2,
   CalendarDays,
   CarFront,
   Check,
@@ -52,20 +53,24 @@ export default function ProductSeoPage({ content }: { content: ProductSeoContent
             <span className="text-brand-navy/70">{content.title}</span>
           </nav>
 
-          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(26rem,.9fr)]">
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(24rem,.85fr)]">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-brand-green/15 bg-white px-4 py-2 text-sm font-bold text-brand-green-dark shadow-sm">
                 <Sparkles className="h-4 w-4" /> {content.eyebrow}
               </span>
-              <h1 className="mt-6 max-w-3xl text-4xl font-extrabold leading-[1.04] tracking-[-0.045em] text-brand-navy sm:text-5xl lg:text-[3.45rem]">
+              <h1 className="mt-6 max-w-[43rem] text-4xl font-extrabold leading-[1.04] tracking-[-0.045em] text-brand-navy sm:text-5xl lg:text-[3.15rem] xl:text-[3.35rem]">
                 {content.heroTitle}
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-brand-navy/60 sm:text-lg">
                 {content.heroDescription}
               </p>
+              <p className="mt-4 flex max-w-2xl items-start gap-2 text-sm font-semibold leading-relaxed text-brand-navy/70">
+                <Building2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-green-dark" />
+                {content.heroProof}
+              </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button href={trialHref} size="lg" icon>{content.primaryCta}</Button>
-                <Button href={content.relatedHref} variant="secondary" size="lg">{content.secondaryCta}</Button>
+                <Button href="#product-demo" variant="secondary" size="lg" className="whitespace-normal text-center">{content.secondaryCta}</Button>
               </div>
               <p className="mt-4 text-xs font-medium leading-relaxed text-brand-navy/45">{content.trustLine}</p>
             </div>

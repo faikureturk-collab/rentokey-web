@@ -6,7 +6,7 @@ export default function ProductEvidenceSection({ content }: { content: ProductSe
   const en = content.locale === "en";
 
   return (
-    <section className="border-y border-surface-border bg-brand-navy-deep text-white">
+    <section id="product-demo" className="scroll-mt-24 border-y border-surface-border bg-brand-navy-deep text-white">
       <div className="container-page py-16 sm:py-24">
         <div className="grid gap-6 lg:grid-cols-[1fr_.72fr] lg:items-end">
           <div>
