@@ -23,7 +23,9 @@ Pilot'ın sayısal tek kaynağı `src/lib/pilot-demo.ts`, etkileşimi `PilotDemo
 
 Akıllı fiyat önerisi Pilot kapsamındadır; ayrı modül olarak satılmaz. Pilot'ın fiyatı/deneme kapsamı ile pasif araç faturalama kuralı henüz belirlenmedi; varsayım yayımlama. Ayrıntılı güncel kararlar `DEVAM_NOTLARI.md` son bölümündedir.
 
-Ana sayfa ürün anlatımı 10 Eylül'de sadeleştirildi; fakat görsel kanıt kaldırılmadı. `ProductOverviewSection.tsx` içinde operasyon merkezi ve rezervasyon zaman çizelgesinin hafif, kod tabanlı önizlemeleri bulunur. Ayrıntılı program sayfası geniş operasyon merkezi örneğini, rezervasyon takvimi sayfası ise `FleetDemo.tsx` ile 70 araçlık etkileşimli çizelgeyi gösterir. `FleetDemo`yu tekrar ana sayfaya taşımayın; ayrıntıyı ürün sayfasında tutarak ana açılış yükünü sınırlayın.
+Ana sayfa ürün anlatımı 10 Eylül'de sadeleştirildi; fakat görsel kanıt kaldırılmadı. Ayrıntılı program sayfası geniş operasyon merkezi örneğini, rezervasyon takvimi sayfası ise `FleetDemo.tsx` ile 70 araçlık etkileşimli çizelgeyi gösterir. `FleetDemo`yu tekrar ana sayfaya taşımayın; ayrıntılı büyük filo etkileşimini ürün sayfasında tutarak ana açılış yükünü sınırlayın.
+
+Kullanıcı gerçek ürün görünümünü referans gösterdikten sonra ana sayfadaki ürün kanıtı güçlendirildi. `ProductOverviewSection` başlığı yeniden “Ürünün kalbi · Tek operasyon akışı” oldu ve `HomeOperationDemo.tsx` eklendi. Bu demo gerçek uygulamaya yakın açık renkli operasyon merkezi düzeninde 20 örnek araç, 14 günlük çizelge, bugünkü operasyon kuyruğu ve Önerilen Odak alanını birlikte gösterir. Arama, sınıf/durum filtresi ve örnek rezervasyon seçimi çalışır. Tamamı sentetik veridir; gerçek uygulamaya istek göndermez. Bu 20 araçlık ana sayfa demosunu, ürün detay sayfasındaki ayrı 70 araçlık büyük filo kanıtıyla karıştırmayın.
 
 ## 1. Otuz saniyelik özet
 
@@ -511,6 +513,7 @@ Aşağıdaki vaatler canlı üründe yeniden doğrulanmadan aktif satış metnin
 - SSS kategori seçimi: `src/components/home/FaqGroupTabs.tsx`
 - Hero ürün demosu: `src/components/DashboardMock.tsx`
 - Kompakt ürün girişleri: `src/components/home/ProductOverviewSection.tsx`
+- 20 araçlık ana sayfa operasyon demosu: `src/components/HomeOperationDemo.tsx`, `src/lib/home-operation-demo.ts`
 - Paylaşılan hafif ürün önizlemeleri: `src/components/ProductPreviewScenes.tsx`
 - Detay sayfalarındaki geniş ürün örnekleri: `src/components/ProductEvidenceSection.tsx`
 - Yerel operasyon/güven özeti: `src/components/home/HomeTrustSection.tsx`

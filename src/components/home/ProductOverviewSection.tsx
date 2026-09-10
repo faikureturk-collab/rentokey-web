@@ -7,7 +7,7 @@ import {
   ClipboardCheck,
   UsersRound,
 } from "lucide-react";
-import { OperationCentrePreview, ReservationTimelinePreview } from "@/components/ProductPreviewScenes";
+import HomeOperationDemo from "@/components/HomeOperationDemo";
 
 const outcomes = [
   { icon: ClipboardCheck, tr: "Teslim ve iadeyi aynı operasyonda yönetin", en: "Manage handovers and returns in one operation" },
@@ -28,7 +28,6 @@ export default function ProductOverviewSection({ locale = "tr" }: { locale?: "tr
           description: "Bring reservations, customers, vehicles, handovers, returns and finance into the same working flow.",
           href: "/en/car-rental-software",
           cta: "Explore the software",
-          variant: "software" as const,
           accent: "bg-brand-blue/10 text-brand-blue",
         },
         {
@@ -38,7 +37,6 @@ export default function ProductOverviewSection({ locale = "tr" }: { locale?: "tr
           description: "See availability, conflicts, preparation windows and suitable vehicle suggestions before confirming a booking.",
           href: "/en/car-rental-reservation-calendar",
           cta: "Explore the calendar",
-          variant: "calendar" as const,
           accent: "bg-brand-green/10 text-brand-green-dark",
         },
       ]
@@ -50,7 +48,6 @@ export default function ProductOverviewSection({ locale = "tr" }: { locale?: "tr
           description: "Rezervasyon, müşteri, araç, teslim, iade ve finans süreçlerini aynı çalışma düzeninde birleştirin.",
           href: "/arac-kiralama-programi",
           cta: "Programı inceleyin",
-          variant: "software" as const,
           accent: "bg-brand-blue/10 text-brand-blue",
         },
         {
@@ -60,7 +57,6 @@ export default function ProductOverviewSection({ locale = "tr" }: { locale?: "tr
           description: "Müsaitliği, çakışmaları, hazırlık sürelerini ve uygun araç önerilerini rezervasyonu onaylamadan görün.",
           href: "/arac-kiralama-rezervasyon-takvimi",
           cta: "Takvimi inceleyin",
-          variant: "calendar" as const,
           accent: "bg-brand-green/10 text-brand-green-dark",
         },
       ];
@@ -70,18 +66,22 @@ export default function ProductOverviewSection({ locale = "tr" }: { locale?: "tr
       <div className="container-page py-14 sm:py-20">
         <div className="grid gap-5 lg:grid-cols-[1fr_.72fr] lg:items-end">
           <div>
-            <p className="text-sm font-bold text-brand-green-dark">{en ? "The core product" : "Temel ürün"}</p>
+            <p className="text-sm font-bold text-brand-green-dark">{en ? "The heart of the product" : "Ürünün kalbi"}</p>
             <h2 className="mt-3 max-w-3xl text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-navy sm:text-4xl">
-              {en ? "See the whole operation. Go deeper only where you need to." : "Operasyonun tamamını görün. İhtiyacınız olan ayrıntıya ilerleyin."}
+              {en ? <>Not separate tools. <span className="text-brand-green">One operation flow.</span></> : <>Ayrı araçlar değil. <span className="text-brand-green">Tek operasyon akışı.</span></>}
             </h2>
           </div>
           <p className="text-[15px] leading-relaxed text-brand-navy/55 lg:justify-self-end">
-            {en ? "Start with the complete platform or examine the live reservation calendar directly." : "Platformun tamamından başlayın veya doğrudan canlı rezervasyon takvimini inceleyin."}
+            {en ? "See how reservations, the 14-day vehicle plan, today’s handovers and Recommended Focus work together in a 20-vehicle sample operation." : "Rezervasyonların, 14 günlük araç planının, bugünkü teslimlerin ve Önerilen Odak'ın 20 araçlık örnek operasyonda nasıl birlikte çalıştığını görün."}
           </p>
         </div>
 
-        <div className="mt-9 grid gap-4 lg:grid-cols-2">
-          {products.map(({ icon: Icon, eyebrow, title, description, href, cta, accent, variant }) => (
+        <div className="mt-9">
+          <HomeOperationDemo locale={locale} />
+        </div>
+
+        <div className="mt-5 grid gap-4 lg:grid-cols-2">
+          {products.map(({ icon: Icon, eyebrow, title, description, href, cta, accent }) => (
             <Link
               key={href}
               href={href}
@@ -96,9 +96,6 @@ export default function ProductOverviewSection({ locale = "tr" }: { locale?: "tr
               <p className="mt-7 text-xs font-bold uppercase tracking-[0.12em] text-brand-green-dark">{eyebrow}</p>
               <h3 className="mt-2 text-2xl font-extrabold tracking-tight text-brand-navy">{title}</h3>
               <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-brand-navy/55">{description}</p>
-              <div className="mt-6">
-                {variant === "calendar" ? <ReservationTimelinePreview locale={locale} /> : <OperationCentrePreview locale={locale} />}
-              </div>
               <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-blue">
                 {cta} <ArrowRight className="h-4 w-4" />
               </span>

@@ -161,3 +161,12 @@ Bu bölüm önceki demo yerleşimi notlarının güncel halidir. Canlı uygulama
 - Son üretim çıktısında Türkçe ana sayfa HTML'i 344.676 bayttan 230.178 bayta; İngilizce ana sayfa HTML'i 328.445 bayttan 214.517 bayta düştü. Görsel örnekler korunurken yaklaşık azalma sırasıyla %33,2 ve %34,7'dir. RSC çıktıları da küçüldü.
 - Ana sayfa metadata ve JSON-LD kapsamı değişmedi. Yeni ürün iç bağlantıları, karşılıklı TR/EN sayfalar, canonical/hreflang ve sitemap yapısı korunur; yeni URL eklenmediği için sitemap değişikliği gerekmedi.
 - Commit/push veya canlı dağıtım yapılmadı.
+
+### Ana sayfa ürün vitrini — 20 araçlık sürüm
+
+- Kullanıcı gerçek ürün ekranını referans gösterdi. Sıralı planın ilk iki maddesi uygulandı: “Ürünün kalbi · Tek operasyon akışı” anlatımı ana sayfaya geri geldi ve gerçek uygulamanın açık renkli çalışma yüzeyine yakın, kod tabanlı 20 araçlık örnek operasyon merkezi hazırlandı.
+- Demo; özet kartları, Önerilen Odak, 14 günlük rezervasyon çizelgesi, 20 sentetik araç, üç sınıf, bugünkü operasyon kuyruğu, plaka/model araması, sınıf/durum filtresi ve rezervasyon ayrıntısı seçimini içerir. Gerçek müşteri/veri kullanılmaz ve canlı uygulamaya istek göndermez.
+- Türkçe ve İngilizce aynı bileşeni ve aynı örnek veriyi kullanır; tüm görünen metinlerin iki dil karşılığı vardır.
+- İki ürün detay bağlantısı demo altında korunur. Planın sonraki sekme, gruplama ve yerleşim kararları bu çalışma kapsamında uygulanmadı.
+- Yeni rota oluşmadı. Ana sayfa metadata, schema, canonical/hreflang ve sitemap değişikliği gerekmedi; ürün sayfalarına iç bağlantılar korunur.
+- Görsel demo geri gelmesine rağmen son ana sayfa HTML'i ilk 14 bölümlü sürüme göre Türkçede yaklaşık %28,9, İngilizcede yaklaşık %30,1 daha küçüktür.

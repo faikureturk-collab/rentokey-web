@@ -13,6 +13,7 @@ function load(relative) {
 }
 const pricing = load("../src/lib/pricing.ts");
 const fleet = load("../src/lib/fleet-demo.ts");
+const homeOperation = load("../src/lib/home-operation-demo.ts");
 const pilot = load("../src/lib/pilot-demo.ts");
 
 test("70 araç: aylık, yıllık karşılık, toplam ve döküm tutarlılığı", () => {
@@ -31,6 +32,15 @@ test("Örnek filo 70 benzersiz araç ve tutarlı durum sayıları içerir", () =
   assert.equal(fleet.fleetVehicles.length, 70);
   assert.equal(new Set(fleet.fleetVehicles.map((item) => item.plate)).size, 70);
   for (const [status, count] of [["Kirada", 54], ["Müsait", 10], ["Bakımda", 4], ["Hazırlanıyor", 2]]) assert.equal(fleet.fleetVehicles.filter((item) => item.status === status).length, count);
+});
+test("Ana sayfa operasyon demosu 20 benzersiz araç ve geçerli rezervasyonlar içerir", () => {
+  assert.equal(homeOperation.homeDemoVehicles.length, 20);
+  assert.equal(new Set(homeOperation.homeDemoVehicles.map((item) => item.plate)).size, 20);
+  const plates = new Set(homeOperation.homeDemoVehicles.map((item) => item.plate));
+  for (const booking of homeOperation.homeDemoBookings) {
+    assert.equal(plates.has(booking.plate), true);
+    assert.ok(booking.start >= 0 && booking.start + booking.span <= 14);
+  }
 });
 test("Çakışma uygun aynı sınıf/şube aracına çözülür, tarihler korunur", () => {
   const booking = fleet.fleetBookings.find((item) => item.id === "R-2401");
