@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { createTrialAccount, getTrialSignupErrorMessage } from "@/lib/trial-signup";
 import { trackEvent } from "@/lib/analytics";
+import TurnstileWidget from "./TurnstileWidget";
 
 type FormState = {
   fullName: string;
@@ -33,6 +34,8 @@ const initialForm: FormState = {
 };
 
 const APP_URL = "https://app.rentokey.com/";
+const TURNSTILE_ACTION = "signup-form";
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
 export default function TrialOnboarding({ locale = "tr" }: { locale?: Locale }) {
   const t = (text: string) => formCopy(text, locale);
@@ -41,6 +44,8 @@ export default function TrialOnboarding({ locale = "tr" }: { locale?: Locale }) 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedEmail, setSubmittedEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
   const formStarted = useRef(false);
   const isComplete = submittedEmail.length > 0;
 
@@ -58,11 +63,18 @@ export default function TrialOnboarding({ locale = "tr" }: { locale?: Locale }) 
     setSubmittedEmail("");
     setErrorMessage("");
     setShowPassword(false);
+    setTurnstileToken("");
+    setTurnstileResetSignal((current) => current + 1);
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (isSubmitting) return;
+    if (!turnstileToken) {
+      setErrorMessage(t("Lütfen güvenlik doğrulamasını tamamlayın."));
+      document.getElementById("trial-signup-turnstile")?.focus();
+      return;
+    }
 
     setIsSubmitting(true);
     setErrorMessage("");
@@ -75,6 +87,8 @@ export default function TrialOnboarding({ locale = "tr" }: { locale?: Locale }) 
         email,
         password: form.password,
         fullName,
+        locale,
+        turnstileToken,
       });
 
       setForm((current) => ({ ...current, password: "" }));
@@ -84,6 +98,7 @@ export default function TrialOnboarding({ locale = "tr" }: { locale?: Locale }) 
       setErrorMessage(getTrialSignupErrorMessage(error, locale));
     } finally {
       setIsSubmitting(false);
+      setTurnstileResetSignal((current) => current + 1);
     }
   }
 
@@ -204,6 +219,16 @@ export default function TrialOnboarding({ locale = "tr" }: { locale?: Locale }) 
               <Link href={locale === "en" ? "/en/terms" : "/kullanim-sartlari"} className="font-semibold text-brand-navy underline">{t("Kullanım Şartları")}</Link>{" "}{t("ve")}{" "}
               <Link href={locale === "en" ? "/en/privacy" : "/gizlilik-politikasi"} className="font-semibold text-brand-navy underline">{t("Gizlilik Politikası")}</Link>{t("&apos;nı kabul ediyorum.")}</span>
           </label>
+
+          <TurnstileWidget
+            locale={locale}
+            siteKey={TURNSTILE_SITE_KEY}
+            action={TURNSTILE_ACTION}
+            containerId="trial-signup-turnstile"
+            resetSignal={turnstileResetSignal}
+            onTokenChange={setTurnstileToken}
+            onError={setErrorMessage}
+          />
 
           {errorMessage && (
             <div

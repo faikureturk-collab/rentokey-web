@@ -33,6 +33,7 @@ export default function TurnstileWidget({
   locale = "tr",
   siteKey,
   action,
+  containerId = "contact-form-turnstile",
   resetSignal,
   onTokenChange,
   onError,
@@ -40,6 +41,7 @@ export default function TurnstileWidget({
   locale?: Locale;
   siteKey: string;
   action: string;
+  containerId?: string;
   resetSignal: number;
   onTokenChange: (token: string) => void;
   onError: (message: string) => void;
@@ -126,7 +128,7 @@ export default function TurnstileWidget({
   }
 
   return (
-    <div id="contact-form-turnstile" tabIndex={-1} aria-label={t("Güvenlik doğrulaması")} className="min-h-[65px] outline-none">
+    <div id={containerId} tabIndex={-1} aria-label={t("Güvenlik doğrulaması")} className="min-h-[65px] outline-none">
       {shouldLoad && (
         <Script
           id="cloudflare-turnstile"

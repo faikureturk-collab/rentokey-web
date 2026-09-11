@@ -21,14 +21,14 @@ npm run dev
 
 Site varsayılan olarak [http://localhost:3000](http://localhost:3000) adresinde açılır.
 
-İletişim formundaki Cloudflare Turnstile için `.env.example` dosyasını `.env.local` olarak kopyalayıp pazarlama sitesinin public site key değerini tanımlayın:
+İletişim ve ücretsiz deneme formlarındaki Cloudflare Turnstile için `.env.example` dosyasını `.env.local` olarak kopyalayıp pazarlama sitesinin public site key değerini tanımlayın:
 
 ```bash
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=...
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
 
-`TURNSTILE_SECRET_KEY` bu projeye eklenmez. Secret yalnız iletişim API'sinin çalıştığı projede bulunmalıdır.
+`TURNSTILE_SECRET_KEY` bu projeye eklenmez. Secret yalnız kayıt ve iletişim API'lerinin çalıştığı uygulama projesinde bulunmalıdır. Aynı Turnstile widget'ında `rentokey.com`, `www.rentokey.com` ve `app.rentokey.com` izinli hostname olmalıdır.
 
 `NEXT_PUBLIC_GA_MEASUREMENT_ID` isteğe bağlıdır. Tanımlandığında GA4 yalnız ziyaretçi analitik izni verdikten sonra yüklenir. İlk trafik kaynağı, UTM bilgileri ve açılış sayfası birinci taraf tarayıcı depolamasında tutulur; deneme CTA tıklaması, form başlangıcı ve başarılı hesap oluşturma ölçülür. Ad, e-posta, telefon ve şifre analitiğe gönderilmez.
 
@@ -61,7 +61,7 @@ npm run lint
 - `src/components/TrialOnboarding.tsx` — tek adımlı deneme hesabı formu
 - `src/lib/trial-signup.ts` — formun aynı origin kayıt istemcisi ve kullanıcı hata mesajları
 - `src/app/api/kayit-ol/route.ts` — kayıt isteğini uygulama API'sine sunucu tarafında ileten route
-- `src/components/TurnstileWidget.tsx` — iletişim formuna yaklaşılınca yüklenen Cloudflare Turnstile widget'ı
+- `src/components/TurnstileWidget.tsx` — iletişim ve kayıt formlarına yaklaşılınca yüklenen Cloudflare Turnstile widget'ı
 - `public/logo/` — aktif marka varlıkları
 - `scripts/build-og-card.mjs` — sosyal paylaşım görseli üretimi
 
@@ -69,7 +69,7 @@ npm run lint
 
 - Bu repo çalışan Rent Okey uygulaması değildir; ürün uygulaması `https://app.rentokey.com` adresindedir.
 - Pazarlama sitesinin standart üretim adresi `https://www.rentokey.com` değeridir. `src/lib/seo.ts` içindeki `SITE_URL`; canonical, sitemap, robots, sosyal paylaşım ve JSON-LD adreslerinin tek kaynağıdır. Apex alan adı `next.config.ts` üzerinden kalıcı olarak `www` sürümüne yönlendirilir.
-- `/ucretsiz-dene`, isteği aynı origin `/api/kayit-ol` route'una gönderir. Bu route hesabı `https://app.rentokey.com/api/kayit-ol` üzerinden sunucu tarafında oluşturur; doğrulama e-postası `mail.rentokey.com` üzerinden gönderilir. Firma ve filo bilgileri e-posta onayından sonra uygulamada alınır.
+- `/ucretsiz-dene`, `signup-form` action'lı Turnstile tokenıyla aynı origin `/api/kayit-ol` route'una gönderilir. Bu route doğrulanmış alanları `https://app.rentokey.com/api/kayit-ol` adresine iletir; uygulama API'si tokenı sunucuda doğrular ve atomik e-posta/IP hız sınırından sonra hesabı oluşturur. İngilizce form İngilizce doğrulama e-postası alır.
 - Web sitesi artık Supabase istemcisi veya Supabase ortam değişkeni kullanmaz. Daha önce Vercel'e eklenen `NEXT_PUBLIC_SUPABASE_URL` ve `NEXT_PUBLIC_SUPABASE_ANON_KEY` değerleri kullanılmadığı için kaldırılabilir.
 - İletişim formu `https://app.rentokey.com/api/iletisim-formu-gonder` endpoint'ine gerçek gönderim yapar. Seçili site dili `locale: "tr" | "en"` olarak gönderilir; ziyaretçi onay e-postası bu dilde hazırlanır. Cloudflare Turnstile `contact-form` action'ıyla üretilen token `turnstileToken` alanında gönderilir. Pazarlama sitesi yalnız `NEXT_PUBLIC_TURNSTILE_SITE_KEY` kullanır; `TURNSTILE_SECRET_KEY` yalnız API projesinde tutulur. API üretimde yalnız `rentokey.com` ve `www.rentokey.com` origin'lerini kabul eder; yerel ortamdan canlı gönderim beklenmemelidir.
 - GA4 ölçümü `NEXT_PUBLIC_GA_MEASUREMENT_ID` ile açılır ve onay verilmeden üçüncü taraf betiği yüklenmez. Ölçülen web olayları: `trial_cta_click`, `trial_form_start`, `sign_up`, `contact_form_start` ve `generate_lead`. `sign_up` yalnız kayıt API'si başarı döndürdükten sonra gönderilir. `email_verified` ve `onboarding_completed` olayları uygulama tarafında ayrıca bağlanmalıdır.

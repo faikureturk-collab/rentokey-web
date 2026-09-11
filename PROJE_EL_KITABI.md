@@ -381,12 +381,44 @@ Mevcut durum:
 
 - ad/soyad, e-posta ve şifre alır,
 - sözleşme ve gizlilik onayı ister,
-- tarayıcıdan aynı origin `POST /api/kayit-ol` route'una `email`, `password` ve `fullName` gönderir,
+- `signup-form` action'lı Cloudflare Turnstile doğrulaması ister,
+- tarayıcıdan aynı origin `POST /api/kayit-ol` route'una `email`, `password`, `fullName`, `locale` ve `turnstileToken` gönderir,
 - aynı origin route, doğrulanmış alanları sunucu tarafında `https://app.rentokey.com/api/kayit-ol` endpoint'ine iletir,
 - hesabı uygulama sunucusunda oluşturur; tarayıcıya session dönmez,
 - doğrulama e-postasını `mail.rentokey.com` üzerinden gönderir,
 - gerçek servis cevabı gelmeden başarı ekranı göstermez,
 - `ok` ve `error` alanlarına göre gönderim, hata ve tekrar deneme durumlarını yönetir.
+
+Uygulama API'si Turnstile tokenını `Siteverify` ile doğrular; production'da yalnız `rentokey.com`, `www.rentokey.com` ve `app.rentokey.com` hostname'lerini ve tam `signup-form` action'ını kabul eder. `patch_v101.sql` ile e-posta başına saatte 3, IP başına saatte 50 girişsiz kayıt denemesi atomik olarak sınırlandırılır. IP sınırının daha geniş tutulma nedeni pazarlama sitesinin aynı-origin route'unun uygulama API'sine sunucu tarafında proxy yapmasıdır; ziyaretçi-IP seviyesindeki ilk sınır Vercel/Cloudflare WAF'ta uygulanmalıdır. Ham IP/e-posta hız tablosunda saklanmaz, HMAC özetleri iki gün sonra mevcut günlük temizlik işiyle silinir.
+
+### Üretim DDoS ve Vercel Firewall yapılandırması
+
+2026-09-11 itibarıyla `rentokey.com`, Cloudflare DNS/proxy arkasında değildir;
+site doğrudan Vercel üzerinden yayınlanır. Cloudflare bu mimaride yalnız
+Turnstile widget'ı ve `Siteverify` doğrulaması için kullanılır. Sırf DDoS
+koruması amacıyla Cloudflare'a `Add domain` yapıp nameserver taşınmamalıdır;
+bu işlem MX, SPF, DKIM, DMARC ve diğer DNS kayıtlarının ayrıca güvenli biçimde
+aktarılmasını gerektiren bağımsız bir altyapı değişikliğidir.
+
+Her iki Vercel projesinde platformun otomatik `System Mitigations`/DDoS
+koruması aktiftir. Buna ek olarak production'a yayınlanan özel kurallar:
+
+- `rentokey-car-app` (`app.rentokey.com`): `Request Path starts with /api/`,
+  IP başına sabit pencerede 60 saniyede 60 istek; aşımda HTTP 429.
+- `rentokey-web` (`www.rentokey.com`): yalnız `Request Path equals
+  /api/kayit-ol`, IP başına sabit pencerede 600 saniyede 10 istek; aşımda
+  HTTP 429.
+
+İletişim formu `app.rentokey.com/api/iletisim-formu-gonder` adresine doğrudan
+gittiği için uygulama projesinin genel `/api/` kuralına tabidir. Pazarlama
+sitesindeki `/api/kayit-ol` kuralı ise proxy'ye ulaşan gerçek ziyaretçi IP'si
+üzerinden daha dar ilk sınırı uygular. `Bot Protection` global Challenge modu
+şimdilik kapalıdır; meşru webhook/sunucu çağrıları envanteri çıkarılmadan
+açılmamalıdır. SEO/GEO görünürlüğünü korumak için `AI Bots` izinli bırakılır.
+`Attack Mode` yalnız aktif saldırı sırasında geçici olarak kullanılmalıdır.
+Tek IP engellemeleri dağıtık saldırıya karşı ana yöntem değildir; düzenli
+kontrol **Firewall > Overview** ekranındaki `Denied`/`Rate Limited` sayaçları
+ve uygulamadaki 429 hata oranı üzerinden yapılır.
 
 Firma adı ve filo büyüklüğü e-posta doğrulamasından sonra `app.rentokey.com` içindeki onboarding akışında alınır. Web sitesi doğrudan Supabase istemcisi veya Supabase anahtarı kullanmaz. Şifre başarılı istekten sonra frontend state'inden temizlenir.
 
@@ -561,8 +593,8 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 4. `/guncellemeler` sayfasındaki çevrimdışı mod ve diğer kayıtlar canlı ürünle yeniden doğrulanmalıdır.
 5. Blog ve kılavuz içerikleri yer tutucudur ve bu nedenle şu an `noindex` durumundadır.
 6. Gizlilik ve kullanım şartları hukuk danışmanı tarafından doğrulanmamıştır ve bu nedenle şu an `noindex` durumundadır.
-7. Deneme formunun kötüye kullanımına karşı kayıt API'sinin rate limit ayarları izlenmeli; ihtiyaç oluşursa CAPTCHA eklenmelidir.
-8. Turnstile public site key pazarlama sitesi Vercel ortamına, secret key ise yalnız API projesine eklenmeli ve gerçek iletişim gönderimi üretim alan adında uçtan uca doğrulanmalıdır.
+7. Deneme formunda Turnstile ve kalıcı hız sınırı hazırdır; `patch_v101.sql`, iki projedeki public site key ve uygulama projesindeki `SIGNUP_REQUIRE_TURNSTILE=true` üretimde etkinleştirilmelidir. İki Vercel WAF hız sınırı 2026-09-11'de production'a yayınlandı; bundan sonra `Rate Limited` ve 429 ölçümleri izlenmelidir.
+8. Turnstile public site key pazarlama ve uygulama Vercel ortamlarına, secret key ise yalnız API projesine eklenmeli; aynı widget'ta üç üretim hostname'i izinli olmalı ve kayıt/iletişim gönderimleri uçtan uca doğrulanmalıdır.
 9. Checkout, ödeme, abonelik ve faturalandırma akışı henüz yoktur.
 10. RentOkey Pilot'ın ek paket fiyatı sitede sayısal olarak yayınlanmıyor; fiyatlandırma politikası netleşirse fiyat kartı, SSS ve yapılandırılmış veri birlikte güncellenmelidir.
 11. GA4 web ölçüm altyapısı hazırdır ve `NEXT_PUBLIC_GA_MEASUREMENT_ID` tanımlandığında yalnız ziyaretçi onayı sonrasında çalışır. İlk ziyaret UTM/referrer/landing page bilgisi birinci taraf tarayıcı depolamasında saklanır; Google, Bing, ChatGPT, Claude, LinkedIn ve doğrudan trafik sınıflandırılır. `trial_cta_click`, `trial_form_start`, başarılı kayıt sonrası `sign_up`, `contact_form_start` ve `generate_lead` olayları web tarafında tanımlıdır. GA4 mülkünün oluşturulması, Measurement ID'nin Vercel'e eklenmesi, `sign_up` olayının önemli etkinlik yapılması, Search Console bağlantısı ve uygulama tarafındaki `email_verified` / `onboarding_completed` olayları henüz tamamlanmalıdır. Kaynağın hesap kaydıyla sunucu tarafında kalıcı eşleştirilmesi de uygulama API sözleşmesiyle birlikte yapılmalıdır.
@@ -573,7 +605,7 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 
 1. Yeni deployment sonrasında kayıt API'sini ve `mail.rentokey.com` doğrulama e-postasını gerçek alan adında uçtan uca test et.
 2. Aynı origin kayıt route'unun uygulama endpoint'ine erişimini ve kararlı hata yanıtlarını deployment üzerinde doğrula.
-3. API rate limit değerlerini izle ve gerçek trafik gerektirirse CAPTCHA ekle.
+3. Vercel WAF ve uygulama içi API rate limit değerlerini izle; gerçek kullanıcı 429 oranı yükselirse sınırları kontrollü biçimde ayarla. Turnstile zaten kayıt ve iletişim formlarında aktiftir.
 4. Deneme sonrası paket seçimi, checkout, abonelik ve faturalandırma mimarisini kur.
 
 ### P1 — Lead ve ölçümleme

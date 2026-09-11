@@ -4,6 +4,8 @@ type TrialSignupInput = {
   email: string;
   password: string;
   fullName: string;
+  locale: "tr" | "en";
+  turnstileToken: string;
 };
 
 type TrialSignupResponse = {
@@ -45,7 +47,8 @@ export function getTrialSignupErrorMessage(error: unknown, locale: "tr" | "en" =
     if (/already registered|already exists|user exists/.test(normalizedMessage)) return "An account already exists for this email. Sign in or reset your password in the app.";
     if (/weak password|password should|password must/.test(normalizedMessage)) return "Please choose a stronger password.";
     if (/invalid email|email address is invalid/.test(normalizedMessage)) return "Enter a valid work email address.";
-    if (/rate limit|too many request/.test(normalizedMessage)) return "Too many attempts. Please wait a few minutes and try again.";
+    if (/rate limit|too many request|çok fazla kayıt|çok sayıda kayıt|fazla deneme/.test(normalizedMessage)) return "Too many attempts. Please wait a few minutes and try again.";
+    if (/bot doğrulama|güvenlik doğrulama|security check|turnstile/.test(normalizedMessage)) return "The security check failed or expired. Please complete it again.";
     return "Your account could not be created. Check your details and try again, or contact support.";
   }
 
@@ -78,7 +81,9 @@ export function getTrialSignupErrorMessage(error: unknown, locale: "tr" | "en" =
 
   if (
     normalizedMessage.includes("rate limit") ||
-    normalizedMessage.includes("too many request")
+    normalizedMessage.includes("too many request") ||
+    normalizedMessage.includes("çok fazla kayıt") ||
+    normalizedMessage.includes("çok sayıda kayıt")
   ) {
     return "Kısa süre içinde çok fazla deneme yapıldı. Lütfen birkaç dakika bekleyip yeniden deneyin.";
   }

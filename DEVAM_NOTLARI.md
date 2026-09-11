@@ -10,6 +10,8 @@ Projenin ürün doğruları, karar geçmişi, ana sayfa dönüşüm hikâyesi, p
 
 ## Son tamamlanan çalışma
 
+Ücretsiz deneme hesabı akışı L7 kötüye kullanıma karşı sertleştirildi. Türkçe ve İngilizce kayıt formları artık `signup-form` action'lı Cloudflare Turnstile tokenı gönderiyor; aynı-origin web route'u tokenı ve locale bilgisini uygulama API'sine iletiyor. Uygulama tarafında tokenın `success`, action ve hostname değerleri sunucuda doğrulanıyor; `patch_v101.sql` ile kullanıcı/e-posta oluşturulmadan ve Resend çağrısından önce atomik e-posta/IP hız sınırı uygulanıyor. İngilizce web kaydı İngilizce doğrulama e-postası alıyor. Canlıya geçiş için patch'in önce çalıştırılması, iki istemciye public site key eklenmesi ve son olarak API projesinde `SIGNUP_REQUIRE_TURNSTILE=true` yapılması gerekir.
+
 Ekran görüntüsüne ihtiyaç duymayan ürün anlatımı yeniden tasarlandı. **“Beş ayrı araç değil. Tek operasyon akışı.”** alanı; Planlama, Operasyon, Filo, Finans ve Yönetim adımlarını seçilebilir, kod tabanlı ürün sahneleriyle anlatıyor. Hemen altındaki tekrar eden özellik kartları ise ürünün dört temel operasyon sonucunu anlatacak şekilde yenilendi.
 
 21 günlük deneme süreci de baştan kurgulandı: hesap açma, filo ekleme, ekip daveti ve gerçek operasyonu deneme adımları artık açık şekilde anlatılıyor. Mevcut üründe doğrulanmamış otomasyon vaatleri metinden çıkarıldı. Yapay zekâ yol haritası, satın alma akışını bölmemesi için fiyatlandırma ve marka anlatımının arkasına taşındı; gelecek özellikleri daha şeffaf ifadelerle sunuluyor.

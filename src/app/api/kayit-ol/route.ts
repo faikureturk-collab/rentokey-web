@@ -4,6 +4,8 @@ type SignupPayload = {
   email?: unknown;
   password?: unknown;
   fullName?: unknown;
+  locale?: unknown;
+  turnstileToken?: unknown;
 };
 
 type UpstreamResponse = {
@@ -12,6 +14,11 @@ type UpstreamResponse = {
 };
 
 export async function POST(request: Request) {
+  const contentLength = Number(request.headers.get("content-length"));
+  if (Number.isFinite(contentLength) && contentLength > 20_000) {
+    return Response.json({ ok: false, error: "Kayıt isteği çok büyük." }, { status: 413 });
+  }
+
   let payload: SignupPayload;
 
   try {
@@ -23,6 +30,8 @@ export async function POST(request: Request) {
   const email = typeof payload.email === "string" ? payload.email.trim().toLowerCase() : "";
   const password = typeof payload.password === "string" ? payload.password : "";
   const fullName = typeof payload.fullName === "string" ? payload.fullName.trim() : "";
+  const locale = payload.locale === "en" ? "en" : "tr";
+  const turnstileToken = typeof payload.turnstileToken === "string" ? payload.turnstileToken.trim() : "";
 
   if (!email || email.length > 254 || !email.includes("@")) {
     return Response.json({ ok: false, error: "Geçerli bir e-posta adresi girin." }, { status: 400 });
@@ -36,11 +45,15 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, error: "Ad soyad 2–100 karakter arasında olmalıdır." }, { status: 400 });
   }
 
+  if (!turnstileToken || turnstileToken.length > 2048) {
+    return Response.json({ ok: false, error: "Lütfen güvenlik doğrulamasını tamamlayın." }, { status: 400 });
+  }
+
   try {
     const upstreamResponse = await fetch(UPSTREAM_SIGNUP_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, fullName }),
+      body: JSON.stringify({ email, password, fullName, locale, turnstileToken }),
       cache: "no-store",
       signal: AbortSignal.timeout(15_000),
     });

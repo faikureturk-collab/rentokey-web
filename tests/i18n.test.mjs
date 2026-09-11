@@ -37,16 +37,18 @@ test("form copy keeps Turkish and translates security, fields and submission sta
 test("English signup errors never expose unlocalised backend messages", () => {
   assert.match(signup.getTrialSignupErrorMessage(new Error("User already registered"),"en"),/already exists/);
   assert.match(signup.getTrialSignupErrorMessage(new Error("network_error"),"en"),/unavailable/);
+  assert.match(signup.getTrialSignupErrorMessage(new Error("Çok fazla kayıt denemesi yapıldı."),"en"),/Too many attempts/);
+  assert.match(signup.getTrialSignupErrorMessage(new Error("Bot doğrulaması geçersiz."),"en"),/security check/);
   assert.match(signup.getTrialSignupErrorMessage(new Error("Çok fazla istek"),"en"),/could not be created/);
 });
 
 test("signup uses the existing same-origin API contract without real requests", async () => {
   let request;
   const mocked = load("trial-signup",{fetch:async (url,options) => {request={url,...options};return {ok:true,json:async()=>({ok:true})};}});
-  await mocked.createTrialAccount({fullName:"Demo User",email:"demo@example.test",password:"demo-only"});
+  await mocked.createTrialAccount({fullName:"Demo User",email:"demo@example.test",password:"demo-only",locale:"en",turnstileToken:"test-token"});
   assert.equal(request.url,"/api/kayit-ol");
   assert.equal(request.method,"POST");
-  assert.deepEqual(JSON.parse(request.body),{fullName:"Demo User",email:"demo@example.test",password:"demo-only"});
+  assert.deepEqual(JSON.parse(request.body),{fullName:"Demo User",email:"demo@example.test",password:"demo-only",locale:"en",turnstileToken:"test-token"});
 });
 
 test("contact requests include the selected website locale", () => {
