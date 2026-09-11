@@ -434,6 +434,19 @@ public site key içinde küçük `l` yerine büyük `L` yazılmasından kaynakla
 canlı paket karşılaştırmasıyla bulundu; değer Cloudflare'dan yeniden
 kopyalanıp uygulama yeniden deploy edildikten sonra test başarıyla tamamlandı.
 
+**Google ile web kaydı denemesi (2026-09-11):** `TrialOnboarding.tsx` içindeki
+e-posta/şifre formunun üstüne Türkçe ve İngilizce Google kayıt butonu eklendi.
+Buton, ikinci bir Supabase istemcisi kurmadan kullanıcıyı uygulamanın
+`https://app.rentokey.com/auth/google` başlangıç adresine gönderir; uygulama
+mevcut Supabase Google OAuth akışını başlatır. E-posta/şifre ve Turnstile akışı
+değişmedi. Google yolunda `/api/kayit-ol` ve Turnstile kullanılmaz; Google
+Client ID/Secret veya Supabase anahtarı web projesine eklenmez. Buton tıklaması
+analitik izni varsa `trial_cta_click` olayıyla `method=google` ve
+`placement=free_trial_form` parametrelerini gönderir; başarılı OAuth kaydı
+henüz web tarafında `sign_up` sayılmaz. Kullanıcı beğenmezse webdeki Google
+butonu ile uygulamadaki `GoogleAuthStartPage.tsx`/`App.tsx` path koşulu birlikte
+geri alınmalıdır.
+
 Firma adı ve filo büyüklüğü e-posta doğrulamasından sonra `app.rentokey.com` içindeki onboarding akışında alınır. Web sitesi doğrudan Supabase istemcisi veya Supabase anahtarı kullanmaz. Şifre başarılı istekten sonra frontend state'inden temizlenir.
 
 Deneme hesabını oluşturduktan sonraki ilk 48 saat içinde kullanıcı müşteri, rezervasyon, filo, gider veya bakım Excel / CSV dosyası için ücretsiz ilk aktarım desteği talep edebilir. Destek ekibi dosyanın yapısını kontrol eder, gerekli düzeltmeleri bildirir ve ilk aktarımın tamamlanmasına yardımcı olur. 48 saatlik süre aktarımın bitiş garantisi değil, destek talebinin oluşturulma penceresidir; tamamlanma süresi dosyanın kapsamına ve veri kalitesine göre değişebilir.
