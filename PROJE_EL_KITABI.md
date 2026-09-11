@@ -427,8 +427,11 @@ değişkenleri ve uygulama projesindeki zorunlu signup doğrulaması etkinleşti
 `rentokey-web` Vercel logunda `POST /api/kayit-ol` için HTTP 200 görüldü ve
 doğrulama e-postası akışı tamamlandı. Böylece web kayıt formu, aynı-origin
 proxy, uygulama API'si, Turnstile doğrulaması ve veritabanı hız sınırı birlikte
-üretimde doğrulandı. Uygulamanın doğrudan `app.rentokey.com` kayıt ekranı,
-kendi public Turnstile değişkenini kullandığı için ayrıca smoke-test edilmelidir.
+üretimde doğrulandı. Uygulamanın doğrudan `app.rentokey.com` kayıt ekranı da
+ayrıca test edildi. İlk denemedeki Cloudflare `400020` hatasının Vercel'deki
+public site key içinde küçük `l` yerine büyük `L` yazılmasından kaynaklandığı
+canlı paket karşılaştırmasıyla bulundu; değer Cloudflare'dan yeniden
+kopyalanıp uygulama yeniden deploy edildikten sonra test başarıyla tamamlandı.
 
 Firma adı ve filo büyüklüğü e-posta doğrulamasından sonra `app.rentokey.com` içindeki onboarding akışında alınır. Web sitesi doğrudan Supabase istemcisi veya Supabase anahtarı kullanmaz. Şifre başarılı istekten sonra frontend state'inden temizlenir.
 
@@ -604,7 +607,7 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 5. Blog ve kılavuz içerikleri yer tutucudur ve bu nedenle şu an `noindex` durumundadır.
 6. Gizlilik ve kullanım şartları hukuk danışmanı tarafından doğrulanmamıştır ve bu nedenle şu an `noindex` durumundadır.
 7. Deneme formunda Turnstile, `patch_v101.sql`, kalıcı hız sınırı ve iki Vercel WAF kuralı production'da aktiftir; web kayıt akışı 2026-09-11'de başarıyla test edildi. Bundan sonra `Rate Limited` ve gerçek kullanıcı 429 ölçümleri izlenmelidir.
-8. Turnstile public site key iki projenin, secret key yalnız API projesinin Production ortamındadır; iletişim ve web kayıt gönderimleri uçtan uca doğrulandı. Yalnız `app.rentokey.com` doğrudan kayıt ekranının ayrıca smoke-test edilmesi kalmıştır.
+8. Turnstile public site key iki projenin, secret key yalnız API projesinin Production ortamındadır; iletişim, web kayıt ve `app.rentokey.com` doğrudan kayıt gönderimleri uçtan uca doğrulandı.
 9. Checkout, ödeme, abonelik ve faturalandırma akışı henüz yoktur.
 10. RentOkey Pilot'ın ek paket fiyatı sitede sayısal olarak yayınlanmıyor; fiyatlandırma politikası netleşirse fiyat kartı, SSS ve yapılandırılmış veri birlikte güncellenmelidir.
 11. GA4 web ölçüm altyapısı hazırdır ve `NEXT_PUBLIC_GA_MEASUREMENT_ID` tanımlandığında yalnız ziyaretçi onayı sonrasında çalışır. İlk ziyaret UTM/referrer/landing page bilgisi birinci taraf tarayıcı depolamasında saklanır; Google, Bing, ChatGPT, Claude, LinkedIn ve doğrudan trafik sınıflandırılır. `trial_cta_click`, `trial_form_start`, başarılı kayıt sonrası `sign_up`, `contact_form_start` ve `generate_lead` olayları web tarafında tanımlıdır. GA4 mülkünün oluşturulması, Measurement ID'nin Vercel'e eklenmesi, `sign_up` olayının önemli etkinlik yapılması, Search Console bağlantısı ve uygulama tarafındaki `email_verified` / `onboarding_completed` olayları henüz tamamlanmalıdır. Kaynağın hesap kaydıyla sunucu tarafında kalıcı eşleştirilmesi de uygulama API sözleşmesiyle birlikte yapılmalıdır.
