@@ -1,6 +1,6 @@
 # Rent Okey web sitesi — proje el kitabı
 
-Son güncelleme: 10 Eylül 2026
+Son güncelleme: 11 Eylül 2026
 Doğrulanan Git başlangıç noktası: `268dfa3` — `Fiyatlandırma yeni versiyon`
 
 Bu belge, Rent Okey web sitesinde yapılacak bir sonraki geliştirmeden önce okunması gereken ana bağlam dosyasıdır. Yalnız mevcut ekranları anlatmaz; ürünün ne olduğu, sitenin ziyaretçiyi hangi sırayla ikna ettiği, hangi kararların neden alındığı, hangi vaatlerin doğrulandığı ve hangi alanların henüz prototip olduğu burada ayrıştırılır.
@@ -11,7 +11,7 @@ Türkçe adresler değişmedi; dosyalar `src/app/(tr)` route grubuna taşındı.
 
 Header/Footer/Logo/WhatsApp, ContactForm, TrialOnboarding, TurnstileWidget, FaqAccordion ve ana sayfadaki bütün satış bileşenleri dil parametresiyle ortaktır. `/en` Türkçe ana sayfanın kısaltılmış bir çevirisi değildir: iki dil de aynı 11 bölümü aynı sırada, aynı ürün demosu ve fiyat hesaplayıcısıyla gösterir. İngilizce form metinleri `lib/form-copy.ts`, iki dildeki gruplu SSS içeriği `lib/faq.ts` içindedir. Pilot demosu ve fiyat hesaplayıcısı aynı `pilot-demo.ts` ve `pricing.ts` verilerini/hesaplarını kullanır. Dil başına farklı ticari hesap veya API eklemeyin.
 
-Kullanıcı İngilizce destek verildiğini teyit etti. Uygulama arayüzünün veya doğrulama e-postasının İngilizce olduğu ayrıca teyit edilmedi; web dilini backend'e tanımsız bir alan olarak göndermiyoruz. Destek: TR/EN, her gün 09.00–22.00 Türkiye saati. Bloglar/kılavuzlar henüz çevrilmedi; İngilizce footer'da blog dili açıkça belirtilir. Yasal sayfalar mevcut Türkçe metnin çevirisidir; yeni uluslararası mevzuat uyum iddiası içermez ve yayın öncesi hukuk kontrolü önerilir.
+Kullanıcı İngilizce destek verildiğini teyit etti. Uygulama arayüzünün veya doğrulama e-postasının İngilizce olduğu ayrıca teyit edilmedi; web dilini backend'e tanımsız bir alan olarak göndermiyoruz. Destek: TR/EN, her gün 09.00–22.00 Türkiye saati. İngilizce blog merkezi `/en/blog` adresinde açıldı; ilk eşleşen içerik `/blog/arac-teslim-iade-surecini-dijitallestirmek` ile `/en/blog/digitise-car-rental-handover-return-process` çiftidir. Diğer beş Türkçe blog yazısı ve kılavuzlar henüz çevrilmedi; karşılığı olmayan sayfalara sahte dil alternatifi eklenmemelidir. Yasal sayfalar mevcut Türkçe metnin çevirisidir; yeni uluslararası mevzuat uyum iddiası içermez ve yayın öncesi hukuk kontrolü önerilir.
 
 `locale.ts` karşılıklar için tek kaynaktır. Yeni çevrilen sayfayı dil seçici, canonical/hreflang ve sitemap eşleştirmesine dahil edin. Eksik çevirilere sahte hreflang vermeyin. Ayrıntılı doğrulama ve sınırlar `DEVAM_NOTLARI.md` içindedir.
 
@@ -275,6 +275,7 @@ Sabit Başlangıç/Büyüme/Profesyonel paketleri yerine araç sayısına göre 
 - Claude arama görünürlüğü ve kullanıcı tarafından başlatılan sayfa erişimi için `Claude-SearchBot` ile `Claude-User` açıkça izinli. Pazarlama sitesinin herkese açık içeriğinin Anthropic model geliştirme süreçlerinde kullanılabilmesi için `ClaudeBot` da izinli; bu tercih arama erişiminden ayrı değerlendiriliyor.
 - Standart üretim adresi `https://www.rentokey.com`; apex alan adı kalıcı yönlendirmeyle `www` sürümüne taşınıyor. Canonical, sitemap, robots, Open Graph ve JSON-LD aynı merkezi `SITE_URL` değerinden üretiliyor.
 - Sitemap aramada sunulmaya hazır `/`, `/ucretsiz-dene`, `/okey-pilot`, `/kaynaklar`, `/blog` ve yayındaki blog yazılarını içeriyor. Statik sayfa güncellemeleri ile blog yayın/değişiklik tarihleri ayrı tutuluyor.
+- İngilizce blog merkezi ve ilk İngilizce makale 11 Eylül 2026'da eklendi. Blog listesi ile makale canonical, karşılıklı `hreflang`, `BlogPosting` ve `BreadcrumbList` JSON-LD, İngilizce Open Graph bilgileri, dil değiştirici, header/footer bağlantıları ve sitemap girdileriyle birlikte yayınlanır. İngilizce içerik `src/lib/blog-en.ts`; İngilizce liste ve detay rotaları `src/app/en/blog` altındadır.
 - Yer tutucu içerikler ve uzman onayı bekleyen yasal metinler `noindex, follow` durumunda. Gerçek içerik tamamlandığında metadata ve sitemap birlikte güncellenmeli.
 - Hero'nun görünen metninde Türkiye, KKTC ve araç kiralama programı bağlamı doğal biçimde açıklandı.
 - Google Search Console alan adı mülkü ve Bing Webmaster Tools doğrulandı; sitemap iki panele de gönderildi. Yeni sitemap yayına çıktıktan sonra keşfedilen URL sayısı tekrar kontrol edilmeli.
@@ -579,6 +580,8 @@ Aşağıdaki vaatler canlı üründe yeniden doğrulanmadan aktif satış metnin
 - Logo bileşeni: `src/components/Logo.tsx`
 - OG üretimi: `scripts/build-og-card.mjs`
 - Ortak SEO metadata'sı: `src/lib/seo.ts`
+- Türkçe blog içeriği: `src/lib/blog.ts`, `src/app/(tr)/blog`
+- İngilizce blog içeriği: `src/lib/blog-en.ts`, `src/app/en/blog`
 - Yapılandırılmış veri: `src/lib/structured-data.ts`
 - Yapılandırılmış veri çıktısı: `src/components/StructuredData.tsx`
 - Tarama ve sitemap: `src/app/robots.ts`, `src/app/sitemap.ts`
@@ -604,7 +607,7 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 2. `ProductShowcase`, `ShowcaseCarousel` ve `ModuleRow` aktif ana sayfa akışında kullanılmıyor; eski ekran görüntüsü yaklaşımından kalan kod olabilir.
 3. `_to_delete/old-logo-svgs/` aktif logo kaynağı değildir. Referans olmadığı doğrulandıktan sonra temizlenebilir.
 4. `/guncellemeler` sayfasındaki çevrimdışı mod ve diğer kayıtlar canlı ürünle yeniden doğrulanmalıdır.
-5. Blog ve kılavuz içerikleri yer tutucudur ve bu nedenle şu an `noindex` durumundadır.
+5. Altı Türkçe blog yazısından yalnız teslim/iade süreci yazısının İngilizce karşılığı yayındadır. Kalan beş yazı İngilizce arama niyetine göre uyarlanmalı; kılavuz yer tutucuları ise tamamlanana kadar `noindex` kalmalıdır.
 6. Gizlilik ve kullanım şartları hukuk danışmanı tarafından doğrulanmamıştır ve bu nedenle şu an `noindex` durumundadır.
 7. Deneme formunda Turnstile, `patch_v101.sql`, kalıcı hız sınırı ve iki Vercel WAF kuralı production'da aktiftir; web kayıt akışı 2026-09-11'de başarıyla test edildi. Bundan sonra `Rate Limited` ve gerçek kullanıcı 429 ölçümleri izlenmelidir.
 8. Turnstile public site key iki projenin, secret key yalnız API projesinin Production ortamındadır; iletişim, web kayıt ve `app.rentokey.com` doğrudan kayıt gönderimleri uçtan uca doğrulandı.
@@ -635,7 +638,7 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 
 1. Yasal metinleri uzmanla doğrula.
 2. Gerçek müşteri onayı varsa vaka çalışması ve referans ekle.
-3. Blog/kılavuz sayfalarını gerçek içerikle doldur veya yayından kaldır.
+3. Kalan beş Türkçe blog yazısını ticari değer sırasıyla İngilizce arama niyetine göre uyarla; kılavuz sayfalarını gerçek içerikle doldur veya yayından kaldır.
 
 ### P2 — Temizlik ve kalite
 
@@ -643,6 +646,26 @@ Bir sonraki geliştirmede önce bu liste kontrol edilmelidir:
 2. Erişilebilirlik, klavye gezinmesi ve performans taraması yap.
 3. Gerçek içerikli sektör/özellik sayfaları oluşturulduğunda indeks ve sitemap politikasını genişlet.
 4. Gerçek ürün galerisi gerekiyorsa yüksek çözünürlüklü ve anonim yeni sahneler üret.
+
+### Sürekli — Güvenlik işletimi ve izleme
+
+1. İlk 24 saat, ilk hafta ve sonrasında aylık olarak iki Vercel projesindeki
+   `Denied`, `Rate Limited`, 429 ve 5xx ölçümlerini kontrol et; gerçek
+   kullanıcı etkisi görülürse WAF sınırlarını kanıta göre ayarla.
+2. Cloudflare Turnstile analytics'te başarısız çözüm oranını ve beklenmeyen
+   hostname kullanımını aylık kontrol et. Secret değişiminden sonra yalnız
+   `rentokey-car-app` ortamını güncelle ve yeniden deploy et.
+3. Global Bot Protection açılmadan önce cron, webhook, e-posta bağlantısı ve
+   diğer sunucudan sunucuya çağrıların envanterini çıkar; meşru çağrılar için
+   gerekli bypass koşullarını belirle ve kontrollü test yap.
+4. Aktif saldırı prosedürünü koru: Vercel Attack Mode'u geçici aç, trafik
+   örüntüsünü kaydet, saldırı bittiğinde kapat ve kalıcı kural gerekip
+   gerekmediğini olay sonrasında değerlendir.
+5. Supabase Auth hız sınırlarını, yönetici hesaplarının MFA/parola durumunu,
+   bağımlılık güvenlik güncellemelerini ve veritabanı yedeğinin geri
+   yüklenebilirliğini periyodik olarak doğrula.
+6. Her güvenlik olayında tarih/saat, etkilenen rota, trafik hacmi, Vercel ve
+   Supabase bulguları, uygulanan önlem ve sonucu kısa bir olay kaydında tut.
 
 ## 17. Bir sonraki geliştirici/AI için çalışma protokolü
 

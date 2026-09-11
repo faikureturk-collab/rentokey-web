@@ -6,6 +6,11 @@ export const localeRoutes = [
   ["/okey-pilot", "/en/pilot"],
   ["/arac-kiralama-programi", "/en/car-rental-software"],
   ["/arac-kiralama-rezervasyon-takvimi", "/en/car-rental-reservation-calendar"],
+  ["/blog", "/en/blog"],
+  [
+    "/blog/arac-teslim-iade-surecini-dijitallestirmek",
+    "/en/blog/digitise-car-rental-handover-return-process",
+  ],
   ["/gizlilik-politikasi", "/en/privacy"],
   ["/kullanim-sartlari", "/en/terms"],
 ] as const;

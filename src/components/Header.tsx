@@ -22,6 +22,7 @@ export default function Header({ locale = "tr" }: { locale?: Locale }) {
       ],
     },
     { label: "Pilot", href: "/en/pilot" },
+    { label: "Blog", href: "/en/blog" },
     { label: "Pricing", href: "/en#pricing" },
     { label: "Contact", href: "/en#contact" },
   ] : primaryNav;

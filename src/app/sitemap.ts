@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { posts } from "@/lib/blog";
+import { englishPosts } from "@/lib/blog-en";
 import { SITE_URL } from "@/lib/seo";
 import { alternateRoutes } from "@/lib/locale";
 
@@ -62,11 +63,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
-    ...["/en", "/en/free-trial", "/en/pilot", "/en/car-rental-software", "/en/car-rental-reservation-calendar"].map(path => ({
+    ...["/en", "/en/free-trial", "/en/pilot", "/en/car-rental-software", "/en/car-rental-reservation-calendar", "/en/blog"].map(path => ({
       url: `${SITE_URL}${path}`,
-      lastModified: "2026-09-10",
+      lastModified: path === "/en/blog" ? "2026-09-11" : "2026-09-10",
       changeFrequency: "monthly" as const,
       priority: path === "/en" ? 1 : 0.9,
+    })),
+    ...englishPosts.map((post) => ({
+      url: `${SITE_URL}/en/blog/${post.slug}`,
+      lastModified: post.updatedAt,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
   ];
   return entries.map(entry => {
