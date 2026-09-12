@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import AddonModulesSection from "@/components/home/AddonModulesSection";
 import CtaBanner from "@/components/CtaBanner";
 import FaqAccordion from "@/components/FaqAccordion";
 import PricingSection from "@/components/PricingSection";
@@ -34,6 +35,8 @@ export default function FiyatlandirmaPage() {
         title="Araç kiralama programı fiyatları"
         id="fiyatlandirma"
       />
+
+      <AddonModulesSection context="pricing" />
 
       {pricingFaqs.length > 0 && (
         <section id="fiyat-sss" className="scroll-mt-24">

@@ -266,10 +266,11 @@ export default function PricingSection({
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col gap-5 rounded-2xl border border-brand-green/25 bg-white p-6 sm:flex-row sm:items-center sm:justify-between">
-          <div><p className="text-xs font-bold text-brand-green-dark">{en ? "Optional · Not included in the core subscription" : "İsteğe bağlı · Temel aboneliğe dahil değil"}</p><h3 className="mt-1 text-xl font-extrabold text-brand-navy">RentOkey Pilot</h3><p className="mt-2 max-w-2xl text-sm text-brand-navy/65">{en ? "Operation optimisation and smart pricing suggestions in one add-on. Ask our team about pricing and trial scope." : "Operasyon optimizasyonu ve akıllı fiyat önerisi tek ek pakette. Fiyat ve deneme kapsamını ekibimizden öğrenin."}</p></div>
-          <Button href={en ? "/en/pilot" : "/okey-pilot"} variant="secondary" className="shrink-0">{en ? "Scope and pricing" : "Kapsam ve fiyat bilgisi"}</Button>
-        </div>
+        {/*
+          RentOkey Pilot ayrı bir kart olarak burada durmuyor: Pilot da bir ek modül,
+          sadece ailenin öne çıkan üyesi. Fiyat sayfalarında AddonModulesSection
+          (context="pricing") içinde diğer modüllerle birlikte sunuluyor.
+        */}
 
         <div className="mt-6 overflow-hidden rounded-[24px] bg-brand-navy p-7 text-white sm:p-9">
           <div className="grid gap-8 lg:grid-cols-[.85fr_1.15fr] lg:items-center">

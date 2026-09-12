@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import AddonModulesSection from "@/components/home/AddonModulesSection";
 import CtaBanner from "@/components/CtaBanner";
 import FaqAccordion from "@/components/FaqAccordion";
 import PricingSection from "@/components/PricingSection";
@@ -35,6 +36,8 @@ export default function EnglishPricingPage() {
         id="pricing"
         locale="en"
       />
+
+      <AddonModulesSection locale="en" context="pricing" />
 
       {pricingFaqs.length > 0 && (
         <section id="pricing-faq" className="scroll-mt-24">
