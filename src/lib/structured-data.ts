@@ -22,7 +22,8 @@ const offers = [
     highPrice: String(highPrice),
     offerCount: SELF_SERVICE_MAX_VEHICLES,
     availability: "https://schema.org/InStock",
-    url: `${SITE_URL}/#fiyatlandirma`,
+    // Fiyatın kanonik adresi artık ana sayfa çapası değil, kendi sayfası.
+    url: `${SITE_URL}/fiyatlandirma`,
     description: `Araç sayınıza göre hesaplanan aylık ücret (1 – ${SELF_SERVICE_MAX_VEHICLES} araç); ${SELF_SERVICE_MAX_VEHICLES} araç üzeri filolar için özel teklif sunulur.`,
   },
 ];
@@ -125,7 +126,8 @@ const englishDescription =
 const englishOffers = [
   {
     ...offers[0],
-    url: `${SITE_URL}/en#pricing`,
+    // TR tarafındaki gibi, fiyatın kanonik adresi ana sayfa çapası değil kendi sayfası.
+    url: `${SITE_URL}/en/pricing`,
     description: `Monthly pricing calculated by vehicle count for fleets of 1–${SELF_SERVICE_MAX_VEHICLES} vehicles; larger fleets receive a tailored quote.`,
   },
 ];
@@ -202,6 +204,102 @@ export const englishHomeStructuredData = {
       isPartOf: { "@id": websiteId },
       about: { "@id": softwareId },
       mainEntity: createFaqMainEntity(englishFaqGroups),
+    },
+  ],
+};
+
+// Fiyatlandırma kendi sayfasına taşındı; fiyat sorgularında ana sayfa yerine
+// bu URL'nin kaynak gösterilebilmesi için ayrı bir WebPage + Offer bildiriyoruz.
+const pricingPageUrl = `${SITE_URL}/fiyatlandirma`;
+const pricingFaqItems = faqGroups.filter((group) => group.id === "deneme-paketler");
+
+export const pricingPageStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pricingPageUrl}#webpage`,
+      url: pricingPageUrl,
+      name: "Araç Kiralama Programı Fiyatları | Rent Okey",
+      description: `Araç sayısına göre hesaplanan aylık Rent Okey ücreti: ₺${lowPrice} ile ₺${highPrice} arasında, 1 – ${SELF_SERVICE_MAX_VEHICLES} araç için sabit paket olmadan.`,
+      inLanguage: "tr-TR",
+      isPartOf: { "@id": websiteId },
+      about: { "@id": softwareId },
+      breadcrumb: { "@id": `${pricingPageUrl}#breadcrumb` },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pricingPageUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Ana sayfa", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Fiyatlandırma", item: pricingPageUrl },
+      ],
+    },
+    {
+      "@type": ["SoftwareApplication", "WebApplication"],
+      "@id": softwareId,
+      name: SITE_NAME,
+      url: SITE_URL,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      provider: { "@id": organizationId },
+      offers,
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pricingPageUrl}#faq`,
+      url: `${pricingPageUrl}#fiyat-sss`,
+      name: "Rent Okey fiyatlandırma ve deneme — sık sorulan sorular",
+      inLanguage: "tr-TR",
+      isPartOf: { "@id": `${pricingPageUrl}#webpage` },
+      mainEntity: createFaqMainEntity(pricingFaqItems),
+    },
+  ],
+};
+
+const englishPricingPageUrl = `${SITE_URL}/en/pricing`;
+const englishPricingFaqItems = englishFaqGroups.filter((group) => group.id === "trial-plans");
+
+export const englishPricingPageStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${englishPricingPageUrl}#webpage`,
+      url: englishPricingPageUrl,
+      name: "Car Rental Software Pricing | Rent Okey",
+      description: `Monthly Rent Okey pricing calculated from vehicle count: between ₺${lowPrice} and ₺${highPrice} for 1 – ${SELF_SERVICE_MAX_VEHICLES} vehicles, with no fixed tiers.`,
+      inLanguage: "en",
+      isPartOf: { "@id": websiteId },
+      about: { "@id": softwareId },
+      breadcrumb: { "@id": `${englishPricingPageUrl}#breadcrumb` },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${englishPricingPageUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/en` },
+        { "@type": "ListItem", position: 2, name: "Pricing", item: englishPricingPageUrl },
+      ],
+    },
+    {
+      "@type": ["SoftwareApplication", "WebApplication"],
+      "@id": softwareId,
+      name: SITE_NAME,
+      url: `${SITE_URL}/en`,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      provider: { "@id": organizationId },
+      offers: englishOffers,
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${englishPricingPageUrl}#faq`,
+      url: `${englishPricingPageUrl}#pricing-faq`,
+      name: "Rent Okey pricing and trial — frequently asked questions",
+      inLanguage: "en",
+      isPartOf: { "@id": `${englishPricingPageUrl}#webpage` },
+      mainEntity: createFaqMainEntity(englishPricingFaqItems),
     },
   ],
 };

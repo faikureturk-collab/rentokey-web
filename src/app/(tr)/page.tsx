@@ -29,7 +29,7 @@ export default function Home() {
       <FocusSection />
       <PilotSection />
       <HowItWorks />
-      <PricingSection id="fiyatlandirma" />
+      <PricingSection id="fiyatlandirma" compact />
       <AddonModulesSection />
       <HomeTrustSection />
       <FaqSection />

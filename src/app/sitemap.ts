@@ -10,7 +10,8 @@ const pageLastModified = {
   resources: "2026-08-29",
   blog: "2026-09-07",
   pilot: "2026-09-10",
-  productPages: "2026-09-10",
+  productPages: "2026-09-12",
+  pricing: "2026-09-12",
 } as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -24,6 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${SITE_URL}/ucretsiz-dene`,
       lastModified: pageLastModified.trial,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/fiyatlandirma`,
+      lastModified: pageLastModified.pricing,
       changeFrequency: "monthly",
       priority: 0.9,
     },
@@ -63,9 +70,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
-    ...["/en", "/en/free-trial", "/en/pilot", "/en/car-rental-software", "/en/car-rental-reservation-calendar", "/en/blog"].map(path => ({
+    ...["/en", "/en/free-trial", "/en/pilot", "/en/pricing", "/en/car-rental-software", "/en/car-rental-reservation-calendar", "/en/blog"].map(path => ({
       url: `${SITE_URL}${path}`,
-      lastModified: path === "/en/blog" ? "2026-09-11" : "2026-09-10",
+      lastModified: path === "/en/blog" ? "2026-09-11" : path === "/en/pricing" ? pageLastModified.pricing : "2026-09-10",
       changeFrequency: "monthly" as const,
       priority: path === "/en" ? 1 : 0.9,
     })),

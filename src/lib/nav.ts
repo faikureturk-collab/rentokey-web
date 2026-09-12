@@ -20,7 +20,7 @@ export const primaryNav: {
       { label: "Nasıl çalışır?", href: "/#nasil-calisir" },
     ],
   },
-  { label: "Fiyatlandırma", href: "/#fiyatlandirma" },
+  { label: "Fiyatlandırma", href: "/fiyatlandirma" },
   {
     label: "Kaynaklar",
     href: "/kaynaklar",
@@ -40,7 +40,7 @@ export const footerNav = {
     { label: "Operasyon platformu", href: "/#urun" },
     { label: "Önerilen odak", href: "/#onerilen-odak" },
     { label: "RentOkey Pilot", href: "/okey-pilot" },
-    { label: "Fiyatlandırma", href: "/#fiyatlandirma" },
+    { label: "Fiyatlandırma", href: "/fiyatlandirma" },
     { label: "21 gün ücretsiz dene", href: "/ucretsiz-dene" },
   ],
   kaynaklar: [

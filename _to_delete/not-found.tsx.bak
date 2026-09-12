@@ -20,7 +20,7 @@ const links = [
   {
     title: "Fiyatlandırma",
     description: "Filo büyüklüğünüze göre hesaplanan fiyatı ve temel kapsamı inceleyin.",
-    href: "/fiyatlandirma",
+    href: "/#fiyatlandirma",
   },
   {
     title: "Sıkça sorulan sorular",

@@ -54,11 +54,19 @@ export default function PricingSection({
   showHeading = true,
   id,
   locale = "tr",
+  compact = false,
 }: {
   title?: string;
   showHeading?: boolean;
   id?: string;
   locale?: "tr" | "en";
+  /**
+   * Ana sayfada kullanılan kısa biçim: hesaplayıcı ve güvence şeridi kalır,
+   * uzun içerik blokları (dahil olan özellikler, Pilot, Kurumsal Destek)
+   * /fiyatlandirma sayfasına bırakılır. Böylece iki sayfa aynı metni
+   * tekrarlamaz ve fiyat sorgusunda birbiriyle yarışmaz.
+   */
+  compact?: boolean;
 }) {
   const en = locale === "en";
   const heading = title ?? (en ? "See the price for your fleet" : "Filonuza uygun fiyatı görün");
@@ -211,6 +219,19 @@ export default function PricingSection({
           </div>
         </div>
 
+        {compact && (
+          <div className="mt-8 flex flex-col items-center gap-2">
+            <Button href={en ? "/en/pricing" : "/fiyatlandirma"} variant="secondary" icon>
+              {en ? "See full pricing details" : "Tüm fiyatlandırma detaylarını görün"}
+            </Button>
+            <p className="text-xs text-brand-navy/45">
+              {en ? "Included features, optional modules and pricing FAQ" : "Dahil olan özellikler, ek modüller ve fiyat SSS"}
+            </p>
+          </div>
+        )}
+
+        {!compact && (
+        <>
         <div className="mt-14">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs font-bold uppercase tracking-[0.14em] text-brand-navy/35">{en ? "What you get" : "Ne alıyorsunuz"}</p>
@@ -274,6 +295,8 @@ export default function PricingSection({
             </ul>
           </div>
         </div>
+        </>
+        )}
 
         <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
           {(en ? ["Try free for 21 days", "No credit card", "No setup fee", "Import your own data with ready CSV templates"] : assurances).map((item) => (

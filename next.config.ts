@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
       },
       { source: "/urun", destination: "/#urun", permanent: true },
       { source: "/ozellikler", destination: "/#ozellikler", permanent: true },
-      { source: "/fiyatlandirma", destination: "/#fiyatlandirma", permanent: true },
+      // /fiyatlandirma artık kendi sayfası (src/app/(tr)/fiyatlandirma) — yönlendirme kaldırıldı.
       { source: "/hakkimizda", destination: "/#hakkimizda", permanent: true },
       { source: "/sss", destination: "/#sss", permanent: true },
       { source: "/iletisim", destination: "/#iletisim", permanent: true },

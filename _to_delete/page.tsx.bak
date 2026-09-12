@@ -185,7 +185,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <Button href="/ucretsiz-dene" size="lg" icon>
                   21 gün ücretsiz deneyin
                 </Button>
-                <Button href="/fiyatlandirma" variant="secondary" size="lg">
+                <Button href="/#fiyatlandirma" variant="secondary" size="lg">
                   Paketleri inceleyin
                 </Button>
               </div>

@@ -55,9 +55,12 @@ const turkishSoftware: ProductSeoContent = {
   locale: "tr",
   variant: "software",
   path: "/arac-kiralama-programi",
-  title: "Araç Kiralama Programı ve Filo Yönetimi",
+  // Ana sayfa "Araç Kiralama Programı ve Filo Yönetimi" head term'ini tutuyor.
+  // Bu sayfa aynı sorguda ana sayfayla yarışmasın diye operasyon derinliğine
+  // odaklanan ayrı bir başlık kullanır.
+  title: "Araç Kiralama Operasyon Yazılımı — Rezervasyon, Filo ve Teslim/İade",
   description:
-    "Rezervasyon, filo, müşteri, teslim/iade, bakım, tahsilat ve raporları tek ekranda yöneten araç kiralama programını 21 gün ücretsiz deneyin.",
+    "Rezervasyon takvimi, araç uygunluğu, teslim/iade kuyruğu, bakım ve belge süreleri tek operasyon akışında. Araç kiralama operasyon yazılımını 21 gün ücretsiz deneyin.",
   eyebrow: "Araç kiralama operasyon yazılımı",
   heroTitle: "Rezervasyondan iadeye, filonuzun bütün operasyonu tek ekranda.",
   heroDescription:

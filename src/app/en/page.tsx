@@ -29,7 +29,7 @@ export default function EnglishHome() {
       <FocusSection locale="en" />
       <PilotSection locale="en" />
       <HowItWorks locale="en" />
-      <PricingSection id="pricing" locale="en" />
+      <PricingSection id="pricing" locale="en" compact />
       <AddonModulesSection locale="en" />
       <HomeTrustSection locale="en" />
       <FaqSection locale="en" />
