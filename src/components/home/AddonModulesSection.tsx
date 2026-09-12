@@ -47,7 +47,7 @@ export default function AddonModulesSection({
             <p className="text-sm font-bold text-brand-green-dark">
               {pricing
                 ? (en ? "Optional modules · not included in the core subscription" : "Ek modüller · temel aboneliğe dahil değil")
-                : (en ? "Other optional modules" : "Diğer opsiyonel modüller")}
+                : (en ? "Optional add-on modules" : "Opsiyonel ek modüller")}
             </p>
             <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-brand-navy">
               {en ? "Add capabilities only when you need them." : "Yalnızca ihtiyaç duyduğunuz kabiliyetleri ekleyin."}
@@ -65,30 +65,35 @@ export default function AddonModulesSection({
         </div>
 
         <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {pricing && (
-            <article className="flex flex-col rounded-xl border border-brand-green/30 bg-white p-5 ring-1 ring-brand-green/10">
-              <div className="flex items-center justify-between gap-3">
-                <Compass className="h-5 w-5 text-brand-green-dark" />
-                <span className="rounded-full bg-brand-green/10 px-2.5 py-1 text-[10px] font-bold text-brand-green-dark">
-                  {en ? "Featured module" : "Öne çıkan modül"}
-                </span>
-              </div>
-              <h3 className="mt-3 text-base font-bold text-brand-navy">RentOkey Pilot</h3>
-              <p className="mt-2 flex-1 text-sm text-brand-navy/65">
-                {en
-                  ? "Operation optimisation and smart pricing suggestions, delivered as the most comprehensive module in the family."
-                  : "Operasyon optimizasyonu ve akıllı fiyat önerisi; ailenin en kapsamlı modülü olarak sunulur."}
-              </p>
-              <Link
-                href={en ? "/en/pilot" : "/okey-pilot"}
-                className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-brand-green-dark hover:text-brand-navy"
-              >
-                {en ? "Scope and details" : "Kapsam ve detaylar"} <ArrowRight className="h-4 w-4" />
-              </Link>
-            </article>
-          )}
+          {/* Pilot da bir ek modül; ailenin öne çıkan üyesi olarak her iki bağlamda da listede. */}
+          <article className="flex flex-col rounded-xl border border-brand-green/30 bg-white p-5 ring-1 ring-brand-green/10">
+            <div className="flex items-center justify-between gap-3">
+              <Compass className="h-5 w-5 text-brand-green-dark" />
+              <span className="rounded-full bg-brand-green/10 px-2.5 py-1 text-[10px] font-bold text-brand-green-dark">
+                {en ? "Featured module" : "Öne çıkan modül"}
+              </span>
+            </div>
+            <h3 className="mt-3 text-base font-bold text-brand-navy">RentOkey Pilot</h3>
+            <p className="mt-2 flex-1 text-sm text-brand-navy/65">
+              {en
+                ? "Operation optimisation and smart pricing suggestions, delivered as the most comprehensive module in the family."
+                : "Operasyon optimizasyonu ve akıllı fiyat önerisi; ailenin en kapsamlı modülü olarak sunulur."}
+            </p>
+            <Link
+              href={en ? "/en/pilot" : "/okey-pilot"}
+              className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-brand-green-dark hover:text-brand-navy"
+            >
+              {en ? "Scope and details" : "Kapsam ve detaylar"} <ArrowRight className="h-4 w-4" />
+            </Link>
+          </article>
           {localizedModules.map(({ icon: Icon, title, description }) => <article key={title} className="rounded-xl border border-surface-border bg-white p-5"><Icon className="h-5 w-5 text-brand-green-dark" /><h3 className="mt-3 text-base font-bold text-brand-navy">{title}</h3><p className="mt-2 text-sm text-brand-navy/65">{description}</p></article>)}
-          <div className="flex flex-col justify-center rounded-xl bg-brand-navy p-5 text-white"><p className="text-base font-bold">{en ? "Let’s define the right scope for your business." : "İşinize uygun kapsamı belirleyelim."}</p><Link href={en ? "/en#contact" : "/#iletisim"} className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-brand-green">{en ? "Discuss add-ons" : "Ek modüller için görüşün"} <ArrowRight className="h-4 w-4" /></Link></div>
+          {/* 6 modül kartı ızgarayı tam doldurduğu için CTA son satırı tek başına kaplar. */}
+          <div className="flex flex-col gap-4 rounded-xl bg-brand-navy p-5 text-white sm:col-span-2 sm:flex-row sm:items-center sm:justify-between lg:col-span-3">
+            <p className="text-base font-bold">{en ? "Let’s define the right scope for your business." : "İşinize uygun kapsamı belirleyelim."}</p>
+            <Link href={en ? "/en#contact" : "/#iletisim"} className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm font-bold text-brand-green">
+              {en ? "Discuss add-ons" : "Ek modüller için görüşün"} <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
