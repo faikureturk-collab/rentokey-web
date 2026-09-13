@@ -29,6 +29,97 @@ export type UpcomingPost = {
 
 export const posts: BlogPost[] = [
   {
+    slug: "kktc-rent-a-car-filo-kapasitesi",
+    category: "Filo Yönetimi",
+    title: "KKTC’de rent a car filosu kaç araç olmalı?",
+    excerpt: "Ercan’ın sekiz aylık yolcu verisi, zirve sezonun ilk yarıdan daha hızlı büyüdüğünü gösteriyor. Filo kapasitesi kararını bu makasa göre nasıl kurarsınız?",
+    description: "Ercan Havalimanı 2026 yolcu verisiyle KKTC’de filo kapasitesi planlama: zirve ile dip arasındaki makas, kendi yakalama oranınızı hesaplama yöntemi ve sezon dışı için uygulanabilir seçenekler.",
+    publishedAt: "2026-09-13",
+    updatedAt: "2026-09-13",
+    readingMinutes: 7,
+    intro: [
+      "KKTC’de rent a car işinin en pahalı kararı araç almak değil, **kaç araç alacağına karar vermek**. Ağustos’a göre kurulmuş bir filo ocakta otoparkta bekler; ortalamaya göre kurulmuş bir filo ise sezonun en kazançlı haftasında müşteri geri çevirir.",
+      "Bu yazı o kararı hisle değil veriyle vermek için bir yöntem öneriyor. Bayındırlık ve Ulaştırma Bakanlığı’nın açıkladığı Ercan Havalimanı yolcu rakamlarını başlangıç noktası alıyor, ardından kendi işletmenizin sayılarıyla nasıl birleştireceğinizi anlatıyoruz.",
+    ],
+    body: [
+      { type: "callout", title: "Kısa yanıt", text: "Ercan’da 2026’nın ilk sekiz ayında **3.979.248 yolcu** ağırlandı; geçen yılın aynı dönemine göre **%8,84** artış. Ama artış her aya eşit dağılmıyor: temmuz–ağustos **%10,3** büyürken ilk yarı **%8,24** büyüdü. Zirve, dipten daha hızlı açılıyor." },
+
+      { type: "h2", id: "ercan-verisi", text: "1. Ercan 2026: sekiz ayın tablosu" },
+      { type: "p", text: "Bakanlık yolcu ve sefer sayılarını dönemsel olarak açıklıyor. Aşağıdaki tablo, [8 aylık açıklama](https://bub.gov.ct.tr/BASIN-VE-HALKLA-%C4%B0L%C4%B0%C5%9EK%C4%B0LER/HABERLER/ercan-havalimaninda-8-aylik-yolcu-trafi%C4%9Fi-4-milyona-yakla%C5%9Fti) ile daha önceki [6 aylık](https://haberkibris.com/ercan-havalimaninda-buyume-suruyor-1339-2026-07-06.html) ve [7 aylık](https://kibrisgazetesi.com/ercan-havalimani-7-ayda-3-milyon-378-bin-959-yolcu-agirladi/) açıklamaların birleştirilmesiyle hazırlandı." },
+      { type: "table", head: ["Dönem", "Yolcu", "Sefer", "Geçen yıla göre"], rows: [
+        ["1 Ocak – 30 Haziran 2026", "2.804.138", "18.793", "%8,24"],
+        ["1 Ocak – 31 Temmuz 2026", "3.378.959", "—", "—"],
+        ["1 Ocak – 31 Ağustos 2026", "3.979.248", "26.115", "%8,84"],
+        ["Ağustos 2026 (tek ay)", "600.290", "3.668", "%8,5"],
+      ] },
+      { type: "p", text: "Kümülatif rakamların farkını alarak tek tek ayları da çıkarabiliyoruz. Temmuz 2026 bu yöntemle **574.821 yolcu** ediyor. Yöntemin doğruluğunu ağustos üzerinden test etmek mümkün: sekiz aylık toplamdan yedi aylık toplamı çıkarınca 600.289 çıkıyor, Bakanlığın açıkladığı rakam ise 600.290. Bir kişilik fark yuvarlamadan geliyor." },
+
+      { type: "h2", id: "buyume-nereden", text: "2. Büyüme daha dolu uçaklardan değil, daha fazla seferden geliyor" },
+      { type: "p", text: "Sekiz ayda yolcu da sefer de tam olarak **%8,84** artmış. Bu tesadüf gibi görünse de anlamlı: sefer başına yolcu sayısı 2025’te de 2026’da da **152**. Yani mevcut uçaklar daha fazla dolmamış, hatta doluluk sabit kalmış; büyüme yeni kapasiteden gelmiş." },
+      { type: "p", text: "Filo planlaması açısından bu iyi haber. Doluluk artışıyla gelen büyüme tavana çarpar ve durur; kapasiteyle gelen büyüme ise daha kalıcıdır. Önümüzdeki yıl için planlama yaparken bu artışı geçici bir dalgalanma değil, süregelen bir eğilim olarak değerlendirmek daha savunulabilir." },
+
+      { type: "h2", id: "zirve-dip-makasi", text: "3. Asıl bulgu: zirve, ilk yarıdan hızlı büyüyor" },
+      { type: "p", text: "Manşetteki %8,84 tek başına yanıltıcı. Dönemi ikiye ayırdığımızda tablo değişiyor." },
+      { type: "table", head: ["Dönem", "2026", "2025", "Artış"], rows: [
+        ["Ocak – Haziran", "2.804.138", "2.590.576", "%8,24"],
+        ["Temmuz + Ağustos", "1.175.111", "1.065.546", "%10,3"],
+        ["Yalnız temmuz", "574.821", "512.105", "%12,2"],
+        ["Yalnız ağustos", "600.290", "553.441", "%8,5"],
+      ] },
+      { type: "p", text: "Zirve sezon, yılın geri kalanından yaklaşık iki puan daha hızlı büyümüş; temmuz tek başına %12’yi aşmış. Ağustos’un daha yavaş görünmesi talebin azalması değil, büyük ihtimalle o ayda kapasitenin zaten sınırda çalışması." },
+      { type: "callout", title: "Bunun filoya çevirisi", text: "Ağustos 2026’daki yolcu sayısı, ilk yarının aylık ortalamasının **1,28 katı**. Gerçek makas bundan daha geniş, çünkü bu ortalama zaten güçlü olan mayıs ve haziranı da içeriyor. Kışın tek tek aylık rakamları açıklanmadığı için dip ay verisini bu yazıda kullanmıyoruz." },
+
+      { type: "h2", id: "yakalama-orani", text: "4. Yolcu sayısı size kaç rezervasyon getirir?" },
+      { type: "p", text: "Bu sorunun dürüst cevabı şu: **Ercan verisi bunu söylemez.** Gelen yolcuların yüzde kaçının araç kiraladığına dair resmî bir oran yok; internette dolaşan tahminlere dayanarak filo büyüklüğü hesaplamak, doğru veriyle yanlış sonuç üretmenin kestirme yolu." },
+      { type: "p", text: "Bunun yerine kendi **yakalama oranınızı** çıkarın. Havalimanı verisi payda, sizin rezervasyonlarınız pay olur:" },
+      { type: "ol", items: [
+        "Geçen yılın ağustos ayında kaç kiralama başlattığınızı bulun.",
+        "Bu sayıyı aynı ayın Ercan yolcu sayısına bölün. Çıkan oran, pazarın içindeki payınızın kaba bir göstergesidir.",
+        "Aynı hesabı ocak veya şubat gibi bir dip ay için tekrarlayın.",
+        "İki oranı karşılaştırın: sezonda mı yoksa sezon dışında mı daha güçlüsünüz?",
+      ] },
+      { type: "p", text: "Bu oran mutlak bir pazar payı değil; havalimanını kullanmayan müşteriler, uzun dönem kiralamalar ve yerel talep dışarıda kalır. Değeri karşılaştırmalı olmasında: aynı yöntemle her yıl hesapladığınızda, pazar büyürken sizin payınızın büyüyüp büyümediğini görürsünüz. Pazar %10 büyürken sizin rezervasyonlarınız %4 arttıysa, filo yetersizliği ya da fiyatlama nedeniyle talep kaçırıyor olabilirsiniz. [Doluluk ve araç başı gelir metrikleri](/blog/dogru-metriklerle-filo-karliligini-artirma) bu tabloyu tamamlar." },
+
+      { type: "h2", id: "kapasite-yaklasimlari", text: "5. Kapasite için üç yaklaşım" },
+      { type: "p", text: "Makası bildikten sonra karar üç seçeneğe iniyor. Hiçbiri diğerinden mutlak olarak üstün değil; işletmenin sermaye yapısına ve risk iştahına bağlı." },
+      { type: "table", head: ["Yaklaşım", "Avantajı", "Bedeli"], rows: [
+        ["Zirveye göre filo", "Ağustos’ta talep kaçırmazsınız", "Kış aylarında yüksek atıl kapasite ve sabit gider"],
+        ["Ortalamaya göre filo", "Yıl geneline yayılmış yüksek doluluk", "Sezonun en kârlı haftalarında müşteri geri çevirme"],
+        ["Çekirdek filo + esnek kapasite", "İki uç arasında denge", "Sezonluk tedarik ilişkisi kurma ve yönetme yükü"],
+      ] },
+      { type: "p", text: "Üçüncü yaklaşım pratikte şöyle işler: yıl boyu koruyacağınız bir çekirdek filo belirlersiniz, zirve için ise sezonluk kiralama, uzun dönem araç tedariki veya diğer işletmelerle karşılıklı araç paylaşımı gibi yollarla geçici kapasite eklersiniz. Kritik nokta, geçici araçların da aynı rezervasyon ve teslim/iade kaydında görünmesi; ayrı bir tabloda tutulan araç, sezonun en yoğun gününde çakışma üretir." },
+
+      { type: "h2", id: "sezon-disi", text: "6. Sezon dışında atıl kapasiteyi ne azaltır?" },
+      { type: "p", text: "Zirve büyürken dip aynı kalıyorsa, kışın ne yaptığınız kârlılığı belirler. Sahada işe yaradığını gördüğümüz başlıklar:" },
+      { type: "ul", items: [
+        "**Uzun dönem ve kurumsal kiralama:** günlük fiyatı düşük ama doluluğu garanti eden aylık sözleşmeler, kış aylarının sabit giderini karşılar.",
+        "**Bakım ve yenileme takvimini kışa çekmek:** ağustosta serviste geçen bir gün, ocakta geçen bir günden çok daha pahalıdır.",
+        "**Sezon dışı fiyat ve minimum gün kuralları:** talebi tamamen fiyata bırakmak yerine, üç gün altı kiralamaları sınırlayarak operasyon maliyetini düşürmek.",
+        "**Filo bileşimini gözden geçirmek:** yaz talebi için alınan üst segment araçların kışın taşınması zordur; çekirdek filoyu yıl boyu talep gören sınıflardan kurmak.",
+      ] },
+      { type: "p", text: "Bu kararların hepsi aynı veriye dayanır: hangi araç, hangi ayda, kaç gün kirada kaldı. Bu bilgi araç bazında tutulmuyorsa, sezon dışı stratejisi tahminle kurulur. RentOkey’de rezervasyon, doluluk ve araç bazlı gelir aynı kayıt üzerinden takip edildiği için bu karşılaştırmayı yapmak kolaylaşır; yine de kararın kendisi işletmenin pazar bilgisine bağlıdır." },
+
+      { type: "h2", id: "sik-sorulanlar", text: "Sık sorulan sorular" },
+      { type: "h3", text: "Ercan yolcu sayısı araç kiralama talebini doğrudan gösterir mi?" },
+      { type: "p", text: "Hayır, bir gösterge sağlar ama doğrudan talep değildir. Yolcuların bir kısmı transfer, otel servisi veya yakın çevre aracı kullanır; bir kısmı da adada yaşayanlardır. Veriyi mutlak talep olarak değil, pazarın yönünü ve mevsimsel dağılımını okumak için kullanın." },
+      { type: "h3", text: "Aylık rakamların tamamı yayımlanıyor mu?" },
+      { type: "p", text: "Bakanlık açıklamaları çoğunlukla kümülatif. Tek tek ayları, ardışık iki açıklamanın farkını alarak hesaplayabilirsiniz. Bu yazıda temmuz rakamı bu yöntemle bulundu ve ağustos üzerinden doğrulandı. Kış aylarının açıklaması elimizde olmadığı için dip ay verisi kullanılmadı." },
+      { type: "h3", text: "Bu yöntem Türkiye’deki operasyonum için de geçerli mi?" },
+      { type: "p", text: "Yöntem geçerli, veri kaynağı değişir. Türkiye’de havalimanı yolcu istatistikleri DHMİ tarafından yayımlanır ve aynı yakalama oranı hesabı il bazında kurulabilir. Mevsimsellik makası ise bölgeye göre büyük fark gösterir; Antalya ile Ankara aynı eğriye sahip değildir." },
+      { type: "h3", text: "Filoyu büyütmeye ne zaman karar vermeliyim?" },
+      { type: "p", text: "Kararı sezon başında değil, sezon biterken verin. Elinizde o yılın doluluk ve geri çevirme verisi tazeyken hesap yapmak, ilkbaharda tahminle karar vermekten daha güvenilirdir. Geri çevrilen talebi kayıt altına almıyorsanız, bu hesabın en kritik girdisi eksik kalır." },
+
+      { type: "h2", id: "kaynaklar", text: "Kaynaklar ve yöntem" },
+      { type: "ul", items: [
+        "[KKTC Bayındırlık ve Ulaştırma Bakanlığı — Ercan’da 8 aylık yolcu trafiği](https://bub.gov.ct.tr/BASIN-VE-HALKLA-%C4%B0L%C4%B0%C5%9EK%C4%B0LER/HABERLER/ercan-havalimaninda-8-aylik-yolcu-trafi%C4%9Fi-4-milyona-yakla%C5%9Fti) — 10 Eylül 2026.",
+        "[İlk 6 ay verileri](https://haberkibris.com/ercan-havalimaninda-buyume-suruyor-1339-2026-07-06.html) — 6 Temmuz 2026 tarihli Bakanlık açıklaması.",
+        "[7 aylık veriler](https://kibrisgazetesi.com/ercan-havalimani-7-ayda-3-milyon-378-bin-959-yolcu-agirladi/) — Bakanlık açıklamasından.",
+        "Temmuz 2026 ve temmuz–ağustos toplamları, kümülatif açıklamaların farkı alınarak hesaplanmıştır.",
+      ] },
+      { type: "callout", title: "Editör notu · RentOkey · 13 Eylül 2026", text: "Bu yazıdaki yolcu ve sefer rakamları Bakanlık açıklamalarına dayanır; ay bazlı değerler kümülatif verilerden hesaplanmıştır ve yuvarlama farkı içerebilir. Kapasite önerileri genel işletme değerlendirmesidir, yatırım tavsiyesi değildir. Filo kararınızı kendi doluluk, maliyet ve nakit akışı verilerinizle birlikte değerlendirin." },
+    ],
+  },
+  {
     slug: "2027-arac-kiralama-yonetmeligi",
     category: "Mevzuat",
     title: "2027 araç kiralama yönetmeliği: 1 Temmuz öncesi hazırlık rehberi",
