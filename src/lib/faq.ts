@@ -43,7 +43,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "RentOkey Pilot taban fiyata dahil mi?",
         answer:
-          "Hayır. RentOkey Pilot, araç sayısına göre hesaplanan temel abonelik fiyatına dahil olmayan ve ayrıca satın alınabilen aktif bir ek pakettir. Filonuzun araç sayısından bağımsız olarak hesabınıza eklenebilir. Akıllı fiyat önerisi Pilot kapsamındadır; ayrı bir modül olarak ücretlendirilmez. Pilot fiyatı ve denemede erişilebilen kapsam için Rent Okey ekibiyle iletişime geçebilirsiniz.",
+          "Hayır. RentOkey Pilot, araç sayısına göre hesaplanan temel abonelik fiyatına dahil olmayan ve ayrıca satın alınabilen aktif bir ek modüldür; ek modül ailesinin en kapsamlı üyesidir. Filonuzun araç sayısından bağımsız olarak hesabınıza eklenebilir. Akıllı fiyat önerisi Pilot kapsamındadır; ayrıca ücretlendirilmez. Pilot fiyatı ve denemede erişilebilen kapsam için Rent Okey ekibiyle iletişime geçebilirsiniz.",
       },
     ],
   },
@@ -162,7 +162,7 @@ export const englishFaqGroups: FaqGroup[] = [
       { question: "Will I be charged automatically when the trial ends?", answer: "No. We do not collect payment details when the trial begins, so there is no automatic charge after 21 days. If you continue, pricing is calculated from your vehicle count." },
       { question: "How many users and branches can I add?", answer: "Users and branches are unlimited in the core subscription, whether you manage one vehicle or 150. Optional Corporate Support adds a dedicated support manager and priority SLA." },
       { question: "What happens to the price when my vehicle count changes?", answer: "Pricing is calculated from your vehicle count and is updated as the fleet grows or shrinks. Contact the RentOkey team to make the change. Billing is currently managed by the team; there is no automatic card charge." },
-      { question: "Is RentOkey Pilot included in the base price?", answer: "No. RentOkey Pilot is an active paid add-on, separate from the vehicle-based core subscription. Smart pricing suggestions are included in Pilot and are not charged as a separate module. Contact us for Pilot pricing and trial availability." },
+      { question: "Is RentOkey Pilot included in the base price?", answer: "No. RentOkey Pilot is an active paid add-on module, separate from the vehicle-based core subscription, and the most comprehensive member of the add-on module family. Smart pricing suggestions are included in Pilot and are not charged separately. Contact us for Pilot pricing and trial availability." },
     ],
   },
   {

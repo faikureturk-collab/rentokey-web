@@ -198,3 +198,66 @@ Bu bölüm önceki demo yerleşimi notlarının güncel halidir. Canlı uygulama
 - Her iki rotaya benzersiz metadata, canonical, karşılıklı `hreflang` ve `x-default`; WebPage, BreadcrumbList, SoftwareApplication ve FAQPage JSON-LD eklendi. Dil değiştirici, TR/EN header-footer, ana sayfa iç bağlantıları ve sitemap birlikte güncellendi.
 - `npm run lint` ve `next build --webpack` başarılıdır. Turbopack build, yerel çalışma ortamının süreç/port kısıtı nedeniyle PostCSS aşamasında çalışmadı; aynı production build webpack ile tamamlandı. Türkçe masaüstü sayfa tarayıcıda görsel ve semantik olarak kontrol edildi.
 - Commit, push veya canlı dağıtım yapılmadı.
+
+## 14 Eylül 2026 — Fiyatlandırma sayfası, ek modül yapısı, mobil düzeltmeler ve 2027 uyum sayfası
+
+### Fiyatlandırma kendi sayfasına taşındı
+
+- Ana sayfada `#fiyatlandirma` çapası olarak duran fiyat alanı, kendi rotasına çıkarıldı: `/fiyatlandirma` ↔ `/en/pricing`. Menü ve footer artık çapaya değil sayfaya gidiyor; `#fiyatlandirma` / `#pricing` çapaları çalışmaya devam ediyor, eski bağlantılar kırılmadı.
+- `next.config.ts` içindeki `/fiyatlandirma → /#fiyatlandirma` kalıcı (301) yönlendirmesi kaldırıldı. 301'ler tarayıcıda süresiz önbelleğe alındığı için test gizli pencerede yapılmalıdır.
+- `PricingSection` bileşenine `compact` prop'u eklendi. Ana sayfada yalnız hesaplayıcı, fiyat kartı, güvence şeridi ve “Tüm fiyatlandırma detaylarını görün” bağlantısı kalıyor; dahil olan özellikler, ek modüller ve Kurumsal Destek blokları tam sayfaya taşındı. Böylece iki sayfa aynı metni tekrar etmiyor ve fiyat sorgusunda birbiriyle yarışmıyor.
+- Fiyat sayfaları `deneme-paketler` / `trial-plans` SSS grubunu yeniden kullanır; içerik ikinci bir yerde yazılmadı. Her iki rotaya WebPage, BreadcrumbList, AggregateOffer ve FAQPage JSON-LD eklendi; `offers` içindeki kanonik fiyat adresi ana sayfa çapası yerine fiyat sayfası oldu.
+- Fiyat formülü ve tutarlar değiştirilmedi; `src/lib/pricing.ts` tek doğru kaynak olmayı sürdürüyor.
+
+### Başlık çakışması giderildi
+
+- Ana sayfa ile `/arac-kiralama-programi` neredeyse aynı `<title>` değerini taşıyordu (“Araç Kiralama Programı ve Filo Yönetimi”). Google tek bir sayfayı seçtiği için landing sayfasının içeriği boşa gidiyordu.
+- Ana sayfa head term'i korudu. Ürün sayfası kendi eyebrow metninden türetilen ayrı bir niyete kaydırıldı: “Araç Kiralama Operasyon Yazılımı — Rezervasyon, Filo ve Teslim/İade”. Açıklaması da operasyon akışına göre yeniden yazıldı.
+
+### RentOkey Pilot ek modül ailesine alındı
+
+- Kullanıcı kararı: Pilot ayrı bir kategori değil, ek modül ailesinin yalnızca daha ön planda tutulan üyesidir. `PricingSection` içindeki müstakil Pilot kartı kaldırıldı; yerine neden kaldırıldığını açıklayan bir not bırakıldı.
+- `AddonModulesSection` bileşenine `context: "home" | "pricing"` prop'u eklendi. Pilot artık her iki bağlamda da listenin ilk kartı ve “Öne çıkan modül” rozetini taşıyor. Fiyat sayfasında üst metin maliyet diline dönüyor: “Ek modüller · temel aboneliğe dahil değil”.
+- Kart sayısı altıya çıktığı için ızgara son satırında boşluk kalmasın diye iletişim CTA kartı tam genişliğe alındı.
+- Ana sayfadaki üst etiket “Diğer opsiyonel modüller” yerine “Opsiyonel ek modüller” oldu; Pilot listeye girdiği için “diğer” ifadesi yanlış kalıyordu.
+- `src/lib/faq.ts` buna göre güncellendi: Pilot artık “ek paket” değil “ek modül ailesinin en kapsamlı üyesi” olarak anlatılıyor (TR ve EN). **`PROJE_EL_KITABI.md` §8 ve §18 hâlâ “ek paket” diyor; el kitabı bu terimle güncellenmelidir.**
+- Kurumsal Destek modül ailesine alınmadı; el kitabındaki konumuyla tutarlı biçimde araç sayısından bağımsız isteğe bağlı **hizmet** olarak ayrı duruyor.
+
+### Mobil denetim maddeleri
+
+- **Birincil CTA mobilde görünür oldu.** “Ücretsiz dene” butonu 1024px altında yalnız hamburger menünün içindeydi; sayfada sabit bir CTA da yoktu. Buton artık mobil başlıkta. Yer açmak için logo mobilde `h-8` (masaüstü `h-9`) ve dil seçici dar ekranda menü içine taşındı, orada “Dil” etiketiyle ayrı satırda duruyor. `Button` bileşenine `sm` boyutu eklendi; `min-h-11` ile dokunma hedefi 44px'in altına düşmüyor.
+- **Hesaplayıcıda sebep ve sonuç birleştirildi.** Mobilde slider ile fiyat kartı arasında altı hızlı seçim düğmesi ve uzun bir paragraf vardı. Slider'ın hemen altına yalnız mobilde görünen (`lg:hidden`) canlı fiyat okuması eklendi; `aria-live="polite"` ile ekran okuyucuya da bildiriliyor. Masaüstü düzeni değişmedi.
+- **Açık kalan madde:** `HomeOperationDemo` içindeki zaman çizelgesi `min-w-[1050px]` ile yatay kaydırma gerektiriyor; mobilde 14 günün ancak 3-4 günü görünüyor, dolayısıyla “boşlukları bir bakışta görün” iddiası telefonda karşılanmıyor. Bu, el kitabı §18'deki “mobilde masaüstünü küçültme; görev ve aksiyon akışını yeniden kur” ilkesinin ihlalidir. Planlanan çözüm: üstte metin özeti (kaç çakışma / boş gün / bakım), altında araç başına 7 günlük renk şeridi, en altta mevcut çakışma çözme kartı. Masaüstü görünümü korunacak.
+
+### 2027 uyum sayfası
+
+- Yönetmelik takvimi yalnız blogda anlatılıyordu; `2027`, `yönetmelik` ve `yetki belgesi` kelimeleri satış tarafında hiç geçmiyordu. İki eş sayfa oluşturuldu: `/2027-uyum` ↔ `/en/turkey-car-rental-regulation-2027`.
+- Geri sayım sayacı **bilinçli olarak kullanılmadı**. Birinin yasal yükümlülüğü üzerinden kurulan tıklayan sayaç hem mevzuat mesajını ucuzlatır hem 1 Temmuz 2027'den sonra ölü içerik bırakır. Yerine dört tarihli sakin bir zaman şeridi kullanıldı: yürürlük 1 Ocak 2027, bilgi sistemi 1 Ocak 2027, yetki belgesi son başvuru 1 Temmuz 2027, asgari filo uyumu 1 Ocak 2028.
+- Sekiz şartın her biri kart olarak sunuluyor; her kartta “RentOkey ne yapar” ve “işletmenin yapması gereken” satırları var. Yetki belgesi, Seviye 4 mesleki yeterlilik ve asgari filo şartında RentOkey satırı açıkça “Bu başlıkta bir rolü yok” diyor. Tablo yerine kart seçildi çünkü üç sütunlu tablo mobilde yatay kaydırma gerektirirdi.
+- “Yazılım kullanımı tek başına mevzuata uygunluk sağlamaz” uyarısı blog yazısındaki disiplinle aynen taşındı.
+- **Türkiye kapsamı** hem hero altındaki bilgi kutusunda hem JSON-LD `spatialCoverage` alanında belirtildi; KKTC ziyaretçisinin bu takvimi kendi yasal yükümlülüğü sanmaması için.
+- Resmî Gazete ve Ticaret Bakanlığı bağlantıları blog yazısındaki kaynaklarla aynı. Temmuz 2027'den sonra sayfa yeniden yazılmalıdır.
+
+### KKTC blog yazısı
+
+- `kktc-rent-a-car-filo-kapasitesi` yayınlandı: Bakanlık açıklamalarından derlenen Ercan Havalimanı yolcu verisiyle filo kapasitesi planlaması. Ocak–Ağustos 2026 toplamı 3.979.248 yolcu, 26.115 sefer (%8,84 artış); temmuz–ağustos %10,3, ilk yarı %8,24 büyümüş. Tek tek aylar kümülatif açıklamaların farkıyla hesaplandı ve ağustos rakamı üzerinden doğrulandı.
+- Yazı uydurma dönüşüm oranı vermiyor; okuyucuya kendi yakalama oranını hesaplatıyor. Kış aylarının verisi elde olmadığı için dip ay rakamı kullanılmadı, bu durum yazıda belirtildi.
+- **İngilizce karşılığı yok.** `blog-en.ts` çevirisi ve `locale.ts` eşleşmesi eklenmelidir.
+
+### Süreç notu — bu oturumda yapılan hata
+
+- `structured-data.ts`, `nav.ts` ve `sitemap.ts` dosyalarının oturum içinde daha önce alınmış kopyaları üzerinden düzenleme yapıldı. Arada raporlama sayfası eklendiği için bu dosyalar geri yazıldığında `createReportingPageStructuredData`, menü ve sitemap kayıtları silindi. `tsc` hatayı yakaladı; dosyalar `git show HEAD:` ile geri alınıp eklemeler taze kopyalar üzerinde tekrar yapıldı. **Kural: dosyayı düzenlemeden hemen önce cihazdan yeniden al; oturum içinde daha önce alınmış kopyayı kullanma.**
+- `PROJE_EL_KITABI.md` ve bu dosya, oturumun başında okunmadı. El kitabı §17 protokolü bunu ilk iki adım olarak tanımlıyor; sonraki oturumlarda bu sıraya uyulmalıdır.
+
+### Güncellenmesi gereken belgeler
+
+1. `PROJE_EL_KITABI.md` §8: fiyat anlatımının yaşadığı dosyalara `/fiyatlandirma` ve `/en/pricing` sayfaları eklenmeli; “ek paket” terimi “ek modül” ile değiştirilmeli.
+2. `PROJE_EL_KITABI.md` §10 rota tablosu eksik: `/fiyatlandirma`, `/okey-pilot`, ürün SEO sayfaları, raporlama sayfaları ve 2027 uyum sayfaları listede yok.
+3. `PROJE_EL_KITABI.md` §18: Pilot'ın “ek paket” tanımı, ek modül ailesinin öne çıkan üyesi olarak güncellenmeli.
+
+### Doğrulama
+
+- `npm run lint` ve `npx tsc --noEmit` temiz.
+- TR/EN eşitliği: fiyatlandırma ve 2027 uyum sayfaları iki dilde eş; dil eşleşmeleri `locale.ts`'e, menü/footer bağlantıları her iki dile eklendi. KKTC blog yazısının İngilizcesi eksik.
+- SEO/GEO: iki yeni rota çifti sitemap'te; her birinin WebPage ve BreadcrumbList JSON-LD'si var; fiyat sayfalarında AggregateOffer ve FAQPage; 2027 sayfalarında `spatialCoverage: Türkiye`. Yönlendirilen veya `noindex` sayfa sitemap'e eklenmedi.
+- Commit, push veya canlı dağıtım yapılmadı.
