@@ -209,6 +209,66 @@ export const englishHomeStructuredData = {
   ],
 };
 
+// 2027 uyum sayfası yalnızca Türkiye mevzuatını kapsıyor; spatialCoverage ve
+// açıklama bunu açıkça belirtiyor ki KKTC ziyaretçisi muhatap sanmasın.
+const compliancePageUrl = `${SITE_URL}/2027-uyum`;
+
+export const compliancePageStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${compliancePageUrl}#webpage`,
+      url: compliancePageUrl,
+      name: "2027 Araç Kiralama Yönetmeliği Uyum Sayfası | Rent Okey",
+      description:
+        "Türkiye’de 1 Ocak 2027’de yürürlüğe giren araç kiralama yönetmeliği için geçiş takvimi ve şart bazında RentOkey’in rolü. Yetki belgesi son başvuru tarihi 1 Temmuz 2027.",
+      inLanguage: "tr-TR",
+      isPartOf: { "@id": websiteId },
+      about: { "@id": softwareId },
+      breadcrumb: { "@id": `${compliancePageUrl}#breadcrumb` },
+      spatialCoverage: { "@type": "Country", name: "Türkiye" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${compliancePageUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Ana sayfa", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "2027 uyum", item: compliancePageUrl },
+      ],
+    },
+  ],
+};
+
+const englishCompliancePageUrl = `${SITE_URL}/en/turkey-car-rental-regulation-2027`;
+
+export const englishCompliancePageStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${englishCompliancePageUrl}#webpage`,
+      url: englishCompliancePageUrl,
+      name: "Türkiye’s 2027 Car Rental Regulation — Compliance Page | Rent Okey",
+      description:
+        "Transition timeline for the car rental regulation taking effect in Türkiye on 1 January 2027, and RentOkey’s role requirement by requirement. Authorisation certificate deadline: 1 July 2027.",
+      inLanguage: "en",
+      isPartOf: { "@id": websiteId },
+      about: { "@id": softwareId },
+      breadcrumb: { "@id": `${englishCompliancePageUrl}#breadcrumb` },
+      spatialCoverage: { "@type": "Country", name: "Türkiye" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${englishCompliancePageUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/en` },
+        { "@type": "ListItem", position: 2, name: "2027 compliance", item: englishCompliancePageUrl },
+      ],
+    },
+  ],
+};
+
 // Fiyatlandırma kendi sayfasına taşındı; fiyat sorgularında ana sayfa yerine
 // bu URL'nin kaynak gösterilebilmesi için ayrı bir WebPage + Offer bildiriyoruz.
 const pricingPageUrl = `${SITE_URL}/fiyatlandirma`;

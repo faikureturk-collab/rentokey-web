@@ -5,6 +5,7 @@ export const localeRoutes = [
   ["/ucretsiz-dene", "/en/free-trial"],
   ["/okey-pilot", "/en/pilot"],
   ["/fiyatlandirma", "/en/pricing"],
+  ["/2027-uyum", "/en/turkey-car-rental-regulation-2027"],
   ["/arac-kiralama-programi", "/en/car-rental-software"],
   ["/arac-kiralama-rezervasyon-takvimi", "/en/car-rental-reservation-calendar"],
   ["/arac-kiralama-raporlama-ve-filo-analizi", "/en/car-rental-reporting-and-fleet-analytics"],

@@ -12,6 +12,7 @@ const pageLastModified = {
   pilot: "2026-09-10",
   productPages: "2026-09-14",
   pricing: "2026-09-12",
+  compliance: "2026-09-14",
 } as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -33,6 +34,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: pageLastModified.pricing,
       changeFrequency: "monthly",
       priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/2027-uyum`,
+      lastModified: pageLastModified.compliance,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${SITE_URL}/okey-pilot`,
@@ -76,9 +83,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
-    ...["/en", "/en/free-trial", "/en/pilot", "/en/pricing", "/en/car-rental-software", "/en/car-rental-reservation-calendar", "/en/car-rental-reporting-and-fleet-analytics", "/en/blog"].map(path => ({
+    ...["/en", "/en/free-trial", "/en/pilot", "/en/pricing", "/en/turkey-car-rental-regulation-2027", "/en/car-rental-software", "/en/car-rental-reservation-calendar", "/en/car-rental-reporting-and-fleet-analytics", "/en/blog"].map(path => ({
       url: `${SITE_URL}${path}`,
-      lastModified: path === "/en" ? pageLastModified.home : path === "/en/blog" ? "2026-09-11" : path === "/en/pricing" ? pageLastModified.pricing : "2026-09-10",
+      lastModified: path === "/en" ? pageLastModified.home : path === "/en/blog" ? "2026-09-11" : path === "/en/pricing" ? pageLastModified.pricing : path === "/en/turkey-car-rental-regulation-2027" ? pageLastModified.compliance : "2026-09-10",
       changeFrequency: "monthly" as const,
       priority: path === "/en" ? 1 : 0.9,
     })),
