@@ -6,7 +6,7 @@ type ButtonProps = {
   href: string;
   children: ReactNode;
   variant?: "primary" | "secondary" | "ghost";
-  size?: "md" | "lg";
+  size?: "sm" | "md" | "lg";
   icon?: boolean;
   className?: string;
 };
@@ -23,6 +23,8 @@ const variants: Record<string, string> = {
 };
 
 const sizes: Record<string, string> = {
+  // Dar alanlar için (mobil başlık). min-h-11 ile dokunma hedefi 44px'in altına düşmez.
+  sm: "min-h-11 px-3.5 text-[13px]",
   md: "px-5 py-2.5 text-sm",
   lg: "px-7 py-3.5 text-[15px]",
 };

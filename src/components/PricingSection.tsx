@@ -139,6 +139,28 @@ export default function PricingSection({
               <span>{SELF_SERVICE_MAX_VEHICLES}</span>
             </div>
 
+            {/*
+              Mobilde fiyat kartı bu kartın altında kaldığı için slider’ı oynatan
+              kullanıcı sonucu göremiyordu. Sebep ve sonucu yan yana tutmak için
+              dar ekranda buraya canlı bir okuma konuyor; masaüstünde gizli.
+            */}
+            <div
+              className="mt-4 flex items-baseline justify-between rounded-xl bg-surface-soft px-4 py-3 lg:hidden"
+              aria-live="polite"
+            >
+              <span className="text-xs font-semibold text-brand-navy/55">
+                {yearly ? (en ? "Monthly equivalent" : "Aylık karşılık") : (en ? "Monthly" : "Aylık")}
+              </span>
+              {price !== null ? (
+                <span className="flex items-baseline gap-1">
+                  <span className="text-2xl font-extrabold tracking-[-0.03em] text-brand-navy">₺{formatPrice(price, locale)}</span>
+                  <span className="text-[11px] text-brand-navy/45">{en ? "/ month" : "/ ay"}</span>
+                </span>
+              ) : (
+                <span className="text-base font-extrabold text-brand-navy">{en ? "Custom quote" : "Özel teklif"}</span>
+              )}
+            </div>
+
             <div className="mt-5 flex flex-wrap gap-2">
               {quickPicks.map((n) => (
                 <button

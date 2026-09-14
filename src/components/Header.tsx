@@ -32,8 +32,9 @@ export default function Header({ locale = "tr" }: { locale?: Locale }) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-surface-border/70 bg-white/90 backdrop-blur">
-      <div className="container-page flex h-[72px] items-center justify-between">
-        <Logo locale={locale} />
+      <div className="container-page flex h-[72px] items-center justify-between gap-2">
+        {/* Mobilde birincil CTA’ya yer açmak için logo bir tık küçültülüyor. */}
+        <Logo locale={locale} size="h-8 sm:h-9" />
 
         <nav className="hidden items-center gap-8 lg:flex">
           {navigation.map((item) =>
@@ -86,7 +87,17 @@ export default function Header({ locale = "tr" }: { locale?: Locale }) {
         </div>
 
         <div className="flex items-center gap-2">
-        <LanguageSwitcher locale={locale} />
+        {/*
+          Mobilde birincil CTA başlıkta görünür kalıyor: hamburger açılmadan
+          harekete geçme yolu olmalı. Dil seçici dar ekranda menüye taşındı,
+          masaüstünde yerinde duruyor.
+        */}
+        <Button href={en ? "/en/free-trial" : "/ucretsiz-dene"} size="sm" className="lg:hidden">
+          {en ? "Start free trial" : "Ücretsiz dene"}
+        </Button>
+        <div className="hidden lg:block">
+          <LanguageSwitcher locale={locale} />
+        </div>
         <button
           className="flex h-10 w-10 items-center justify-center rounded-lg text-brand-navy lg:hidden"
           onClick={() => setMobileOpen((v) => !v)}
@@ -158,6 +169,11 @@ export default function Header({ locale = "tr" }: { locale?: Locale }) {
             <Button href={en ? "/en/free-trial" : "/ucretsiz-dene"} className="w-full">
               {en ? "Start free trial" : "Ücretsiz dene"}
             </Button>
+            {/* Başlıktan çıkarılan dil seçici burada erişilebilir kalıyor. */}
+            <div className="flex items-center justify-between border-t border-surface-border pt-3">
+              <span className="text-sm font-medium text-brand-navy/55">{en ? "Language" : "Dil"}</span>
+              <LanguageSwitcher locale={locale} />
+            </div>
           </div>
         </div>
       )}
