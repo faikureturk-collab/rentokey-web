@@ -2,6 +2,7 @@ import StructuredData from "@/components/StructuredData";
 import Hero from "@/components/home/Hero";
 import StatsBar from "@/components/home/StatsBar";
 import ProductOverviewSection from "@/components/home/ProductOverviewSection";
+import ReportingSection from "@/components/home/ReportingSection";
 import FocusSection from "@/components/home/FocusSection";
 import PilotSection from "@/components/home/PilotSection";
 import AddonModulesSection from "@/components/home/AddonModulesSection";
@@ -26,6 +27,7 @@ export default function Home() {
       <Hero />
       <StatsBar />
       <ProductOverviewSection />
+      <ReportingSection />
       <FocusSection />
       <PilotSection />
       <HowItWorks />

@@ -14,6 +14,7 @@ export const primaryNav: {
     children: [
       { label: "Araç kiralama programı", href: "/arac-kiralama-programi" },
       { label: "Rezervasyon takvimi", href: "/arac-kiralama-rezervasyon-takvimi" },
+      { label: "Raporlama ve filo analizi", href: "/arac-kiralama-raporlama-ve-filo-analizi" },
       { label: "Operasyon platformu", href: "/#urun" },
       { label: "Önerilen odak", href: "/#onerilen-odak" },
       { label: "RentOkey Pilot", href: "/okey-pilot" },
@@ -37,6 +38,7 @@ export const footerNav = {
   urun: [
     { label: "Araç kiralama programı", href: "/arac-kiralama-programi" },
     { label: "Rezervasyon takvimi", href: "/arac-kiralama-rezervasyon-takvimi" },
+    { label: "Raporlama ve filo analizi", href: "/arac-kiralama-raporlama-ve-filo-analizi" },
     { label: "Operasyon platformu", href: "/#urun" },
     { label: "Önerilen odak", href: "/#onerilen-odak" },
     { label: "RentOkey Pilot", href: "/okey-pilot" },

@@ -23,7 +23,7 @@ test("language routes are paired; untranslated content falls back to the selecte
     assert.equal(locale.languageHref(`${en}/`,"tr"),tr);
   }
   assert.equal(locale.languageHref("/blog/some-post","en"),"/en");
-  assert.equal(locale.alternateRoutes("/blog"),undefined);
+  assert.equal(locale.languageHref("/blog","en"),"/en/blog");
 });
 
 test("form copy keeps Turkish and translates security, fields and submission states", () => {
@@ -85,7 +85,7 @@ test("built language pages have correct HTML language, canonical and reciprocal 
 
 test("English homepage preserves the compact Turkish homepage section flow", () => {
   const html = fs.readFileSync(new URL("../.next/server/app/en.html", import.meta.url), "utf8");
-  const ids = ["product", "recommended-focus", "pilot", "how-it-works", "pricing", "addons", "about", "faq", "contact"];
+  const ids = ["product", "reporting", "recommended-focus", "pilot", "how-it-works", "pricing", "addons", "about", "faq", "contact"];
   let previous = -1;
   for (const id of ids) {
     const position = html.indexOf(`id="${id}"`);
@@ -97,8 +97,23 @@ test("English homepage preserves the compact Turkish homepage section flow", () 
   }
   assert.ok(html.includes('href="/en/car-rental-software"'));
   assert.ok(html.includes('href="/en/car-rental-reservation-calendar"'));
+  assert.ok(html.includes('href="/en/car-rental-reporting-and-fleet-analytics"'));
   assert.equal(html.includes('id="reservation-flow"'), false);
   assert.equal(html.includes('id="features"'), false);
+});
+
+test("reporting pages preserve language parity, report scope and structured data", () => {
+  const tr = fs.readFileSync(new URL("../.next/server/app/arac-kiralama-raporlama-ve-filo-analizi.html", import.meta.url), "utf8");
+  const en = fs.readFileSync(new URL("../.next/server/app/en/car-rental-reporting-and-fleet-analytics.html", import.meta.url), "utf8");
+
+  for (const html of [tr, en]) {
+    for (const schemaType of ["FAQPage", "BreadcrumbList", "SoftwareApplication"]) assert.ok(html.includes(schemaType));
+    assert.ok(html.includes('id="rapor-kapsami"'));
+  }
+  for (const text of ["Operasyonel katkı net kâr mıdır?", "Araç-Ay Gelir/Gider", "P90 gecikme", "HGS Geçiş Raporu"]) assert.ok(tr.includes(text), `missing Turkish reporting content: ${text}`);
+  for (const text of ["Is operating contribution the same as net profit?", "Vehicle-Month Income/Expense", "P90 delay", "HGS Toll Report"]) assert.ok(en.includes(text), `missing English reporting content: ${text}`);
+  assert.ok(tr.includes('hrefLang="en" href="https://www.rentokey.com/en/car-rental-reporting-and-fleet-analytics"'));
+  assert.ok(en.includes('hrefLang="tr" href="https://www.rentokey.com/arac-kiralama-raporlama-ve-filo-analizi"'));
 });
 
 test("English homepage social title is not duplicated and schema matches the complete page", () => {
@@ -113,7 +128,7 @@ test("English homepage social title is not duplicated and schema matches the com
 
 test("product SEO pages preserve language parity, metadata and structured data", () => {
   const pairs = [
-    ["arac-kiralama-programi", "en/car-rental-software", "Araç Kiralama Programı", "Car Rental Software"],
+    ["arac-kiralama-programi", "en/car-rental-software", "Araç Kiralama Operasyon Yazılımı", "Car Rental Software"],
     ["arac-kiralama-rezervasyon-takvimi", "en/car-rental-reservation-calendar", "Araç Kiralama Rezervasyon Takvimi", "Car Rental Reservation Calendar"],
   ];
 

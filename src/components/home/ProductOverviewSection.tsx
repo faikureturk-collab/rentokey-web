@@ -47,6 +47,10 @@ export default function ProductOverviewSection({ locale = "tr" }: { locale?: "tr
             {en ? "Explore the reservation calendar" : "Rezervasyon takvimini inceleyin"}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
+          <Link href={en ? "/en/car-rental-reporting-and-fleet-analytics" : "/arac-kiralama-raporlama-ve-filo-analizi"} className="group inline-flex items-center gap-2 text-sm font-bold text-brand-blue">
+            {en ? "Explore reporting and analytics" : "Raporlama ve analizi inceleyin"}
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
 
         <div className="mt-4 grid gap-px overflow-hidden rounded-2xl border border-surface-border bg-surface-border sm:grid-cols-2 lg:grid-cols-4">

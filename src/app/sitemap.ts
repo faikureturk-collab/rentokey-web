@@ -5,12 +5,12 @@ import { SITE_URL } from "@/lib/seo";
 import { alternateRoutes } from "@/lib/locale";
 
 const pageLastModified = {
-  home: "2026-09-10",
+  home: "2026-09-14",
   trial: "2026-08-28",
   resources: "2026-08-29",
   blog: "2026-09-07",
   pilot: "2026-09-10",
-  productPages: "2026-09-12",
+  productPages: "2026-09-14",
   pricing: "2026-09-12",
 } as const;
 
@@ -53,6 +53,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${SITE_URL}/arac-kiralama-raporlama-ve-filo-analizi`,
+      lastModified: pageLastModified.productPages,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${SITE_URL}/kaynaklar`,
       lastModified: pageLastModified.resources,
       changeFrequency: "weekly",
@@ -70,7 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
-    ...["/en", "/en/free-trial", "/en/pilot", "/en/pricing", "/en/car-rental-software", "/en/car-rental-reservation-calendar", "/en/blog"].map(path => ({
+    ...["/en", "/en/free-trial", "/en/pilot", "/en/pricing", "/en/car-rental-software", "/en/car-rental-reservation-calendar", "/en/car-rental-reporting-and-fleet-analytics", "/en/blog"].map(path => ({
       url: `${SITE_URL}${path}`,
       lastModified: path === "/en/blog" ? "2026-09-11" : path === "/en/pricing" ? pageLastModified.pricing : "2026-09-10",
       changeFrequency: "monthly" as const,

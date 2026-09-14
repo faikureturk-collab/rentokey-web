@@ -710,3 +710,17 @@ Yeni çalışmaya şu sırayla başla:
 - Header’da slogansız optik hizalı logo, footer’da sloganlı kilit kullan.
 - Mobilde masaüstünü küçültme; görev ve aksiyon akışını yeniden kur.
 - Satış metninde yalnız doğrulanmış ürün davranışlarını kullan.
+
+## 19. Raporlama ve filo analizi sayfaları
+
+Raporlama artık yalnız fiyatlandırma veya ürün özetindeki genel bir vaat değildir. Ana sayfada kısa bir karar desteği vitrini; `/arac-kiralama-raporlama-ve-filo-analizi` ve `/en/car-rental-reporting-and-fleet-analytics` adreslerinde ayrıntılı, eş ürün anlatımı bulunur. İçerik kaynağı `src/lib/reporting.ts`; ortak sayfa `src/components/ReportingPage.tsx`; sentetik yönetim özeti görseli `src/components/ReportingDashboardPreview.tsx`; ana sayfa vitrini `src/components/home/ReportingSection.tsx` içindedir.
+
+Raporlama anlatımında şu kuralları koruyun:
+
+1. Operasyonel katkıyı muhasebe net kârı gibi sunmayın; kapsam ve hesaplama yöntemi ayrımını görünür tutun.
+2. ADR'yi ortalama günlük kiralama bedeli, RevPAC'i müsait araç başına gelir olarak doğrudan açıklayın.
+3. Ekran açıkken dakikada bir yenilenen raporları belirsiz biçimde “gerçek zamanlı” diye genellemeyin.
+4. HGS raporunu Türkiye firmaları için koşullu özellik olarak gösterin.
+5. Ayrıntılı filtre ve rol listesini ana sayfaya taşımayın; ana sayfada sonuç odaklı dört kısa fayda ve ürün sayfasına bağlantı yeterlidir.
+6. Rapor önizlemelerinde yalnız sentetik veri kullanın; gerçek müşteri, rezervasyon veya finans verisi yayınlamayın.
+7. Yeni rapor kapsamı eklendiğinde Türkçe ve İngilizce içerik, FAQ/schema özellik listesi, metadata, sitemap tarihi ve iç bağlantıları birlikte değerlendirin.

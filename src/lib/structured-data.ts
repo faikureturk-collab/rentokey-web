@@ -3,6 +3,7 @@ import { computeMonthlyPrice, SELF_SERVICE_MAX_VEHICLES } from "@/lib/pricing";
 import { DEFAULT_DESCRIPTION, LINKEDIN_URL, SITE_NAME, SITE_URL } from "@/lib/seo";
 import type { ProductSeoContent } from "@/lib/product-pages";
 import { pilotRuleGroups } from "@/lib/pilot-rules";
+import type { ReportingContent } from "@/lib/reporting";
 
 const organizationId = `${SITE_URL}/#organization`;
 const websiteId = `${SITE_URL}/#website`;
@@ -372,6 +373,68 @@ export function createProductPageStructuredData(content: ProductSeoContent) {
             "@type": "Answer",
             text: item.answer,
           },
+        })),
+      },
+    ],
+  };
+}
+
+export function createReportingPageStructuredData(content: ReportingContent) {
+  const pageUrl = `${SITE_URL}${content.path}`;
+  const locale = content.locale === "en" ? "en" : "tr-TR";
+  const homeUrl = content.locale === "en" ? `${SITE_URL}/en` : SITE_URL;
+  const homeLabel = content.locale === "en" ? "Home" : "Ana sayfa";
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: content.title,
+        description: content.description,
+        inLanguage: locale,
+        isPartOf: { "@id": websiteId },
+        about: { "@id": softwareId },
+        breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: homeLabel, item: homeUrl },
+          { "@type": "ListItem", position: 2, name: content.title, item: pageUrl },
+        ],
+      },
+      {
+        "@type": ["SoftwareApplication", "WebApplication"],
+        "@id": softwareId,
+        name: SITE_NAME,
+        url: content.locale === "en" ? `${SITE_URL}/en` : SITE_URL,
+        applicationCategory: "BusinessApplication",
+        applicationSubCategory: content.locale === "en" ? "Car rental reporting and fleet analytics" : "Araç kiralama raporlama ve filo analizi",
+        operatingSystem: "Web",
+        inLanguage: locale,
+        provider: { "@id": organizationId },
+        featureList: [
+          ...content.questions.map((item) => item.title),
+          ...content.reportGroups.map((item) => item.title),
+          content.exportTitle,
+          content.rolesTitle,
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${pageUrl}#faq`,
+        url: `${pageUrl}#faq`,
+        name: content.faqTitle,
+        inLanguage: locale,
+        isPartOf: { "@id": `${pageUrl}#webpage` },
+        mainEntity: content.faqs.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
         })),
       },
     ],

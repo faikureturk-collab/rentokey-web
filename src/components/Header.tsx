@@ -18,6 +18,7 @@ export default function Header({ locale = "tr" }: { locale?: Locale }) {
       children: [
         { label: "Car rental software", href: "/en/car-rental-software" },
         { label: "Reservation calendar", href: "/en/car-rental-reservation-calendar" },
+        { label: "Reporting and fleet analytics", href: "/en/car-rental-reporting-and-fleet-analytics" },
         { label: "Operations platform", href: "/en#product" },
       ],
     },

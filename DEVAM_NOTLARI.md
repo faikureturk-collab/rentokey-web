@@ -184,3 +184,13 @@ Bu bölüm önceki demo yerleşimi notlarının güncel halidir. Canlı uygulama
 - Türkçe ve İngilizce içerik/işlev eşitliği sağlandı. Yeni rota açılmadığı, sayfa amacı ve ana arama niyeti değişmediği için title, description, canonical, hreflang, sitemap ve schema değiştirilmedi.
 - Yeni rota oluşmadı. Ana sayfa metadata, schema, canonical/hreflang ve sitemap değişikliği gerekmedi; ürün sayfalarına iç bağlantılar korunur.
 - Görsel demo geri gelmesine rağmen son ana sayfa HTML'i ilk 14 bölümlü sürüme göre Türkçede yaklaşık %28,9, İngilizcede yaklaşık %30,1 daha küçüktür.
+
+## 14 Eylül 2026 — Raporlama ve filo analizi ürün anlatımı
+
+- Rapor modülü ana sayfada uzun özellik listesi olarak tekrarlanmadı. Türkçe ve İngilizce ana sayfaya; ciro/operasyonel katkı/kullanım, şube-kategori-araç karşılaştırması, açık bakiye/risk ve Excel/PDF çıktısını dört kısa faydayla anlatan hafif, sunucu taraflı bir vitrin eklendi.
+- Yönetim özeti için yalnız sentetik veri kullanan kod tabanlı rapor önizlemesi hazırlandı. Görselde ciro, katkı marjı, filo kullanımı, tahsil edilmemiş tutar, altı aylık eğilim ve örnek boşta araç önceliği gösterilir; gerçek müşteri veya firma verisi kullanılmaz.
+- İki eş, indekslenebilir ürün sayfası oluşturuldu: `/arac-kiralama-raporlama-ve-filo-analizi` ↔ `/en/car-rental-reporting-and-fleet-analytics`. Sayfalar yönetim soruları, hazır raporlar, veri güvenilirliği, dışa aktarma, rol/şube kapsamı, SSS ve deneme çağrısını aynı içerik yapısında sunar.
+- “Operasyonel katkı” net kâr olarak tanımlanmadı. ADR ve RevPAC açıklandı; dakikalık yenileme “gerçek zamanlı” diye genellenmedi; HGS raporu yalnız Türkiye firmaları için koşullu olarak belirtildi.
+- Her iki rotaya benzersiz metadata, canonical, karşılıklı `hreflang` ve `x-default`; WebPage, BreadcrumbList, SoftwareApplication ve FAQPage JSON-LD eklendi. Dil değiştirici, TR/EN header-footer, ana sayfa iç bağlantıları ve sitemap birlikte güncellendi.
+- `npm run lint` ve `next build --webpack` başarılıdır. Turbopack build, yerel çalışma ortamının süreç/port kısıtı nedeniyle PostCSS aşamasında çalışmadı; aynı production build webpack ile tamamlandı. Türkçe masaüstü sayfa tarayıcıda görsel ve semantik olarak kontrol edildi.
+- Commit, push veya canlı dağıtım yapılmadı.

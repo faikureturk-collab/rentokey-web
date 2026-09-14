@@ -7,6 +7,7 @@ export const localeRoutes = [
   ["/fiyatlandirma", "/en/pricing"],
   ["/arac-kiralama-programi", "/en/car-rental-software"],
   ["/arac-kiralama-rezervasyon-takvimi", "/en/car-rental-reservation-calendar"],
+  ["/arac-kiralama-raporlama-ve-filo-analizi", "/en/car-rental-reporting-and-fleet-analytics"],
   ["/blog", "/en/blog"],
   [
     "/blog/arac-teslim-iade-surecini-dijitallestirmek",

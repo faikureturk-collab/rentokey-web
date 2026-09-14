@@ -2,6 +2,7 @@ import StructuredData from "@/components/StructuredData";
 import Hero from "@/components/home/Hero";
 import StatsBar from "@/components/home/StatsBar";
 import ProductOverviewSection from "@/components/home/ProductOverviewSection";
+import ReportingSection from "@/components/home/ReportingSection";
 import FocusSection from "@/components/home/FocusSection";
 import PilotSection from "@/components/home/PilotSection";
 import HowItWorks from "@/components/home/HowItWorks";
@@ -26,6 +27,7 @@ export default function EnglishHome() {
       <Hero locale="en" />
       <StatsBar locale="en" />
       <ProductOverviewSection locale="en" />
+      <ReportingSection locale="en" />
       <FocusSection locale="en" />
       <PilotSection locale="en" />
       <HowItWorks locale="en" />
