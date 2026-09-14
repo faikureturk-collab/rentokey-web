@@ -2,6 +2,10 @@
 
 ## Kalıcı geliştirme kontrolü
 
+### 14 Eylül 2026 — Hakkımızda hikâyesi
+
+Ana sayfanın TR/EN Hakkımızda bölümü; yaklaşık 17 yıllık kurumsal B2B yazılım birikimi ve geliştirmeye katkı sağlayan ortağın 19 yıllık rent a car deneyimiyle yeniden yazıldı. Bu süreler şirket yaşı veya tek kişinin deneyimi olarak sunulmaz. Kurucu adı ve ortak olunan firma açıklanmaz. Hikâyenin çıkış noktası Excel karmaşası ve rezervasyon çakışmalarıdır. Üç ilke: operasyonun içinden doğma, mühendislik birikimi ve kullanıcı kontrolü. Mevcut `#hakkimizda` / `#about` bağlantıları ve dil eşleşmeleri korunur. Yeni rota/schema kimliği eklenmedi; EN ana sayfa sitemap tarihi TR ile aynı kaynağa bağlandı.
+
 Pazarlama sitesine yeni bir içerik veya işlev eklendiğinde Türkçe ve İngilizce sürümler aynı çalışma içinde birlikte ele alınır; İngilizce karşılık, rota eşleşmesi, dil değiştirici, `hreflang` ve form dili kontrol edilir. Her web sitesi güncellemesinde ayrıca SEO ve GEO etkisi değerlendirilir; metadata, canonical, sitemap, robots, indeksleme tercihi, yapılandırılmış veri, iç bağlantılar, semantik içerik ve güncelleme tarihleri yalnızca gerektiği ölçüde güncellenir. Bu iki kontrol tamamlanmadan geliştirme bitmiş kabul edilmez.
 
 Tarih: 2 Eylül 2026

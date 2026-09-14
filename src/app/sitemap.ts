@@ -78,7 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...["/en", "/en/free-trial", "/en/pilot", "/en/pricing", "/en/car-rental-software", "/en/car-rental-reservation-calendar", "/en/car-rental-reporting-and-fleet-analytics", "/en/blog"].map(path => ({
       url: `${SITE_URL}${path}`,
-      lastModified: path === "/en/blog" ? "2026-09-11" : path === "/en/pricing" ? pageLastModified.pricing : "2026-09-10",
+      lastModified: path === "/en" ? pageLastModified.home : path === "/en/blog" ? "2026-09-11" : path === "/en/pricing" ? pageLastModified.pricing : "2026-09-10",
       changeFrequency: "monthly" as const,
       priority: path === "/en" ? 1 : 0.9,
     })),
